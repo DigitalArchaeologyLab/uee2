@@ -1,0 +1,11 @@
+{% if article_titles %}
+<ul>
+  {% for article in article_titles %}
+  <li>
+    <a href="/article/{{ article.id }}/">{{ article.title_eng }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Not working</p>
+{% endif %}

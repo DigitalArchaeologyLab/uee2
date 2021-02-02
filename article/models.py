@@ -18,6 +18,9 @@ class Article(models.Model):
   abstract_ar = models.CharField(max_length=500)
   author_id = models.ForeignKey(Author, on_delete=models.PROTECT)
 
+  def __str__(self):
+    return '%s' % (self.title_eng)
+
 
 
 
