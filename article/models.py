@@ -14,14 +14,21 @@ class Article(models.Model):
   id = models.AutoField(primary_key=True)
   title_eng = models.CharField('Title (English)', max_length=200)
   title_ar = models.CharField('Title (Arabic)', max_length=200)
+  title_de = models.CharField('Title (German)', max_length=200)
+  title_fr = models.CharField('Title (French)', max_length=200)
+  author_id = models.ForeignKey(Author, on_delete=models.PROTECT)
   abstract_eng = models.CharField(max_length=500)
   abstract_ar = models.CharField(max_length=500)
-  author_id = models.ForeignKey(Author, on_delete=models.PROTECT)
-
+  keywords = models.ForeignKey('Keyword', on_delete=models.PROTECT)
+  body = models.TextField()
+    
   def __str__(self):
     return '%s' % (self.title_eng)
 
+class Keyword(models.Model):
+  id = models.AutoField(primary_key=True)
+  name_eng = models.CharField('Name (English)', max_length=200)
+  name_ar = models.CharField('Name (Arabic)', max_length=200)
 
-
-
-  
+  def __str__(self):
+    return '%s, %s' % (self.name_eng, self.name_ar)
