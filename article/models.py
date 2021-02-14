@@ -1,4 +1,6 @@
 from django.db import models
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 
 # Create your models here.
 class Author(models.Model):
@@ -20,10 +22,12 @@ class Article(models.Model):
   abstract_eng = models.CharField(max_length=500)
   abstract_ar = models.CharField(max_length=500)
   keywords = models.ForeignKey('Keyword', on_delete=models.PROTECT)
-  body = models.TextField()
+  body = MarkdownxField()
     
   def __str__(self):
     return '%s' % (self.title_eng)
+  def formatted_markdown(self):
+    return markdownify(self.body)
 
 class Keyword(models.Model):
   id = models.AutoField(primary_key=True)
