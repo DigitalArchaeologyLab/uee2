@@ -1,9 +1,27 @@
-<h1>{{ article.title_eng }}</h1>
-<h1>{{ article.title_ar }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'article/style.css' %}"
+    />
 
-<p>{{ article.abstract_eng }}</p>
-<br />
-<p>{{ article.abstract_ar }}</p>
-<br />
-<p>{{ article.formatted_markdown|safe|linebreaks }}</p>
-<hr />
+    <title>Article</title>
+  </head>
+  <body>
+    <h1>{{ article.title_eng }}</h1>
+    <h1>{{ article.title_ar }}</h1>
+
+    <p>{{ article.abstract_eng }}</p>
+    <br />
+    <p>{{ article.abstract_ar }}</p>
+    <br />
+    <p>{{ article.formatted_markdown|safe|linebreaks }}</p>
+    <hr />
+  </body>
+</html>
