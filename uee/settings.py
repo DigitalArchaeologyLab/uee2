@@ -72,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'uee.wsgi.application'
 
+MARKDOWNX_MARKDOWN_EXTENSIONS = ['extra']
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
