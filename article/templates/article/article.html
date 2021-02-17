@@ -16,12 +16,12 @@
   <body>
     <h1>{{ article.title_eng }}</h1>
     <h1>{{ article.title_ar }}</h1>
+    <p>{{ article.author_id }}</p>
 
     <p>{{ article.abstract_eng }}</p>
     <br />
     <p>{{ article.abstract_ar }}</p>
-    <br />
-    <p>{{ article.formatted_markdown|safe|linebreaks }}</p>
+    <p>{{ article.formatted_markdown|safe }}</p>
     <hr />
   </body>
 </html>

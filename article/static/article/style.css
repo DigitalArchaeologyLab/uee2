@@ -19,3 +19,7 @@ th {
   background-color: #3f7492;
   color: white;
 }
+
+hr {
+  border: 1px solid rgb(192, 192, 192);
+}
