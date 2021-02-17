@@ -19,13 +19,14 @@ class Article(models.Model):
   title_de = models.CharField('Title (German)', max_length=200)
   title_fr = models.CharField('Title (French)', max_length=200)
   author_id = models.ForeignKey(Author, on_delete=models.PROTECT)
-  abstract_eng = models.CharField(max_length=500)
-  abstract_ar = models.CharField(max_length=500)
+  abstract_eng = models.TextField(max_length=500)
+  abstract_ar = models.TextField(max_length=500)
   keywords = models.ForeignKey('Keyword', on_delete=models.PROTECT)
   body = MarkdownxField()
     
   def __str__(self):
     return '%s' % (self.title_eng)
+    
   def formatted_markdown(self):
     return markdownify(self.body)
 
