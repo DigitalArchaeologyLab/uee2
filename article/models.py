@@ -22,6 +22,10 @@ class Article(models.Model):
   abstract_eng = models.TextField(max_length=500)
   abstract_ar = models.TextField(max_length=500)
   keywords = models.ForeignKey('Keyword', on_delete=models.PROTECT)
+  UNPUBLISHED = 'U'
+  PUBLISHED = 'P'
+  STATUS_CHOICES = [(UNPUBLISHED, 'Unpublished'), (PUBLISHED, 'Published')]
+  status = models.CharField(max_length=100, choices=STATUS_CHOICES, default=UNPUBLISHED)
   body = MarkdownxField()
     
   def __str__(self):
@@ -34,6 +38,8 @@ class Keyword(models.Model):
   id = models.AutoField(primary_key=True)
   name_eng = models.CharField('Name (English)', max_length=200)
   name_ar = models.CharField('Name (Arabic)', max_length=200)
+  KEYWORD_TYPE_CHOICES = [('Places', 'Places'), ('Periods', 'Periods'), ('Glossary terms', 'Glossary terms')]
+  keyword_type = models.CharField(max_length=200, choices=KEYWORD_TYPE_CHOICES, default='Glossary terms')
 
   def __str__(self):
     return '%s, %s' % (self.name_eng, self.name_ar)
