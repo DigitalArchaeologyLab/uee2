@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
+from rest_framework import viewsets
+from .serializers import ArticleSerializer
 # from django.template import loader
 
 from .models import Article
@@ -25,3 +27,8 @@ def article(request, article_id):
   }
   return render(request, 'article/article.html', context)
 # can be written as a shortcut (get_object_or_404())
+
+# API setup
+class ArticleView(viewsets.ModelViewSet):
+  serializer_class = ArticleSerializer
+  queryset = Article.objects.all()
