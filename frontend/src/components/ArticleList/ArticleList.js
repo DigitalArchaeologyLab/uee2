@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link, useRouteMatch } from "react-router-dom";
 
 function ArticleList(props) {
   const [ArticleList, setArticleList] = useState([
@@ -24,12 +25,16 @@ function ArticleList(props) {
     refreshList();
   }, []);
 
+  // let { path, url } = useRouteMatch();
+
   return (
     <div>
       {ArticleList.map((article) => (
         <p>
           <h1>
-            {article.title_eng} 
+            <Link to='/1'>
+              {article.title_eng}
+            </Link>
             <p id='arabic'>
             {article.title_ar}
             </p>
