@@ -31,14 +31,14 @@ function ArticleList(props) {
     <div>
       {ArticleList.map((article) => (
         <p>
-          <h1>
+          <h2>
             <Link to='/1'>
               {article.title_eng}
             </Link>
             <p id='arabic'>
             {article.title_ar}
             </p>
-          </h1>
+          </h2>
           {article.author_id}
           <p></p>
           {article.abstract_eng}
