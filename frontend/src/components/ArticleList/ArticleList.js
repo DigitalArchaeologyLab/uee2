@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useRouteMatch } from "react-router-dom";
+import ArticleSummary from "../ArticleSummary/ArticleSummary";
 
 function ArticleList(props) {
   const [ArticleList, setArticleList] = useState([
     {
       id: 0,
-      title_eng: '',
-      title_ar: '',
-      author_id: '',
-      abstract_eng: '',
-      abstract_ar: ''
+      title_eng: "",
+      title_ar: "",
+      author_id: "",
+      abstract_eng: "",
+      abstract_ar: "",
+      body: "",
     },
   ]);
 
@@ -30,23 +32,18 @@ function ArticleList(props) {
   return (
     <div>
       {ArticleList.map((article) => (
-        <p>
-          <h2>
-            <Link to='/1'>
-              {article.title_eng}
-            </Link>
-            <p id='arabic'>
-            {article.title_ar}
-            </p>
-          </h2>
-          {article.author_id}
-          <p></p>
-          {article.abstract_eng}
-          <p id='arabic'>
-          {article.abstract_ar}
-          </p>
+        <div>
+          <ArticleSummary
+            article_id={article.id}
+            title_eng={article.title_eng}
+            title_ar={article.title_ar}
+            author={article.author_id}
+            abstract_eng={article.abstract_eng}
+            abstract_ar={article.abstract_ar}
+          />
+         
           <hr></hr>
-        </p>
+        </div>
       ))}
     </div>
   );
