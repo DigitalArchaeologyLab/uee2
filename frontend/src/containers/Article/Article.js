@@ -4,7 +4,7 @@ import ArticleBody from "../../components/ArticleBody/ArticleBody";
 import Frontmatter from "../../components/Frontmatter/Frontmatter";
 
 function Article(props) {
-  const [article, setArticle] = useState([
+  const [article, setArticle] = useState(
     {
       id: 0,
       title_eng: "",
@@ -16,7 +16,7 @@ function Article(props) {
       body: "",
       status: "",
     },
-  ]);
+  );
 
   const refreshList = () => {
     axios
@@ -32,7 +32,7 @@ function Article(props) {
   return (
     <div>
       <Frontmatter
-        id={article.id}
+        article_id={article.id}
         title_eng={article.title_eng}
         title_ar={article.title_ar}
         authors={article.authors}
@@ -40,6 +40,7 @@ function Article(props) {
         abstract_ar={article.abstract_ar}
         keywords={article.keywords}
       />
+      <hr></hr>
       <ArticleBody body={article.body} />
     </div>
   );

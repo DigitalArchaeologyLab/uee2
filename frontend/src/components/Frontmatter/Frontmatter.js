@@ -1,5 +1,6 @@
 import React from "react";
 import List from "../../elements/List/List";
+import "./Frontmatter.css";
 
 function Frontmatter(props) {
   return (
@@ -8,12 +9,14 @@ function Frontmatter(props) {
         {props.title_eng}
         <p id="arabic">{props.title_ar}</p>
       </h2>
-      <div className="authorsList">
-        <List key={props.id} list={props.authors} />
+      <div>
+        <List class="authorsList" list={props.authors} />
       </div>
       <p className="abstract">{props.abstract_eng}</p>
       <p id="arabic">{props.abstract_ar}</p>
-      <List key={props.id} list={props.keywords} />
+      <div>
+        <List class="keywordsList" list={props.keywords} />
+      </div>
     </span>
   );
 }

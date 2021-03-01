@@ -36,7 +36,6 @@ function ArticleList(props) {
       {ArticleList.map((article) => (
         <div>
           <ArticleSummary
-            key={article.id}
             article_id={article.id}
             title_eng={article.title_eng}
             title_ar={article.title_ar}
