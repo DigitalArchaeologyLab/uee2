@@ -7,10 +7,10 @@ admin.site.register(Author)
 
 from .models import Article
 class ArticleAdmin(admin.ModelAdmin):
-  list_display = ('title_eng', 'title_ar', 'author_id', 'status')
+  list_display = ('title_eng', 'title_ar', 'status')
   fieldsets = [
     ('Title', {'fields': ['title_eng', 'title_ar', 'title_fr', 'title_de']}),
-    ('Author(s)', {'fields': ['author_id']}),
+    ('Author(s)', {'fields': ['authors']}),
     ('Abstract', {'classes': ('collapse',),'fields': ['abstract_eng', 'abstract_ar']}),
     ('Keywords', {'fields': ['keywords']}),
     ('Article', {'fields': ['body']}),

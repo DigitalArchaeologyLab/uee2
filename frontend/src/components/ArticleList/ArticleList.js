@@ -9,10 +9,12 @@ function ArticleList(props) {
       id: 0,
       title_eng: "",
       title_ar: "",
-      author_id: "",
+      authors: [""],
       abstract_eng: "",
       abstract_ar: "",
+      keywords: [""],
       body: "",
+      status: "",
     },
   ]);
 
@@ -34,14 +36,15 @@ function ArticleList(props) {
       {ArticleList.map((article) => (
         <div>
           <ArticleSummary
+            key={article.id}
             article_id={article.id}
             title_eng={article.title_eng}
             title_ar={article.title_ar}
-            author={article.author_id}
+            authors={article.authors}
             abstract_eng={article.abstract_eng}
             abstract_ar={article.abstract_ar}
+            keywords={article.keywords}
           />
-         
           <hr></hr>
         </div>
       ))}
