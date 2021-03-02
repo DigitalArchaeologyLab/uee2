@@ -12,8 +12,10 @@ function Frontmatter(props) {
       <div>
         <List class="authorsList" list={props.authors} />
       </div>
-      <p className="abstract">{props.abstract_eng}</p>
-      <p id="arabic">{props.abstract_ar}</p>
+      <div>
+        <p className="abstract">{props.abstract_eng}</p>
+        <p id="arabic">{props.abstract_ar}</p>
+      </div>
       <div>
         <List class="keywordsList" list={props.keywords} />
       </div>

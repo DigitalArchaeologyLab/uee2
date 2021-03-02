@@ -12,10 +12,17 @@ function ArticleSummary(props) {
       <div>
         <List class="authorsList" key={props.article_id} list={props.authors} />
       </div>
-      {props.abstract_eng}
-      <p id="arabic">{props.abstract_ar}</p>
+      <p></p>
       <div>
-        <List class="keywordsList" key={props.article_id} list={props.keywords} />
+        {props.abstract_eng}
+        <p id="arabic">{props.abstract_ar}</p>
+      </div>
+      <div>
+        <List
+          class="keywordsList"
+          key={props.article_id}
+          list={props.keywords}
+        />
       </div>
     </span>
   );
