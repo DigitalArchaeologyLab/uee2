@@ -1,0 +1,13 @@
+{% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'article/markdownx.css' %}"
+/>
+
+<div class="markdownx">
+  {% include 'django/forms/widgets/textarea.html' %}
+  <p></p>
+  <h1 class="markdownx-separator">Article Preview</h1>
+  <div class="markdownx-preview"></div>
+</div>

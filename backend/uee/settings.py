@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'article.apps.ArticleConfig',
     'rest_framework',
     'corsheaders',
+    'django.forms',
 ]
 
 MIDDLEWARE = [
@@ -68,10 +69,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
             ],
         },
     },
 ]
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
 WSGI_APPLICATION = 'uee.wsgi.application'
 

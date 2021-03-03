@@ -9,6 +9,7 @@ mysqlclient = "*"
 django-markdownx = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+markdown = "*"
 
 [dev-packages]
 
