@@ -4,9 +4,9 @@ import List from "../../elements/List/List";
 
 function ArticleSummary(props) {
   return (
+    <div className='articleSummary'>
     <span>
       <h2>
-        {/* need to update the axios request in Article with the same id */}
         <Link to={`${props.article_id}`}>{props.title_eng}</Link>
         <p id="arabic">{props.title_ar}</p>
       </h2>
@@ -26,6 +26,7 @@ function ArticleSummary(props) {
         />
       </div>
     </span>
+    </div>
   );
 }
 

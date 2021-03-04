@@ -1,5 +1,5 @@
 .App {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 115%;
 }
 
@@ -17,6 +17,11 @@
   justify-content: center;
 }
 
+.article,
+.articleList {
+  width: 70%;
+}
+
 #arabic {
   direction: rtl;
 }
@@ -27,5 +32,3 @@
   margin: 0;
   padding: 0;
 }
-
-

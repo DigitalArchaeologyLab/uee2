@@ -4,7 +4,11 @@ import gfm from "remark-gfm";
 // import footnotes from 'remark-footnotes';
 
 function ArticleBody(props) {
-  return <ReactMarkdown plugins={[gfm]}>{props.body}</ReactMarkdown>;
+  return (
+  <div className='articleBody'>
+    <ReactMarkdown plugins={[gfm]}>{props.body}</ReactMarkdown>;
+  </div>
+  )
 }
 
 export default ArticleBody;

@@ -32,7 +32,7 @@ function ArticleList(props) {
   // let { path, url } = useRouteMatch();
 
   return (
-    <div>
+    <div className='articleList'>
       {ArticleList.map((article) => (
         <div>
           <ArticleSummary

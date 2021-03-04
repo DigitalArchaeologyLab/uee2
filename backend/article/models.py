@@ -20,8 +20,8 @@ class Article(models.Model):
   title_de = models.CharField('Title (German)', max_length=200)
   title_fr = models.CharField('Title (French)', max_length=200)
   authors = models.ManyToManyField('Author')
-  abstract_eng = models.TextField(max_length=500)
-  abstract_ar = models.TextField(max_length=500)
+  abstract_eng = models.TextField(max_length=1500)
+  abstract_ar = models.TextField(max_length=1500)
   keywords = models.ManyToManyField('Keyword')
   UNPUBLISHED = 'U'
   PUBLISHED = 'P'
