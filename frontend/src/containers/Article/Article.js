@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import ArticleBody from "../../components/ArticleBody/ArticleBody";
 import Frontmatter from "../../components/Frontmatter/Frontmatter";
 
@@ -18,9 +19,11 @@ function Article(props) {
     },
   );
 
+  let {id} = useParams();
+
   const refreshList = () => {
     axios
-      .get("/api/articles/1")
+      .get(`/api/articles/${id}`)
       .then((res) => setArticle(res.data))
       .catch((err) => console.log(err));
   };

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import List from "../../elements/List/List";
 
 function ArticleSummary(props) {
   return (
     <span>
       <h2>
-        <Link to="/1">{props.title_eng}</Link>
+        {/* need to update the axios request in Article with the same id */}
+        <Link to={`${props.article_id}`}>{props.title_eng}</Link>
         <p id="arabic">{props.title_ar}</p>
       </h2>
       <div>
