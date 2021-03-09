@@ -1,0 +1,10 @@
+export const Box = () => (
+
+  <div style={{padding: 20, backgroundColor: 'tomato'}} />
+)
+
+# Hello, world!
+
+This is **markdown** with <span style={{color: "red"}}>JSX</span>: MDX!
+
+<Box />
