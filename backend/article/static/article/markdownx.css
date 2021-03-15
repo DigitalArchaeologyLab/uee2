@@ -1,0 +1,27 @@
+/* Markdown preview */
+.markdownx-separator {
+  background-color: #3f7492;
+  color: #fff;
+  padding: 10px;
+}
+
+.markdownx .markdownx-preview {
+  border: 1px solid grey;
+  padding: 10px;
+  width: 90%;
+}
+
+/* Tables */
+.markdownx .markdownx-preview table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.markdownx .markdownx-preview th {
+  font-size: 14px;
+  background-color: #3f7492;
+  color: #fff;
+}
+.markdownx .markdownx-preview td {
+  vertical-align: top;
+  font-size: 14px;
+}

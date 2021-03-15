@@ -1,14 +1,12 @@
-import React, { Component } from "react";
-import ReactMarkdown from "react-markdown";
-import gfm from 'remark-gfm';
-// import footnotes from 'remark-footnotes';
+import React from "react";
+import Markdown from "markdown-to-jsx";
 
 function ArticleBody(props) {
   return (
-  <ReactMarkdown plugins={[gfm]}>
-    {props.body}
-  </ReactMarkdown>
-  );
+  <div className='articleBody'>
+    <Markdown children={props.body} />
+  </div>
+  )
 }
 
 export default ArticleBody;

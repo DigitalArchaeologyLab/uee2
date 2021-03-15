@@ -6,11 +6,12 @@ from markdownx.utils import markdownify
 class Author(models.Model):
   id = models.AutoField(primary_key=True)
   last_name = models.CharField(max_length=50)
-  middle_name = models.CharField(max_length=50)
+  middle_name = models.CharField(max_length=50, null=True, blank=True)
   first_name = models.CharField(max_length=50)
 
   def __str__(self):
-    return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
+    middle_name = self.middle_name if self.middle_name else ''
+    return '%s %s %s' % (self.first_name, middle_name, self.last_name)
 
 class Article(models.Model):
   id = models.AutoField(primary_key=True)
@@ -18,10 +19,10 @@ class Article(models.Model):
   title_ar = models.CharField('Title (Arabic)', max_length=200)
   title_de = models.CharField('Title (German)', max_length=200)
   title_fr = models.CharField('Title (French)', max_length=200)
-  author_id = models.ForeignKey(Author, on_delete=models.PROTECT)
-  abstract_eng = models.TextField(max_length=500)
-  abstract_ar = models.TextField(max_length=500)
-  keywords = models.ForeignKey('Keyword', on_delete=models.PROTECT)
+  authors = models.ManyToManyField('Author')
+  abstract_eng = models.TextField(max_length=1500)
+  abstract_ar = models.TextField(max_length=1500)
+  keywords = models.ManyToManyField('Keyword')
   UNPUBLISHED = 'U'
   PUBLISHED = 'P'
   STATUS_CHOICES = [(UNPUBLISHED, 'Unpublished'), (PUBLISHED, 'Published')]
@@ -42,4 +43,4 @@ class Keyword(models.Model):
   keyword_type = models.CharField(max_length=200, choices=KEYWORD_TYPE_CHOICES, default='Glossary terms')
 
   def __str__(self):
-    return '%s, %s' % (self.name_eng, self.name_ar)
+    return '%s, %s (%s)' % (self.name_eng, self.name_ar, self.keyword_type)

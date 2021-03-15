@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from .models import Article
+from .models import Article, Keyword
 
 class ArticleSerializer(serializers.ModelSerializer):
-    author_id = serializers.StringRelatedField(many=False)
+    authors = serializers.StringRelatedField(many=True)
+    keywords = serializers.StringRelatedField(many=True)
     class Meta:
         model = Article
-        fields = ['id', 'title_eng', 'title_ar', 'title_de', 'title_fr', 'author_id', 'abstract_eng', 'abstract_ar', 'keywords', 'status', 'body']
+        fields = ['id', 'title_eng', 'title_ar', 'title_de', 'title_fr', 'authors', 'abstract_eng', 'abstract_ar', 'keywords', 'status', 'body']
+
+class KeywordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Keyword
+        fields = ['id', 'name_eng', 'name_ar']

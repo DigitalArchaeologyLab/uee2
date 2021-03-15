@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from rest_framework import viewsets
-from .serializers import ArticleSerializer
-from .models import Article
+from .serializers import ArticleSerializer, KeywordSerializer
+from .models import Article, Keyword
 
 #### Basic Django view setup to be used for testing ####
 def index(request):
@@ -29,3 +29,7 @@ def article(request, article_id):
 class ArticleView(viewsets.ModelViewSet):
   serializer_class = ArticleSerializer
   queryset = Article.objects.all()
+
+class KeywordView(viewsets.ModelViewSet):
+  serializer_class = KeywordSerializer
+  queryset = Keyword.objects.all()

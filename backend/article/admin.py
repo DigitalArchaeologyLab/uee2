@@ -1,21 +1,26 @@
 from django.contrib import admin
-# from markdownx.admin import MarkdownxModelAdmin
+from markdownx.admin import MarkdownxModelAdmin
 
-# Register your models here.
+### Basic customization of the admin interface ###
+admin.site.site_header = 'UCLA Encyclopedia of Egyptology - Admin'
+admin.site.site_title = 'UEE Admin'
+
+### Register and setup models ###
 from .models import Author
 admin.site.register(Author)
 
 from .models import Article
-class ArticleAdmin(admin.ModelAdmin):
-  list_display = ('title_eng', 'title_ar', 'author_id', 'status')
+class ArticleAdmin(MarkdownxModelAdmin):
+  list_display = ('title_eng', 'title_ar', 'status')
   fieldsets = [
     ('Title', {'fields': ['title_eng', 'title_ar', 'title_fr', 'title_de']}),
-    ('Author(s)', {'fields': ['author_id']}),
-    ('Abstract', {'classes': ('collapse',),'fields': ['abstract_eng', 'abstract_ar']}),
+    ('Author(s)', {'fields': ['authors']}),
+    ('Abstracts', {'fields': ['abstract_eng', 'abstract_ar']}),
     ('Keywords', {'fields': ['keywords']}),
-    ('Article', {'fields': ['body']}),
+    ('Article body', {'fields': ['body']}),
   ]
-admin.site.register(Article, ArticleAdmin)
+
+admin.site.register(Article, ArticleAdmin)    
 
 from .models import Keyword
 class KeywordAdmin(admin.ModelAdmin):
