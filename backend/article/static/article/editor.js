@@ -1,8 +1,4 @@
-function fromFile() {
-  alert("I am an alert box!");
-}
-
-function addCitation() {
+function addTerm() {
   if (id_body.selectionStart == id_body.selectionEnd) {
     return; // because nothing is selected
   }
@@ -12,7 +8,7 @@ function addCitation() {
     id_body.selectionEnd
   );
   id_body.setRangeText(
-    `<Tooltip title="I am Queen of the DOM" classes={tooltip} interactive arrow >${selected}</Tooltip>`
+    `<Tooltip title="Insert definition from database" classes={tooltip} interactive arrow >${selected}</Tooltip>`
   );
   return false;
 }
