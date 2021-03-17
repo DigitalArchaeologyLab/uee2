@@ -4,90 +4,47 @@
   type="text/css"
   href="{% static 'article/markdownx.css' %}"
 />
-<script type="text/javascript" src="{% static 'article/editor.js' %}"></script>
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'article/modal.css' %}"
-/>
+<script type="text/javascript" src="{% static 'article/editor.js' %}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <div class="markdownx">
   <div>
-    <span
-      ><button id="button" type="button" onClick="addTerm()">
+    <div></div>
+      <button id="addTermButton" type="button" onClick="addTerm()">
         Add Term
-      </button></span
-    >
+      </button>
+    </div>
 
-    <span
-      ><button id="myBtn" type="button" onClick="testModal()">
-        Open Modal
-      </button></span
-    >
-
-    <!-- The Modal -->
-    <div id="testModal" class="modal">
+    <!-- Popup modal to select what is inserted-->
+    <div id="addTermModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <div>
-          <select name="keywords" id="id_keywords_modal" multiple=""></select>
-
+          <select name="terms" id="id_terms_modal" multiple=""></select>
           <script>
-            async function getKeywords() {
-              const response = await axios.get(
-                "http://localhost:8000/api/keywords/"
-              );
-              const keywordsObj = await response.data;
-              let keywords = [];
-              const keywordsArray = await keywordsObj.map((keyword) => {
-                keywords.push(`${keyword.name_eng}, ${keyword.name_ar}`);
-              })
-              console.log(keywords)
-              return keywords;
-            }
-
-            const elements = getKeywords().then((elements) => {
-              let select = document.querySelector("#id_keywords_modal");
-              for (let el of elements) {
-                let option = document.createElement("option");
-                option.text = el;
-                option.value = el;
-                select.appendChild(option);
-              }
-            });
-
+            prepSelectOptions();
           </script>
 
-          <a
+          <!-- WOULD NEED TO REFRESH SELECT LIST AFTER NEW TERM IS ADDED -->
+
+          <!-- <a
             class="related-widget-wrapper-link add-related"
             id="add_id_keywords"
             href="/admin/article/keyword/add/?_to_field=id&amp;_popup=1"
             title="Add another keyword"
             ><img src="/static/admin/img/icon-addlink.svg" alt="Add"
-          /></a>
+          /></a> -->
+
           <div class="help" id="modalHelp">
             Hold down “Control”, or “Command” on a Mac, to select more than one.
           </div>
-          
-          <div>
-            <button id='insert' type='button'>Insert</button>
-            
-            <script>
-              const btn = document.querySelector('#insert');
-              const selectedKeywords = document.querySelector('#id_keywords_modal')
-              btn.onclick = (event) => {
-                  event.preventDefault();
-                  // show the selected index
-                  const selectedValues = [].filter
-                    .call(selectedKeywords.options, option => option.selected)
-                    .map(option => option.text);
-                  console.log(selectedValues.join('; '));
-              };
-            </script>
 
+          <div>
+            <button id="insert" type="button" onClick="insertSelections()">
+              Insert
+            </button>
           </div>
         </div>
       </div>
