@@ -5,13 +5,77 @@
   href="{% static 'article/markdownx.css' %}"
 />
 <script type="text/javascript" src="{% static 'article/editor.js' %}"></script>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'article/modal.css' %}"
+/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
 <div class="markdownx">
   <div>
-    <button id="button" type="button" onClick="addTerm()">Add Term</button>
-  </div>
+    <span
+      ><button id="button" type="button" onClick="addTerm()">
+        Add Term
+      </button></span
+    >
 
-  {% include 'django/forms/widgets/textarea.html' %}
-  <p></p>
-  <h1 class="markdownx-separator">Article Preview</h1>
-  <div class="markdownx-preview"></div>
+    <span
+      ><button id="myBtn" type="button" onClick="testModal()">
+        Open Modal
+      </button></span
+    >
+
+    <!-- The Modal -->
+    <div id="testModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+          <select name="keywords" id="id_keywords_modal" multiple=""></select>
+
+          <script>
+            async function getKeywords() {
+              const response = await axios.get(
+                "http://localhost:8000/api/keywords/"
+              );
+              const keywordsObj = await response.data;
+              // need to parse this out to an array
+              const keywordsArray = Object.values(keywordsObj);
+              console.log(keywordsArray);
+              return keywordsArray;
+            }
+
+            const elements = getKeywords().then((elements) => {
+
+            let select = document.querySelector("#id_keywords_modal");
+
+            for (let el of elements) {
+              let option = document.createElement("option");
+              option.text = el;
+              option.value = el;
+              select.appendChild(option);
+            }});
+          </script>
+
+          <a
+            class="related-widget-wrapper-link add-related"
+            id="add_id_keywords"
+            href="/admin/article/keyword/add/?_to_field=id&amp;_popup=1"
+            title="Add another keyword"
+            ><img src="/static/admin/img/icon-addlink.svg" alt="Add"
+          /></a>
+          <div class="help" id="modalHelp">
+            Hold down “Control”, or “Command” on a Mac, to select more than one.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'django/forms/widgets/textarea.html' %}
+    <p></p>
+    <h1 class="markdownx-separator">Article Preview</h1>
+    <div class="markdownx-preview"></div>
+  </div>
 </div>
