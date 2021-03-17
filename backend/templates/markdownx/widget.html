@@ -41,22 +41,24 @@
                 "http://localhost:8000/api/keywords/"
               );
               const keywordsObj = await response.data;
-              // need to parse this out to an array
-              const keywordsArray = Object.values(keywordsObj);
-              console.log(keywordsArray);
-              return keywordsArray;
+              let keywords = [];
+              const keywordsArray = await keywordsObj.map((keyword) => {
+                keywords.push(`${keyword.name_eng}, ${keyword.name_ar}`);
+              })
+              console.log(keywords)
+              return keywords;
             }
 
             const elements = getKeywords().then((elements) => {
+              let select = document.querySelector("#id_keywords_modal");
+              for (let el of elements) {
+                let option = document.createElement("option");
+                option.text = el;
+                option.value = el;
+                select.appendChild(option);
+              }
+            });
 
-            let select = document.querySelector("#id_keywords_modal");
-
-            for (let el of elements) {
-              let option = document.createElement("option");
-              option.text = el;
-              option.value = el;
-              select.appendChild(option);
-            }});
           </script>
 
           <a
@@ -68,6 +70,24 @@
           /></a>
           <div class="help" id="modalHelp">
             Hold down “Control”, or “Command” on a Mac, to select more than one.
+          </div>
+          
+          <div>
+            <button id='insert' type='button'>Insert</button>
+            
+            <script>
+              const btn = document.querySelector('#insert');
+              const selectedKeywords = document.querySelector('#id_keywords_modal')
+              btn.onclick = (event) => {
+                  event.preventDefault();
+                  // show the selected index
+                  const selectedValues = [].filter
+                    .call(selectedKeywords.options, option => option.selected)
+                    .map(option => option.text);
+                  console.log(selectedValues.join('; '));
+              };
+            </script>
+
           </div>
         </div>
       </div>
