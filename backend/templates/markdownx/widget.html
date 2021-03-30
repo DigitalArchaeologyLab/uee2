@@ -1,4 +1,5 @@
 {% load static %}
+
 <link
   rel="stylesheet"
   type="text/css"
@@ -10,9 +11,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <div class="markdownx">
-  <div>
-    <div></div>
-      <button id="addTermButton" type="button" onClick="addTerm()">
+  <div class="editorToolbar">
+      <button class="editorButton" id="addTermButton" type="button" onClick="addTerm()">
         Add Term
       </button>
     </div>
@@ -27,7 +27,7 @@
             prepSelectOptions();
           </script>
 
-          <!-- WOULD NEED TO REFRESH SELECT LIST AFTER NEW TERM IS ADDED -->
+          <!-- IF USED, WOULD NEED TO REFRESH SELECT LIST AFTER NEW TERM IS ADDED -->
 
           <!-- <a
             class="related-widget-wrapper-link add-related"

@@ -15,7 +15,6 @@
 // }
 
 function addTerm() {
-  console.log("clicked");
   // Get the modal
   var modal = document.getElementById("addTermModal");
 
