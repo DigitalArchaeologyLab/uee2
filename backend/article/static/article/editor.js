@@ -15,16 +15,12 @@
 // }
 
 function addTerm() {
+  console.log("clicked");
   // Get the modal
   var modal = document.getElementById("addTermModal");
 
-  // Get the button that opens the modal
-  var btn = document.getElementById("addTermButton");
-
-  // When the user clicks on the button, open the modal
-  btn.onclick = function () {
-    modal.style.display = "block";
-  };
+  // Open the modal
+  modal.style.display = "block";
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
@@ -72,18 +68,16 @@ function insertSelections() {
 
   const btn = document.getElementById("insert");
   const selectedKeywords = document.getElementById("id_terms_modal");
-  btn.onclick = (event) => {
-    event.preventDefault();
-    // show the selected index
-    const selectedValues = [].filter
-      .call(selectedKeywords.options, (option) => option.selected)
-      .map((option) => option.text);
-    const selections = selectedValues.join("; ");
+  event.preventDefault();
+  // show the selected index
+  const selectedValues = [].filter
+    .call(selectedKeywords.options, (option) => option.selected)
+    .map((option) => option.text);
+  const selections = selectedValues.join("; ");
 
-    id_body.setRangeText(
-      `<Tooltip title="${selections}" classes={tooltip} interactive arrow >${selectedText}</Tooltip>`
-    );
-    var modal = document.getElementById("addTermModal");
-    modal.style.display = "none";
-  };
+  id_body.setRangeText(
+    `<Tooltip title="${selections}" classes={tooltip} interactive arrow >${selectedText}</Tooltip>`
+  );
+  var modal = document.getElementById("addTermModal");
+  modal.style.display = "none";
 }
