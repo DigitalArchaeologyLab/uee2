@@ -12,4 +12,5 @@ urlpatterns = [
     path('', include('article.urls')),
     path('markdownx/', include('markdownx.urls')),
     path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
 ]
