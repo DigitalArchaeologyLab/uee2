@@ -4,7 +4,7 @@ services:
   mysql:
     image: mysql:5.7
     volumes:
-      # - ./mysql_dump:/docker-entrypoint-initdb.d
+      - ./mysql_dump:/docker-entrypoint-initdb.d
       - ./backend/data_volume:/var/lib/mysql
     environment:
       MYSQL_DATABASE: ${DATABASE_NAME}
