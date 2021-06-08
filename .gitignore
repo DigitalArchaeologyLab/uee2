@@ -1,3 +1,5 @@
 __pycache__
 migrations
-db.sqlite3
+backend/data_volume
+mysql_dump
+.env
