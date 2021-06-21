@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import './assets/fonts.css';
 import "./App.css";
 import ArticleList from "./components/ArticleList/ArticleList";
 import Article from "./containers/Article/Article";
@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <div>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -22,7 +22,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </header>
+      </div>
     </div>
   );
 }
