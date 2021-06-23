@@ -21,7 +21,33 @@
 }
 
 .header__socials {
-  padding-right: 100px;
+  padding-right: calc(100vw / 20);
+  text-align: right;
+}
+
+.header__icon {
+  padding-right: 10px;
+}
+
+.nav__item {
+  padding-right: 10px;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 1.2rem;
+}
+
+.navigation {
+  background-color: #267a6b ;
+  width: calc(100vw - 40px);
+  position: fixed;
+  top: 105px;
+  text-align: right;
+  padding: 5px 20px;
+  right: 20px;
+}
+
+.navigation .nav__item {
+  color: #fff;
+  padding-right: 30px;
 }
 
 .body {
@@ -32,37 +58,64 @@
   text-align: center;
 }
 
-.body__tagline {
-  width: 75vw;
+.welcome {
+  /* width: calc(75vw - 40px); */
 }
 
-.body__subjects {
+.welcome__tagline {
+
+}
+
+.subjects {
+  color: #964a25;
+}
+
+.subjects__container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 75vw;
+  justify-content: center;
+  padding: 50px 75px;
 }
 
-.body__tiles {
+.subject {
   display: flex;
-  width: 75vw;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+
+.subject h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.subject__thumbnail {
+  width: calc(100vw / 10);
+}
+
+.tiles {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-top: 50px;
 }
 
-.body__tiles_title p {
+.tiles_title p {
   background-color: #d08009;
   color: #fff;
   padding: 5px 0px;
   font-family: "Open Sans Condensed", sans-serif;
   font-size: 1.3rem;
-  width: 20vw;
+  width: calc(100vw/5);
   margin: 0;
 }
 
-.body__tiles_title img {
+.tiles_title img {
   width: 20vw;
 }
 
@@ -70,10 +123,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* flex-shrink: 0; */
   background-color: #336666;
   color: #fff;
-  width: calc(100vw - 70px);
   padding: 20px 0px 0px 30px;
   font-family: "Open Sans Condensed", sans-serif;
   font-size: 1.2rem;
@@ -84,7 +135,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 80vw;
+  width: calc(80vw - 40px);
   margin-left: auto;
   margin-right: auto;
 }
@@ -112,7 +163,6 @@
 }
 
 .footer h4 {
-  /* color: #acacac; */
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
   font-size: 1rem;

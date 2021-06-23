@@ -30,7 +30,7 @@ function Article(props) {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
+  useEffect((refreshList) => {
     refreshList();
   }, []);
 
