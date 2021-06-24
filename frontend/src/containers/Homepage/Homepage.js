@@ -7,38 +7,15 @@ class Homepage extends React.Component {
       <div>
         <div className="header">
           <div className="header__logo">
-            <img
-              src={process.env.PUBLIC_URL + "/uee_logo.png"}
+            <Link className="header__logo" to='/'><img
+              src={process.env.PUBLIC_URL + "/logos/uee_logo.png"}
               alt="UEE logo"
-            />
+            /></Link>
           </div>
           <div className="header__nav">
-            <div className="header__socials">
-              <img
-                className="header__icon"
-                src={process.env.PUBLIC_URL + "/twitter.svg"}
-                width="20px"
-                alt="Twitter logo"
-              />
-              <img
-                className="header__icon"
-                src={process.env.PUBLIC_URL + "/facebook.svg"}
-                width="20px"
-                alt="Facebook logo"
-              />
-              <img
-                className="header__icon"
-                src={process.env.PUBLIC_URL + "/uee_donate.png"}
-                width="75px"
-                alt="Donate"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="navigation">
-          <Link className="nav__item" to="/">
-            Home
+            <div className="navigation">
+          <Link className="nav__item" to="/about">
+            About
           </Link>
           <Link className="nav__item" to="/subjects">
             Browse Subjects
@@ -49,6 +26,8 @@ class Homepage extends React.Component {
           <Link className="nav__item" to="/timemap">
             Time Map
           </Link>
+        </div>
+            </div>
         </div>
 
         <div className="body">
@@ -80,91 +59,101 @@ class Homepage extends React.Component {
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/individual.svg"
                   }
-                  alt="Natural Environment"
+                  alt="Individual and Society"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Individual and Society</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/geography.png"
                   }
-                  alt="Natural Environment"
+                  alt="Geography"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Geography</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/language.svg"
                   }
-                  alt="Natural Environment"
+                  alt="Language, Text and Writing"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Language, Text and Writing</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/time.png"
                   }
-                  alt="Natural Environment"
+                  alt="Time and History"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Time and History</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/material.svg"
                   }
-                  alt="Natural Environment"
+                  alt="Material Culture, Art and Architecture"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Material Culture, Art and Architecture</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/nubia.png"
                   }
-                  alt="Natural Environment"
+                  alt="Nubia"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Nubia</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/domains.svg"
                   }
-                  alt="Natural Environment"
+                  alt="Domains of Knowledge"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Domains of Knowledge</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/religion.svg"
                   }
-                  alt="Natural Environment"
+                  alt="Religion"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Religion</h4>
               </div>
               <div className="subject">
                 <img
                   className="subject__thumbnail"
                   src={
-                    process.env.PUBLIC_URL + "/subjects/natural_environment.svg"
+                    process.env.PUBLIC_URL + "/subjects/egyptology.svg"
                   }
-                  alt="Natural Environment"
+                  alt="Egyptology"
                 />
-                <h4>Natural Environment</h4>
+                <h4>Egyptology</h4>
+              </div>
+              <div className="subject">
+                <img
+                  className="subject__thumbnail"
+                  src={
+                    process.env.PUBLIC_URL + "/subjects/economy.png"
+                  }
+                  alt="Economy"
+                />
+                <h4>Economy</h4>
               </div>
             </div>
           </div>
@@ -244,9 +233,32 @@ class Homepage extends React.Component {
                 width="200px"
                 alt="NEH logo"
               />
+              
             </div>
           </div>
           <div className="footer__copyright">
+
+          <div className="connected">
+            <div className="connected__icons">
+            <a href="linktofacebook">
+               <img
+                className="connected__icon"
+                src={process.env.PUBLIC_URL + "/logos/twitter.svg"}
+                width="25px"
+                alt="Twitter logo"
+              />
+              </a>
+              <a href="linktofacebook">
+              <img
+                className="connected__icon"
+                src={process.env.PUBLIC_URL + "/logos/facebook.svg"}
+                width="23px"
+                alt="Facebook logo"
+              />
+              </a>
+              </div>
+
+          </div>
             <div className="copyright">
               <div className="copyright">
                 <p>© Copyright UC Regents</p>
