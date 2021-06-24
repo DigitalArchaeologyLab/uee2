@@ -20,41 +20,40 @@
   height: 75px;
 }
 
-.header__socials {
-  padding-right: calc(100vw / 20);
-  text-align: right;
-}
 
-.header__icon {
-  padding-right: 10px;
+.navigation {
+  /* background-color: #267a6b ; */
+  width: calc(100vw - 40px);
+  position: fixed;
+  /* top: 115px; */
+  text-align: right;
+  right: 20px;
+  padding-right: calc(100vw / 20);
 }
 
 .nav__item {
-  padding-right: 10px;
-  font-family: "Open Sans Condensed", sans-serif;
-  font-size: 1.2rem;
+  font-family: "Lato", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
-.navigation {
-  background-color: #267a6b ;
-  width: calc(100vw - 40px);
-  position: fixed;
-  top: 105px;
-  text-align: right;
-  padding: 5px 20px;
-  right: 20px;
+.nav__item {
+  color: #267a6b;
 }
 
 .navigation .nav__item {
-  color: #fff;
-  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.nav__item:hover {
+  color: #964a25;
 }
 
 .body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10vw 15vw;
+  padding: 27vh 15vw;
   text-align: center;
 }
 
@@ -66,7 +65,7 @@
 
 }
 
-.subjects {
+.subjects h4 {
   color: #964a25;
 }
 
@@ -94,7 +93,8 @@
 }
 
 .subject__thumbnail {
-  width: calc(100vw / 10);
+  /* width: calc(100vw / 10); */
+  height: 100px;
 }
 
 .tiles {
@@ -118,6 +118,12 @@
 .tiles_title img {
   width: 20vw;
 }
+
+hr {
+  border: 0.5px solid #8b9ca5;
+  width: 100%;
+}
+
 
 .footer {
   display: flex;
@@ -160,6 +166,7 @@
 
 .footer__5 {
   width: 250px;
+  margin-top: 20px;
 }
 
 .footer h4 {
@@ -176,16 +183,43 @@
 
 .footer__copyright {
   display: flex;
+  flex-direction: column;
   padding-top: 20px;
+  align-items: center;
+  /* width: calc(100vw - 40px); */
+}
+
+.connected {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.connected__title {
+  padding-right: 15px;
+}
+
+
+.connected__icon {
+  padding: 0px 5px;
+}
+
+.copyright {
+  padding-bottom: 10px;
 }
 
 h1 {
   font-size: 800;
 }
 
-.app a {
+a {
   color: #267a6b;
   text-decoration: none;
+}
+
+p {
+  margin: 5px 0px;
 }
 
 /* ******** Articles ******** */
