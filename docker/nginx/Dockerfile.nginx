@@ -1,0 +1,8 @@
+# Build React static files
+FROM uee2_frontend:latest as build
+
+RUN npm run build
+
+# Copy React static files and start nginx
+FROM nginx
+COPY --from=build /app/build /usr/share/nginx/html
