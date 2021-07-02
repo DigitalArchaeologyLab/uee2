@@ -1,17 +1,11 @@
 FROM python:3.9-buster
 
-WORKDIR /app/backend/
+WORKDIR /backend/
 
 RUN pip install --upgrade pip
-RUN pip install pipenv
-COPY ./Pipfile /app/backend/
-COPY ./Pipfile.lock /app/backend/
+RUN pip install pipenv --no-cache-dir
+COPY ./backend/Pipfile .
+COPY ./backend/Pipfile.lock .
 RUN pipenv install
-RUN pipenv install gunicorn
 
-COPY ./docker /app/docker
-COPY ./backend /app/backend
-
-RUN chmod +x /app/docker/backend/wsgi-entrypoint.sh
-
-ENTRYPOINT /app/docker/backend/wsgi-entrypoint.sh
+CMD ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
