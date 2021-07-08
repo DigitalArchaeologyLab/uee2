@@ -1,0 +1,18 @@
+FROM python:3.9-buster
+
+WORKDIR /backend
+
+RUN pip install --upgrade pip
+RUN pip install pipenv --no-cache-dir
+COPY ./backend/Pipfile .
+COPY ./backend/Pipfile.lock .
+RUN pipenv install
+
+RUN pipenv install gunicorn
+
+COPY ./docker/backend/wsgi-entrypoint.sh /docker/backend/wsgi-entrypoint.sh
+COPY ./backend /backend
+
+RUN chmod +x /docker/backend/wsgi-entrypoint.sh
+
+ENTRYPOINT [ "/docker/backend/wsgi-entrypoint.sh" ]

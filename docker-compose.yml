@@ -5,38 +5,35 @@ services:
       image: mysql:5.7
       volumes:
         # if you need to load the database from an export, uncomment this line and place the sqldump in mysql_dump
-        # - ./mysql_dump:/docker-entrypoint-initdb.d
+        - ./mysql_dump:/docker-entrypoint-initdb.d
         - ./backend/data_volume:/var/lib/mysql
       environment:
         MYSQL_DATABASE: ${DATABASE_NAME}
         MYSQL_USER: ${DATABASE_USER}
         MYSQL_PASSWORD: ${DATABASE_PASSWORD}
         MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
-    nginx: 
-        restart: unless-stopped
+    frontend:
+        container_name: frontend
         build:
             context: .
-            dockerfile: ./docker/nginx/Dockerfile
-        ports:
-            - 80:80
+            dockerfile: ./docker/nginx/Dockerfile.react
         volumes:
-            - /static_volume:/app/backend/django_static
-            - ./docker/nginx/development:/etc/nginx/conf.d
+            - './frontend:/app'
+            - '/app/node_modules'
         depends_on: 
             - backend
+        environment:
+            - CHOKIDAR_USEPOLLING=true
     backend:
-        restart: unless-stopped
         build:
             context: .
-            dockerfile: ./docker/backend/Dockerfile
+            dockerfile: ./docker/backend/Dockerfile.django
         volumes:
-            
-        entrypoint: /app/docker/backend/wsgi-entrypoint.sh
-        volumes:
-            - /static_volume:/app/backend/django_static
-            # add bind mount for django files
-        expose:
-            - 8000
+            - './backend:/backend'
+        ports:
+            - 8000:8000
+        entrypoint: 
+            "pipenv run python manage.py runserver 0.0.0.0:8000"
         environment:
             - SECRET_KEY=${SECRET_KEY}
             - DATABASE_NAME=${DATABASE_NAME}
@@ -44,6 +41,14 @@ services:
             - DATABASE_PASSWORD=${DATABASE_PASSWORD}
             - DATABASE_HOST=${DATABASE_HOST}
             - DATABASE_PORT=${DATABASE_PORT}
-    
-volumes:
-    static_volume: {}
+    nginx:
+        build:
+            context: .
+            dockerfile: ./docker/nginx/Dockerfile.nginx
+        ports:
+            - 80:80
+        volumes:
+            - ./docker/nginx/development:/etc/nginx/conf.d
+        depends_on:
+            - frontend
+            - backend

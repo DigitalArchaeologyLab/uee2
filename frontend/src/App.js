@@ -1,4 +1,4 @@
-import './assets/fonts.css';
+import "./assets/fonts.css";
 import "./App.css";
 import ArticleList from "./components/ArticleList/ArticleList";
 import Article from "./containers/Article/Article";
