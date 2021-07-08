@@ -27,11 +27,13 @@ services:
     backend:
         build:
             context: .
-            dockerfile: ./docker/backend/Dockerfile
+            dockerfile: ./docker/backend/Dockerfile.django
         volumes:
             - './backend:/backend'
         ports:
             - 8000:8000
+        entrypoint: 
+            "pipenv run python manage.py runserver 0.0.0.0:8000"
         environment:
             - SECRET_KEY=${SECRET_KEY}
             - DATABASE_NAME=${DATABASE_NAME}

@@ -20,7 +20,6 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /static_volume:/app/backend/django_static
       - ./docker/nginx/production:/etc/nginx/conf.d
       - ./docker/nginx/certbot/conf:/etc/letsencrypt
       - ./docker/nginx/certbot/www:/var/www/certbot
@@ -37,10 +36,7 @@ services:
     # restart: unless-stopped
     build:
       context: .
-      dockerfile: ./docker/backend/Dockerfile
-    # entrypoint: /app/docker/backend/wsgi-entrypoint.sh
-    volumes:
-      - /static_volume:/app/backend/django_static
+      dockerfile: ./docker/backend/Dockerfile.django
     expose:
       - 8000
     environment:
@@ -50,6 +46,3 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
-
-volumes:
-  static_volume: {}
