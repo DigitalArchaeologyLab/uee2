@@ -198,6 +198,7 @@ class Homepage extends React.Component {
                 <Link to='/subjects/economy' >
                   <h4>Economy</h4>
                 </Link>
+
               </div>
             </div>
           </div>
