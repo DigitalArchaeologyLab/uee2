@@ -39,6 +39,18 @@ class Article(models.Model):
         return markdownify(self.body)
 
 
+class SubjectArea(models.Model):
+    id = models.AutoField(primary_key=True)
+    name_eng = models.CharField("Title (English)", max_length=200)
+    name_ar = models.CharField("Title (Arabic)", max_length=200)
+    name_de = models.CharField("Title (German)", max_length=200)
+    name_fr = models.CharField("Title (French)", max_length=200)
+    description = models.TextField(max_length=1500)
+    parent = models.ManyToManyField("SubjectArea", related_name="subjectArea_parent")
+
+    def __str__(self):
+        return "%s" % (self.name_eng)
+
 class Keyword(models.Model):
     id = models.AutoField(primary_key=True)
     name_eng = models.CharField("Name (English)", max_length=200)
