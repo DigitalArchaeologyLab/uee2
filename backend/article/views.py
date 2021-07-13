@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from rest_framework import viewsets
-from .serializers import ArticleSerializer, KeywordSerializer
-from .models import Article, Keyword
+from .serializers import ArticleSerializer, KeywordSerializer, TreeTestSerializer
+from .models import Article, Keyword, TreeTest
 
 #### Basic Django view setup to be used for testing ####
 def index(request):
@@ -14,7 +14,15 @@ def article_list(request):
     context = {
         "article_titles": article_titles,
     }
-    return render(request, "article/article_list.html", context)
+    return render(request, "article/articlelist.html", context)
+
+
+def treetest(request):
+    treetests = TreeTest.get_annotated_list()
+    context = {
+        "treetests": treetests,
+    }
+    return render(request, "subjects/subjectareas.html", context)
 
 
 def article(request, article_id):
@@ -35,3 +43,8 @@ class ArticleView(viewsets.ModelViewSet):
 class KeywordView(viewsets.ModelViewSet):
     serializer_class = KeywordSerializer
     queryset = Keyword.objects.all()
+
+
+class TreeTestView(viewsets.ModelViewSet):
+    serializer_class = TreeTestSerializer
+    queryset = TreeTest.get_annotated_list()

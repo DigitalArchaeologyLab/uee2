@@ -31,12 +31,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.forms",
     "article.apps.ArticleConfig",
     "timemap.apps.TimemapConfig",
+    # Markdown entry and rendering
     "markdownx",
+    # Django Rest Framework for API
     "rest_framework",
+    # Facilitate CORS management
     "corsheaders",
-    "django.forms",
+    # hierarchical support through Django Treebeard
+    "treebeard",
 ]
 
 MIDDLEWARE = [
