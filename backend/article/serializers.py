@@ -38,4 +38,4 @@ class SubjectAreaSerializer(serializers.ModelSerializer):
 class TreeTestSerializer(serializers.ModelSerializer):
     class Meta:
         model = TreeTest
-        fields = ["id", "name"]
+        fields = ["id", "name", "depth", "path", "numchild"]

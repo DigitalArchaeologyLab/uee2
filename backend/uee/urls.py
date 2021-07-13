@@ -6,6 +6,7 @@ from article import views
 router = routers.DefaultRouter()
 router.register(r'articles', views.ArticleView, 'article')
 router.register(r'keywords', views.KeywordView, 'keyword')
+router.register(r'subjects', views.TreeTestView, 'subjects')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

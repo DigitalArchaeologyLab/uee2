@@ -76,4 +76,4 @@ class TreeTest(MP_Node):
     node_order_by = ['name']
 
     def __str__(self):
-        return 'Category: {}'.format(self.name)
+        return self.name
