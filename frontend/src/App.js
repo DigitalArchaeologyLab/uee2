@@ -1,7 +1,7 @@
 import "./assets/fonts.css";
 import "./App.css";
 import ArticleList from "./components/ArticleList/ArticleList";
-import SubjectTree from "./components/SubjectTree/SubjectTree";
+import Subjects from "./containers/Subjects/Subjects";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -16,7 +16,7 @@ function App() {
               <Homepage />
             </Route>
             <Route exact path="/subjects">
-              <SubjectTree />
+              <Subjects />
             </Route>
             <Route path="/articles">
               <ArticleList />
