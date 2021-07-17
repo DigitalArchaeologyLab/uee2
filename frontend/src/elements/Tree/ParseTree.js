@@ -12,21 +12,27 @@ function ParseTree(props) {
     }
   };
 
-  // fix issue - subjects shouldn't be added if already a child
   // consider sorting array by path to reduce full traversals (j can just pick up after the current i)
   const parseChildren = (data) => {
     let subjectCount = data.length;
-    let parsedData = data;
+    let parsedData = [];
     for (let i = 0; i < subjectCount; i++) {
-      let currentSubject = parsedData[i];
+      let currentSubject = data[i];
       currentSubject.children = [];
 
       if (currentSubject.numchild > 0) {
         let currentParent = currentSubject;
 
         for (let j = 0; j < subjectCount; j++) {
-          let newSubject = parsedData[j];
+          let newSubject = data[j];
           addChildren(newSubject, currentParent);
+        }
+        if (currentSubject.depth === 1) {
+          parsedData.push(currentSubject);
+        }
+      } else {
+        if (currentSubject.depth === 1) {
+          parsedData.push(currentSubject);
         }
       }
     }
