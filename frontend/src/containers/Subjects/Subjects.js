@@ -1,12 +1,12 @@
 import React from "react";
-import GetTreeData from "../../components/SubjectTree/GetTreeData"
+import GetSubjectTreeData from "../../components/SubjectTree/GetSubjectTreeData"
 
 
 function Subjects(props) {
 
   return (
     <div className='article'>
-      <GetTreeData />
+      <GetSubjectTreeData />
     </div>
   );
 }

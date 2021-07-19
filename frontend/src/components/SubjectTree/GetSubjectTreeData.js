@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ParseTree from "../../elements/Tree/ParseTree";
 
-function GetTreeData(props) {
+function GetSubjectTreeData(props) {
   const [Tree, setTree] = useState([
     {
       id: 0,
@@ -28,9 +28,9 @@ function GetTreeData(props) {
 
   return (
     <div>
-      <ParseTree treeData={Tree} />
+      <ParseTree treeData={Tree} rootName={"Subject Areas"} />
     </div>
   );
 }
 
-export default GetTreeData;
+export default GetSubjectTreeData;

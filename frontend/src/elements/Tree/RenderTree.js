@@ -13,22 +13,13 @@ const useStyles = makeStyles({
   },
 });
 
-function SubjectTree(props) {
+function RenderTree(props) {
   const classes = useStyles();
 
-  // const renderTree = (nodes) => (
-  //   <TreeItem key={nodes.id} nodeId={nodes.id.toString} label={nodes.name}>
-  //     {!nodes.children.length
-  //       ? null
-  //       : nodes.children.map((node) => renderTree(node))
-  //     }
-  //   </TreeItem>
-  // );
-
-  const renderTree = (nodes) => (
+  const processTree = (nodes) => (
     <TreeItem key={nodes.id} nodeId={nodes.id.toString()} label={nodes.name}>
       {Array.isArray(nodes.children)
-      ? nodes.children.map((node) => renderTree(node))
+      ? nodes.children.map((node) => processTree(node))
       : null}
     </TreeItem>
   );
@@ -42,10 +33,10 @@ function SubjectTree(props) {
         defaultExpanded={["root"]}
         defaultExpandIcon={<ChevronRightIcon />}
       >
-        {renderTree(props.subjects)}
+        {processTree(props.nodes)}
       </TreeView>
     </div>
   );
 }
 
-export default SubjectTree;
+export default RenderTree;

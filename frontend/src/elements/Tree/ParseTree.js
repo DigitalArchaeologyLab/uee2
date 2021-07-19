@@ -1,56 +1,68 @@
-import SubjectTree from "../../components/SubjectTree/SubjectTree";
+import RenderTree from "./RenderTree";
 
 function ParseTree(props) {
-  // check if subject is a direct child of the current and add to the children array when appropriate
-  const addChildren = (subject, currentParent) => {
+  // checks if node is a direct child of the current and add to the children array when appropriate
+  const addChildren = (node, currentParent) => {
     if (
-      subject.path.startsWith(currentParent.path) &&
-      subject.depth !== currentParent.depth &&
-      subject.depth === currentParent.depth + 1
+      node.path.startsWith(currentParent.path) &&
+      node.depth !== currentParent.depth &&
+      node.depth === currentParent.depth + 1
     ) {
-      currentParent.children.push(subject);
+      currentParent.children.push(node);
     }
   };
 
-  // consider sorting array by path to reduce full traversals (j can just pick up after the current i)
+  // sorting helper based on path
+  const sortTree = (a, b) => {
+    if (a.path < b.path) {
+      return -1;
+    }
+    if (a.path > b.path) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  // parses tree data into format needed for display
   const parseChildren = (data) => {
-    let subjectCount = data.length;
+    let nodeCount = data.length;
+    let sortedData = data.sort(sortTree);
     let parsedData = [];
-    for (let i = 0; i < subjectCount; i++) {
-      let currentSubject = data[i];
-      currentSubject.children = [];
+    for (let i = 0; i < nodeCount; i++) {
+      let currentNode = sortedData[i];
+      currentNode.children = [];
 
-      if (currentSubject.numchild > 0) {
-        let currentParent = currentSubject;
+      if (currentNode.numchild > 0) {
+        let currentParent = currentNode;
 
-        for (let j = 0; j < subjectCount; j++) {
-          let newSubject = data[j];
-          addChildren(newSubject, currentParent);
+        for (let j = i; j < nodeCount; j++) {
+          let newNode = sortedData[j];
+          addChildren(newNode, currentParent);
         }
-        if (currentSubject.depth === 1) {
-          parsedData.push(currentSubject);
+        if (currentNode.depth === 1) {
+          parsedData.push(currentNode);
         }
       } else {
-        if (currentSubject.depth === 1) {
-          parsedData.push(currentSubject);
+        if (currentNode.depth === 1) {
+          parsedData.push(currentNode);
         }
       }
     }
-    console.log(parsedData);
     return parsedData;
   };
 
   const parsedChildren = parseChildren(props.treeData);
 
+  // add root level object and parsed array of all the children
   const parsedTree = {
     id: 0,
-    name: "Subject Areas",
+    name: props.rootName,
     children: parsedChildren,
   };
 
   return (
     <div>
-      <SubjectTree subjects={parsedTree} />
+      <RenderTree nodes={parsedTree} />
     </div>
   );
 }
