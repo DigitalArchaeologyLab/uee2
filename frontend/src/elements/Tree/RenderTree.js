@@ -15,6 +15,17 @@ const useStyles = makeStyles({
 
 function RenderTree(props) {
   const classes = useStyles();
+  const [expanded, setExpanded] = React.useState([]);
+  const [selected, setSelected] = React.useState([]);
+
+  const handleToggle = (event, nodeId) => {
+    setExpanded(nodeId);
+  };
+
+  const handleSelect = (event, nodeId) => {
+    console.log(event.target.innerHTML);
+    setSelected(nodeId);
+  };
 
   const processTree = (nodes) => (
     <TreeItem key={nodes.id} nodeId={nodes.id.toString()} label={nodes.name_eng}>
@@ -32,6 +43,11 @@ function RenderTree(props) {
         defaultCollapseIcon={<ExpandMoreIcon />}
         defaultExpanded={["root"]}
         defaultExpandIcon={<ChevronRightIcon />}
+        expanded={expanded}
+        selected={selected}
+        onNodeToggle={handleToggle}
+        onNodeSelect={handleSelect}
+        multiSelect
       >
         {processTree(props.nodes)}
       </TreeView>

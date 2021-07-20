@@ -7,6 +7,7 @@ function ArticleList(props) {
   const [ArticleList, setArticleList] = useState([
     {
       id: 0,
+      subject_area: "",
       title_eng: "",
       title_ar: "",
       authors: [""],
