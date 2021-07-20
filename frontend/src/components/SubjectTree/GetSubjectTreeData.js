@@ -6,7 +6,7 @@ function GetSubjectTreeData(props) {
   const [Tree, setTree] = useState([
     {
       id: 0,
-      name: "",
+      name_eng: "",
       path: "",
       depth: 0,
       numchild: 0,

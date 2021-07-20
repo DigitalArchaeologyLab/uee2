@@ -17,7 +17,7 @@ function RenderTree(props) {
   const classes = useStyles();
 
   const processTree = (nodes) => (
-    <TreeItem key={nodes.id} nodeId={nodes.id.toString()} label={nodes.name}>
+    <TreeItem key={nodes.id} nodeId={nodes.id.toString()} label={nodes.name_eng}>
       {Array.isArray(nodes.children)
       ? nodes.children.map((node) => processTree(node))
       : null}
