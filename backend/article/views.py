@@ -8,7 +8,7 @@ from .serializers import (
 )
 from .models import Article, Keyword, SubjectArea
 
-#### Basic Django view setup to be used for testing ####
+#### Basic Django view setup ####
 def index(request):
     return HttpResponse("Welcome to the UEE")
 
@@ -18,7 +18,7 @@ def article_list(request):
     context = {
         "article_titles": article_titles,
     }
-    return render(request, "article/articlelist.html", context)
+    return render(request, context)
 
 
 def subjects(request):
@@ -26,7 +26,7 @@ def subjects(request):
     context = {
         "subjectareas": subjectareas,
     }
-    return render(request, "subjects/subjectareas.html", context)
+    return render(request, context)
 
 
 def article(request, article_id):
@@ -35,7 +35,7 @@ def article(request, article_id):
     except Article.DoesNotExist:
         raise Http404("Article does not exist.")
     context = {"article": article}
-    return render(request, "article/article.html", context)
+    return render(request, context)
 
 
 #### REST API setup ####
@@ -52,3 +52,4 @@ class KeywordView(viewsets.ModelViewSet):
 class SubjectAreaView(viewsets.ModelViewSet):
     serializer_class = SubjectAreaSerializer
     queryset = SubjectArea.objects.all()
+    
