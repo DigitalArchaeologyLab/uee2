@@ -17,7 +17,6 @@ class Author(models.Model):
 
 class Article(models.Model):
     id = models.AutoField(primary_key=True)
-    subject_test = models.ManyToManyField("TreeTest")
     subject_area = models.ManyToManyField("SubjectArea")
     title_eng = models.CharField("Title (English)", max_length=255)
     title_ar = models.CharField("Title (Arabic)", max_length=255)
@@ -42,18 +41,6 @@ class Article(models.Model):
         return markdownify(self.body)
 
 
-class SubjectArea(models.Model):
-    id = models.AutoField(primary_key=True)
-    name_eng = models.CharField("Subject (English)", max_length=255)
-    name_ar = models.CharField("Subject (Arabic)", max_length=255)
-    name_de = models.CharField("Subject (German)", max_length=255)
-    name_fr = models.CharField("Subject (French)", max_length=255)
-    description = models.TextField(max_length=1500, null=True, blank=True)
-    parent = models.ManyToManyField("SubjectArea", related_name="subjectArea_parent", blank=True)
-
-    def __str__(self):
-        return "%s" % (self.name_eng)
-
 class Keyword(models.Model):
     id = models.AutoField(primary_key=True)
     name_eng = models.CharField("Name (English)", max_length=255)
@@ -70,10 +57,15 @@ class Keyword(models.Model):
     def __str__(self):
         return "%s, %s (%s)" % (self.name_eng, self.name_ar, self.keyword_type)
 
-class TreeTest(MP_Node):
+
+class SubjectArea(MP_Node):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30)
-    node_order_by = ['name']
+    name_eng = models.CharField("Subject (English)", max_length=255)
+    name_ar = models.CharField("Subject (Arabic)", max_length=255)
+    name_de = models.CharField("Subject (German)", max_length=255)
+    name_fr = models.CharField("Subject (French)", max_length=255)
+    description = models.TextField(max_length=1500, null=True, blank=True)
+    node_order_by = ["name_eng"]
 
     def __str__(self):
-        return self.name
+        return self.name_eng

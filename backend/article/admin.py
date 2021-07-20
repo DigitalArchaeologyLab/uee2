@@ -22,7 +22,6 @@ class ArticleAdmin(MarkdownxModelAdmin):
         ("Keywords", {"fields": ["keywords"]}),
         ("Article body", {"fields": ["body"]}),
     ]
-
 admin.site.register(Article, ArticleAdmin)
 
 from .models import Keyword
@@ -31,14 +30,6 @@ class KeywordAdmin(admin.ModelAdmin):
 admin.site.register(Keyword, KeywordAdmin)
 
 from .models import SubjectArea
-class SubjectAreaAdmin(admin.ModelAdmin):
-    list_display = ("name_eng", "name_ar")
+class SubjectAreaAdmin(TreeAdmin):
+    form = movenodeform_factory(SubjectArea)
 admin.site.register(SubjectArea, SubjectAreaAdmin)
-
-
-
-from .models import TreeTest
-class TreeAdmin(TreeAdmin):
-    form = movenodeform_factory(TreeTest)
-
-admin.site.register(TreeTest, TreeAdmin)

@@ -56,7 +56,7 @@ function ParseTree(props) {
   // add root level object and parsed array of all the children
   const parsedTree = {
     id: 0,
-    name: props.rootName,
+    name_eng: props.rootName,
     children: parsedChildren,
   };
 
