@@ -4,15 +4,12 @@ import GetArticlesBySubject from "../../components/SubjectTree/GetArticlesBySubj
 
 
 function Subjects(props) {
-  const [SelectedSubjects, setSelectedSubjects] = useState([]);
-
-  // need to get selected subject areas passed to here...time for Redux?
-  setSelectedSubjects(["Mythology"]);
+  
 
   return (
     <div className='article'>
       <GetSubjectTreeData />
-      <GetArticlesBySubject subjects={SelectedSubjects} />
+      <GetArticlesBySubject />
     </div>
   );
 }

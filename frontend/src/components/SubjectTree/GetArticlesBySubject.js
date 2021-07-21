@@ -3,6 +3,7 @@ import axios from "axios";
 import ArticleSummary from "../ArticleSummary/ArticleSummary";
 
 function GetArticlesBySubject(props) {
+  const [SelectedSubjects, setSelectedSubjects] = useState(["Geography"]);
   const [ArticleList, setArticleList] = useState([
     {
       id: 0,
@@ -22,28 +23,19 @@ function GetArticlesBySubject(props) {
     try {
       const response = await axios.get("/api/articles/");
       const articleList = await response.data;
-      // let articles = articleList.filter((article) =>
-      //   props.subjects.map(subject) => {
-      //     if (subject.subject_area === article.subject_area)
-      // );
+
       let articles = [];
-      // articleList.map((article) => {
-      //   article.subject_area;
-      //   for (let i = 0; i < props.subjects.length; i++) {
-      //     if (article.subject_area == props.subjects[i]) {
-      //       articles.push(article.subject_area);
-      //     }
-      //   }
-      // });
-      articleList.map(article => {
+
+      // need to get selected subject areas passed to here...
+     
+      articleList.map((article) => {
         for (let i = 0; i < article.subject_area.length; i++) {
-          if (props.subjects.includes(article.subject_area[i])) {
+          if (SelectedSubjects.includes(article.subject_area[i])) {
             articles.push(article);
           }
         }
-      })
-      console.log(props.subjects);
-      console.log(articleList);
+      });
+
       setArticleList(articles);
     } catch (err) {
       console.error(err);
@@ -59,6 +51,7 @@ function GetArticlesBySubject(props) {
       {ArticleList.map((article) => (
         <div>
           <ArticleSummary
+            key={article.id}
             article_id={article.id}
             title_eng={article.title_eng}
             title_ar={article.title_ar}
