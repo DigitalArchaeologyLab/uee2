@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Subjects/SubjectBrowse.css";
 import TreeView from "@material-ui/lab/TreeView";
 import TreeItem from "@material-ui/lab/TreeItem";
@@ -7,7 +7,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import axios from "axios";
-import { getSubjects } from "../../utils/getSubjects";
 import { parseTree } from "../../utils/parseTree";
 
 const useStyles = makeStyles({
@@ -33,16 +32,19 @@ function Sidebar(props) {
     },
   ]);
 
-  useEffect(async () => {
-    try {
-      const response = await axios.get("/api/subjects/");
-      const parsedSubjects = await parseTree(response.data);
-      await setTree(parsedSubjects);
-      setLoading(false);
-      console.log(parsedSubjects);
-    } catch (err) {
-      console.error(err);
+  useEffect(() => {
+    async function getSubjects() {
+      try {
+        const response = await axios.get("/api/subjects/");
+        const parsedSubjects = await parseTree(response.data);
+        await setTree(parsedSubjects);
+        setLoading(false);
+        console.log(parsedSubjects);
+      } catch (err) {
+        console.error(err);
+      }
     }
+    getSubjects();
   }, []);
 
   const handleToggle = (event, nodeId) => {
@@ -79,7 +81,7 @@ function Sidebar(props) {
         onNodeSelect={handleSelect}
         multiSelect
       >
-        { isLoading ? <p>Loading</p> : processTree(tree)}
+        {isLoading ? <p>Loading</p> : processTree(tree)}
       </TreeView>
     </div>
   );
@@ -103,26 +105,22 @@ function Articles(props) {
 
   let filteredArticles = [];
 
-  useEffect(async () => {
-    try {
-      const response = await axios.get("/api/articles/");
-      setArticleList(response.data);
-    } catch (err) {
-      console.error(err);
+  useEffect(() => {
+    async function getArticles() {
+      try {
+        const response = await axios.get("/api/articles/");
+        setArticleList(response.data);
+      } catch (err) {
+        console.error(err);
+      }
     }
+    getArticles();
   }, []);
 
-  // const articles = [
-  //   { title_eng: "Geography Article", subject: ["Geography"] },
-  //   { title_eng: "Religion Article", subject: ["Religion"] },
-  //   { title_eng: "Myth Article", subject: ["Religion", "Mythology"] },
-  //   { title_eng: "Another Geography Article", subject: ["Geography"] },
-  // ];
-
   const filterArticles = (articles) => {
-    articles.map((article) => {
+    articles.forEach((article) => {
       for (let i = 0; i < article.subject_area.length; i++) {
-        if (article.subject_area[i] == props.selectedSubject) {
+        if (article.subject_area[i] === props.selectedSubject) {
           filteredArticles.push(article);
         }
       }
