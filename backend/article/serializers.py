@@ -22,6 +22,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "keywords",
             "status",
             "body",
+            "transient_subject_ancestors",
         ]
 
 

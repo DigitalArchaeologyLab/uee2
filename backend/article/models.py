@@ -33,6 +33,7 @@ class Article(models.Model):
         max_length=255, choices=STATUS_CHOICES, default=UNPUBLISHED
     )
     body = MarkdownxField()
+    transient_subject_ancestors = []
 
     def __str__(self):
         return "%s" % (self.title_eng)
