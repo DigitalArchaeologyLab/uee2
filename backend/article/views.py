@@ -8,6 +8,10 @@ from .serializers import (
 )
 from .models import Article, Keyword, SubjectArea
 
+# import the logging library, get or create an instance of a logger
+import logging
+logger = logging.getLogger(__name__)
+
 #### Basic Django view setup ####
 def index(request):
     return HttpResponse("Welcome to the UEE")
