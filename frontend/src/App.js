@@ -1,8 +1,7 @@
 import "./assets/fonts.css";
 import "./App.css";
-import ArticleList from "./components/ArticleList/ArticleList";
+import TitleIndex from "./containers/TitleIndex/TitleIndex";
 import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
-import Simple from "./containers/Simple/Simple";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -20,7 +19,7 @@ function App() {
               <SubjectBrowse />
             </Route>
             <Route path="/articles">
-              <ArticleList />
+              <TitleIndex />
             </Route>
             <Route path="/:id">
               <Article />

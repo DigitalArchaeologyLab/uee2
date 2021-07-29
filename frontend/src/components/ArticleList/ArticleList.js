@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./ArticleList.css";
 // import { Link, useRouteMatch } from "react-router-dom";
 import ArticleSummary from "../ArticleSummary/ArticleSummary";
 
@@ -33,21 +34,23 @@ function ArticleList(props) {
   // let { path, url } = useRouteMatch();
 
   return (
-    <div className='articleList'>
-      {ArticleList.map((article) => (
-        <div>
-          <ArticleSummary
-            article_id={article.id}
-            title_eng={article.title_eng}
-            title_ar={article.title_ar}
-            authors={article.authors}
-            abstract_eng={article.abstract_eng}
-            abstract_ar={article.abstract_ar}
-            keywords={article.keywords}
-          />
-          <hr></hr>
-        </div>
-      ))}
+    <div>
+      <div className="articleList">
+        {ArticleList.map((article) => (
+          <div>
+            <ArticleSummary
+              article_id={article.id}
+              title_eng={article.title_eng}
+              title_ar={article.title_ar}
+              authors={article.authors}
+              abstract_eng={article.abstract_eng}
+              abstract_ar={article.abstract_ar}
+              keywords={article.keywords}
+            />
+            <hr></hr>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
