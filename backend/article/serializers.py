@@ -2,6 +2,22 @@ from rest_framework import serializers
 from .models import Article, Keyword, SubjectArea
 
 
+class SubjectAreaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubjectArea
+        fields = [
+            "id",
+            "name_eng",
+            "name_ar",
+            "name_de",
+            "name_fr",
+            "description",
+            "depth",
+            "path",
+            "numchild",
+        ]
+
+
 class ArticleSerializer(serializers.ModelSerializer):
     authors = serializers.StringRelatedField(many=True)
     subject_area = serializers.StringRelatedField(many=True)
@@ -30,19 +46,3 @@ class KeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Keyword
         fields = ["id", "name_eng", "name_ar"]
-
-
-class SubjectAreaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SubjectArea
-        fields = [
-            "id",
-            "name_eng",
-            "name_ar",
-            "name_de",
-            "name_fr",
-            "description",
-            "depth",
-            "path",
-            "numchild",
-        ]

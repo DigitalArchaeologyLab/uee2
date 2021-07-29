@@ -39,7 +39,6 @@ function Sidebar(props) {
         const parsedSubjects = await parseTree(response.data);
         await setTree(parsedSubjects);
         setLoading(false);
-        console.log(parsedSubjects);
       } catch (err) {
         console.error(err);
       }
@@ -100,6 +99,7 @@ function Articles(props) {
       keywords: [],
       body: "",
       status: "",
+      transient_subject_ancestors: [],
     },
   ]);
 
@@ -108,7 +108,7 @@ function Articles(props) {
   useEffect(() => {
     async function getArticles() {
       try {
-        const response = await axios.get("/api/articles/");
+        const response = await axios.get("/api/articlesBySubjects/");
         setArticleList(response.data);
       } catch (err) {
         console.error(err);
@@ -119,8 +119,8 @@ function Articles(props) {
 
   const filterArticles = (articles) => {
     articles.forEach((article) => {
-      for (let i = 0; i < article.subject_area.length; i++) {
-        if (article.subject_area[i] === props.selectedSubject) {
+      for (let i = 0; i < article.transient_subject_ancestors.length; i++) {
+        if (article.transient_subject_ancestors[i] === props.selectedSubject) {
           filteredArticles.push(article);
         }
       }

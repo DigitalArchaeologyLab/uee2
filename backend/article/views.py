@@ -10,6 +10,7 @@ from .models import Article, Keyword, SubjectArea
 
 # import the logging library, get or create an instance of a logger
 import logging
+
 logger = logging.getLogger(__name__)
 
 #### Basic Django view setup ####
@@ -42,6 +43,29 @@ def article(request, article_id):
     return render(request, context)
 
 
+### Goal: return list of articles with their related subjects appended with all ancestors
+class ArticlesBySubjectView(viewsets.ModelViewSet):  
+    serializer_class = ArticleSerializer
+    # force database evaluation (aka hit the database up actually) by calling list()
+        ## problem: this is being cached so database changes aren't reflected    
+    articles = list(Article.objects.all())
+    for article in articles:
+        ancestors = []
+        subjects = article.subject_area.all()
+        for subject in subjects:
+            if subject not in ancestors:
+                ancestors.append(str(subject))
+                parent = subject.get_parent()
+                if parent not in ancestors:
+                    ancestors.append(str(parent))
+                while parent.is_root() == False:
+                    parent = parent.get_parent()
+                    if parent not in ancestors:
+                        ancestors.append(str(parent))
+        article.transient_subject_ancestors = ancestors
+        logger.error(article.transient_subject_ancestors)
+    queryset = articles
+
 #### REST API setup ####
 class ArticleView(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
@@ -56,4 +80,3 @@ class KeywordView(viewsets.ModelViewSet):
 class SubjectAreaView(viewsets.ModelViewSet):
     serializer_class = SubjectAreaSerializer
     queryset = SubjectArea.objects.all()
-    
