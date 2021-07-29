@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "./Article.css";
 import ArticleBody from "../../components/ArticleBody/ArticleBody";
 import Frontmatter from "../../components/Frontmatter/Frontmatter";
+import Header from "../../components/Header/Header";
 
 function Article(props) {
   const [article, setArticle] = useState(
@@ -35,7 +37,9 @@ function Article(props) {
   }, []);
 
   return (
-    <div className='article'>
+    <div>
+      <Header />
+      <div className='article'>
       <Frontmatter
         article_id={article.id}
         title_eng={article.title_eng}
@@ -49,6 +53,7 @@ function Article(props) {
       />
       <hr></hr>
       <ArticleBody body={article.body} />
+      </div>
     </div>
   );
 }
