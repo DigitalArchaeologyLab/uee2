@@ -1,12 +1,42 @@
 .subjectBrowse {
   display: flex;
   flex-flow: row wrap;
+  padding: 125px 20px;
 }
 
 .subjectBrowse__sidebar {
-  width: 30vw;
+  width: 25vw;
 }
 
 .subjectBrowse__articles {
   width: 50vw;
+  padding-left: 20px;
+}
+
+.subjectBrowse__sidebar h2 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  color:#964a25;
+}
+
+.subjectBrowse .MuiTreeItem-label {
+  font-family: "Open Sans";
+  font-weight: 300;
+}
+
+.subjectBrowse .MuiTreeItem-label:hover {
+  background-color: #eff5f4;
+}
+
+.subjectBrowse .MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label {
+  background-color: #eff5f4;
+} 
+
+.subjectBrowse .MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label:hover, .MuiTreeItem-root.Mui-selected:focus > .MuiTreeItem-content .MuiTreeItem-label {
+  background-color: #eff5f4 !important;
+}
+
+hr {
+  border-top: 1px solid #c2e3dd;
+  width: 50%;
 }

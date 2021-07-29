@@ -57,6 +57,7 @@ function ArticlesBySubject(props) {
             abstract_ar={article.abstract_ar}
             keywords={article.keywords}
           />
+          <hr></hr>
         </div>
       ))}
     </div>

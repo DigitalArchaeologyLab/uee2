@@ -67,6 +67,7 @@ function SubjectFacet(props) {
 
   return (
     <div className="subjectBrowse__sidebar">
+      <h2>Subject Areas</h2>
       <TreeView
         className={classes.root}
         defaultExpanded={["0"]}
