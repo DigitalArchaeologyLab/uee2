@@ -62,7 +62,7 @@ function ParseTree(props) {
 
   return (
     <div>
-      <RenderTree nodes={parsedTree} />
+      <RenderTree nodes={parsedTree} handleSelection={props.handleSelection} />
     </div>
   );
 }

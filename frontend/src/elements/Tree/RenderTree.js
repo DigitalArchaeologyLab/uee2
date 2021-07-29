@@ -25,6 +25,7 @@ function RenderTree(props) {
   const handleSelect = (event, nodeId) => {
     console.log(event.target.innerHTML);
     setSelected(nodeId);
+    props.handleSelection();
   };
 
   const processTree = (nodes) => (
@@ -41,7 +42,7 @@ function RenderTree(props) {
       <TreeView
         className={classes.root}
         defaultCollapseIcon={<ExpandMoreIcon />}
-        defaultExpanded={["root"]}
+        defaultExpanded={["0"]}
         defaultExpandIcon={<ChevronRightIcon />}
         expanded={expanded}
         selected={selected}

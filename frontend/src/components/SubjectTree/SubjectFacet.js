@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../Subjects/SubjectBrowse.css";
 import TreeView from "@material-ui/lab/TreeView";
 import TreeItem from "@material-ui/lab/TreeItem";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-
 import axios from "axios";
 import { parseTree } from "../../utils/parseTree";
 
@@ -68,7 +66,7 @@ function SubjectFacet(props) {
   );
 
   return (
-    <div>
+    <div className="subjectBrowse__sidebar">
       <TreeView
         className={classes.root}
         defaultExpanded={["0"]}
@@ -86,72 +84,4 @@ function SubjectFacet(props) {
   );
 }
 
-function Articles(props) {
-  const [ArticleList, setArticleList] = useState([
-    {
-      id: 0,
-      subject_area: [],
-      title_eng: "",
-      title_ar: "",
-      authors: [],
-      abstract_eng: "",
-      abstract_ar: "",
-      keywords: [],
-      body: "",
-      status: "",
-      transient_subject_ancestors: [],
-    },
-  ]);
-
-  let filteredArticles = [];
-
-  useEffect(() => {
-    async function getArticles() {
-      try {
-        const response = await axios.get("/api/articlesBySubjects/");
-        setArticleList(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    getArticles();
-  }, []);
-
-  const filterArticles = (articles) => {
-    articles.forEach((article) => {
-      for (let i = 0; i < article.transient_subject_ancestors.length; i++) {
-        if (article.transient_subject_ancestors[i] === props.selectedSubject) {
-          filteredArticles.push(article);
-        }
-      }
-    });
-  };
-
-  return (
-    <div className="articles">
-      {filterArticles(ArticleList)}
-      {filteredArticles.map((article) => (
-        <div>
-          <h2>{article.title_eng}</h2>
-          <h4>{article.subject_area}</h4>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function Simple() {
-  const [selectedSubject, setSelectedSubject] = useState([]);
-
-  return (
-    <div className="subjectBrowse">
-      <SubjectFacet
-        setSelectedSubject={setSelectedSubject}
-        selectedSubject={selectedSubject}
-      />
-      <Articles selectedSubject={selectedSubject} />
-    </div>
-  );
-}
-
-export default Simple;
+export default SubjectFacet;
