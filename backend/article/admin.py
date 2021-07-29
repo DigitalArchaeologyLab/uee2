@@ -1,5 +1,7 @@
 from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
+from treebeard.admin import TreeAdmin
+from treebeard.forms import movenodeform_factory
 
 ### Basic customization of the admin interface ###
 admin.site.site_header = "UCLA Encyclopedia of Egyptology - Admin"
@@ -13,13 +15,13 @@ from .models import Article
 class ArticleAdmin(MarkdownxModelAdmin):
     list_display = ("title_eng", "title_ar", "status")
     fieldsets = [
+        ("Subject Area", {"fields": ["subject_area"]}),
         ("Title", {"fields": ["title_eng", "title_ar", "title_fr", "title_de"]}),
         ("Author(s)", {"fields": ["authors"]}),
         ("Abstracts", {"fields": ["abstract_eng", "abstract_ar"]}),
         ("Keywords", {"fields": ["keywords"]}),
         ("Article body", {"fields": ["body"]}),
     ]
-
 admin.site.register(Article, ArticleAdmin)
 
 from .models import Keyword
@@ -28,6 +30,6 @@ class KeywordAdmin(admin.ModelAdmin):
 admin.site.register(Keyword, KeywordAdmin)
 
 from .models import SubjectArea
-class SubjectAreaAdmin(admin.ModelAdmin):
-    list_display = ("name_eng", "name_ar")
+class SubjectAreaAdmin(TreeAdmin):
+    form = movenodeform_factory(SubjectArea)
 admin.site.register(SubjectArea, SubjectAreaAdmin)

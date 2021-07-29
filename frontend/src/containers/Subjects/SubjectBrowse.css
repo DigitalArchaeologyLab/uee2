@@ -1,0 +1,12 @@
+.subjectBrowse {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.subjectBrowse__sidebar {
+  width: 30vw;
+}
+
+.subjectBrowse__articles {
+  width: 50vw;
+}

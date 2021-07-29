@@ -4,13 +4,15 @@ from rest_framework import routers
 from article import views
 
 router = routers.DefaultRouter()
-router.register(r'articles', views.ArticleView, 'article')
-router.register(r'keywords', views.KeywordView, 'keyword')
+router.register(r"articles", views.ArticleView, "article")
+router.register(r"keywords", views.KeywordView, "keyword")
+router.register(r"subjects", views.SubjectAreaView, "subjects")
+router.register(r"articlesBySubjects", views.ArticlesBySubjectView, "articlesBySubjects")
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('article.urls')),
-    path('markdownx/', include('markdownx.urls')),
-    path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("article.urls")),
+    path("markdownx/", include("markdownx.urls")),
+    path("api/", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls")),
 ]

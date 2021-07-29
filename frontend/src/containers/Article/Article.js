@@ -23,15 +23,15 @@ function Article(props) {
 
   let {id} = useParams();
 
-  const refreshList = () => {
+  const getArticle = () => {
     axios
       .get(`/api/articles/${id}`)
       .then((res) => setArticle(res.data))
       .catch((err) => console.log(err));
   };
 
-  useEffect((refreshList) => {
-    refreshList();
+  useEffect(() => {
+    getArticle();
   }, []);
 
   return (

@@ -31,12 +31,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.forms",
     "article.apps.ArticleConfig",
     "timemap.apps.TimemapConfig",
+    # Markdown entry and rendering
     "markdownx",
+    # Django Rest Framework for API
     "rest_framework",
+    # Facilitate CORS management
     "corsheaders",
-    "django.forms",
+    # hierarchical support through Django Treebeard
+    "treebeard",
 ]
 
 MIDDLEWARE = [
@@ -126,3 +131,26 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_WHITELIST = ("http://localhost:3000",)
+
+# error logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "console": {"format": "%(name)-12s %(levelname)-8s %(message)s"},
+        "file": {"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"},
+    },
+    "handlers": {
+        "console": {"class": "logging.StreamHandler", "formatter": "console"},
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {"handlers": ["console"], "level": "INFO"},
+        "ingest": {"handlers": ["console"], "level": "DEBUG"},
+        "api": {"handlers": ["console"], "level": "DEBUG"},
+        "server": {"handlers": ["console"], "level": "DEBUG"},
+    },
+}

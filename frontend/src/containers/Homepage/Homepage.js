@@ -18,7 +18,7 @@ class Homepage extends React.Component {
             About
           </Link>
           <Link className="nav__item" to="/subjects">
-            Browse Subjects
+            Subjects
           </Link>
           <Link className="nav__item" to="/articles">
             Articles
