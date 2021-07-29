@@ -22,6 +22,7 @@
 .subjectBrowse .MuiTreeItem-label {
   font-family: "Open Sans";
   font-weight: 300;
+  position: inherit;
 }
 
 .subjectBrowse .MuiTreeItem-label:hover {
