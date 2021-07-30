@@ -4,19 +4,25 @@ from django.db import models
 class Place(models.Model):
     id = models.AutoField(primary_key=True)
     name_eng = models.CharField("Name (English)", max_length=200)
-    altnames_eng = models.CharField("Alternative names (English)", max_length=500)
+    altnames_eng = models.CharField(
+        "Alternative names (English)", max_length=500, null=True, blank=True
+    )
     name_ar = models.CharField("Name (Arabic)", max_length=200)
-    altnames_ar = models.CharField("Alternative names (Arabic)", max_length=500)
+    altnames_ar = models.CharField(
+        "Alternative names (Arabic)", max_length=500, null=True, blank=True
+    )
     isRegion = models.BooleanField()
     isGovernate = models.BooleanField()
     isNome = models.BooleanField()
     isSite = models.BooleanField()
-    notes = models.TextField()
-    geojson = models.TextField()  # change appropriately
-    lat = models.CharField(max_length=50)  # change appropriately
-    lon = models.CharField(max_length=50)  # change appropriately
-    parents = models.ManyToManyField("Place", related_name="place_parents")
-    children = models.ManyToManyField("Place", related_name="place_children")
+    notes = models.TextField(null=True, blank=True)
+    geojson = models.TextField(null=True, blank=True)  # change appropriately
+    lat = models.CharField(max_length=50, null=True, blank=True)  # change appropriately
+    lon = models.CharField(max_length=50, null=True, blank=True)  # change appropriately
+    parents = models.ManyToManyField("Place", related_name="place_parents", blank=True)
+    children = models.ManyToManyField(
+        "Place", related_name="place_children", blank=True
+    )
 
     def __str__(self):
         return "%s" % (self.name_eng)
