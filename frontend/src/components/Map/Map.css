@@ -1,0 +1,12 @@
+.timemap {
+  display: flex;
+  padding-top: 125px;
+  margin: 0 auto;
+  width: 90vw;
+  padding-bottom: 125px;
+}
+
+.leaflet-container {
+  width: 90vw;
+  height: 500px;
+}
