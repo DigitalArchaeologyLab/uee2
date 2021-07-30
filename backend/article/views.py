@@ -44,27 +44,32 @@ def article(request, article_id):
 
 
 ### Goal: return list of articles with their related subjects appended with all ancestors
-class ArticlesBySubjectView(viewsets.ModelViewSet):  
+class ArticlesBySubjectView(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     # force database evaluation (aka hit the database up actually) by calling list()
-        ## problem: this is being cached so database changes aren't reflected    
+    ## problem: this is being cached so database changes aren't reflected
+
     articles = list(Article.objects.all())
     for article in articles:
         ancestors = []
-        subjects = article.subject_area.all()
-        for subject in subjects:
+
+        for subject in article.subject_area.all():
             if subject not in ancestors:
                 ancestors.append(str(subject))
-                parent = subject.get_parent()
+            if subject.is_root() == True:
+                continue
+            parent = subject.get_parent()
+            if parent not in ancestors:
+                ancestors.append(str(parent))
+            while parent.is_root() == False:
                 if parent not in ancestors:
                     ancestors.append(str(parent))
-                while parent.is_root() == False:
-                    parent = parent.get_parent()
-                    if parent not in ancestors:
-                        ancestors.append(str(parent))
+                parent = parent.get_parent()
+
         article.transient_subject_ancestors = ancestors
-        logger.error(article.transient_subject_ancestors)
+
     queryset = articles
+
 
 #### REST API setup ####
 class ArticleView(viewsets.ModelViewSet):
