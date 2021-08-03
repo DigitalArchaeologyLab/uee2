@@ -4,6 +4,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r"places", views.PlaceView, "places")
+router.register(r"periods", views.PeriodView, "periods")
 
 urlpatterns = [
     path("", views.index, name="index"),
