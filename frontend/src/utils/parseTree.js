@@ -1,5 +1,5 @@
 
-export function parseTree(treeData) {
+export function parseTree(treeData, rootName) {
   // checks if node is a direct child of the current and add to the children array when appropriate
   const addChildren = (node, currentParent) => {
     if (
@@ -55,7 +55,7 @@ export function parseTree(treeData) {
   // add root level object and parsed array of all the children
   const parsedTree = {
     id: 0,
-    name_eng: "Subject Area",
+    name_eng: rootName,
     children: parsedChildren,
   };
 

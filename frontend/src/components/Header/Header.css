@@ -9,6 +9,7 @@
   position: fixed;
   width: calc(100vw - 40px);
   top: 0;
+  z-index: 999;
 }
 
 .header__logo {

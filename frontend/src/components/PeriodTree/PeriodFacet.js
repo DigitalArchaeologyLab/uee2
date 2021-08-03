@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-function SubjectFacet(props) {
+function PeriodFacet(props) {
   const classes = useStyles();
   const [isLoading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState(["0"]);
@@ -23,19 +23,21 @@ function SubjectFacet(props) {
   const [tree, setTree] = useState([
     {
       id: 0,
-      name_eng: "Subject Areas",
+      name_eng: "Periods",
       path: "0000",
       depth: 0,
       numchild: 0,
+      start: 0,
+      end: 0,
     },
   ]);
 
   useEffect(() => {
     async function getNodes() {
       try {
-        const response = await axios.get("/api/subjects/");
-        const parsedSubjects = await parseTree(response.data, "Subject Areas");
-        await setTree(parsedSubjects);
+        const response = await axios.get("/api/periods/");
+        const parsedNodes = await parseTree(response.data, "Periods");
+        await setTree(parsedNodes);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -50,7 +52,7 @@ function SubjectFacet(props) {
 
   const handleSelect = (event, nodeId) => {
     setSelected(nodeId);
-    props.setSelectedSubject(event.target.innerHTML);
+    props.setSelectedPeriod(event.target.innerHTML);
   };
 
   const processTree = (nodes) => (
@@ -66,8 +68,8 @@ function SubjectFacet(props) {
   );
 
   return (
-    <div className="subjectBrowse__sidebar">
-      <h2>Subject Areas</h2>
+    <div className="period__facet">
+      <h2>Time Period</h2>
       <TreeView
         className={classes.root}
         defaultExpanded={["0"]}
@@ -85,4 +87,4 @@ function SubjectFacet(props) {
   );
 }
 
-export default SubjectFacet;
+export default PeriodFacet;

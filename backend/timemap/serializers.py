@@ -5,6 +5,7 @@ from .models import Period, Place, Feature, Phase, Dynasty, Reign, Event
 class PlaceSerializer(serializers.ModelSerializer):
     parents = serializers.StringRelatedField(many=True)
     children = serializers.StringRelatedField(many=True)
+    period = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Place
@@ -21,6 +22,7 @@ class PlaceSerializer(serializers.ModelSerializer):
             "lon",
             "parents",
             "children",
+            "period",
         ]
 
 
