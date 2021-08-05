@@ -22,7 +22,7 @@ class ArticleAdmin(MarkdownxModelAdmin):
         ("Title", {"fields": ["title_eng", "title_ar", "title_fr", "title_de"]}),
         ("Author(s)", {"fields": ["authors"]}),
         ("Abstracts", {"fields": ["abstract_eng", "abstract_ar"]}),
-        ("Timemap", {"fields": ["place"]}),
+        ("Timemap", {"fields": ["location"]}),
         ("Keywords", {"fields": ["keywords"]}),
         ("Article body", {"fields": ["body"]}),
     ]
