@@ -16,7 +16,7 @@
 .subjectBrowse__sidebar h2 {
   font-family: "Open Sans";
   font-weight: 300;
-  color:#964a25;
+  color:var(--ueeRed01);
 }
 
 .subjectBrowse .MuiTreeItem-label {
@@ -26,18 +26,18 @@
 }
 
 .subjectBrowse .MuiTreeItem-label:hover {
-  background-color: #eff5f4;
+  background-color: var(--ueeGreen05);
 }
 
 .subjectBrowse .MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label {
-  background-color: #eff5f4;
+  background-color: var(--ueeGreen05);
 } 
 
 .subjectBrowse .MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label:hover, .MuiTreeItem-root.Mui-selected:focus > .MuiTreeItem-content .MuiTreeItem-label {
-  background-color: #eff5f4 !important;
+  background-color: var(--ueeGreen05) !important;
 }
 
 hr {
-  border-top: 1px solid #c2e3dd;
+  border-top: 1px solid var(--ueeGreen04);
   width: 50%;
 }

@@ -10,7 +10,7 @@
 .timemap__intro h1 {
   font-family: "Open Sans";
   font-weight: 500;
-  color:#964a25;
+  color:var(--ueeRed01);
   text-transform: uppercase;
 }
 
@@ -37,5 +37,5 @@
 .period__facet h2 {
   font-family: "Open Sans";
   font-weight: 300;
-  color:#964a25;
+  color:var(--ueeRed01);
 }

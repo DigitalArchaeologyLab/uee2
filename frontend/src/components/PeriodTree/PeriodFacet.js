@@ -69,7 +69,7 @@ function PeriodFacet(props) {
 
   return (
     <div className="period__facet">
-      <h2>Time Period</h2>
+      <h2>Time Periods</h2>
       <TreeView
         className={classes.root}
         defaultExpanded={["0"]}
