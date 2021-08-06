@@ -51,21 +51,17 @@ class Activity(models.Model):
     TYPE_CHOICES = [
         ("Construction", "Construction"),
         ("Destruction", "Destruction"),
-        ("Inactive / defunct", "Inactive / defunct"),
+        ("Inactive / defunct time", "Inactive / defunct time"),
         ("Modification", "Modification"),
-        ("In use", "In use"),
+        ("Use", "Use"),
     ]
     type = models.CharField(max_length=200, choices=TYPE_CHOICES, default="In use")
-    startDate = models.IntegerField(null=True)
-    endDate = models.IntegerField(null=True)
+    startDate = models.IntegerField(null=True, blank=True)
+    endDate = models.IntegerField(null=True, blank=True)
     associatedLocation = models.ManyToManyField("Location")
     startPeriod = models.ManyToManyField("Period", related_name="startPeriod")
     endPeriod = models.ManyToManyField("Period", related_name="endPeriod")
     notes = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return "%s (%s - %s)" % (
-            self.type,
-            self.startDate,
-            self.endDate,
-        )
+        return "%s" % (self.type,)

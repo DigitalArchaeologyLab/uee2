@@ -41,19 +41,40 @@ function Map(props) {
       period: "Prehistory",
     },
   ]);
+  const [Activities, setActivities] = useState([
+    {
+      id: 0,
+      type: "",
+      startDate: 0,
+      endDate: 0,
+      associatedLocation: [],
+      startPeriod: [],
+      endPeriod: [],
+      notes: "",
+    },
+  ]);
 
   let filteredPlaces = [];
 
   useEffect(() => {
     async function getPlaces() {
       try {
-        const response = await axios.get("/api/places/");
+        const response = await axios.get("/api/locations/");
         setSites(response.data);
       } catch (err) {
         console.error(err);
       }
     }
+    async function getActivities() {
+      try {
+        const response = await axios.get("/api/activities/");
+        setActivities(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
     getPlaces();
+    getActivities();
   }, []);
 
   const filterPlaces = (places) => {
@@ -62,6 +83,18 @@ function Map(props) {
         if (place.period[i] === props.SelectedPeriod) {
           filteredPlaces.push(place);
         }
+      }
+    });
+  };
+
+  let filteredLocations = [];
+  const filterLocations = (activities) => {
+    activities.forEach((activity) => {
+      if (
+        activity.startPeriod == props.SelectedPeriod ||
+        activity.endPeriod == props.SelectedPeriod
+      ) {
+        filteredLocations.push(activity);
       }
     });
   };
@@ -78,12 +111,22 @@ function Map(props) {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {filterPlaces(Sites)}
+        {/* {filterPlaces(Sites)}
         {filteredPlaces.map((site) => (
           <div>
             <Marker position={[site.lat, site.lon]}>
               <Popup>
                 {site.name_eng} <br /> {site.period}
+              </Popup>
+            </Marker>
+          </div>
+        ))} */}
+        {filterLocations(Activities)}
+        {filteredLocations.map((activity) => (
+          <div>
+            <Marker position={[activity.associatedLocation[0].lat, activity.associatedLocation[0].lon]}>
+              <Popup>
+                {activity.associatedLocation[0].name_eng} <br />
               </Popup>
             </Marker>
           </div>

@@ -6,7 +6,22 @@ from treebeard.forms import movenodeform_factory
 
 from .models import Activity
 
-admin.site.register(Activity)
+
+class ActivityAdmin(admin.ModelAdmin):
+    list_display = ("type", "locations", "start", "end")
+
+    def locations(self, obj):
+        return "\n".join([l.name_eng for l in obj.associatedLocation.all()])
+
+    def start(self, obj):
+        return "\n".join([p.name_eng for p in obj.startPeriod.all()])
+
+    def end(self, obj):
+        return "\n".join([p.name_eng for p in obj.endPeriod.all()])
+
+
+admin.site.register(Activity, ActivityAdmin)
+
 
 from .models import Period
 
