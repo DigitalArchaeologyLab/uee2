@@ -6,6 +6,7 @@ import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
+import LeafletContainer from "./components/Map/LeafletMap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route exact path="/timemap">
               <Timemap />
+            </Route>
+            <Route exact path="/leaflet">
+              <LeafletContainer />
             </Route>
             <Route path="/articles">
               <TitleIndex />

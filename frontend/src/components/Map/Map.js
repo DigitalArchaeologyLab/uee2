@@ -21,26 +21,6 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 function Map(props) {
-  const [Sites, setSites] = useState([
-    {
-      id: 0,
-      name_eng: "Site name",
-      altnames_eng: "",
-      name_ar: "",
-      altnames_ar: "",
-      isRegion: false,
-      isGovernate: false,
-      isNome: false,
-      isSite: false,
-      notes: "",
-      geojson: "",
-      lat: 27.6452,
-      lon: 30.896558,
-      parents: [],
-      children: [],
-      period: "Prehistory",
-    },
-  ]);
   const [Activities, setActivities] = useState([
     {
       id: 0,
@@ -54,17 +34,7 @@ function Map(props) {
     },
   ]);
 
-  let filteredPlaces = [];
-
   useEffect(() => {
-    async function getPlaces() {
-      try {
-        const response = await axios.get("/api/locations/");
-        setSites(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    }
     async function getActivities() {
       try {
         const response = await axios.get("/api/activities/");
@@ -73,19 +43,8 @@ function Map(props) {
         console.error(err);
       }
     }
-    getPlaces();
     getActivities();
   }, []);
-
-  const filterPlaces = (places) => {
-    places.forEach((place) => {
-      for (let i = 0; i < place.period.length; i++) {
-        if (place.period[i] === props.SelectedPeriod) {
-          filteredPlaces.push(place);
-        }
-      }
-    });
-  };
 
   let filteredLocations = [];
   const filterLocations = (activities) => {
@@ -99,6 +58,7 @@ function Map(props) {
     });
   };
 
+
   return (
     <div className="timemap__map">
       <MapContainer
@@ -111,20 +71,15 @@ function Map(props) {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* {filterPlaces(Sites)}
-        {filteredPlaces.map((site) => (
-          <div>
-            <Marker position={[site.lat, site.lon]}>
-              <Popup>
-                {site.name_eng} <br /> {site.period}
-              </Popup>
-            </Marker>
-          </div>
-        ))} */}
         {filterLocations(Activities)}
         {filteredLocations.map((activity) => (
           <div>
-            <Marker position={[activity.associatedLocation[0].lat, activity.associatedLocation[0].lon]}>
+            <Marker
+              position={[
+                activity.associatedLocation[0].lat,
+                activity.associatedLocation[0].lon,
+              ]}
+            >
               <Popup>
                 {activity.associatedLocation[0].name_eng} <br />
               </Popup>
@@ -134,6 +89,7 @@ function Map(props) {
 
         <ZoomControl position="topright" />
       </MapContainer>
+      
     </div>
   );
 }
