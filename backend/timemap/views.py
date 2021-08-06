@@ -15,16 +15,16 @@ def index(request):
 
 
 ### API setup ###
-class PeriodView(viewsets.ModelViewSet):
+class PeriodView(viewsets.ReadOnlyModelViewSet):
     serializer_class = PeriodSerializer
     queryset = Period.objects.all()
 
 
-class ActivityView(viewsets.ModelViewSet):
+class ActivityView(viewsets.ReadOnlyModelViewSet):
     serializer_class = ActivitySerializer
     queryset = Activity.objects.all()
 
 
-class LocationView(viewsets.ModelViewSet):
+class LocationView(viewsets.ReadOnlyModelViewSet):
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
