@@ -34,13 +34,18 @@ function ArticlesBySubject(props) {
   }, []);
 
   const filterArticles = (articles) => {
-    articles.forEach((article) => {
-      for (let i = 0; i < article.transient_subject_ancestors.length; i++) {
-        if (article.transient_subject_ancestors[i] === props.selectedSubject) {
-          filteredArticles.push(article);
+    // show all of the articles unless a specific subject has been selected
+    if (props.selectedSubject[0] === "All") {
+      filteredArticles.push(...articles);
+    } else {
+      // filter based on the selected subject
+      articles.forEach((article) => {
+        for (let i = 0; i < article.transient_subject_ancestors.length; i++) {
+          if (article.transient_subject_ancestors[i] === props.selectedSubject) {
+            filteredArticles.push(article);
+          }
         }
-      }
-    });
+      })};
   };
 
   return (

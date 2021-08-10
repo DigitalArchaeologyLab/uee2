@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
 
 function Timemap() {
-  const [SelectedPeriod, setSelectedPeriod] = useState([]);
+  const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
 
   return (
     <div className="timemap">
