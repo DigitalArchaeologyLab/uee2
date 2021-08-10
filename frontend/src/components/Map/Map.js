@@ -20,7 +20,6 @@ const style = {
 };
 
 function Map(props) {
-
   // create the basic map structure
   const mapRef = useRef(null);
 
@@ -46,17 +45,22 @@ function Map(props) {
     layerRef.current = L.markerClusterGroup().addTo(mapRef.current);
   }, []);
 
-
   let filteredLocations = [];
+
   const filterLocations = (activities) => {
-    activities.forEach((activity) => {
-      if (
-        activity.startPeriod == props.selectedPeriod ||
-        activity.endPeriod == props.selectedPeriod
-      ) {
-        filteredLocations.push(activity);
-      }
-    });
+    console.log(props.selectedPeriod);
+    if (props.selectedPeriod[0] === "All") {
+      filteredLocations.push(...activities);
+    } else {
+      activities.forEach((activity) => {
+        if (
+          activity.startPeriod == props.selectedPeriod ||
+          activity.endPeriod == props.selectedPeriod
+        ) {
+          filteredLocations.push(activity);
+        }
+      });
+    }
   };
 
   // add markers to layer filtered by periods selected
@@ -64,19 +68,18 @@ function Map(props) {
     layerRef.current.clearLayers();
     filterLocations(props.activities);
     filteredLocations.forEach((activity) => {
-
       const latitude = parseFloat(activity.associatedLocation[0].lat);
       const longitude = parseFloat(activity.associatedLocation[0].lon);
-      const latlng = {"lat": latitude, "lng": longitude}
+      const latlng = { lat: latitude, lng: longitude };
       const title = activity.associatedLocation[0].name_eng;
 
-      L.marker(latlng, {title: title}).addTo(layerRef.current);
+      L.marker(latlng, { title: title }).addTo(layerRef.current);
     });
   }, [filteredLocations]);
 
   return (
     <div className="timemap__map">
-      <div id="map" style={style} /> 
+      <div id="map" style={style} />
     </div>
   );
 }
