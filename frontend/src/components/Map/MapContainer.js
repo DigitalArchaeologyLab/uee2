@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Map from "./Map";
+import "./MapContainer.css";
 
 function MapContainer(props) {
   const [isLoading, setLoading] = useState(true);
@@ -33,7 +34,7 @@ function MapContainer(props) {
   return (
     <div>
       {isLoading ? (
-        <p>Loading</p>
+        <p className="loadingMap">Loading</p>
       ) : (
         <Map activities={Activities} selectedPeriod={props.selectedPeriod} />
       )}

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
-
 import L from "leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster.js";
 import "leaflet.markercluster/dist/MarkerCluster.css";
@@ -22,7 +21,7 @@ const style = {
 
 function Map(props) {
 
-  // create map
+  // create the basic map structure
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -60,7 +59,7 @@ function Map(props) {
     });
   };
 
-  // add markers to layer
+  // add markers to layer filtered by periods selected
   useEffect(() => {
     layerRef.current.clearLayers();
     filterLocations(props.activities);
