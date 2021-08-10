@@ -44,7 +44,7 @@ def article(request, article_id):
 
 
 ### Goal: return list of articles with their related subjects appended with all ancestors
-class ArticlesBySubjectView(viewsets.ModelViewSet):
+class ArticlesBySubjectView(viewsets.ReadOnlyModelViewSet):
     serializer_class = ArticleSerializer
     # force database evaluation (aka hit the database up actually) by calling list()
     ## problem: this is being cached so database changes aren't reflected
@@ -72,16 +72,16 @@ class ArticlesBySubjectView(viewsets.ModelViewSet):
 
 
 #### REST API setup ####
-class ArticleView(viewsets.ModelViewSet):
+class ArticleView(viewsets.ReadOnlyModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
 
 
-class KeywordView(viewsets.ModelViewSet):
+class KeywordView(viewsets.ReadOnlyModelViewSet):
     serializer_class = KeywordSerializer
     queryset = Keyword.objects.all()
 
 
-class SubjectAreaView(viewsets.ModelViewSet):
+class SubjectAreaView(viewsets.ReadOnlyModelViewSet):
     serializer_class = SubjectAreaSerializer
     queryset = SubjectArea.objects.all()

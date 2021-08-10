@@ -1,9 +1,13 @@
 from django.http import HttpResponse
 from rest_framework import viewsets
-from .serializers import PlaceSerializer
-from .models import Place
+from .serializers import PeriodSerializer, ActivitySerializer, LocationSerializer
+from .models import Period, Activity, Location
 
-# Create your views here.
+# import the logging library, get or create an instance of a logger
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 #### Basic Django view setup ####
 def index(request):
@@ -11,6 +15,16 @@ def index(request):
 
 
 ### API setup ###
-class PlaceView(viewsets.ModelViewSet):
-    serializer_class = PlaceSerializer
-    queryset = Place.objects.all()
+class PeriodView(viewsets.ReadOnlyModelViewSet):
+    serializer_class = PeriodSerializer
+    queryset = Period.objects.all()
+
+
+class ActivityView(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ActivitySerializer
+    queryset = Activity.objects.all()
+
+
+class LocationView(viewsets.ReadOnlyModelViewSet):
+    serializer_class = LocationSerializer
+    queryset = Location.objects.all()

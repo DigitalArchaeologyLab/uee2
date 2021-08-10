@@ -9,6 +9,7 @@
   position: fixed;
   width: calc(100vw - 40px);
   top: 0;
+  z-index: 999;
 }
 
 .header__logo {
@@ -17,7 +18,6 @@
 }
 
 .navigation {
-  /* background-color: #267a6b ; */
   width: calc(100vw - 40px);
   position: fixed;
   /* top: 115px; */
@@ -33,7 +33,7 @@
 }
 
 .nav__item {
-  color: #267a6b;
+  color: var(--ueeGreen01);
 }
 
 .navigation .nav__item {
@@ -41,5 +41,5 @@
 }
 
 .nav__item:hover {
-  color: #964a25;
+  color: var(--ueeRed01);
 }

@@ -2,7 +2,7 @@ from django.db import models
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from treebeard.mp_tree import MP_Node
-from timemap.models import Place
+from timemap.models import Location
 
 # Create your models here.
 class Author(models.Model):
@@ -33,7 +33,7 @@ class Article(models.Model):
     status = models.CharField(
         max_length=255, choices=STATUS_CHOICES, default=UNPUBLISHED
     )
-    place = models.ManyToManyField(Place)
+    location = models.ManyToManyField(Location)
     body = MarkdownxField()
     transient_subject_ancestors = []
 

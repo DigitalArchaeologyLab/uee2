@@ -19,7 +19,7 @@
 }
 
 .subjects h4 {
-  color: #964a25;
+  color: var(--ueeRed01);
 }
 
 .subjects__container {
@@ -59,7 +59,7 @@
 }
 
 .tiles_title p {
-  background-color: #d08009;
+  background-color: var(--ueeYellow01);
   color: #fff;
   padding: 5px 0px;
   font-family: "Open Sans Condensed", sans-serif;
@@ -82,7 +82,7 @@ h1 {
 }
 
 a {
-  color: #267a6b;
+  color: var(--ueeGreen01);
   text-decoration: none;
 }
 

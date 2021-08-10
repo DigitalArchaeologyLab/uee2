@@ -1,5 +1,6 @@
 import "./assets/fonts.css";
 import "./App.css";
+import "./variables.css";
 import TitleIndex from "./containers/TitleIndex/TitleIndex";
 import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
 import Article from "./containers/Article/Article";

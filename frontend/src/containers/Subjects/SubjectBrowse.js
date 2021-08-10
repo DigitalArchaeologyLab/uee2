@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 function SubjectBrowse(props) {
-  const [selectedSubject, setSelectedSubject] = useState([]);
+  const [selectedSubject, setSelectedSubject] = useState(["All"]);
 
   return (
     <div>
@@ -15,6 +15,7 @@ function SubjectBrowse(props) {
         <SubjectFacet
           setSelectedSubject={setSelectedSubject}
           selectedSubject={selectedSubject}
+          rootName={"Subject Areas"}
         />
         <ArticlesBySubject selectedSubject={selectedSubject} />
       </div>

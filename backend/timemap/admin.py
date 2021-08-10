@@ -1,20 +1,42 @@
 from django.contrib import admin
+from treebeard.admin import TreeAdmin
+from treebeard.forms import movenodeform_factory
 
 ### Register and setup models ###
-from .models import Place
-admin.site.register(Place)
 
-from .models import Feature
-admin.site.register(Feature)
+from .models import Activity
 
-from .models import Phase
-admin.site.register(Phase)
 
-from .models import Dynasty
-admin.site.register(Dynasty)
+class ActivityAdmin(admin.ModelAdmin):
+    list_display = ("type", "locations", "start", "end")
 
-from .models import Reign
-admin.site.register(Reign)
+    def locations(self, obj):
+        return "\n".join([l.name_eng for l in obj.associatedLocation.all()])
 
-from .models import Event
-admin.site.register(Event)
+    def start(self, obj):
+        return "\n".join([p.name_eng for p in obj.startPeriod.all()])
+
+    def end(self, obj):
+        return "\n".join([p.name_eng for p in obj.endPeriod.all()])
+
+
+admin.site.register(Activity, ActivityAdmin)
+
+
+from .models import Period
+
+
+class PeriodAdmin(TreeAdmin):
+    form = movenodeform_factory(Period)
+
+
+admin.site.register(Period, PeriodAdmin)
+
+from .models import Location
+
+
+class LocationAdmin(TreeAdmin):
+    form = movenodeform_factory(Location)
+
+
+admin.site.register(Location, LocationAdmin)
