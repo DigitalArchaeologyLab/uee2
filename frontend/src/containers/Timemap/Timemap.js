@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Timemap.css";
-import Map from "../../components/Map/Map";
+import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
@@ -25,7 +25,7 @@ function Timemap() {
           SelectedPeriod={SelectedPeriod}
           rootName={"Periods"}
         />
-        <Map SelectedPeriod={SelectedPeriod} />
+        <MapContainer selectedPeriod={SelectedPeriod} />
       </div>
       <Footer />
     </div>
