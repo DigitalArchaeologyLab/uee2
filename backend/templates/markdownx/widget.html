@@ -12,17 +12,17 @@
 
 <div class="markdownx">
   <div class="editorToolbar">
-      <button class="editorButton" id="addTermButton" type="button" onClick="addTerm()">
-        Add Term
+      <button class="editorButton" id="tagLocationButton" type="button" onClick="tagLocation()">
+        Tag Location
       </button>
     </div>
 
     <!-- Popup modal to select what is inserted-->
-    <div id="addTermModal" class="modal">
+    <div id="tagLocationModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <div>
-          <select name="terms" id="id_terms_modal" multiple=""></select>
+          <select name="locations" id="id_locations_modal" multiple=""></select>
           <script>
             prepSelectOptions();
           </script>

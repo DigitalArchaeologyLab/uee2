@@ -14,9 +14,9 @@
 //   return false;
 // }
 
-function addTerm() {
+function tagLocation() {
   // Get the modal
-  var modal = document.getElementById("addTermModal");
+  var modal = document.getElementById("tagLocationModal");
 
   // Open the modal
   modal.style.display = "block";
@@ -37,19 +37,19 @@ function addTerm() {
   };
 }
 
-async function getTerms() {
-  const response = await axios.get("http://localhost:8000/api/keywords/");
-  const keywordsObj = await response.data;
-  let keywords = [];
-  await keywordsObj.map((keyword) => {
-    keywords.push(`${keyword.name_eng}, ${keyword.name_ar}`);
+async function getLocations() {
+  const response = await axios.get("/api/locations/");
+  const locationsObj = await response.data;
+  let locations = [];
+  await locationsObj.map((location) => {
+    locations.push(`${location.name_eng}`);
   });
-  return keywords;
+  return locations;
 }
 
 function prepSelectOptions() {
-  getTerms().then((elements) => {
-    let select = document.getElementById("id_terms_modal");
+  getLocations().then((elements) => {
+    let select = document.getElementById("id_locations_modal");
     for (let el of elements) {
       let option = document.createElement("option");
       option.text = el;
@@ -65,18 +65,20 @@ function insertSelections() {
     id_body.selectionEnd
   );
 
-  const btn = document.getElementById("insert");
-  const selectedKeywords = document.getElementById("id_terms_modal");
+  const selectedLocations = document.getElementById("id_locations_modal");
   event.preventDefault();
   // show the selected index
   const selectedValues = [].filter
-    .call(selectedKeywords.options, (option) => option.selected)
+    .call(selectedLocations.options, (option) => option.selected)
     .map((option) => option.text);
+  console.log(selectedValues);
   const selections = selectedValues.join("; ");
 
   id_body.setRangeText(
     `<Tooltip title="${selections}" classes={tooltip} interactive arrow >${selectedText}</Tooltip>`
   );
-  var modal = document.getElementById("addTermModal");
+  var modal = document.getElementById("tagLocationModal");
   modal.style.display = "none";
 }
+
+// add any tagged locations to an array (transient_tagged_locations) that can be used for connecting articles to the map
