@@ -24,7 +24,7 @@ function Timemap() {
       <div className="timemap__container">
         <div className="timemap__sidebar">
           {/* <CompoundSlider /> */}
-          <Timeline />
+          {/* <Timeline /> */}
           <PeriodFacet
             setSelectedPeriod={setSelectedPeriod}
             SelectedPeriod={SelectedPeriod}

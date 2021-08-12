@@ -27,6 +27,10 @@
 
 }
 
+.CompoundSlider {
+  z-index: 550;
+}
+
 .timemap__sidebar {
   background-color: #ffffff;
   position: absolute;
