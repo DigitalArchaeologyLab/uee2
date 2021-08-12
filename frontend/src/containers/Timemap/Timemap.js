@@ -4,6 +4,8 @@ import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
+import Timeline from "../../components/Timeline/Timeline";
+import CompoundSlider from "../../components/Timeline/CompoundSlider/CompoundSlider";
 
 function Timemap() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
@@ -19,13 +21,19 @@ function Timemap() {
           rulership, or toggle the slider in the map.{" "}
         </p>
       </div>
-      <div>
-        <PeriodFacet
-          setSelectedPeriod={setSelectedPeriod}
-          SelectedPeriod={SelectedPeriod}
-          rootName={"Periods"}
-        />
-        <MapContainer selectedPeriod={SelectedPeriod} />
+      <div className="timemap__container">
+        <div className="timemap__sidebar">
+          {/* <CompoundSlider /> */}
+          <Timeline />
+          <PeriodFacet
+            setSelectedPeriod={setSelectedPeriod}
+            SelectedPeriod={SelectedPeriod}
+            rootName={"Periods"}
+          />
+        </div>
+        <div>
+          <MapContainer selectedPeriod={SelectedPeriod} />
+        </div>
       </div>
       <Footer />
     </div>
