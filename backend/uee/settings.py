@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "corsheaders",
     # hierarchical support through Django Treebeard
     "treebeard",
+    # hierarchical select widget for admin interface
+    "treewidget",
 ]
 
 MIDDLEWARE = [

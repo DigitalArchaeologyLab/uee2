@@ -20,4 +20,5 @@ urlpatterns = [
     path("markdownx/", include("markdownx.urls")),
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls")),
+    path('treewidget/', include('treewidget.urls')),
 ]
