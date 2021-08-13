@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CompoundSlider from "../../components/Timeline/CompoundSlider/CompoundSlider";
 
 function SliderTest() {

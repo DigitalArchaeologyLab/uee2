@@ -4,8 +4,6 @@ import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
-import Timeline from "../../components/Timeline/Timeline";
-import CompoundSlider from "../../components/Timeline/CompoundSlider/CompoundSlider";
 
 function Timemap() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
@@ -23,8 +21,6 @@ function Timemap() {
       </div>
       <div className="timemap__container">
         <div className="timemap__sidebar">
-          {/* <CompoundSlider /> */}
-          {/* <Timeline /> */}
           <PeriodFacet
             setSelectedPeriod={setSelectedPeriod}
             SelectedPeriod={SelectedPeriod}

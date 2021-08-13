@@ -24,16 +24,16 @@ function Article(props) {
 
   let { id } = useParams();
 
-  const getArticle = () => {
-    axios
-      .get(`/api/articles/${id}`)
-      .then((res) => setArticle(res.data))
-      .catch((err) => console.log(err));
-  };
-
   useEffect(() => {
+
+    const getArticle = () => {
+      axios
+        .get(`/api/articles/${id}`)
+        .then((res) => setArticle(res.data))
+        .catch((err) => console.log(err));
+    };
     getArticle();
-  }, []);
+  }, [id]);
 
   return (
     <div>
