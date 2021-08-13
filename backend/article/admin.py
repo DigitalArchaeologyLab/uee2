@@ -25,6 +25,7 @@ class ArticleAdmin(MarkdownxModelAdmin):
         ("Timemap", {"fields": ["location"]}),
         ("Keywords", {"fields": ["keywords"]}),
         ("Article body", {"fields": ["body"]}),
+        ("Status", {"fields": ["status"]}),
     ]
 
 

@@ -77,8 +77,18 @@ function insertSelections() {
   id_body.setRangeText(
     `<Tooltip title="${selections}" classes={tooltip} interactive arrow >${selectedText}</Tooltip>`
   );
+
+  // add any tagged locations to the locations field so that we can connect the article to these locations on the timemap
+  const locationField = document.getElementById("id_location");
+  const locationOptions = locationField.options;
+  selectedValues.forEach((selectedValue) => {
+    for (i = 0; i < locationOptions.length; i++) {
+      if (selectedValue == locationOptions[i].text) {
+        locationOptions[i].selected = true;
+      }
+    }
+  });
+
   var modal = document.getElementById("tagLocationModal");
   modal.style.display = "none";
 }
-
-// add any tagged locations to an array (transient_tagged_locations) that can be used for connecting articles to the map
