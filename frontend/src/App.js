@@ -8,6 +8,7 @@ import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
 import SliderTest from "./containers/Timemap/SliderTest";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import RangeSlider from "./components/Timeline/RangeSlider/RangeSlider";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/slider">
               <SliderTest />
+            </Route>
+            <Route exact path="/rangeslider">
+              <RangeSlider />
             </Route>
             <Route path="/articles">
               <TitleIndex />
