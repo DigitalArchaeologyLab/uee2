@@ -8,6 +8,8 @@ import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 
 function Timemap() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
+  const [SelectedMinTime, setSelectedMinTime] = useState(-3000);
+  const [SelectedMaxTime, setSelectedMaxTime] = useState(1000);
 
   return (
     <div className="timemap">
@@ -27,10 +29,19 @@ function Timemap() {
             SelectedPeriod={SelectedPeriod}
             rootName={"Periods"}
           />
-          <TimesliderFacet />
+          <TimesliderFacet
+            setSelectedMinTime={setSelectedMinTime}
+            setSelectedMaxTime={setSelectedMaxTime}
+            SelectedMinTime={SelectedMinTime}
+            SelectedMaxTime={SelectedMaxTime}
+          />
         </div>
         <div>
-          <MapContainer selectedPeriod={SelectedPeriod} />
+          <MapContainer
+            selectedPeriod={SelectedPeriod}
+            SelectedMinTime={SelectedMinTime}
+            SelectedMaxTime={SelectedMaxTime}
+          />
         </div>
       </div>
       <Footer />

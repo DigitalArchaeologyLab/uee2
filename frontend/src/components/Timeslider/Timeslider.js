@@ -36,8 +36,8 @@ function SliderThumbComponent(props) {
   );
 }
 
-function Timeslider() {
-  const [value, setValue] = useState([-3000, 1000]);
+function Timeslider(props) {
+  const [value, setValue] = useState([props.SelectedMinTime, props.SelectedMaxTime]);
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
@@ -46,10 +46,12 @@ function Timeslider() {
   // need to add logic to process BCE (and CE) values
   const handleMinInputChange = (event) => {
     setValue([event.target.value === "" ? "" : event.target.value, value[1]]);
+    props.setSelectedMinValue(event.target.value)
   };
 
   const handleMaxInputChange = (event) => {
     setValue([value[0], event.target.value === "" ? "" : event.target.value]);
+    props.setSelectedMaxValue(event.target.value)
   };
 
   const handleBlur = () => {
