@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster.js";
@@ -45,27 +45,26 @@ function Map(props) {
     layerRef.current = L.markerClusterGroup().addTo(mapRef.current);
   }, []);
 
-  let filteredLocations = [];
-
-  const filterLocations = (activities) => {
-    // show all of the locations unless a period has been selected
-    if (props.selectedPeriod[0] === "All") {
-      filteredLocations.push(...activities);
-    } else {
-      // filter based on the selected period
-      activities.forEach((activity) => {
-        if (
-          activity.startPeriod == props.selectedPeriod ||
-          activity.endPeriod == props.selectedPeriod
-        ) {
-          filteredLocations.push(activity);
-        }
-      });
-    }
-  };
-
   // add markers to layer filtered by periods selected
   useEffect(() => {
+    let filteredLocations = [];
+    const filterLocations = (activities) => {
+      // show all of the locations unless a period has been selected
+      if (props.selectedPeriod[0] === "All") {
+        filteredLocations.push(...activities);
+      } else {
+        // filter based on the selected period
+        activities.forEach((activity) => {
+          if (
+            String(activity.startPeriod) === String(props.selectedPeriod) ||
+            String(activity.endPeriod) === String(props.selectedPeriod)
+          ) {
+            filteredLocations.push(activity);
+          }
+        });
+      }
+    };
+
     layerRef.current.clearLayers();
     filterLocations(props.activities);
     filteredLocations.forEach((activity) => {
@@ -76,7 +75,7 @@ function Map(props) {
 
       L.marker(latlng, { title: title }).addTo(layerRef.current);
     });
-  }, [filteredLocations]);
+  }, [ props.activities, props.selectedPeriod]);
 
   return (
     <div className="timemap__map">
