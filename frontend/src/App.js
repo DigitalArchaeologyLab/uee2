@@ -7,7 +7,7 @@ import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Timeslider from "./components/Timeline/Timeslider";
+import Timeslider from "./components/Timeslider/Timeslider";
 
 function App() {
   return (

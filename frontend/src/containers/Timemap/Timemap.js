@@ -4,6 +4,7 @@ import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
+import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 
 function Timemap() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
@@ -26,6 +27,7 @@ function Timemap() {
             SelectedPeriod={SelectedPeriod}
             rootName={"Periods"}
           />
+          <TimesliderFacet />
         </div>
         <div>
           <MapContainer selectedPeriod={SelectedPeriod} />

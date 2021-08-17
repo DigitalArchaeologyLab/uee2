@@ -1,6 +1,6 @@
 .timeslider {
-  width: 800px;
-  margin: 100px;
+  width: 90%;
+  margin-left: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -9,9 +9,9 @@
 .timeslider__inputs #timesliderInput__min,
 .timeslider__inputs #timesliderInput__max {
   border: 1px solid #bbb;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
-  width: 100px;
+  width: 75px;
 }
 
 .timeslider__inputs {
@@ -38,6 +38,10 @@
   height: 15px;
   color: #bbb;
   bottom: 7px;
+}
+
+#timeslider__root .MuiSlider-markLabel {
+  top: 30px;
 }
 
 .MuiSlider-markActive {

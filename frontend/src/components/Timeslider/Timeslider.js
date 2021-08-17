@@ -37,7 +37,7 @@ function SliderThumbComponent(props) {
 }
 
 function Timeslider() {
-  const [value, setValue] = useState([-500, 500]);
+  const [value, setValue] = useState([-3000, 1000]);
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);

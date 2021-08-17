@@ -69,20 +69,24 @@ function PeriodFacet(props) {
 
   return (
     <div className="period__facet">
-      <h2>Time Periods</h2>
-      <TreeView
-        className={classes.root}
-        defaultExpanded={["0"]}
-        defaultCollapseIcon={<ExpandMoreIcon />}
-        defaultExpandIcon={<ChevronRightIcon />}
-        expanded={expanded}
-        selected={selected}
-        onNodeToggle={handleToggle}
-        onNodeSelect={handleSelect}
-        multiSelect
-      >
-        {isLoading ? <p>Loading</p> : processTree(tree)}
-      </TreeView>
+      <div className="period__title">
+        <h2>Time Periods</h2>
+      </div>
+      <div className="period__period">
+        <TreeView
+          className={classes.root}
+          defaultExpanded={["0"]}
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpandIcon={<ChevronRightIcon />}
+          expanded={expanded}
+          selected={selected}
+          onNodeToggle={handleToggle}
+          onNodeSelect={handleSelect}
+          multiSelect
+        >
+          {isLoading ? <p>Loading</p> : processTree(tree)}
+        </TreeView>
+      </div>
     </div>
   );
 }
