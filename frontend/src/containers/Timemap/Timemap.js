@@ -4,9 +4,12 @@ import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
+import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 
 function Timemap() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
+  const [SelectedMinTime, setSelectedMinTime] = useState(-3000);
+  const [SelectedMaxTime, setSelectedMaxTime] = useState(1000);
 
   return (
     <div className="timemap">
@@ -26,9 +29,19 @@ function Timemap() {
             SelectedPeriod={SelectedPeriod}
             rootName={"Periods"}
           />
+          <TimesliderFacet
+            setSelectedMinTime={setSelectedMinTime}
+            setSelectedMaxTime={setSelectedMaxTime}
+            SelectedMinTime={SelectedMinTime}
+            SelectedMaxTime={SelectedMaxTime}
+          />
         </div>
         <div>
-          <MapContainer selectedPeriod={SelectedPeriod} />
+          <MapContainer
+            selectedPeriod={SelectedPeriod}
+            SelectedMinTime={SelectedMinTime}
+            SelectedMaxTime={SelectedMaxTime}
+          />
         </div>
       </div>
       <Footer />

@@ -6,9 +6,8 @@ import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
-import SliderTest from "./containers/Timemap/SliderTest";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import RangeSlider from "./components/Timeline/RangeSlider/RangeSlider";
+import Timeslider from "./components/Timeslider/Timeslider";
 
 function App() {
   return (
@@ -25,11 +24,8 @@ function App() {
             <Route exact path="/timemap">
               <Timemap />
             </Route>
-            <Route exact path="/slider">
-              <SliderTest />
-            </Route>
-            <Route exact path="/rangeslider">
-              <RangeSlider />
+            <Route exact path="/timeslider">
+              <Timeslider />
             </Route>
             <Route path="/articles">
               <TitleIndex />

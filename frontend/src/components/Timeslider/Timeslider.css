@@ -1,0 +1,75 @@
+.timeslider {
+  width: 90%;
+  margin-left: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.timeslider__inputs #timesliderInput__min,
+.timeslider__inputs #timesliderInput__max {
+  border: 1px solid #bbb;
+  padding: 5px;
+  text-align: center;
+  width: 75px;
+}
+
+.timeslider__inputs {
+  display: flex;
+  flex-flow: row;
+  width: 100vw;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#timeslider__root {
+  color: var(--ueeGreen02);
+  height: 3px;
+  padding: 13px 0;
+}
+
+#timeslider__root .MuiSlider-rail {
+  color: #bbb;
+  height: 3px;
+  opacity: 1;
+}
+
+#timeslider__root .MuiSlider-mark {
+  height: 15px;
+  color: #bbb;
+  bottom: 7px;
+}
+
+#timeslider__root .MuiSlider-markLabel {
+  top: 30px;
+}
+
+.MuiSlider-markActive {
+  height: 15px;
+  bottom: 7px;
+  color: #bbb;
+}
+
+#timeslider__root .MuiSlider-track {
+  color: var(--ueeGreen02);
+  height: 5px;
+}
+
+#timeslider__handles {
+  color: var(--ueeGreen02);
+  height: 27px;
+  width: 27px;
+  background-color: #fff;
+  border: 1px solid var(--ueeGreen02);
+  margin-top: -12px;
+  margin-left: -13px;
+  box-shadow: #ebebeb 0 2px 2px;
+}
+
+#timeslider__handles .bar {
+  height: 9px;
+  width: 1px;
+  background-color: var(--ueeGreen02);
+  margin-left: 1px;
+  margin-right: 1px;
+}
