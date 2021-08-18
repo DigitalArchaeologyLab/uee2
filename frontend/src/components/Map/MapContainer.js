@@ -36,7 +36,12 @@ function MapContainer(props) {
       {isLoading ? (
         <p className="loadingMap">Loading</p>
       ) : (
-        <Map activities={Activities} selectedPeriod={props.selectedPeriod} />
+        <Map
+          activities={Activities}
+          SelectedPeriod={props.SelectedPeriod}
+          SelectedMinTime={props.SelectedMinTime}
+          SelectedMaxTime={props.SelectedMaxTime}
+        />
       )}
     </div>
   );

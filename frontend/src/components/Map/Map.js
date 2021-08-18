@@ -48,25 +48,27 @@ function Map(props) {
   // add markers to layer filtered by periods selected
   useEffect(() => {
     let filteredLocations = [];
+    layerRef.current.clearLayers();
+
+    // filter locations based on the selected period
     const filterLocations = (activities) => {
       // show all of the locations unless a period has been selected
-      if (props.selectedPeriod[0] === "All") {
+      if (props.SelectedPeriod[0] === "All") {
         filteredLocations.push(...activities);
       } else {
         // filter based on the selected period
         activities.forEach((activity) => {
           if (
-            String(activity.startPeriod) === String(props.selectedPeriod) ||
-            String(activity.endPeriod) === String(props.selectedPeriod)
+            String(activity.startPeriod) === String(props.SelectedPeriod) ||
+            String(activity.endPeriod) === String(props.SelectedPeriod)
           ) {
             filteredLocations.push(activity);
           }
         });
       }
     };
-
-    layerRef.current.clearLayers();
     filterLocations(props.activities);
+
     filteredLocations.forEach((activity) => {
       const latitude = parseFloat(activity.associatedLocation[0].lat);
       const longitude = parseFloat(activity.associatedLocation[0].lon);
@@ -75,7 +77,7 @@ function Map(props) {
 
       L.marker(latlng, { title: title }).addTo(layerRef.current);
     });
-  }, [ props.activities, props.selectedPeriod]);
+  }, [props.activities, props.SelectedPeriod]);
 
   return (
     <div className="timemap__map">
