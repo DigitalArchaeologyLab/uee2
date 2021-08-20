@@ -1,7 +1,8 @@
-export function filterActivitiesByPeriod(activities, selectedPeriods, activityArray) {
-  // show all of the locations unless a period has been selected
-  if (selectedPeriods[0] === "All") {
-    activityArray.push(...activities);
+export function filterActivitiesByPeriod(activities, selectedPeriods, filteredActivityArray) {
+
+  // show all of the locations if no other facets have been applied and no periods have been selected
+  if (filteredActivityArray.length === 0 && selectedPeriods[0] === "All") {
+    filteredActivityArray.push(...activities);
   } else {
     // filter based on the selected period
     activities.forEach((activity) => {
@@ -10,9 +11,9 @@ export function filterActivitiesByPeriod(activities, selectedPeriods, activityAr
         String(activity.startPeriod) === String(selectedPeriods) ||
         String(activity.endPeriod) === String(selectedPeriods)
       ) {
-        activityArray.push(activity);
+        filteredActivityArray.push(activity);
       }
     });
   }
-  return activityArray
+  return filteredActivityArray
 };
