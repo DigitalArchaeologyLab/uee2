@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { parseTree } from "../../utils/parseTree";
+import React from "react";
+// import axios from "axios";
+// import { parseTree } from "../../utils/parseTree";
 import Timeslider from "./Timeslider";
 
 function TimesliderFacet(props) {
-  const [isLoading, setLoading] = useState(true);
-  const [expanded, setExpanded] = useState(["0"]);
-  const [selected, setSelected] = useState([]);
-  const [tree, setTree] = useState([
-    {
-      id: 0,
-      name_eng: "Periods",
-      path: "0000",
-      depth: 0,
-      numchild: 0,
-      start: 0,
-      end: 0,
-    },
-  ]);
+  // const [isLoading, setLoading] = useState(true);
+  // const [expanded, setExpanded] = useState(["0"]);
+  // const [selected, setSelected] = useState([]);
+  // const [tree, setTree] = useState([
+  //   {
+  //     id: 0,
+  //     name_eng: "Periods",
+  //     path: "0000",
+  //     depth: 0,
+  //     numchild: 0,
+  //     start: 0,
+  //     end: 0,
+  //   },
+  // ]);
+
 
   // useEffect(() => {
   //   async function getNodes() {
@@ -44,7 +45,12 @@ function TimesliderFacet(props) {
         <h2>Time range</h2>
       </div>
       <div className="slider__slider">
-        <Timeslider />
+        <Timeslider
+          setSelectedMinTime={props.setSelectedMinTime}
+          setSelectedMaxTime={props.setSelectedMaxTime}
+          SelectedMinTime={props.SelectedMinTime}
+          SelectedMaxTime={props.SelectedMaxTime}
+        />
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import { filterActivitiesByPeriod } from "../../utils/filterActivitiesByPeriod";
+import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -47,27 +49,18 @@ function Map(props) {
 
   // add markers to layer filtered by periods selected
   useEffect(() => {
-    let filteredLocations = [];
-    const filterLocations = (activities) => {
-      // show all of the locations unless a period has been selected
-      if (props.selectedPeriod[0] === "All") {
-        filteredLocations.push(...activities);
-      } else {
-        // filter based on the selected period
-        activities.forEach((activity) => {
-          if (
-            String(activity.startPeriod) === String(props.selectedPeriod) ||
-            String(activity.endPeriod) === String(props.selectedPeriod)
-          ) {
-            filteredLocations.push(activity);
-          }
-        });
-      }
-    };
-
+    let filteredActivities = [];
     layerRef.current.clearLayers();
-    filterLocations(props.activities);
-    filteredLocations.forEach((activity) => {
+
+    // filter list of activities based on selections from period facet
+    filteredActivities = filterActivitiesByPeriod(
+      props.activities,
+      props.SelectedPeriod,
+      filteredActivities
+    );
+
+    // add locations to map based on filtered activities
+    filteredActivities.forEach((activity) => {
       const latitude = parseFloat(activity.associatedLocation[0].lat);
       const longitude = parseFloat(activity.associatedLocation[0].lon);
       const latlng = { lat: latitude, lng: longitude };
@@ -75,7 +68,12 @@ function Map(props) {
 
       L.marker(latlng, { title: title }).addTo(layerRef.current);
     });
-  }, [ props.activities, props.selectedPeriod]);
+  }, [
+    props.activities,
+    props.SelectedPeriod,
+    props.SelectedMinTime,
+    props.SelectedMaxTime,
+  ]);
 
   return (
     <div className="timemap__map">

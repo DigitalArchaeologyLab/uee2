@@ -38,7 +38,7 @@ function Timemap() {
         </div>
         <div>
           <MapContainer
-            selectedPeriod={SelectedPeriod}
+            SelectedPeriod={SelectedPeriod}
             SelectedMinTime={SelectedMinTime}
             SelectedMaxTime={SelectedMaxTime}
           />
