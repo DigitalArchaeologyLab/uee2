@@ -50,12 +50,12 @@ function Timeslider(props) {
   // need to add logic to process BCE (and CE) values or limit to integers
   const handleMinInputChange = (event) => {
     setValue([event.target.value === "" ? "" : event.target.value, value[1]]);
-    props.setSelectedMinTime(event.target.value);
+    props.setSelectedMinTime(parseInt(event.target.value));
   };
 
   const handleMaxInputChange = (event) => {
     setValue([value[0], event.target.value === "" ? "" : event.target.value]);
-    props.setSelectedMaxTime(event.target.value);
+    props.setSelectedMaxTime(parseInt(event.target.value));
   };
 
   const handleBlur = () => {

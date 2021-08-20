@@ -7,6 +7,7 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { filterActivitiesByPeriod } from "../../utils/filterActivitiesByPeriod";
+import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -52,7 +53,11 @@ function Map(props) {
     layerRef.current.clearLayers();
 
     // filter list of activities based on selections from period facet
-    filteredActivities = filterActivitiesByPeriod(props.activities, props.SelectedPeriod, filteredActivities)
+    filteredActivities = filterActivitiesByPeriod(
+      props.activities,
+      props.SelectedPeriod,
+      filteredActivities
+    );
 
     // add locations to map based on filtered activities
     filteredActivities.forEach((activity) => {
@@ -63,7 +68,12 @@ function Map(props) {
 
       L.marker(latlng, { title: title }).addTo(layerRef.current);
     });
-  }, [props.activities, props.SelectedPeriod]);
+  }, [
+    props.activities,
+    props.SelectedPeriod,
+    props.SelectedMinTime,
+    props.SelectedMaxTime,
+  ]);
 
   return (
     <div className="timemap__map">
