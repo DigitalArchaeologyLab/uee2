@@ -1,7 +1,7 @@
 export function filterActivitiesByPeriod(activities, selectedPeriods, filteredActivityArray) {
 
-  // show all of the locations if no other facets have been applied and no periods have been selected
-  if (filteredActivityArray.length === 0 && selectedPeriods[0] === "All") {
+  // show all of the locations if no periods have been selected
+  if (selectedPeriods[0] === "All") {
     filteredActivityArray.push(...activities);
   } else {
     // filter based on the selected period

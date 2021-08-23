@@ -44,7 +44,8 @@ function Timeslider(props) {
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
-    // add logic to process left and right values in order to update props
+    props.setSelectedMinTime(newValue[0]);
+    props.setSelectedMaxTime(newValue[1]);
   };
 
   // need to add logic to process BCE (and CE) values or limit to integers
