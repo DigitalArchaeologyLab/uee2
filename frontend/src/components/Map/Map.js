@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster.js";
@@ -24,6 +24,9 @@ const style = {
 function Map(props) {
   // create the basic map structure
   const mapRef = useRef(null);
+  const [FilteredActivities, setFilteredActivities] = useState(
+    props.activities
+  );
 
   useEffect(() => {
     mapRef.current = L.map("map", {
@@ -49,18 +52,40 @@ function Map(props) {
 
   // add markers to layer filtered by periods selected
   useEffect(() => {
-    let filteredActivities = [];
-    layerRef.current.clearLayers();
-
+    
     // filter list of activities based on selections from period facet
-    filteredActivities = filterActivitiesByPeriod(
+    let activitiesFilteredByPeriod = [];
+    activitiesFilteredByPeriod = filterActivitiesByPeriod(
       props.activities,
       props.SelectedPeriod,
-      filteredActivities
+      activitiesFilteredByPeriod
     );
 
+    // filter list of activities based on selections from time slider & inputs
+    let activitiesFilteredByTime = [];
+    activitiesFilteredByTime = filterActivitiesByTime(
+      props.activities,
+      props.SelectedMinTime,
+      props.SelectedMaxTime,
+      activitiesFilteredByTime
+    );
+
+    // join filtered activities into array with only unique activties
+    let joinedActivities = [
+      ...new Set([...activitiesFilteredByPeriod, ...activitiesFilteredByTime]),
+    ];
+    setFilteredActivities(joinedActivities);
+  }, [
+    props.activities,
+    props.SelectedPeriod,
+    props.SelectedMinTime,
+    props.SelectedMaxTime,
+  ]);
+
+  useEffect(() => {
+    layerRef.current.clearLayers();
     // add locations to map based on filtered activities
-    filteredActivities.forEach((activity) => {
+    FilteredActivities.forEach((activity) => {
       const latitude = parseFloat(activity.associatedLocation[0].lat);
       const longitude = parseFloat(activity.associatedLocation[0].lon);
       const latlng = { lat: latitude, lng: longitude };
@@ -68,12 +93,7 @@ function Map(props) {
 
       L.marker(latlng, { title: title }).addTo(layerRef.current);
     });
-  }, [
-    props.activities,
-    props.SelectedPeriod,
-    props.SelectedMinTime,
-    props.SelectedMaxTime,
-  ]);
+  });
 
   return (
     <div className="timemap__map">

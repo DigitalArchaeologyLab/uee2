@@ -3,10 +3,9 @@ export function filterActivitiesByTime(
   selectedMinTime,
   selectedMaxTime,
   filteredActivityArray,
-  selectedPeriods,
 ) {
-  // show all of the locations if no other facets have been applied and no times have been selected
-  if (filteredActivityArray.length === 0 && selectedMinTime === -3000 && selectedMaxTime === 1000) {
+  // show all of the locations if no times have been selected
+  if (selectedMinTime === -3000 && selectedMaxTime === 1000) {
     filteredActivityArray.push(...activities);
   } else {
     // filter based on the selected times
@@ -22,6 +21,5 @@ export function filterActivitiesByTime(
       }
     });
   }
-  console.log(filteredActivityArray);
   return filteredActivityArray;
 }
