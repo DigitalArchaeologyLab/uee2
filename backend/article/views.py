@@ -5,8 +5,9 @@ from .serializers import (
     ArticleSerializer,
     KeywordSerializer,
     SubjectAreaSerializer,
+    ReferenceSerializer,
 )
-from .models import Article, Keyword, SubjectArea
+from .models import Article, Keyword, SubjectArea, Reference
 
 # import the logging library, get or create an instance of a logger
 import logging
@@ -85,3 +86,8 @@ class KeywordView(viewsets.ReadOnlyModelViewSet):
 class SubjectAreaView(viewsets.ReadOnlyModelViewSet):
     serializer_class = SubjectAreaSerializer
     queryset = SubjectArea.objects.all()
+
+
+class ReferenceView(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ReferenceSerializer
+    queryset = Reference.objects.all()

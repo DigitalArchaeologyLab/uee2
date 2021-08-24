@@ -47,3 +47,13 @@ class SubjectAreaAdmin(TreeAdmin):
 
 
 admin.site.register(SubjectArea, SubjectAreaAdmin)
+
+
+from .models import Reference
+
+
+class ReferenceAdmin(admin.ModelAdmin):
+    list_display = ("author", "year")
+
+
+admin.site.register(Reference, ReferenceAdmin)
