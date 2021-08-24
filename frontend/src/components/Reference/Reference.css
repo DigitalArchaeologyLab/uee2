@@ -1,6 +1,7 @@
 .ref {
   display: flex;
   flex-flow: column wrap;
+  padding-bottom: 10px;
 }
 
 .ref__author {
