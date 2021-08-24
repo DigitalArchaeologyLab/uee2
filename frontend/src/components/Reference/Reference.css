@@ -1,0 +1,19 @@
+.ref {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.ref__author {
+  display: flex;
+}
+
+.ref__entry {
+  display: flex;
+  flex-flow: row wrap;
+  padding-left: 10px;
+}
+
+.ref__year {
+  padding-right: 20px;
+}
+

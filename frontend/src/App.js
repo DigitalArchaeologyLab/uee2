@@ -8,6 +8,7 @@ import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Timeslider from "./components/Timeslider/Timeslider";
+import Reference from "./components/Reference/Reference";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/timeslider">
               <Timeslider />
+            </Route>
+            <Route exact path="/references">
+              <Reference />
             </Route>
             <Route path="/articles">
               <TitleIndex />
