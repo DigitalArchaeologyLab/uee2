@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ArticleList.css";
-// import { Link, useRouteMatch } from "react-router-dom";
 import ArticleSummary from "../ArticleSummary/ArticleSummary";
 
 function ArticleList(props) {
@@ -20,18 +19,18 @@ function ArticleList(props) {
     },
   ]);
 
-  const refreshList = () => {
-    axios
-      .get("/api/articles/")
-      .then((res) => setArticleList(res.data))
-      .catch((err) => console.log(err));
-  };
+  async function getArticleList() {
+    try {
+      const response = await axios.get("/api/articles/");
+      setArticleList(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   useEffect(() => {
-    refreshList();
+    getArticleList();
   }, []);
-
-  // let { path, url } = useRouteMatch();
 
   return (
     <div>

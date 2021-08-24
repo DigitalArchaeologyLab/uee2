@@ -25,13 +25,14 @@ function Article(props) {
   let { id } = useParams();
 
   useEffect(() => {
-
-    const getArticle = () => {
-      axios
-        .get(`/api/articles/${id}`)
-        .then((res) => setArticle(res.data))
-        .catch((err) => console.log(err));
-    };
+    async function getArticle() {
+      try {
+        const response = await axios.get(`/api/articles/${id}`);
+        await setArticle(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
     getArticle();
   }, [id]);
 
