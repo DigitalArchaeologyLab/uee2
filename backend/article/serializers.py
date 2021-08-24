@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Article, Keyword, SubjectArea
+from .models import Article, Keyword, SubjectArea, Reference
 
 
 class SubjectAreaSerializer(serializers.ModelSerializer):
@@ -46,3 +46,9 @@ class KeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Keyword
         fields = ["id", "name_eng", "name_ar"]
+
+
+class ReferenceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reference
+        fields = ["id", "author", "year", "publication_info"]

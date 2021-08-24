@@ -72,3 +72,13 @@ class SubjectArea(MP_Node):
 
     def __str__(self):
         return self.name_eng
+
+
+class Reference(models.Model):
+    id = models.AutoField(primary_key=True)
+    author = models.CharField("Author(s)", max_length=255)
+    year = models.CharField("Year", max_length=20)
+    publication_info = models.TextField("Publication information", max_length=500)
+
+    def __str__(self):
+        return "%s (%s)" % (self.author, self.year)
