@@ -51,4 +51,4 @@ class KeywordSerializer(serializers.ModelSerializer):
 class ReferenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reference
-        fields = ["id", "author", "year", "publication_info"]
+        fields = ["id", "author", "year", "publication_info", "url"]

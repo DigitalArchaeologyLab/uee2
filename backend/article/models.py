@@ -79,6 +79,7 @@ class Reference(models.Model):
     author = models.CharField("Author(s)", max_length=255)
     year = models.CharField("Year", max_length=20)
     publication_info = models.TextField("Publication information", max_length=500)
+    url = models.URLField("Persistent URL", null=True, blank=True)
 
     def __str__(self):
         return "%s (%s)" % (self.author, self.year)
