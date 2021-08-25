@@ -49,6 +49,8 @@ class KeywordSerializer(serializers.ModelSerializer):
 
 
 class ReferenceSerializer(serializers.ModelSerializer):
+    article = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Reference
-        fields = ["id", "author", "year", "publication_info", "url"]
+        fields = ["id", "author", "year", "publication_info", "url", "article"]
