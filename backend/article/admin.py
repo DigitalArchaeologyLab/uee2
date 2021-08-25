@@ -2,6 +2,7 @@ from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
+from import_export.admin import ImportExportModelAdmin
 
 ### Basic customization of the admin interface ###
 admin.site.site_header = "UCLA Encyclopedia of Egyptology - Admin"
@@ -52,7 +53,7 @@ admin.site.register(SubjectArea, SubjectAreaAdmin)
 from .models import Reference
 
 
-class ReferenceAdmin(admin.ModelAdmin):
+class ReferenceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ("author", "year")
 
 

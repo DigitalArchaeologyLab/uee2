@@ -54,7 +54,7 @@ function ReferenceList(props) {
     <div>
       <div className="refList">
         {ReferenceList.map((reference) => (
-          <div>
+          <div className="refList_reference" key={reference.id}>
             <Reference
               id={reference.id}
               author={reference.author}

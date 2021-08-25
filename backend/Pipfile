@@ -11,6 +11,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 markdown = "*"
 django-treebeard = "*"
+django-import-export = "*"
 
 [dev-packages]
 
