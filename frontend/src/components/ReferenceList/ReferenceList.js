@@ -11,6 +11,7 @@ function ReferenceList(props) {
       year: "",
       publication_info: "",
       url: "",
+      article: [],
     },
   ]);
 
@@ -35,7 +36,11 @@ function ReferenceList(props) {
     async function getRefList() {
       try {
         const response = await axios.get("/api/references/");
-        const sortedReferences = await response.data.sort(sortByAuthorYear);
+        const allReferences = response.data;
+        const articleReferences = allReferences.filter((reference) =>
+          reference.article.includes(parseInt(props.article_id))
+        );
+        const sortedReferences = await articleReferences.sort(sortByAuthorYear);
         setReferenceList(sortedReferences);
       } catch (err) {
         console.error(err);
@@ -51,7 +56,7 @@ function ReferenceList(props) {
         {ReferenceList.map((reference) => (
           <div>
             <Reference
-              ref_id={reference.id}
+              id={reference.id}
               author={reference.author}
               year={reference.year}
               text={reference.publication_info}
