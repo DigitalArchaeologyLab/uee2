@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "./Article.css";
 import ArticleBody from "../../components/ArticleBody/ArticleBody";
 import Frontmatter from "../../components/Frontmatter/Frontmatter";
+import ReferenceList from "../../components/ReferenceList/ReferenceList";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
@@ -40,19 +41,27 @@ function Article(props) {
     <div>
       <Header />
       <div className="article">
-        <Frontmatter
-          article_id={article.id}
-          title_eng={article.title_eng}
-          title_ar={article.title_ar}
-          title_de={article.title_de}
-          title_fr={article.title_fr}
-          authors={article.authors}
-          abstract_eng={article.abstract_eng}
-          abstract_ar={article.abstract_ar}
-          keywords={article.keywords}
-        />
+        <div className="article__frontmatter">
+          <Frontmatter
+            article_id={article.id}
+            title_eng={article.title_eng}
+            title_ar={article.title_ar}
+            title_de={article.title_de}
+            title_fr={article.title_fr}
+            authors={article.authors}
+            abstract_eng={article.abstract_eng}
+            abstract_ar={article.abstract_ar}
+            keywords={article.keywords}
+          />
+        </div>
         <hr></hr>
-        <ArticleBody body={article.body} />
+        <div className="article__body">
+          <ArticleBody body={article.body} />
+        </div>
+        <div className="article__refs">
+          <h2>References</h2>
+          <ReferenceList article_id={id} />
+        </div>
       </div>
       <Footer />
     </div>
