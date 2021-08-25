@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "corsheaders",
     # hierarchical support through Django Treebeard
     "treebeard",
+    # import and export functionality
+    "import_export",
 ]
 
 MIDDLEWARE = [
