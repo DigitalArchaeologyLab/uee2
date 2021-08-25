@@ -37,10 +37,9 @@ function ReferenceList(props) {
       try {
         const response = await axios.get("/api/references/");
         const allReferences = response.data;
-        const articleReferences = allReferences.filter(
-          (reference) => reference.article[0] == props.article_id
+        const articleReferences = allReferences.filter((reference) =>
+          reference.article.includes(parseInt(props.article_id))
         );
-        console.log(props.id);
         const sortedReferences = await articleReferences.sort(sortByAuthorYear);
         setReferenceList(sortedReferences);
       } catch (err) {
