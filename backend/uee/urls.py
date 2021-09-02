@@ -4,9 +4,11 @@ from rest_framework import routers
 from article import views
 
 from timemap.urls import router as timemapRouter
+from glossary.urls import router as glossaryRouter
 
 router = routers.DefaultRouter()
 router.registry.extend(timemapRouter.registry)
+router.registry.extend(glossaryRouter.registry)
 router.register(r"articles", views.ArticleView, "article")
 router.register(r"keywords", views.KeywordView, "keyword")
 router.register(r"references", views.ReferenceView, "references")
@@ -21,5 +23,4 @@ urlpatterns = [
     path("markdownx/", include("markdownx.urls")),
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls")),
-    path('treewidget/', include('treewidget.urls')),
 ]
