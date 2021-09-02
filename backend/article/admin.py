@@ -4,6 +4,7 @@ from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
 from import_export.admin import ImportExportModelAdmin
 
+
 ### Basic customization of the admin interface ###
 admin.site.site_header = "UCLA Encyclopedia of Egyptology - Admin"
 admin.site.site_title = "UEE Admin"
@@ -18,14 +19,16 @@ from .models import Article
 
 class ArticleAdmin(MarkdownxModelAdmin):
     list_display = ("title_eng", "title_ar", "status")
+
     fieldsets = [
-        ("Subject Area", {"fields": ["subject_area"]}),
+        ("Subject Area", {"fields": ["treeWidgetTest", "subject_area"]}),
         ("Title", {"fields": ["title_eng", "title_ar", "title_fr", "title_de"]}),
         ("Author(s)", {"fields": ["authors"]}),
         ("Abstracts", {"fields": ["abstract_eng", "abstract_ar"]}),
         ("Timemap", {"fields": ["location"]}),
         ("Keywords", {"fields": ["keywords"]}),
         ("Article body", {"fields": ["body"]}),
+        ("Status", {"fields": ["status"]}),
     ]
 
 

@@ -80,6 +80,13 @@
             "index": "pypi",
             "version": "==4.5.1"
         },
+        "django-treewidget": {
+            "hashes": [
+                "sha256:3fe572b6b7c8edcb95158c56507b52bff7974f2676c85bb7f2f66b5291366ef9"
+            ],
+            "index": "pypi",
+            "version": "==0.4.0"
+        },
         "djangorestframework": {
             "hashes": [
                 "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf",
