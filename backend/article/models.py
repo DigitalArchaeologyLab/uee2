@@ -37,7 +37,6 @@ class Article(models.Model):
     location = models.ManyToManyField(Location)
     body = MarkdownxField()
     transient_subject_ancestors = []
-    treeWidgetTest = TreeManyToManyField("SubjectArea", blank=True, related_name='widgetTest')
 
     def __str__(self):
         return "%s" % (self.title_eng)
