@@ -6,18 +6,24 @@
   href="{% static 'article/markdownx.css' %}"
 />
 
-<script type="text/javascript" src="{% static 'article/editor.js' %}"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 <div class="markdownx">
   <div class="editorToolbar">
+    <script type="text/javascript" src="{% static 'article/editor.js' %}"></script>
+
       <button class="editorButton" id="tagLocationButton" type="button" onClick="tagLocation()">
         Tag Location
       </button>
+
+    <script type="text/javascript" src="{% static 'article/insertTerm.js' %}"></script>
+
+      <button class="editorButton" id="tagTermButton" type="button" onClick="tagTerm()">
+        Tag Glossary Term
+      </button>
     </div>
 
-    <!-- Popup modal to select what is inserted-->
+    <!-- Location popup modal to select what is inserted-->
     <div id="tagLocationModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -26,16 +32,6 @@
           <script>
             prepSelectOptions();
           </script>
-
-          <!-- IF USED, WOULD NEED TO REFRESH SELECT LIST AFTER NEW TERM IS ADDED -->
-
-          <!-- <a
-            class="related-widget-wrapper-link add-related"
-            id="add_id_keywords"
-            href="/admin/article/keyword/add/?_to_field=id&amp;_popup=1"
-            title="Add another keyword"
-            ><img src="/static/admin/img/icon-addlink.svg" alt="Add"
-          /></a> -->
 
           <div class="help" id="modalHelp">
             Hold down “Control”, or “Command” on a Mac, to select more than one.
@@ -49,6 +45,31 @@
         </div>
       </div>
     </div>
+
+    <!-- Glossary Term popup modal to select what is inserted-->
+    <div id="tagTermModal" class="modal">
+      <div class="modal-content">
+        <span class="closeTermModal">&times;</span>
+        <div>
+          <select name="terms" id="id_terms_modal" multiple=""></select>
+          <script>
+            prepTermSelectOptions();
+          </script>
+
+          <div class="help" id="modalHelp">
+            Hold down “Control”, or “Command” on a Mac, to select more than one.
+          </div>
+
+          <div>
+            <button id="insert" type="button" onClick="insertTermSelections()">
+              Insert
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     {% include 'django/forms/widgets/textarea.html' %}
     <p></p>
