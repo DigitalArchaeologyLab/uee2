@@ -3,6 +3,7 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from treebeard.mp_tree import MP_Node
 from timemap.models import Location
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Author(models.Model):
@@ -78,7 +79,7 @@ class Reference(models.Model):
     id = models.AutoField(primary_key=True)
     author = models.CharField("Author(s)", max_length=255)
     year = models.CharField("Year", max_length=20)
-    publication_info = models.TextField("Publication information", max_length=500)
+    publication_info = RichTextField("Publication information")
     url = models.URLField("Persistent URL", null=True, blank=True)
     article = models.ManyToManyField("Article", blank=True)
 

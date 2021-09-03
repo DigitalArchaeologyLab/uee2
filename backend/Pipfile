@@ -12,6 +12,7 @@ django-cors-headers = "*"
 markdown = "*"
 django-treebeard = "*"
 django-import-export = "*"
+django-ckeditor = "*"
 
 [dev-packages]
 

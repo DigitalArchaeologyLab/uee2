@@ -13,7 +13,7 @@ function Reference(props) {
         <div className="ref__year">{props.year}</div>
         <div className="ref__info">
           <div className="ref__info__text">
-            {props.text}
+          <div dangerouslySetInnerHTML={{__html: props.text}} />
           </div>
           <div className="ref__info__url">
             <a href={props.url}>
