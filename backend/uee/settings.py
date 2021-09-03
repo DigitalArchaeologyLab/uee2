@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "treebeard",
     # import and export functionality
     "import_export",
+    # rich text formatting
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
