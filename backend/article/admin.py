@@ -21,7 +21,7 @@ class ArticleAdmin(MarkdownxModelAdmin):
     list_display = ("title_eng", "title_ar", "status")
 
     fieldsets = [
-        ("Subject Area", {"fields": ["treeWidgetTest", "subject_area"]}),
+        ("Subject Area", {"fields": ["subject_area"]}),
         ("Title", {"fields": ["title_eng", "title_ar", "title_fr", "title_de"]}),
         ("Author(s)", {"fields": ["authors"]}),
         ("Abstracts", {"fields": ["abstract_eng", "abstract_ar"]}),
