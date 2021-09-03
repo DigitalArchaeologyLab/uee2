@@ -3,7 +3,6 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from treebeard.mp_tree import MP_Node
 from timemap.models import Location
-from treewidget.fields import TreeManyToManyField
 
 # Create your models here.
 class Author(models.Model):
@@ -37,7 +36,6 @@ class Article(models.Model):
     location = models.ManyToManyField(Location)
     body = MarkdownxField()
     transient_subject_ancestors = []
-    treeWidgetTest = TreeManyToManyField("SubjectArea", blank=True, related_name='widgetTest')
 
     def __str__(self):
         return "%s" % (self.title_eng)
