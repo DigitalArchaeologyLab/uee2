@@ -3,7 +3,6 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from treebeard.mp_tree import MP_Node
 from timemap.models import Location
-from treewidget.fields import TreeManyToManyField
 
 # Create your models here.
 class Author(models.Model):
