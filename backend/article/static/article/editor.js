@@ -1,19 +1,3 @@
-// function addTerm() {
-//   if (id_body.selectionStart == id_body.selectionEnd) {
-//     return; // because nothing is selected
-//   }
-
-//   let selected = id_body.value.slice(
-//     id_body.selectionStart,
-//     id_body.selectionEnd
-//   );
-
-//   id_body.setRangeText(
-//     `<Tooltip title="Insert definition from database" classes={tooltip} interactive arrow >${selected}</Tooltip>`
-//   );
-//   return false;
-// }
-
 function tagLocation() {
   // Get the modal
   var modal = document.getElementById("tagLocationModal");
@@ -71,7 +55,6 @@ function insertSelections() {
   const selectedValues = [].filter
     .call(selectedLocations.options, (option) => option.selected)
     .map((option) => option.text);
-  console.log(selectedValues);
   const selections = selectedValues.join("; ");
 
   id_body.setRangeText(
