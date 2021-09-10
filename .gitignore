@@ -1,5 +1,4 @@
 __pycache__
-migrations
 backend/data_volume
 mysql_dump
 .env
