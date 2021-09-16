@@ -10,7 +10,7 @@
 
 <div class="markdownx">
   <div class="editorToolbar">
-    <script type="text/javascript" src="{% static 'article/editor.js' %}"></script>
+    <script type="text/javascript" src="{% static 'article/insertLocation.js' %}"></script>
 
       <button class="editorButton" id="tagLocationButton" type="button" onClick="tagLocation()">
         Tag Location
@@ -30,7 +30,7 @@
         <div>
           <select name="locations" id="id_locations_modal" multiple=""></select>
           <script>
-            prepSelectOptions();
+            prepLocationSelectOptions();
           </script>
 
           <div class="help" id="modalHelp">
@@ -38,7 +38,7 @@
           </div>
 
           <div>
-            <button id="insert" type="button" onClick="insertSelections()">
+            <button id="insert" type="button" onClick="insertLocationSelections()">
               Insert
             </button>
           </div>
