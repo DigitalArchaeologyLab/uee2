@@ -20,16 +20,16 @@ function ReferenceList(props) {
       const authorA = a.author.toUpperCase();
       const authorB = b.author.toUpperCase();
 
-      if (authorA > authorB) {
+      // handle diacritics in authors
+      if (new Intl.Collator().compare(authorA, authorB) > 0) {
         return 1;
-      } else if (authorA < authorB) {
+      } else if (new Intl.Collator().compare(authorA, authorB) < 0) {
         return -1;
+        // handle year of publication
       } else if (a.year > b.year) {
         return 1;
       } else if (a.year < b.year) {
         return -1;
-      } else {
-        return 0;
       }
     };
 
