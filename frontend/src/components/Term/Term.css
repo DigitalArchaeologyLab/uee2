@@ -1,0 +1,12 @@
+.term__name {
+  font-weight: 600;
+  color: var(--ueeRed01);
+}
+
+.term__def {
+  font-weight: 300;
+}
+
+.term__spacer {
+  margin-bottom: 8px;
+}

@@ -46,7 +46,7 @@ function ArticleList(props) {
               abstract_ar={article.abstract_ar}
               keywords={article.keywords}
             />
-            <hr></hr>
+            <hr className="articleList__hr"></hr>
           </div>
         ))}
       </div>

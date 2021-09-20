@@ -15,7 +15,6 @@
 }
 
 .welcome__tagline {
-
 }
 
 .subjects h4 {
@@ -64,17 +63,12 @@
   padding: 5px 0px;
   font-family: "Open Sans Condensed", sans-serif;
   font-size: 1.3rem;
-  width: calc(100vw/5);
+  width: calc(100vw / 5);
   margin: 0;
 }
 
 .tiles_title img {
   width: 20vw;
-}
-
-hr {
-  border: 0.5px solid #8b9ca5;
-  width: 100%;
 }
 
 h1 {
@@ -88,4 +82,10 @@ a {
 
 p {
   margin: 5px 0px;
+}
+
+hr {
+  border: 1px solid var(--ueeBlue03);
+  width: 50%;
+  margin: 50px auto;
 }

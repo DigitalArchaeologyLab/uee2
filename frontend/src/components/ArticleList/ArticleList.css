@@ -3,3 +3,7 @@
   width: 70vw;
   margin: 0 auto;
 }
+
+.articleList__hr {
+  border-top: 1px solid var(--ueeGreen04)
+}
