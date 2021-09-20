@@ -6,6 +6,7 @@ import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
+import Glossary from "./containers/Glossary/Glossary";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path="/articles">
               <TitleIndex />
+            </Route>
+            <Route path="/glossary">
+              <Glossary />
             </Route>
             <Route path="/:id">
               <Article />
