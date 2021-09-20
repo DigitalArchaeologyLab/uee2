@@ -1,0 +1,23 @@
+.glossary {
+  width: 70vw;
+  padding-top: 125px;
+  margin: 0 auto;
+  margin-bottom: 325px;
+}
+
+.glossary__title h1 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  color: var(--ueeGreen01);
+  text-transform: uppercase;
+}
+
+.glossary__desc {
+  padding-bottom: 20px;
+}
+
+.terms h2 {
+  font-weight: 300;
+  color: var(--ueeRed01);
+  text-transform: uppercase;
+}
