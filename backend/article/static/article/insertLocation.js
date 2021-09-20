@@ -31,7 +31,7 @@ async function getLocations() {
   return locations;
 }
 
-function prepSelectOptions() {
+function prepLocationSelectOptions() {
   getLocations().then((elements) => {
     let select = document.getElementById("id_locations_modal");
     for (let el of elements) {
@@ -43,7 +43,7 @@ function prepSelectOptions() {
   });
 }
 
-function insertSelections() {
+function insertLocationSelections() {
   let selectedText = id_body.value.slice(
     id_body.selectionStart,
     id_body.selectionEnd
