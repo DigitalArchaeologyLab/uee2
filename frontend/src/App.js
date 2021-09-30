@@ -9,8 +9,8 @@ import Timemap from "./containers/Timemap/Timemap";
 import Glossary from "./containers/Glossary/Glossary";
 import About from "./containers/About/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ImageRecord from "./components/Image/ImageRecord";
 import IFrameTest from "./components/Image/IFrameTest";
+import IIIFImage from "./components/Image/IIIFImage";
 
 function App() {
   return (
@@ -36,15 +36,15 @@ function App() {
             <Route path="/glossary">
               <Glossary />
             </Route>
-            <Route path="/iiif">
-              <ImageRecord />
+            <Route path="/iiif-image">
+              <IIIFImage />
             </Route>
             <Route path="/iiif-iframe">
               <IFrameTest />
             </Route>
-            {/* <Route path="/:id">
+            <Route path="/:id">
               <Article />
-            </Route> */}
+            </Route>
           </Switch>
         </Router>
       </div>
