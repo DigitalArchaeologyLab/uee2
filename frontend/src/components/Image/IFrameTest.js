@@ -1,16 +1,12 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import "./IFrameTest.css";
 
 function IFrameTest(props) {
   return (
     <div>
-      <Header />
       <div className="iiif-iframe">
-        <iframe src="http://localhost/iiif-image" width="95%" height="800px" />
+        <iframe src="http://localhost/iiif-image" width="100%" height="100%" />
       </div>
-      <Footer />
     </div>
   );
 }
