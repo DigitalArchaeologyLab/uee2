@@ -8,7 +8,7 @@ function IFrameTest(props) {
     <div>
       <Header />
       <div className="iiif-iframe">
-        <iframe src="http://localhost/iiif" width="95%" height="800px" />
+        <iframe src="http://localhost/iiif-image" width="95%" height="800px" />
       </div>
       <Footer />
     </div>

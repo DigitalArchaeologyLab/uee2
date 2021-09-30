@@ -10,10 +10,10 @@ function IIIFImage(props) {
       {
         id: "test",
         loadedManifest:
-          "https://iiif.library.ucla.edu/ark%3A%2F21198%2Fzz0026stk8/manifest",
+          "https://iiif.library.ucla.edu/ark%3A%2F21198%2Fzz0026sttw/manifest",
       },
     ],
-    selectedTheme: 'dark',
+    selectedTheme: "dark",
     window: {
       //global window defaults
       allowClose: false, // Configure if windows can be closed or not
@@ -26,9 +26,7 @@ function IIIFImage(props) {
         info: true,
         attribution: true,
       },
-      views: [
-        { key: "single", behaviors: ["individuals"] },
-      ],
+      views: [{ key: "single", behaviors: ["individuals"] }],
     },
     workspaceControlPanel: {
       enabled: false, // Configure if the control panel should be rendered.  Useful if you want to lock the viewer down to only the configured manifests
