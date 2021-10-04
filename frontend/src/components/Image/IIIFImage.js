@@ -10,7 +10,7 @@ function IIIFImage(props) {
       {
         id: "test",
         loadedManifest:
-          "https://iiif.library.ucla.edu/ark%3A%2F21198%2Fzz0026sttw/manifest",
+          "https://iiif.library.ucla.edu/ark%3A%2F21198%2Fzz001dzmd4/manifest",
       },
     ],
     selectedTheme: "dark",
