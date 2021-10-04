@@ -23,21 +23,22 @@ function MediaCard() {
 
   return (
     <div>
-      <SwipeableTemporaryDrawer term={'term'} />
+      <SwipeableTemporaryDrawer term={"term"} />
       <Card style={{ maxWidth: 350 }}>
         <CardActionArea onClick={handleOpen}>
           <CardMedia
             component="img"
             height="100%"
-            image="https://iiif.library.ucla.edu/iiif/2/ark%3A%2F21198%2Fzz0026sttw/full/!200,200/0/default.jpg"
-            alt="Temple of Amun-Ra"
+            image={process.env.PUBLIC_URL + "/elephantine_example.png"}
+            alt="Ram Cemetery at Elephantine"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Temple of Amun-Ra
+              Ram Cemetery at Elephantine
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              3D Visualization of Temple of Amun-Ra, Roman Period
+              Figure 4. The ram cemetery in the temple ofKhnum at Elephantine
+              (view to the North)
             </Typography>
           </CardContent>
         </CardActionArea>
