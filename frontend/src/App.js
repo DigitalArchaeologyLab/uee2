@@ -11,6 +11,7 @@ import About from "./containers/About/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import IFrameTest from "./components/Image/IFrameTest";
 import IIIFImage from "./components/Image/IIIFImage";
+import SwipeableTemporaryDrawer from "./containers/Drawer/Drawer";
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
             </Route>
             <Route path="/iiif-iframe">
               <IFrameTest />
+            </Route>
+            <Route path="/drawer">
+              <SwipeableTemporaryDrawer />
             </Route>
             <Route path="/:id">
               <Article />
