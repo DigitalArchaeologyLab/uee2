@@ -8,6 +8,8 @@ import ReferenceList from "../../components/ReferenceList/ReferenceList";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
+import SwipeableTemporaryDrawer from "../Drawer/Drawer";
+
 function Article(props) {
   const [article, setArticle] = useState({
     id: 0,
@@ -41,6 +43,7 @@ function Article(props) {
     <div>
       <Header />
       <div className="article">
+        
         <div className="article__frontmatter">
           <Frontmatter
             article_id={article.id}
@@ -57,6 +60,7 @@ function Article(props) {
         <hr></hr>
         <div className="article__body">
           <ArticleBody body={article.body} />
+          <SwipeableTemporaryDrawer term={"term"} />
         </div>
         <div className="article__refs">
           <h2>References</h2>

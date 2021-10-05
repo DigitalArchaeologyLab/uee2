@@ -10,8 +10,6 @@ import Typography from "@material-ui/core/Typography";
 import ImageModal from "../Image/ImageModal";
 import IFrameTest from "../Image/IFrameTest";
 
-import SwipeableTemporaryDrawer from "../../containers/Drawer/Drawer";
-
 function MediaCard() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -23,7 +21,6 @@ function MediaCard() {
 
   return (
     <div>
-      <SwipeableTemporaryDrawer term={"term"} />
       <Card style={{ maxWidth: 350 }}>
         <CardActionArea onClick={handleOpen}>
           <CardMedia
