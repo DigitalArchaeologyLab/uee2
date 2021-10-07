@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Markdown from "markdown-to-jsx";
+import marked from "marked";
+
+import "./ArticleBody.css";
 
 import Card from "@material-ui/core/Card";
 import { CardActionArea } from "@material-ui/core";
@@ -51,10 +54,23 @@ function MediaCard() {
 }
 
 function ArticleBody(props) {
+  useEffect(() => {
+    // document.querySelector("span.tag").addEventListener("click", function () {
+    //   alert("query and insert definition/details");
+    // });
+  });
+
+  const getMarkdownText = () => {
+    var rawMarkup = marked(props.body);
+    // run through a sanitizer (rec: DOMPurify)
+    return { __html: rawMarkup };
+  };
+
   return (
     <div className="articleBody">
-      <Markdown children={props.body} />
-      <MediaCard />
+      {/* <Markdown children={props.body} />
+      <MediaCard /> */}
+      <div dangerouslySetInnerHTML={getMarkdownText()} />
     </div>
   );
 }
