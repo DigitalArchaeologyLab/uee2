@@ -9,6 +9,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 import SwipeableTemporaryDrawer from "../Drawer/Drawer";
+import MediaCard from "../../components/Image/ImageCard";
 
 function Article(props) {
   const [article, setArticle] = useState({
@@ -60,6 +61,7 @@ function Article(props) {
         <hr></hr>
         <div className="article__body">
           <ArticleBody body={article.body} />
+          <MediaCard />
           <SwipeableTemporaryDrawer term={"term"} />
         </div>
         <div className="article__refs">
