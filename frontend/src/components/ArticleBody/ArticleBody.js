@@ -4,12 +4,16 @@ import marked from "marked";
 
 import "./ArticleBody.css";
 
-
 function ArticleBody(props) {
   useEffect(() => {
-    // document.querySelector("span.tag").addEventListener("click", function () {
-    //   alert("query and insert definition/details");
-    // });
+    if (document.querySelector("span.taggedLocation") == null) {
+      return;
+    }
+    document
+      .querySelector("span.taggedLocation")
+      .addEventListener("click", function () {
+        alert("query and insert definition/details");
+      });
   });
 
   const getMarkdownText = () => {
