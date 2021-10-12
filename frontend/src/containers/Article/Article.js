@@ -25,6 +25,23 @@ function Article(props) {
     body: "",
     status: "",
   });
+  const [drawerState, setDrawerState] = React.useState({
+    right: false,
+    bottom: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setDrawerState({ ...drawerState, [anchor]: open });
+  };
+
 
   let { id } = useParams();
 
@@ -60,9 +77,9 @@ function Article(props) {
         </div>
         <hr></hr>
         <div className="article__body">
-          <ArticleBody body={article.body} />
+          <ArticleBody body={article.body} toggleDrawer={toggleDrawer} />
           <MediaCard />
-          <SwipeableTemporaryDrawer term={"term"} />
+          <SwipeableTemporaryDrawer term={"Sample term"} definition={"Sample definition"} toggleDrawer={toggleDrawer} drawerState={drawerState} setDrawerState={setDrawerState} />
         </div>
         <div className="article__refs">
           <h2>References</h2>
