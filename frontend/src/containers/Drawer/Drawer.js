@@ -2,43 +2,33 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
+import "./Drawer.css";
 
 function SwipeableTemporaryDrawer(props) {
-  const [state, setState] = React.useState({
-    right: false,
-    bottom: false,
-  });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event &&
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
   return (
     <div>
       <React.Fragment key="right">
-        <Button onClick={toggleDrawer("right", true)}>{props.term}</Button>
+        <Button onClick={props.toggleDrawer("right", true)}>
+          {props.selectedTerm}
+        </Button>
         <SwipeableDrawer
           anchor={"right"}
-          open={state["right"]}
-          onClose={toggleDrawer("right", false)}
-          onOpen={toggleDrawer("right", true)}
+          open={props.drawerState["right"]}
+          onClose={props.toggleDrawer("right", false)}
+          onOpen={props.toggleDrawer("right", true)}
         >
           <Box
             sx={{ width: 250 }}
             role="presentation"
-            onClick={toggleDrawer("right", false)}
-            onKeyDown={toggleDrawer("right", false)}
+            onClick={props.toggleDrawer("right", false)}
+            onKeyDown={props.toggleDrawer("right", false)}
           >
-            <p>{props.term}</p>
-            <p>{"definition"}</p>
+            <div className="drawer__contents">
+              <p>
+                <strong>{props.selectedTerm}</strong>
+              </p>
+              <p>{props.definition}</p>
+            </div>
           </Box>
         </SwipeableDrawer>
       </React.Fragment>

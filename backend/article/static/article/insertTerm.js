@@ -49,18 +49,14 @@ function insertTermSelections() {
     id_body.selectionEnd
   );
 
-  const selectedTerm = document.getElementById("id_terms_modal");
+  // get full list of terms from selection window
+  const termOptions = document.getElementById("id_terms_modal");
   event.preventDefault();
-  // show the selected index
-  const selectedValues = [].filter
-    .call(selectedTerm.options, (option) => option.selected)
-    .map((option) => option.text);
-  const selections = selectedValues.join("; ");
-
-  // can adapt to be only a single term but also need to get the definition
-
+  // get which term was selected
+  const selectedTerm = termOptions.selectedIndex;
+  // embed tag with appropriate term id
   id_body.setRangeText(
-    `<Tooltip title="${selections}" classes={tooltip} interactive arrow >${selectedText}</Tooltip>`
+    `<span class="taggedTerm" id="${selectedTerm}">${selectedText}</span>`
   );
 
   var modal = document.getElementById("tagTermModal");

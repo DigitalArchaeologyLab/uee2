@@ -44,33 +44,31 @@ function prepLocationSelectOptions() {
 }
 
 function insertLocationSelections() {
+  // get the text from the article body that has been highlighted
   let selectedText = id_body.value.slice(
     id_body.selectionStart,
     id_body.selectionEnd
   );
 
-  const selectedLocations = document.getElementById("id_locations_modal");
+  // get full list of locations from selection window
+  const locationOptions = document.getElementById("id_locations_modal");
   event.preventDefault();
-  // show the selected index
-  const selectedValues = [].filter
-    .call(selectedLocations.options, (option) => option.selected)
-    .map((option) => option.text);
-  const selections = selectedValues.join("; ");
-
+  // get which location was selected
+  const selectedLocation = locationOptions.selectedIndex;
+  // embed tag with appropriate location id
   id_body.setRangeText(
-    `<Tooltip title="${selections}" classes={tooltip} interactive arrow >${selectedText}</Tooltip>`
+    `<span class="taggedLocation" id="${selectedLocation}">${selectedText}</span>`
   );
 
-  // add any tagged locations to the locations field so that we can connect the article to these locations on the timemap
+  // add the tagged location to the locations field so that we can connect the article to these locations on the timemap
   const locationField = document.getElementById("id_location");
-  const locationOptions = locationField.options;
-  selectedValues.forEach((selectedValue) => {
-    for (i = 0; i < locationOptions.length; i++) {
-      if (selectedValue == locationOptions[i].text) {
-        locationOptions[i].selected = true;
-      }
+  const locationFieldOptions = locationField.options;
+  const selectedLocationName = locationOptions.selectedOptions[0].value;
+  for (i = 0; i < locationFieldOptions.length; i++) {
+    if (selectedLocationName == locationFieldOptions[i].text) {
+      locationFieldOptions[i].selected = true;
     }
-  });
+  }
 
   var modal = document.getElementById("tagLocationModal");
   modal.style.display = "none";
