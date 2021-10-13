@@ -25,9 +25,13 @@ function Article(props) {
     body: "",
     status: "",
   });
-  const [drawerState, setDrawerState] = React.useState({
+  const [drawerState, setDrawerState] = useState({
     right: false,
     bottom: false,
+  });
+  const [selectedTerm, setSelectedTerm] = useState({
+    name_eng: "Example term",
+    definition: "Example definition",
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -41,7 +45,6 @@ function Article(props) {
 
     setDrawerState({ ...drawerState, [anchor]: open });
   };
-
 
   let { id } = useParams();
 
@@ -61,7 +64,6 @@ function Article(props) {
     <div>
       <Header />
       <div className="article">
-        
         <div className="article__frontmatter">
           <Frontmatter
             article_id={article.id}
@@ -77,9 +79,15 @@ function Article(props) {
         </div>
         <hr></hr>
         <div className="article__body">
-          <ArticleBody body={article.body} toggleDrawer={toggleDrawer} />
+          <ArticleBody body={article.body} toggleDrawer={toggleDrawer} selectedTerm={selectedTerm} setSelectedTerm={setSelectedTerm} />
           <MediaCard />
-          <SwipeableTemporaryDrawer term={"Sample term"} definition={"Sample definition"} toggleDrawer={toggleDrawer} drawerState={drawerState} setDrawerState={setDrawerState} />
+          <SwipeableTemporaryDrawer
+            selectedTerm={selectedTerm.name_eng}
+            definition={selectedTerm.definition}
+            toggleDrawer={toggleDrawer}
+            drawerState={drawerState}
+            setDrawerState={setDrawerState}
+          />
         </div>
         <div className="article__refs">
           <h2>References</h2>
