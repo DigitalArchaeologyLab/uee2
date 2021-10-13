@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Card from "@material-ui/core/Card";
 import { CardActionArea } from "@material-ui/core";
@@ -32,7 +32,7 @@ function MediaCard() {
             <Typography gutterBottom variant="h5" component="div">
               Ram Cemetery at Elephantine
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2">
               Figure 4. The ram cemetery in the temple ofKhnum at Elephantine
               (view to the North)
             </Typography>
