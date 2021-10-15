@@ -10,6 +10,7 @@ import Footer from "../../components/Footer/Footer";
 
 import SwipeableTemporaryDrawer from "../Drawer/Drawer";
 import MediaCard from "../../components/Image/ImageCard";
+import TableOfContents from "../../components/TableOfContents/TableOfContents";
 
 function Article(props) {
   const [article, setArticle] = useState({
@@ -64,6 +65,9 @@ function Article(props) {
     <div>
       <Header />
       <div className="article">
+        <div className="toc">
+          <TableOfContents />
+        </div>
         <div className="article__frontmatter">
           <Frontmatter
             article_id={article.id}
@@ -79,7 +83,12 @@ function Article(props) {
         </div>
         <hr></hr>
         <div className="article__body">
-          <ArticleBody body={article.body} toggleDrawer={toggleDrawer} selectedTerm={selectedTerm} setSelectedTerm={setSelectedTerm} />
+          <ArticleBody
+            body={article.body}
+            toggleDrawer={toggleDrawer}
+            selectedTerm={selectedTerm}
+            setSelectedTerm={setSelectedTerm}
+          />
           <MediaCard />
           <SwipeableTemporaryDrawer
             selectedTerm={selectedTerm.name_eng}
