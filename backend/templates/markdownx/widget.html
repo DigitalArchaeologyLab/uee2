@@ -10,10 +10,10 @@
 
 <div class="markdownx">
   <div class="editorToolbar">
-    <script type="text/javascript" src="{% static 'article/insertLocation.js' %}"></script>
+    <script type="text/javascript" src="{% static 'article/insertPlace.js' %}"></script>
 
-      <button class="editorButton" id="tagLocationButton" type="button" onClick="tagLocation()">
-        Tag Location
+      <button class="editorButton" id="tagPlaceButton" type="button" onClick="tagPlace()">
+        Tag Place
       </button>
 
     <script type="text/javascript" src="{% static 'article/insertTerm.js' %}"></script>
@@ -23,22 +23,22 @@
       </button>
     </div>
 
-    <!-- Location popup modal to select what is inserted-->
-    <div id="tagLocationModal" class="modal">
+    <!-- Place popup modal to select what is inserted-->
+    <div id="tagPlaceModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <div>
-          <select name="locations" id="id_locations_modal" multiple=""></select>
+          <select name="places" id="id_places_modal" multiple=""></select>
           <script>
-            prepLocationSelectOptions();
+            prepPlaceSelectOptions();
           </script>
 
           <div class="help" id="modalHelp">
-            Select a single location.
+            Select a single place.
           </div>
 
           <div>
-            <button id="insert" type="button" onClick="insertLocationSelections()">
+            <button id="insert" type="button" onClick="insertPlaceSelections()">
               Insert
             </button>
           </div>
