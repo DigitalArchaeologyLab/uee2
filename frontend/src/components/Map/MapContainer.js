@@ -11,7 +11,7 @@ function MapContainer(props) {
       type: "",
       startDate: 0,
       endDate: 0,
-      associatedLocation: [],
+      associatedPlace: [],
       startPeriod: [],
       endPeriod: [],
       notes: "",

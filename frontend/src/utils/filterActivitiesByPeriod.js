@@ -1,6 +1,6 @@
 export function filterActivitiesByPeriod(activities, selectedPeriods, filteredActivityArray) {
 
-  // show all of the locations if no periods have been selected
+  // show all of the places if no periods have been selected
   if (selectedPeriods[0] === "All") {
     filteredActivityArray.push(...activities);
   } else {

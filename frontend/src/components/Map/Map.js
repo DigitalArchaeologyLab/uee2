@@ -84,12 +84,12 @@ function Map(props) {
 
   useEffect(() => {
     layerRef.current.clearLayers();
-    // add locations to map based on filtered activities
+    // add places to map based on filtered activities
     FilteredActivities.forEach((activity) => {
-      const latitude = parseFloat(activity.associatedLocation[0].lat);
-      const longitude = parseFloat(activity.associatedLocation[0].lon);
+      const latitude = parseFloat(activity.associatedPlace[0].lat);
+      const longitude = parseFloat(activity.associatedPlace[0].lon);
       const latlng = { lat: latitude, lng: longitude };
-      const title = activity.associatedLocation[0].name_eng;
+      const title = activity.associatedPlace[0].name_eng;
 
       L.marker(latlng, { title: title }).addTo(layerRef.current);
     });
