@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./TableOfContents.css";
 import { generateTOC } from "./generateTOC";
 
 function TableOfContents(props) {
-  const toc = generateTOC();
+  let toc = "";
+
+  useEffect(() => {
+    toc = generateTOC();
+  });
 
   return (
     <aside id="tableofcontents" className="tableofcontents">

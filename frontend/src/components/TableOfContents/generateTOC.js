@@ -1,6 +1,5 @@
 export function generateTOC() {
   const headings = [...document.querySelectorAll("h2, h3")];
-  console.log(headings);
   const parsedHeadings = headings.map((heading) => {
     return {
       title: heading.innerText,
