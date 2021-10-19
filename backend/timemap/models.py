@@ -2,7 +2,7 @@ from django.db import models
 from treebeard.mp_tree import MP_Node
 
 # Create your models here.
-class Location(MP_Node):
+class Place(MP_Node):
     id = models.AutoField(primary_key=True)
     name_eng = models.CharField("Name (English)", max_length=200)
     altnames_eng = models.CharField(
@@ -58,7 +58,7 @@ class Activity(models.Model):
     type = models.CharField(max_length=200, choices=TYPE_CHOICES, default="In use")
     startDate = models.IntegerField(null=True, blank=True)
     endDate = models.IntegerField(null=True, blank=True)
-    associatedLocation = models.ManyToManyField("Location")
+    associatedPlace = models.ManyToManyField("Place")
     startPeriod = models.ManyToManyField("Period", related_name="startPeriod")
     endPeriod = models.ManyToManyField("Period", related_name="endPeriod")
     notes = models.TextField(null=True, blank=True)

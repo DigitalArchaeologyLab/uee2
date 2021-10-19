@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Period, Activity, Location
+from .models import Period, Activity, Place
 
 
-class LocationSerializer(serializers.ModelSerializer):
+class PlaceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Location
+        model = Place
         fields = [
             "id",
             "name_eng",
@@ -43,7 +43,7 @@ class PeriodSerializer(serializers.ModelSerializer):
 class ActivitySerializer(serializers.ModelSerializer):
     startPeriod = serializers.StringRelatedField(many=True)
     endPeriod = serializers.StringRelatedField(many=True)
-    associatedLocation = LocationSerializer(many=True, read_only=True)
+    associatedPlace = PlaceSerializer(many=True, read_only=True)
 
     class Meta:
         model = Activity
@@ -52,7 +52,7 @@ class ActivitySerializer(serializers.ModelSerializer):
             "type",
             "startDate",
             "endDate",
-            "associatedLocation",
+            "associatedPlace",
             "startPeriod",
             "endPeriod",
             "notes",

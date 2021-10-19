@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from rest_framework import viewsets
-from .serializers import PeriodSerializer, ActivitySerializer, LocationSerializer
-from .models import Period, Activity, Location
+from .serializers import PeriodSerializer, ActivitySerializer, PlaceSerializer
+from .models import Period, Activity, Place
 
 # import the logging library, get or create an instance of a logger
 import logging
@@ -25,6 +25,6 @@ class ActivityView(viewsets.ReadOnlyModelViewSet):
     queryset = Activity.objects.all()
 
 
-class LocationView(viewsets.ReadOnlyModelViewSet):
-    serializer_class = LocationSerializer
-    queryset = Location.objects.all()
+class PlaceView(viewsets.ReadOnlyModelViewSet):
+    serializer_class = PlaceSerializer
+    queryset = Place.objects.all()

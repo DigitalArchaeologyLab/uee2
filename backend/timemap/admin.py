@@ -8,10 +8,10 @@ from .models import Activity
 
 
 class ActivityAdmin(admin.ModelAdmin):
-    list_display = ("type", "locations", "start", "end")
+    list_display = ("type", "places", "start", "end")
 
-    def locations(self, obj):
-        return "\n".join([l.name_eng for l in obj.associatedLocation.all()])
+    def places(self, obj):
+        return "\n".join([l.name_eng for l in obj.associatedPlace.all()])
 
     def start(self, obj):
         return "\n".join([p.name_eng for p in obj.startPeriod.all()])
@@ -32,11 +32,11 @@ class PeriodAdmin(TreeAdmin):
 
 admin.site.register(Period, PeriodAdmin)
 
-from .models import Location
+from .models import Place
 
 
-class LocationAdmin(TreeAdmin):
-    form = movenodeform_factory(Location)
+class PlaceAdmin(TreeAdmin):
+    form = movenodeform_factory(Place)
 
 
-admin.site.register(Location, LocationAdmin)
+admin.site.register(Place, PlaceAdmin)
