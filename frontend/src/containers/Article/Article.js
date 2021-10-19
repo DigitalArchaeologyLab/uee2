@@ -99,7 +99,7 @@ function Article(props) {
           />
         </div>
         <div className="article__refs">
-          <h2>References</h2>
+          <h2 id="references">References</h2>
           <ReferenceList article_id={id} />
         </div>
       </div>
