@@ -8,10 +8,12 @@ from django.conf.urls.static import static
 
 from timemap.urls import router as timemapRouter
 from glossary.urls import router as glossaryRouter
+from data.urls import router as dataRouter
 
 router = routers.DefaultRouter()
 router.registry.extend(timemapRouter.registry)
 router.registry.extend(glossaryRouter.registry)
+router.registry.extend(dataRouter.registry)
 router.register(r"articles", views.ArticleView, "article")
 router.register(r"keywords", views.KeywordView, "keyword")
 router.register(r"references", views.ReferenceView, "references")
