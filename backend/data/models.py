@@ -26,6 +26,7 @@ class Image(models.Model):
     permission_notes = models.TextField(
         "Permissions notes", max_length=1000, null=True, blank=True
     )
+    arkID = models.CharField("ArkID", max_length=255, null=True, blank=True)
 
     def image_tag(self):
         if self.image_file:
