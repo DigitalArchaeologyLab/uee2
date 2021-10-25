@@ -7,6 +7,16 @@ class ImageSerializer(serializers.ModelSerializer):
         model = Image
         fields = [
             "id",
-            "title",
+            "title_eng",
+            "title_ar",
+            "title_de",
+            "title_fr",
+            "articles",
+            "places",
+            "periods",
+            "source",
+            "rights_holder",
+            "copyright_status",
+            "permission_notes",
             "image_file",
         ]

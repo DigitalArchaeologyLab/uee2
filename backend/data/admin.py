@@ -6,7 +6,7 @@ from .models import Image
 
 
 class ImageAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ("title", "image_tag")
+    list_display = ("title_eng", "title_ar", "image_tag")
 
 
 admin.site.register(Image, ImageAdmin)
