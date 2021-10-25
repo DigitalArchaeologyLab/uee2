@@ -7,7 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
 import ImageModal from "../Image/ImageModal";
-import IFrameTest from "../Image/IFrameTest";
+import IIIFImageIFrame from "./IIIFImageIFrame";
 
 function MediaCard() {
   const [open, setOpen] = React.useState(false);
@@ -41,7 +41,7 @@ function MediaCard() {
       </Card>
 
       <ImageModal
-        modalContent={<IFrameTest />}
+        modalContent={<IIIFImageIFrame />}
         handleClose={handleClose}
         modalStatus={open}
       />

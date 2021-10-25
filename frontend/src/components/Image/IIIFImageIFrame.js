@@ -1,7 +1,7 @@
 import React from "react";
-import "./IFrameTest.css";
+import "./IIIFImageIFrame.css";
 
-function IFrameTest(props) {
+function IIIFImageIFrame(props) {
   return (
     <div>
       <div className="iiif-iframe">
@@ -11,4 +11,4 @@ function IFrameTest(props) {
   );
 }
 
-export default IFrameTest;
+export default IIIFImageIFrame;
