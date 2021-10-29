@@ -1,5 +1,5 @@
 # Build React static files
-FROM node:buster-slim
+FROM node:16-buster-slim
 
 # set working directory
 WORKDIR /app
