@@ -96,7 +96,6 @@ function Articles(props) {
       authors: [],
       abstract_eng: "",
       abstract_ar: "",
-      keywords: [],
       body: "",
       status: "",
       transient_subject_ancestors: [],

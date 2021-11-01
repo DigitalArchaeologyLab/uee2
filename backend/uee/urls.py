@@ -15,7 +15,6 @@ router.registry.extend(timemapRouter.registry)
 router.registry.extend(glossaryRouter.registry)
 router.registry.extend(dataRouter.registry)
 router.register(r"articles", views.ArticleView, "article")
-router.register(r"keywords", views.KeywordView, "keyword")
 router.register(r"references", views.ReferenceView, "references")
 router.register(r"subjects", views.SubjectAreaView, "subjects")
 router.register(

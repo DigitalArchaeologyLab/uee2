@@ -12,7 +12,6 @@ function ArticlesBySubject(props) {
       authors: [],
       abstract_eng: "",
       abstract_ar: "",
-      keywords: [],
       body: "",
       status: "",
       transient_subject_ancestors: [],
@@ -60,7 +59,6 @@ function ArticlesBySubject(props) {
             authors={article.authors}
             abstract_eng={article.abstract_eng}
             abstract_ar={article.abstract_ar}
-            keywords={article.keywords}
           />
           <hr></hr>
         </div>

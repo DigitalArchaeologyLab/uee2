@@ -3,11 +3,10 @@ from django.http import HttpResponse, Http404
 from rest_framework import viewsets
 from .serializers import (
     ArticleSerializer,
-    KeywordSerializer,
     SubjectAreaSerializer,
     ReferenceSerializer,
 )
-from .models import Article, Keyword, SubjectArea, Reference
+from .models import Article, SubjectArea, Reference
 
 # import the logging library, get or create an instance of a logger
 import logging
@@ -76,11 +75,6 @@ class ArticlesBySubjectView(viewsets.ReadOnlyModelViewSet):
 class ArticleView(viewsets.ReadOnlyModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
-
-
-class KeywordView(viewsets.ReadOnlyModelViewSet):
-    serializer_class = KeywordSerializer
-    queryset = Keyword.objects.all()
 
 
 class SubjectAreaView(viewsets.ReadOnlyModelViewSet):

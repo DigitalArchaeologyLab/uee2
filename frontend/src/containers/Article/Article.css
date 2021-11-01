@@ -10,8 +10,7 @@
   direction: rtl;
 }
 
-.authorsList,
-.keywordsList {
+.authorsList {
   list-style-type: none;
   margin: 0;
   padding: 0;

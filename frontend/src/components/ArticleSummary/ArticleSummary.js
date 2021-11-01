@@ -23,13 +23,6 @@ function ArticleSummary(props) {
           {props.abstract_eng}
           <p id="arabic">{props.abstract_ar}</p>
         </div>
-        <div>
-          <List
-            class="keywordsList"
-            key={props.article_id}
-            list={props.keywords}
-          />
-        </div>
       </span>
     </div>
   );

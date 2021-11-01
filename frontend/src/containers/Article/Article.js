@@ -23,7 +23,6 @@ function Article(props) {
     authors: [""],
     abstract_eng: "",
     abstract_ar: "",
-    keywords: [""],
     body: "",
     status: "",
   });
@@ -86,7 +85,6 @@ function Article(props) {
             authors={article.authors}
             abstract_eng={article.abstract_eng}
             abstract_ar={article.abstract_ar}
-            keywords={article.keywords}
           />
         </div>
         <hr></hr>
