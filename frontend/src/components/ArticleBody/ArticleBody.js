@@ -8,6 +8,7 @@ import "./ArticleBody.css";
 function ArticleBody(props) {
   // TODO: add logic to loop through all tags
   useEffect(() => {
+    // parse tagged Terms
     if (document.querySelector("span.taggedTerm") == null) {
       return;
     }
@@ -25,6 +26,17 @@ function ArticleBody(props) {
 
     getTerm();
     tag.addEventListener("click", props.toggleDrawer("right", true));
+
+    // parse embedded Images
+    if (document.querySelector("img.embeddedImage") == null) {
+      return;
+    }
+    const image = document.querySelector("img.embeddedImage");
+    const imageArkID = image.id;
+
+    image.addEventListener("click", function () {
+      alert(imageArkID);
+    });
   }, [props.body]);
 
   const getMarkdownText = () => {
