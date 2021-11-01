@@ -19,9 +19,6 @@ function Frontmatter(props) {
           <p className="abstract">{props.abstract_eng}</p>
           <p id="arabic">{props.abstract_ar}</p>
         </div>
-        <div>
-          <List class="keywordsList" list={props.keywords} />
-        </div>
       </span>
     </div>
   );

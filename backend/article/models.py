@@ -27,7 +27,6 @@ class Article(models.Model):
     authors = models.ManyToManyField("Author")
     abstract_eng = models.TextField(max_length=1500)
     abstract_ar = models.TextField(max_length=1500)
-    keywords = models.ManyToManyField("Keyword")
     UNPUBLISHED = "U"
     PUBLISHED = "P"
     STATUS_CHOICES = [(UNPUBLISHED, "Unpublished"), (PUBLISHED, "Published")]
@@ -43,23 +42,6 @@ class Article(models.Model):
 
     def formatted_markdown(self):
         return markdownify(self.body)
-
-
-class Keyword(models.Model):
-    id = models.AutoField(primary_key=True)
-    name_eng = models.CharField("Name (English)", max_length=255)
-    name_ar = models.CharField("Name (Arabic)", max_length=255)
-    KEYWORD_TYPE_CHOICES = [
-        ("Places", "Places"),
-        ("Periods", "Periods"),
-        ("Glossary terms", "Glossary terms"),
-    ]
-    keyword_type = models.CharField(
-        max_length=255, choices=KEYWORD_TYPE_CHOICES, default="Glossary terms"
-    )
-
-    def __str__(self):
-        return "%s, %s (%s)" % (self.name_eng, self.name_ar, self.keyword_type)
 
 
 class SubjectArea(MP_Node):

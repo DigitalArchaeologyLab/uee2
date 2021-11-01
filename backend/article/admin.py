@@ -26,22 +26,12 @@ class ArticleAdmin(MarkdownxModelAdmin):
         ("Author(s)", {"fields": ["authors"]}),
         ("Abstracts", {"fields": ["abstract_eng", "abstract_ar"]}),
         ("Timemap", {"fields": ["place"]}),
-        ("Keywords", {"fields": ["keywords"]}),
         ("Article body", {"fields": ["body"]}),
         ("Status", {"fields": ["status"]}),
     ]
 
 
 admin.site.register(Article, ArticleAdmin)
-
-from .models import Keyword
-
-
-class KeywordAdmin(admin.ModelAdmin):
-    list_display = ("name_eng", "name_ar", "keyword_type")
-
-
-admin.site.register(Keyword, KeywordAdmin)
 
 from .models import SubjectArea
 
