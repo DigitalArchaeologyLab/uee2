@@ -16,3 +16,4 @@ RUN pipenv run python manage.py collectstatic --noinput
 
 FROM webserver
 COPY --from=django /backend/django_static /usr/share/nginx/html/django_static
+COPY --from=django /backend/media /usr/share/nginx/html/media

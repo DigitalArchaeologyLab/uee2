@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "article.apps.ArticleConfig",
     "timemap.apps.TimemapConfig",
     "glossary.apps.GlossaryConfig",
+    "data.apps.DataConfig",
     ### installed apps ###
     # Markdown entry and rendering
     "markdownx",
@@ -128,6 +129,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATIC_URL = "/django_static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "django_static/")
 

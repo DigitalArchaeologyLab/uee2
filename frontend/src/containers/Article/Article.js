@@ -11,6 +11,7 @@ import Footer from "../../components/Footer/Footer";
 import SwipeableTemporaryDrawer from "../Drawer/Drawer";
 import MediaCard from "../../components/Image/ImageCard";
 import TableOfContents from "../../components/TableOfContents/TableOfContents";
+import Lightbox from "../../components/Figure/Lightbox";
 
 function Article(props) {
   const [article, setArticle] = useState({
@@ -34,6 +35,13 @@ function Article(props) {
     name_eng: "Example term",
     definition: "Example definition",
   });
+  const [imageState, setImageState] = useState(false);
+  const handleImageOpen = () => {
+    setImageState(true);
+  };
+  const handleImageClose = () => {
+    setImageState(false);
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -88,6 +96,10 @@ function Article(props) {
             toggleDrawer={toggleDrawer}
             selectedTerm={selectedTerm}
             setSelectedTerm={setSelectedTerm}
+            imageState={imageState}
+            setImageState={setImageState}
+            handleImageOpen={handleImageOpen}
+            handleImageClose={handleImageClose}
           />
           <MediaCard />
           <SwipeableTemporaryDrawer
@@ -102,6 +114,7 @@ function Article(props) {
           <h2 id="references">References</h2>
           <ReferenceList article_id={id} />
         </div>
+        <Lightbox />
       </div>
       <Footer />
     </div>

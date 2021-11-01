@@ -1,3 +1,15 @@
-.taggedPlace, .taggedTerm {
+.taggedPlace,
+.taggedTerm {
   color: var(--ueeBlue02);
 }
+
+/* img[src~="thumbnail"] {
+  width: 150px;
+  height: 100px;
+}
+
+.thumbnail__right {
+  width: 150px;
+  height: 100px;
+  float: right;
+} */

@@ -9,7 +9,7 @@ import Timemap from "./containers/Timemap/Timemap";
 import Glossary from "./containers/Glossary/Glossary";
 import About from "./containers/About/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import IFrameTest from "./components/Image/IFrameTest";
+import IIIFImageIFrame from "./components/Image/IIIFImageIFrame";
 import IIIFImage from "./components/Image/IIIFImage";
 import SwipeableTemporaryDrawer from "./containers/Drawer/Drawer";
 
@@ -41,7 +41,7 @@ function App() {
               <IIIFImage />
             </Route>
             <Route path="/iiif-iframe">
-              <IFrameTest />
+              <IIIFImageIFrame />
             </Route>
             <Route path="/drawer">
               <SwipeableTemporaryDrawer />

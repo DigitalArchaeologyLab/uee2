@@ -3,12 +3,17 @@ from django.urls import path, include
 from rest_framework import routers
 from article import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from timemap.urls import router as timemapRouter
 from glossary.urls import router as glossaryRouter
+from data.urls import router as dataRouter
 
 router = routers.DefaultRouter()
 router.registry.extend(timemapRouter.registry)
 router.registry.extend(glossaryRouter.registry)
+router.registry.extend(dataRouter.registry)
 router.register(r"articles", views.ArticleView, "article")
 router.register(r"keywords", views.KeywordView, "keyword")
 router.register(r"references", views.ReferenceView, "references")
@@ -24,3 +29,5 @@ urlpatterns = [
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
