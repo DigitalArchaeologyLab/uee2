@@ -53,7 +53,7 @@ function insertTermSelections() {
   const termOptions = document.getElementById("id_terms_modal");
   event.preventDefault();
   // get which term was selected
-  const selectedTerm = termOptions.selectedIndex;
+  const selectedTerm = termOptions.selectedIndex + 1;
   // embed tag with appropriate term id
   id_body.setRangeText(
     `<span class="taggedTerm" id="${selectedTerm}">${selectedText}</span>`
