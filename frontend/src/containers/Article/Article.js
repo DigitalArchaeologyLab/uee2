@@ -99,7 +99,7 @@ function Article(props) {
             handleImageOpen={handleImageOpen}
             handleImageClose={handleImageClose}
           />
-          <MediaCard />
+          {/* <MediaCard /> */}
           <SwipeableTemporaryDrawer
             selectedTerm={selectedTerm.name_eng}
             definition={selectedTerm.definition}
@@ -112,7 +112,7 @@ function Article(props) {
           <h2 id="references">References</h2>
           <ReferenceList article_id={id} />
         </div>
-        <Lightbox />
+        {/* <Lightbox /> */}
       </div>
       <Footer />
     </div>

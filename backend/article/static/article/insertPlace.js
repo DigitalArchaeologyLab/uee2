@@ -54,7 +54,7 @@ function insertPlaceSelections() {
   const placeOptions = document.getElementById("id_places_modal");
   event.preventDefault();
   // get which place was selected
-  const selectedPlace = placeOptions.selectedIndex;
+  const selectedPlace = placeOptions.selectedIndex + 1;
   // embed tag with appropriate place id
   id_body.setRangeText(
     `<span class="taggedPlace" id="${selectedPlace}">${selectedText}</span>`

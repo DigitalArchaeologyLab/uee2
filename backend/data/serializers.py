@@ -11,7 +11,7 @@ class ImageSerializer(serializers.ModelSerializer):
             "title_ar",
             "title_de",
             "title_fr",
-            "articles",
+            # "articles",
             "places",
             "periods",
             "source",

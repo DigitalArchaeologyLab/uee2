@@ -13,7 +13,7 @@ class Image(models.Model):
     title_ar = models.CharField("Title (Arabic)", max_length=255, null=True, blank=True)
     title_de = models.CharField("Title (German)", max_length=255, null=True, blank=True)
     title_fr = models.CharField("Title (French)", max_length=255, null=True, blank=True)
-    articles = models.ManyToManyField(Article)
+    # articles = models.ManyToManyField(Article)
     places = models.ManyToManyField(Place, blank=True)
     periods = models.ManyToManyField(Period, blank=True)
     source = models.CharField("Source", max_length=255, null=True, blank=True)
