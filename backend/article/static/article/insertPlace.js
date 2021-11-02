@@ -21,7 +21,7 @@ function tagPlace() {
   };
 }
 
-async function getPlacess() {
+async function getPlaces() {
   const response = await axios.get("/api/places/");
   const placesObj = await response.data;
   let places = [];
