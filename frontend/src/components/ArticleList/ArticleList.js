@@ -13,8 +13,8 @@ function ArticleList(props) {
       authors: [""],
       abstract_eng: "",
       abstract_ar: "",
-      body: "",
       status: "",
+      body: "",
     },
   ]);
 
@@ -43,6 +43,7 @@ function ArticleList(props) {
               authors={article.authors}
               abstract_eng={article.abstract_eng}
               abstract_ar={article.abstract_ar}
+              status={article.status}
             />
             <hr className="articleList__hr"></hr>
           </div>

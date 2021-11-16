@@ -51,14 +51,15 @@ function ArticlesBySubject(props) {
     <div className="subjectBrowse__articles">
       {filterArticles(ArticleList)}
       {filteredArticles.map((article) => (
-        <div>
+        <div key={article.id}>
           <ArticleSummary
             article_id={article.id}
             title_eng={article.title_eng}
-            title_ar={article.title_ar}
+            title_ar={article.title_ar} 
             authors={article.authors}
             abstract_eng={article.abstract_eng}
             abstract_ar={article.abstract_ar}
+            status={article.status}
           />
           <hr></hr>
         </div>
