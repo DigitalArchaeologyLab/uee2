@@ -1,6 +1,6 @@
-import filterArticlesByTextSearch from "./TextSearch";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
+import FilterArticlesByText from "./FilterArticlesByText";
 
 let articles = [
   {
@@ -93,7 +93,8 @@ const SearchResults = () => {
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
-  const filteredArticles = filterArticlesByTextSearch(articles, searchQuery);
+
+  const filteredArticles = FilterArticlesByText(articles, searchQuery)
 
   return (
     <div>
