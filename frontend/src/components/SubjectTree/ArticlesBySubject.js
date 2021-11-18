@@ -40,18 +40,23 @@ function ArticlesBySubject(props) {
       // filter based on the selected subject
       articles.forEach((article) => {
         for (let i = 0; i < article.transient_subject_ancestors.length; i++) {
-          if (article.transient_subject_ancestors[i] === props.selectedSubject) {
-            filteredArticles.push(article);
+          if (
+            article.transient_subject_ancestors[i] === props.selectedSubject
+          ) {
+            if (filteredArticles.indexOf(article) === -1) {
+              filteredArticles.push(article);
+            }
           }
         }
-      })};
+      });
+    }
   };
 
   return (
     <div className="subjectBrowse__articles">
       {filterArticles(ArticleList)}
       {filteredArticles.map((article) => (
-        <div>
+        <div key={article.id}>
           <ArticleSummary
             article_id={article.id}
             title_eng={article.title_eng}
@@ -59,6 +64,7 @@ function ArticlesBySubject(props) {
             authors={article.authors}
             abstract_eng={article.abstract_eng}
             abstract_ar={article.abstract_ar}
+            status={article.status}
           />
           <hr></hr>
         </div>
