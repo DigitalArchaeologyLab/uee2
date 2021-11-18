@@ -40,11 +40,16 @@ function ArticlesBySubject(props) {
       // filter based on the selected subject
       articles.forEach((article) => {
         for (let i = 0; i < article.transient_subject_ancestors.length; i++) {
-          if (article.transient_subject_ancestors[i] === props.selectedSubject) {
-            filteredArticles.push(article);
+          if (
+            article.transient_subject_ancestors[i] === props.selectedSubject
+          ) {
+            if (filteredArticles.indexOf(article) === -1) {
+              filteredArticles.push(article);
+            }
           }
         }
-      })};
+      });
+    }
   };
 
   return (
@@ -55,7 +60,7 @@ function ArticlesBySubject(props) {
           <ArticleSummary
             article_id={article.id}
             title_eng={article.title_eng}
-            title_ar={article.title_ar} 
+            title_ar={article.title_ar}
             authors={article.authors}
             abstract_eng={article.abstract_eng}
             abstract_ar={article.abstract_ar}
