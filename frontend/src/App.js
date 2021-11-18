@@ -13,6 +13,8 @@ import IIIFImageIFrame from "./components/Image/IIIFImageIFrame";
 import IIIFImage from "./components/Image/IIIFImage";
 import SwipeableTemporaryDrawer from "./containers/Drawer/Drawer";
 
+import SearchResults from "./components/Search/SearchResults";
+
 function App() {
   return (
     <div className="app">
@@ -37,6 +39,11 @@ function App() {
             <Route path="/glossary">
               <Glossary />
             </Route>
+
+            <Route path="/search">
+              <SearchResults />
+            </Route>
+
             <Route path="/iiif-image">
               <IIIFImage />
             </Route>

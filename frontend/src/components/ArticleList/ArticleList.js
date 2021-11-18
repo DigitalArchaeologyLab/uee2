@@ -10,6 +10,8 @@ function ArticleList(props) {
       subject_area: "",
       title_eng: "",
       title_ar: "",
+      title_de: "",
+      title_fr: "",
       authors: [""],
       abstract_eng: "",
       abstract_ar: "",
@@ -40,6 +42,8 @@ function ArticleList(props) {
               article_id={article.id}
               title_eng={article.title_eng}
               title_ar={article.title_ar}
+              title_de={article.title_de}
+              title_fr={article.title_fr}
               authors={article.authors}
               abstract_eng={article.abstract_eng}
               abstract_ar={article.abstract_ar}
