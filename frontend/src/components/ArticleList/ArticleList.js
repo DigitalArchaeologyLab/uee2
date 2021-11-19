@@ -8,7 +8,7 @@ function ArticleList(props) {
     {
       id: 0,
       subject_area: "",
-      title_eng: "",
+      title_eng: "nope",
       title_ar: "",
       title_de: "",
       title_fr: "",
@@ -20,23 +20,14 @@ function ArticleList(props) {
     },
   ]);
 
-  async function getArticleList() {
-    try {
-      const response = await axios.get("/api/articles/");
-      setArticleList(response.data);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   useEffect(() => {
-    getArticleList();
-  }, []);
+    setArticleList(props.filteredArticles);
+  }, [props.filteredArticles]);
 
   return (
     <div>
       <div className="articleList">
-        {ArticleList.map((article) => (
+        {props.filteredArticles.map((article) => (
           <div>
             <ArticleSummary
               article_id={article.id}

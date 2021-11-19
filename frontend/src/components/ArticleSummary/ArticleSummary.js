@@ -9,7 +9,6 @@ function ArticleSummary(props) {
   const [articleSummaryJSX, setArticleSummaryJSX] = useState("JSX");
 
   const setArticleSummaryByStatus = () => {
-    console.log(props.status);
 
     if (props.status === "U") {
       setArticleSummaryJSX(
