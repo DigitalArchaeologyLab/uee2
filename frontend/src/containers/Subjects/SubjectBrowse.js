@@ -11,14 +11,14 @@ function SubjectBrowse(props) {
   return (
     <div>
       <Header />
-      <div className="subjectBrowse">
+      <main className="subjectBrowse">
         <SubjectFacet
           setSelectedSubject={setSelectedSubject}
           selectedSubject={selectedSubject}
           rootName={"Subject Areas"}
         />
         <ArticlesBySubject selectedSubject={selectedSubject} />
-      </div>
+      </main>
       <Footer />
     </div>
   );

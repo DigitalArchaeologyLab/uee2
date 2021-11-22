@@ -9,7 +9,7 @@ class Homepage extends React.Component {
       <div>
         <Header />
 
-        <div className="body">
+        <main className="body">
           <div className="welcome">
             <h1>Welcome to the UCLA Encyclopedia of Egyptology</h1>
             <div className="welcome__tagline">
@@ -190,7 +190,7 @@ class Homepage extends React.Component {
               </Link>
             </div>
           </div>
-        </div>
+        </main>
         <Footer />
       </div>
     );

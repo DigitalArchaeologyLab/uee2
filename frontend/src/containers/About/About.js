@@ -7,7 +7,7 @@ function About() {
   return (
     <div>
       <Header />
-      <div className="about">
+      <main className="about">
         <div className="about__title">
           <h1>About</h1>
         </div>
@@ -23,12 +23,10 @@ function About() {
             tortor.
           </p>
         </div>
-        {/* <PlaceList /> */}
-        {/* <PeriodList /> */}
         <div className="sections">
           <h2>Editors</h2>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );
