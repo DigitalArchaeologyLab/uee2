@@ -6,7 +6,7 @@ import "./Drawer.css";
 
 function SwipeableTemporaryDrawer(props) {
   return (
-    <div>
+    <aside>
       <React.Fragment key="right">
         <Button onClick={props.toggleDrawer("right", true)}>
           {props.selectedTerm}
@@ -32,7 +32,7 @@ function SwipeableTemporaryDrawer(props) {
           </Box>
         </SwipeableDrawer>
       </React.Fragment>
-    </div>
+    </aside>
   );
 }
 

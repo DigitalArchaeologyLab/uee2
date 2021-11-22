@@ -12,38 +12,40 @@ function Timemap() {
   const [SelectedMaxTime, setSelectedMaxTime] = useState(1000);
 
   return (
-    <div className="timemap">
+    <div>
       <Header />
-      <div className="timemap__intro">
-        <h1>Time map</h1>
-        <p>
-          Short map blurb here so people know how to toggle and use, and also
-          what the time map tells us. Can choose a particular phase, dynasty, or
-          rulership, or toggle the slider in the map.{" "}
-        </p>
-      </div>
-      <div className="timemap__container">
-        <div className="timemap__sidebar">
-          <PeriodFacet
-            setSelectedPeriod={setSelectedPeriod}
-            SelectedPeriod={SelectedPeriod}
-            rootName={"Periods"}
-          />
-          <TimesliderFacet
-            setSelectedMinTime={setSelectedMinTime}
-            setSelectedMaxTime={setSelectedMaxTime}
-            SelectedMinTime={SelectedMinTime}
-            SelectedMaxTime={SelectedMaxTime}
-          />
+      <main className="timemap">
+        <div className="timemap__intro">
+          <h1>Time map</h1>
+          <p>
+            Short map blurb here so people know how to toggle and use, and also
+            what the time map tells us. Can choose a particular phase, dynasty,
+            or rulership, or toggle the slider in the map.{" "}
+          </p>
         </div>
-        <div>
-          <MapContainer
-            SelectedPeriod={SelectedPeriod}
-            SelectedMinTime={SelectedMinTime}
-            SelectedMaxTime={SelectedMaxTime}
-          />
+        <div className="timemap__container">
+          <aside className="timemap__sidebar">
+            <PeriodFacet
+              setSelectedPeriod={setSelectedPeriod}
+              SelectedPeriod={SelectedPeriod}
+              rootName={"Periods"}
+            />
+            <TimesliderFacet
+              setSelectedMinTime={setSelectedMinTime}
+              setSelectedMaxTime={setSelectedMaxTime}
+              SelectedMinTime={SelectedMinTime}
+              SelectedMaxTime={SelectedMaxTime}
+            />
+          </aside>
+          <div>
+            <MapContainer
+              SelectedPeriod={SelectedPeriod}
+              SelectedMinTime={SelectedMinTime}
+              SelectedMaxTime={SelectedMaxTime}
+            />
+          </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );

@@ -71,7 +71,7 @@ function Article(props) {
   return (
     <div>
       <Header />
-      <div className="article">
+      <article className="article">
         <div className="toc">
           <TableOfContents />
         </div>
@@ -113,7 +113,7 @@ function Article(props) {
           <ReferenceList article_id={id} />
         </div>
         {/* <Lightbox /> */}
-      </div>
+      </article>
       <Footer />
     </div>
   );

@@ -4,7 +4,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer>
       <div className="footer_all">
         <div className="footer__cols">
           <div className="footer__1">
@@ -81,7 +81,7 @@ function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 export default Footer;

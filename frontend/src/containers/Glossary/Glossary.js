@@ -10,7 +10,7 @@ function Glossary() {
   return (
     <div>
       <Header />
-      <div className="glossary">
+      <main className="glossary">
         <div className="glossary__title">
           <h1>Glossary</h1>
         </div>
@@ -32,7 +32,7 @@ function Glossary() {
           <h2>Terms</h2>
           <TermList />
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );
