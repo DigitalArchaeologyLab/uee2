@@ -17,7 +17,7 @@ function TitleIndex(props) {
     {
       id: 0,
       subject_area: "",
-      title_eng: "nope",
+      title_eng: "",
       title_ar: "",
       title_de: "",
       title_fr: "",
@@ -45,7 +45,6 @@ function TitleIndex(props) {
 
   useEffect(() => {
     let filtered = filterArticlesByText(Articles, searchQuery);
-    console.log(filtered);
     setFilteredArticles(filtered);
   }, [searchQuery]);
 
@@ -58,11 +57,7 @@ function TitleIndex(props) {
 
       <ul>
         {FilteredArticles.map((article) => (
-          <li key={article.id}>{article.title_eng}</li>
-        ))}
-      </ul>
-
-      {/* {FilteredArticles.map((article) => (
+          <li key={article.id}>
           <ArticleSummary
             article_id={article.id}
             title_eng={article.title_eng}
@@ -74,7 +69,9 @@ function TitleIndex(props) {
             abstract_ar={article.abstract_ar}
             status={article.status}
           />
-        ))} */}
+          </li>
+        ))}
+      </ul>
 
       <Footer />
     </div>
