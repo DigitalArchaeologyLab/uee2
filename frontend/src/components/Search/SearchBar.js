@@ -8,7 +8,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
   };
 
   return (
-    <form action="/" method="get" autoComplete="off" onSubmit={onSubmit}>
+    <form action="/" method="get" onSubmit={onSubmit}>
       <label htmlFor="header-search">
         <span className="visually-hidden">Search articles</span>
       </label>
@@ -19,6 +19,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
         id="header-search"
         placeholder="Search articles"
         name="s"
+        autoComplete="off"
       />
       <button type="submit">Search</button>
     </form>
