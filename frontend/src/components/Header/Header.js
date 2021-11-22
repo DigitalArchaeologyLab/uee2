@@ -4,7 +4,7 @@ import "./Header.css";
 
 function Header() {
   return (
-    <div className="header">
+    <header>
       <div className="header__logo">
         <Link className="header__logo" to="/">
           <img
@@ -13,7 +13,7 @@ function Header() {
           />
         </Link>
       </div>
-      <div className="header__nav">
+      <nav className="header__nav">
         <div className="navigation">
           <Link className="nav__item" to="/about">
             About
@@ -31,8 +31,8 @@ function Header() {
             Glossary
           </Link>
         </div>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 }
 
