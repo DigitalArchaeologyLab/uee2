@@ -9,12 +9,27 @@ function ArticleSummary(props) {
   const [articleSummaryJSX, setArticleSummaryJSX] = useState("JSX");
 
   const setArticleSummaryByStatus = () => {
+    let title;
+    switch (props.selectedLanguage) {
+      case "ar":
+        title = props.title_ar;
+        break;
+      case "de":
+        title = props.title_de;
+        break;
+      case "fr":
+        title = props.title_fr;
+        break;
+      default:
+        title = props.title_eng;
+        break;
+    }
 
     if (props.status === "U") {
       setArticleSummaryJSX(
         <h2 className="article__title__unpublished">
-          {props.title_eng}
-          <p id="arabic">{props.title_ar}</p>
+          {title}
+          {/* <p id="arabic">{props.title_ar}</p> */}
         </h2>
       );
     } else {
@@ -22,9 +37,9 @@ function ArticleSummary(props) {
         <span>
           <h2>
             <Link className="article__title" to={`${props.article_id}`}>
-              {props.title_eng}
+              {title}
             </Link>
-            <p id="arabic">{props.title_ar}</p>
+            {/* <p id="arabic">{props.title_ar}</p> */}
           </h2>
           <div>
             <List
@@ -46,7 +61,7 @@ function ArticleSummary(props) {
   useEffect(() => {
     setArticleSummaryByStatus();
     setIsLoading(false);
-  }, [isLoading]);
+  }, [isLoading, props.selectedLanguage]);
 
   return (
     <div className="articleSummary">

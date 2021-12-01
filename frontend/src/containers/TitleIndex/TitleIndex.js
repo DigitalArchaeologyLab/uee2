@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./TitleIndex.css";
-// import ArticleList from "../../components/ArticleList/ArticleList";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-// import SearchBar from "../../components/Search/SearchBar";
 import filterArticlesByText from "../../utils/filterArticlesByText";
 import ArticleSummary from "../../components/ArticleSummary/ArticleSummary";
 import Sidebar from "../Sidebar/Sidebar";
@@ -14,9 +12,7 @@ function TitleIndex(props) {
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
-  const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
-  const [SelectedMinTime, setSelectedMinTime] = useState(-3000);
-  const [SelectedMaxTime, setSelectedMaxTime] = useState(1000);
+  const [selectedLanguage, setSelectedLanguage] = useState("eng");
   const [Articles, setArticles] = useState([
     {
       id: 0,
@@ -59,12 +55,7 @@ function TitleIndex(props) {
         <Sidebar
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          setSelectedPeriod={setSelectedPeriod}
-          SelectedPeriod={SelectedPeriod}
-          setSelectedMinTime={setSelectedMinTime}
-          setSelectedMaxTime={setSelectedMaxTime}
-          SelectedMinTime={SelectedMinTime}
-          SelectedMaxTime={SelectedMaxTime}
+          setSelectedLanguage={setSelectedLanguage}
         />
         <ul className="articleList">
           {FilteredArticles.map((article) => (
@@ -79,6 +70,7 @@ function TitleIndex(props) {
                 abstract_eng={article.abstract_eng}
                 abstract_ar={article.abstract_ar}
                 status={article.status}
+                selectedLanguage={selectedLanguage}
               />
             </li>
           ))}
