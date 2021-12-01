@@ -55,6 +55,10 @@
   height: 5px;
 }
 
+#timeslider__root.MuiSlider-root {
+  width: 92%;
+}
+
 #timeslider__handles {
   color: var(--ueeGreen02);
   height: 27px;

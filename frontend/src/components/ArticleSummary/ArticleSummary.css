@@ -1,5 +1,17 @@
+.articleList {
+  width: 700px;
+  padding: 125px 20px 30px 0px;
+  margin-left: 30px;
+}
+
+.articleList ul {
+  list-style-type: none;
+}
+
 .article__title {
   font-weight: 600;
   color: var(--ueeBlue02);
   text-transform: uppercase;
 }
+
+
