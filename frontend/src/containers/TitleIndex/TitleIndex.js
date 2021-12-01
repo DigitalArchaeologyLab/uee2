@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import "./TitleIndex.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -30,23 +29,62 @@ function TitleIndex(props) {
   ]);
   const [FilteredArticles, setFilteredArticles] = useState(Articles);
 
+  const compare = (a, b) => {
+    let sortTitle;
+    switch (selectedLanguage) {
+      case "ar":
+        sortTitle = "title_ar";
+        break;
+      case "de":
+        sortTitle = "title_de";
+        break;
+      case "fr":
+        sortTitle = "title_fr";
+        break;
+      default:
+        sortTitle = "title_eng";
+        break;
+    }
+
+    const titleA = a[sortTitle].toUpperCase();
+    const titleB = b[sortTitle].toUpperCase();
+
+    // handle diacritics in titles
+    if (new Intl.Collator().compare(titleA, titleB) > 0) {
+      return 1;
+    } else if (new Intl.Collator().compare(titleA, titleB) < 0) {
+      return -1;
+    }
+  };
+
+  // get articles from API
   useEffect(() => {
     async function getArticles() {
       try {
         const response = await axios.get("/api/articles/");
-        setArticles(response.data);
-        setFilteredArticles(response.data);
+        let allArticles = response.data;
+        allArticles.sort(compare);
+        setArticles(allArticles);
+        setFilteredArticles(allArticles);
       } catch (err) {
         console.error(err);
       }
     }
     getArticles();
-  }, []);
+  }, [selectedLanguage]);
 
+  // filter articles when query is entered
   useEffect(() => {
     let filtered = filterArticlesByText(Articles, searchQuery);
     setFilteredArticles(filtered);
   }, [searchQuery]);
+
+  // sort articles when language is selected
+  useEffect(() => {
+    let allArticles = Articles;
+    allArticles.sort(compare);
+    setArticles(allArticles);
+  }, [selectedLanguage]);
 
   return (
     <div>

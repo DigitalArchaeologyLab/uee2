@@ -8,6 +8,7 @@ function ArticleSummary(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [articleSummaryJSX, setArticleSummaryJSX] = useState("JSX");
 
+  // show title in selected language
   const setArticleSummaryByStatus = () => {
     let title;
     switch (props.selectedLanguage) {
