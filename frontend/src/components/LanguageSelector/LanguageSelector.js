@@ -2,6 +2,7 @@ function LanguageSelector(props) {
   function handleClick(e) {
     e.preventDefault();
     props.setSelectedLanguage(e.target.id);
+    props.setSelectedLetter("");
   }
 
   return (

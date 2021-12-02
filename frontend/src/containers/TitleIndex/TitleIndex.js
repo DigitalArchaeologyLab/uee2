@@ -7,11 +7,14 @@ import filterArticlesByText from "../../utils/filterArticlesByText";
 import ArticleSummary from "../../components/ArticleSummary/ArticleSummary";
 import Sidebar from "../Sidebar/Sidebar";
 
+import filterArticlesByLetter from "../../utils/filterArticlesByLetter";
+
 function TitleIndex(props) {
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
   const [selectedLanguage, setSelectedLanguage] = useState("eng");
+  const [selectedLetter, setSelectedLetter] = useState("");
   const [Articles, setArticles] = useState([
     {
       id: 0,
@@ -86,6 +89,16 @@ function TitleIndex(props) {
     setArticles(allArticles);
   }, [selectedLanguage]);
 
+  // filter articles when a letter is selected
+  useEffect(() => {
+    let articlesByLetter = filterArticlesByLetter(
+      Articles,
+      selectedLetter,
+      selectedLanguage
+    );
+    setFilteredArticles(articlesByLetter);
+  }, [selectedLetter, selectedLanguage]);
+
   return (
     <div>
       <Header />
@@ -94,6 +107,8 @@ function TitleIndex(props) {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           setSelectedLanguage={setSelectedLanguage}
+          setSelectedLetter={setSelectedLetter}
+          selectedLanguage={selectedLanguage}
         />
         <ul className="articleList">
           {FilteredArticles.map((article) => (
