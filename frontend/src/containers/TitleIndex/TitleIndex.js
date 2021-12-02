@@ -14,6 +14,7 @@ function TitleIndex(props) {
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
   const [selectedLanguage, setSelectedLanguage] = useState("eng");
+  const [alphabet, setAlphabet] = useState("latinAlphabet");
   const [selectedLetter, setSelectedLetter] = useState("");
   const [Articles, setArticles] = useState([
     {
@@ -82,11 +83,16 @@ function TitleIndex(props) {
     setFilteredArticles(filtered);
   }, [searchQuery]);
 
-  // sort articles when language is selected
+  // sort articles when language is selected and set alphabet
   useEffect(() => {
     let allArticles = Articles;
     allArticles.sort(compare);
     setArticles(allArticles);
+    if (selectedLanguage === "ar") {
+      setAlphabet("arabicAlphabet");
+    } else {
+      setAlphabet("latinAlphabet");
+    }
   }, [selectedLanguage]);
 
   // filter articles when a letter is selected
@@ -109,6 +115,7 @@ function TitleIndex(props) {
           setSelectedLanguage={setSelectedLanguage}
           setSelectedLetter={setSelectedLetter}
           selectedLanguage={selectedLanguage}
+          alphabet={alphabet}
         />
         <ul className="articleList">
           {FilteredArticles.map((article) => (

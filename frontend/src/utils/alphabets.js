@@ -61,3 +61,4 @@ var arabicAlphabet = [
 ];
 
 export { latinAlphabet };
+export { arabicAlphabet };

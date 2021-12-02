@@ -18,6 +18,7 @@ function Sidebar(props) {
       <AlphabetPicker
         setSelectedLetter={props.setSelectedLetter}
         selectedLanguage={props.setSelectedLanguage}
+        alphabet={props.alphabet}
       />
     </aside>
   );

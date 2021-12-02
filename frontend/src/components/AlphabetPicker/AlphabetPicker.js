@@ -1,6 +1,7 @@
 import { latinAlphabet } from "../../utils/alphabets";
 import { arabicAlphabet } from "../../utils/alphabets";
 import "./AlphabetPicker.css";
+import { useLayoutEffect } from "react";
 
 function AlphabetPicker(props) {
   function handleLetterSelection(e) {
@@ -8,10 +9,18 @@ function AlphabetPicker(props) {
     props.setSelectedLetter(e.target.innerText);
   }
 
+  let alphabet = latinAlphabet;
+
+  if (props.alphabet === "latinAlphabet") {
+    alphabet = latinAlphabet;
+  } else {
+    alphabet = arabicAlphabet;
+  }
+
   return (
     <div>
       <ul className="alphabetList">
-        {latinAlphabet.map((letter) => (
+        {alphabet.map((letter) => (
           <li key={letter}>
             <button onClick={handleLetterSelection}>{letter}</button>
           </li>
