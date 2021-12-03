@@ -23,7 +23,6 @@ function RenderTree(props) {
   };
 
   const handleSelect = (event, nodeId) => {
-    console.log(event.target.innerHTML);
     setSelected(nodeId);
     props.handleSelection();
   };
