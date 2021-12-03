@@ -1,12 +1,17 @@
 import { latinAlphabet } from "../../utils/alphabets";
 import { arabicAlphabet } from "../../utils/alphabets";
 import "./AlphabetPicker.css";
-import { useLayoutEffect } from "react";
 
 function AlphabetPicker(props) {
   function handleLetterSelection(e) {
     e.preventDefault();
     props.setSelectedLetter(e.target.innerText);
+
+    let selectedLetterButton = document.querySelector(".selectedLetterButton");
+    if (selectedLetterButton !== null) {
+      selectedLetterButton.classList.remove("selectedLetterButton");
+    }
+    e.target.classList.add("selectedLetterButton");
   }
 
   let alphabet = latinAlphabet;
