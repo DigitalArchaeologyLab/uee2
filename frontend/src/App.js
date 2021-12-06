@@ -12,12 +12,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import IIIFImageIFrame from "./components/Image/IIIFImageIFrame";
 import IIIFImage from "./components/Image/IIIFImage";
 import SwipeableTemporaryDrawer from "./containers/Drawer/Drawer";
+import ScrollToTop from "./utils/scrollToTop";
 
 function App() {
   return (
     <div className="app">
       <div>
         <Router>
+          <ScrollToTop />
           <Switch>
             <Route exact path="/">
               <Homepage />
