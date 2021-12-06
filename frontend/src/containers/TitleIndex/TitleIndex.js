@@ -81,6 +81,11 @@ function TitleIndex(props) {
   useEffect(() => {
     let filtered = filterArticlesByText(Articles, searchQuery);
     setFilteredArticles(filtered);
+    // clear selected letters
+    let selectedLetterButton = document.querySelector(".selectedLetterButton");
+    if (selectedLetterButton !== null) {
+      selectedLetterButton.classList.remove("selectedLetterButton");
+    }
   }, [searchQuery]);
 
   // sort articles when language is selected and set alphabet
@@ -92,6 +97,11 @@ function TitleIndex(props) {
       setAlphabet("arabicAlphabet");
     } else {
       setAlphabet("latinAlphabet");
+    }
+    // clear selected letters
+    let selectedLetterButton = document.querySelector(".selectedLetterButton");
+    if (selectedLetterButton !== null) {
+      selectedLetterButton.classList.remove("selectedLetterButton");
     }
   }, [selectedLanguage]);
 
