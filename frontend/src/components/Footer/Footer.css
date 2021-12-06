@@ -21,7 +21,7 @@ footer {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: calc(80vw - 40px);
+  width: calc(90vw - 40px);
   margin-left: auto;
   margin-right: auto;
 }
