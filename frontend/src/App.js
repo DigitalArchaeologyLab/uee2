@@ -8,6 +8,7 @@ import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
 import Glossary from "./containers/Glossary/Glossary";
 import About from "./containers/About/About";
+import BasicPage from "./containers/Basic/BasicPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import IIIFImageIFrame from "./components/Image/IIIFImageIFrame";
 import IIIFImage from "./components/Image/IIIFImage";
@@ -24,9 +25,9 @@ function App() {
             <Route exact path="/">
               <Homepage />
             </Route>
-            <Route exact path="/about">
+            {/* <Route exact path="/about">
               <About />
-            </Route>
+            </Route> */}
             <Route exact path="/subjects">
               <SubjectBrowse />
             </Route>
@@ -47,6 +48,9 @@ function App() {
             </Route>
             <Route path="/drawer">
               <SwipeableTemporaryDrawer />
+            </Route>
+            <Route path="/about/:slug">
+              <BasicPage />
             </Route>
             <Route path="/:id">
               <Article />
