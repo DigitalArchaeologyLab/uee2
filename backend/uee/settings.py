@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "timemap.apps.TimemapConfig",
     "glossary.apps.GlossaryConfig",
     "data.apps.DataConfig",
+    "page.apps.PageConfig",
     ### installed apps ###
     # Markdown entry and rendering
     "markdownx",
