@@ -37,7 +37,7 @@ function ArticleSummary(props) {
       setArticleSummaryJSX(
         <span>
           <h2>
-            <Link className="article__title" to={`${props.article_id}`}>
+            <Link className="article__title" to={`article/${props.article_id}`}>
               {title}
             </Link>
             {/* <p id="arabic">{props.title_ar}</p> */}
