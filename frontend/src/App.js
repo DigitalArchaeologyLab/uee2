@@ -52,7 +52,10 @@ function App() {
             <Route path="/about/:slug">
               <BasicPage />
             </Route>
-            <Route path="/:id">
+            <Route path="/about">
+              <BasicPage />
+            </Route>
+            <Route path="/article/:id">
               <Article />
             </Route>
           </Switch>

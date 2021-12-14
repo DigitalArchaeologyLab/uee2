@@ -18,7 +18,11 @@ function BasicPage(props) {
 
   useEffect(() => {
     function isRequestedPage(pages) {
+      if (slug === undefined) {
+        return pages.title === "About"
+      } else {
       return pages.slug === slug;
+      }
     }
 
     async function getPageContent() {
