@@ -13,11 +13,23 @@ function TermList(props) {
   ]);
 
   useEffect(() => {
+    const sortByTerm = (a, b) => {
+      const termA = a.name_eng.toUpperCase();
+      const termB = b.name_eng.toUpperCase();
+
+      // handle diacritics in terms
+      if (new Intl.Collator().compare(termA, termB) > 0) {
+        return 1;
+      } else if (new Intl.Collator().compare(termA, termB) < 0) {
+        return -1;
+      }
+    };
+
     async function getTermList() {
       try {
         const response = await axios.get("/api/terms/");
         const allTerms = response.data;
-        const sortedTerms = await allTerms.sort();
+        const sortedTerms = await allTerms.sort(sortByTerm);
         setTermList(sortedTerms);
       } catch (err) {
         console.error(err);
