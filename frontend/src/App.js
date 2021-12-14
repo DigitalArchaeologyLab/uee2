@@ -1,19 +1,20 @@
 import "./assets/fonts.css";
 import "./App.css";
 import "./variables.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import TitleIndex from "./containers/TitleIndex/TitleIndex";
 import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
 import Glossary from "./containers/Glossary/Glossary";
-import About from "./containers/About/About";
 import BasicPage from "./containers/Basic/BasicPage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import IIIFImageIFrame from "./components/Image/IIIFImageIFrame";
 import IIIFImage from "./components/Image/IIIFImage";
 import SwipeableTemporaryDrawer from "./containers/Drawer/Drawer";
 import ScrollToTop from "./utils/scrollToTop";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -25,9 +26,6 @@ function App() {
             <Route exact path="/">
               <Homepage />
             </Route>
-            {/* <Route exact path="/about">
-              <About />
-            </Route> */}
             <Route exact path="/subjects">
               <SubjectBrowse />
             </Route>
@@ -57,6 +55,9 @@ function App() {
             </Route>
             <Route path="/article/:id">
               <Article />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </Router>
