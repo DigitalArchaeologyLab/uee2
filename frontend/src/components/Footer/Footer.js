@@ -10,36 +10,36 @@ function Footer() {
           <div className="footer__1">
             <h4>Editorial Information</h4>
             <ul>
-              <li>About the UEE</li>
-              <li>Editors and Staff</li>
-              <li>The Authors</li>
-              <li>Citing the UEE</li>
-              <li>Guide to Publishing</li>
+              <li><a href="/about">About the UEE</a></li>
+              <li><a href="/about/editors">Editors and Staff</a></li>
+              <li><a href="/about/authors">The Authors</a></li>
+              <li><a href="/about/citing">Citing the UEE</a></li>
+              <li><a href="/about/guide">Guide to Publishing</a></li>
             </ul>
           </div>
           <div className="footer__2">
             <h4>Information for Authors</h4>
             <ul>
-              <li>Submission and Style Guide</li>
-              <li>Preferred Spelling</li>
-              <li>Preferred Chronology</li>
+              <li><a href="/about/style-guide">Submission and Style Guide</a></li>
+              <li><a href="/about/spelling">Preferred Spelling</a></li>
+              <li><a href="/about/chronology">Preferred Chronology</a></li>
             </ul>
           </div>
           <div className="footer__3">
             <h4>Search the UEE</h4>
             <ul>
-              <li>Subject Browse</li>
-              <li>Title Index</li>
-              <li>Time Map</li>
+              <li><a href="/subjects">Subject Browse</a></li>
+              <li><a href="/articles">Title Index</a></li>
+              <li><a href="/timemap">Time Map</a></li>
             </ul>
           </div>
           <div className="footer__4">
             <h4>Related Links</h4>
             <ul>
-              <li>UCLA</li>
-              <li>UEE eScholarship Repository</li>
-              <li>AEGARON</li>
-              <li>Digital Karnak</li>
+              <li><a href="https://ucla.edu">UCLA</a></li>
+              <li><a href="http://escholarship.org/uc/nelc_uee">UEE eScholarship Repository</a></li>
+              <li><a href="http://drupaldev.aegaron.ucla.edu/">AEGARON</a></li>
+              <li><a href="http://dlib.etc.ucla.edu/projects/Karnak/">Digital Karnak</a></li>
             </ul>
           </div>
           <div className="footer__5">
