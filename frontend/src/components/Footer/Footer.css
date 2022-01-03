@@ -55,10 +55,14 @@ footer {
   font-size: 1rem;
 }
 
-.footer ul {
+.footer__cols ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.footer__cols a {
+  color: var(--ueeGreen05);
 }
 
 .footer__copyright {
