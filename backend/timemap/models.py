@@ -63,5 +63,15 @@ class Activity(models.Model):
     endPeriod = models.ManyToManyField("Period", related_name="endPeriod")
     notes = models.TextField(null=True, blank=True)
 
+    # def __str__(self):
+    #     return "%s (%s - %s), %s" % (
+    #         self.associatedPlace,
+    #         self.startPeriod,
+    #         self.endPeriod,
+    #         self.type,
+    #     )
     def __str__(self):
-        return "%s" % (self.type,)
+        place = ", ".join(str(p) for p in self.associatedPlace.all())
+        start = ", ".join(str(s) for s in self.startPeriod.all())
+        end = ", ".join(str(e) for e in self.endPeriod.all())
+        return f"{place} ({start} - {end}), {self.type}"

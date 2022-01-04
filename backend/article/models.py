@@ -3,6 +3,7 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from treebeard.mp_tree import MP_Node
 from timemap.models import Place
+from timemap.models import Activity
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -34,6 +35,7 @@ class Article(models.Model):
         max_length=255, choices=STATUS_CHOICES, default=UNPUBLISHED
     )
     place = models.ManyToManyField(Place)
+    activity = models.ManyToManyField(Activity)
     body = MarkdownxField()
     transient_subject_ancestors = []
 
