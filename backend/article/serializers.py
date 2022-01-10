@@ -35,6 +35,8 @@ class ArticleSerializer(serializers.ModelSerializer):
             "authors",
             "abstract_eng",
             "abstract_ar",
+            "place",
+            "period",
             "activity",
             "status",
             "body",

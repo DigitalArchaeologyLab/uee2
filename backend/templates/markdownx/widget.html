@@ -16,6 +16,12 @@
         Tag Place
       </button>
 
+    <script type="text/javascript" src="{% static 'article/insertPeriod.js' %}"></script>
+
+      <button class="editorButton" id="tagPeriodButton" type="button" onClick="tagPeriod()">
+        Tag Period
+      </button> 
+
     <script type="text/javascript" src="{% static 'article/insertActivity.js' %}"></script>
 
       <button class="editorButton" id="tagActivityButton" type="button" onClick="tagActivity()">
@@ -45,6 +51,29 @@
 
           <div>
             <button id="insert" type="button" onClick="insertPlaceSelections()">
+              Insert
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Period popup modal to select what is inserted-->
+     <div id="tagPeriodModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+          <select name="periods" id="id_periods_modal" multiple=""></select>
+          <script>
+            prepPeriodSelectOptions();
+          </script>
+
+          <div class="help" id="modalHelp">
+            Select a single period.
+          </div>
+
+          <div>
+            <button id="insert" type="button" onClick="insertPeriodSelections()">
               Insert
             </button>
           </div>
