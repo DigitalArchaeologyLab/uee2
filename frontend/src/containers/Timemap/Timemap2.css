@@ -1,0 +1,51 @@
+.timemap {
+  padding-top: 125px;
+  position: relative;
+}
+
+.timemap__intro {
+  padding: 2vh 15vw;
+}
+
+.timemap__intro h1 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  color: var(--ueeRed01);
+  text-transform: uppercase;
+}
+
+.timemap__map {
+  margin: 0 auto;
+  padding-bottom: 125px;
+}
+
+.leaflet-container {
+  height: 800px;
+}
+
+.timemap__container {
+}
+
+.timemap__sidebar {
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 500;
+  margin: 10px;
+  padding: 20px;
+  overflow: auto;
+  height: 740px;
+  width: 350px;
+}
+
+.period__period {
+  overflow: auto;
+  height: 300px;
+}
+
+.period__title h2,
+.slider__title h2 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  color: var(--ueeGreen01);
+  text-transform: uppercase;
+}
