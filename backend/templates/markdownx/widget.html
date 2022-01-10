@@ -16,6 +16,12 @@
         Tag Place
       </button>
 
+    <script type="text/javascript" src="{% static 'article/insertActivity.js' %}"></script>
+
+      <button class="editorButton" id="tagActivityButton" type="button" onClick="tagActivity()">
+        Tag Timemap Reference
+      </button>  
+
     <script type="text/javascript" src="{% static 'article/insertTerm.js' %}"></script>
 
       <button class="editorButton" id="tagTermButton" type="button" onClick="tagTerm()">
@@ -45,6 +51,30 @@
         </div>
       </div>
     </div>
+
+    <!-- Activity Term popup modal to select what is inserted-->
+    <div id="tagActivityModal" class="modal">
+      <div class="modal-content">
+        <span class="closeActivityModal">&times;</span>
+        <div>
+          <select name="activities" id="id_activities_modal" multiple=""></select>
+          <script>
+            prepActivitySelectOptions();
+          </script>
+
+          <div class="help" id="modalHelp">
+            Hold down “Control”, or “Command” on a Mac, to select more than one.
+          </div>
+
+          <div>
+            <button id="insert" type="button" onClick="insertActivitySelections()">
+              Insert 
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- Glossary Term popup modal to select what is inserted-->
     <div id="tagTermModal" class="modal">
