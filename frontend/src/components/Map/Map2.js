@@ -62,9 +62,12 @@ function Map(props) {
       const marker = L.marker(latlng, { title: title });
       marker.addTo(layerRef.current);
       // FIX - only allows you to open popup once...
+      // TODO - onclick open sidebar and filter activities/articles/etc appropriately
       marker.on("click", function (e) {
         this.bindPopup(
-          ReactDOMServer.renderToString(<Popup placeName={title} />)
+          ReactDOMServer.renderToString(
+            <Popup placeName={title} />
+          )
         );
       });
     });

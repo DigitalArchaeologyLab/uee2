@@ -81,18 +81,18 @@ function Timemap2() {
   }, []);
 
   // get activities
-  // useEffect(() => {
-  //   async function getActivities() {
-  //     try {
-  //       const response = await axios.get("/api/activities/");
-  //       setActivities(response.data);
-  //       setLoading(false);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   }
-  //   getActivities();
-  // }, []);
+  useEffect(() => {
+    async function getActivities() {
+      try {
+        const response = await axios.get("/api/activities/");
+        setActivities(response.data);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getActivities();
+  }, []);
 
   // filter articles when query is entered
   // useEffect(() => {
