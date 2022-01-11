@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import "./Homepage.css";
 
 class Homepage extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class Homepage extends React.Component {
       <div>
         <Header />
 
-        <main className="body">
+        <main className="home">
           <div className="welcome">
             <h1>Welcome to the UCLA Encyclopedia of Egyptology</h1>
             <div className="welcome__tagline">
@@ -162,33 +163,33 @@ class Homepage extends React.Component {
             </div>
           </div>
           <div className="tiles">
-            <div className="tiles_title">
+            <figure>
               <Link to="/articles">
-                <p>Browse the subjects</p>
+                <figcaption>Browse the subjects</figcaption>
                 <img
                   src={process.env.PUBLIC_URL + "/timemap.png"}
                   alt="browse"
                 />
               </Link>
-            </div>
-            <div className="tiles_title">
+            </figure>
+            <figure>
               <Link to="/articles">
-                <p>Explore the time map</p>
+                <figcaption>Explore the time map</figcaption>
                 <img
                   src={process.env.PUBLIC_URL + "/timemap.png"}
                   alt="timemap"
                 />
               </Link>
-            </div>
-            <div className="tiles_title">
+            </figure>
+            <figure>
               <Link to="/articles">
-                <p>View the articles</p>
+                <figcaption>View the articles</figcaption>
                 <img
                   src={process.env.PUBLIC_URL + "/timemap.png"}
                   alt="articles"
                 />
               </Link>
-            </div>
+            </figure>
           </div>
         </main>
         <Footer />

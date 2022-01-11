@@ -1,6 +1,7 @@
 .timemap {
   padding-top: 125px;
   position: relative;
+  padding: 0;
 }
 
 .timemap__intro {
