@@ -40,7 +40,7 @@ class Period(MP_Node):
     end = models.IntegerField(null=True)
 
     def __str__(self):
-        return "%s" % (self.name_eng)
+        return "%s (%s — %s)" % (self.name_eng, self.start, self.end)
 
 
 class Activity(models.Model):

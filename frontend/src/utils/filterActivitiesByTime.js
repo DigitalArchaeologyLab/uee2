@@ -5,7 +5,7 @@ export function filterActivitiesByTime(
   filteredActivityArray,
 ) {
   // show all of the places if no times have been selected
-  if (selectedMinTime === -3000 && selectedMaxTime === 1000) {
+  if (selectedMinTime === -5000 && selectedMaxTime === 2000) {
     filteredActivityArray.push(...activities);
   } else {
     // filter based on the selected times

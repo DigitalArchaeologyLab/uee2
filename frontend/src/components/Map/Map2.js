@@ -10,6 +10,7 @@ import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { filterActivitiesByPeriod } from "../../utils/filterActivitiesByPeriod";
 import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
+import ActivityList from "../ActivityList/ActivityList";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -65,9 +66,7 @@ function Map(props) {
       // TODO - onclick open sidebar and filter activities/articles/etc appropriately
       marker.on("click", function (e) {
         this.bindPopup(
-          ReactDOMServer.renderToString(
-            <Popup placeName={title} />
-          )
+          ReactDOMServer.renderToString(<Popup placeName={title} />)
         );
       });
     });

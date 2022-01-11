@@ -10,15 +10,19 @@ import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 
 import SearchBarMap from "../../components/Search/SearchBarMap";
 import filterArticlesByText from "../../utils/filterArticlesByText";
+import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
+
+import ActivityList from "../../components/ActivityList/ActivityList";
 
 function Timemap2() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
-  const [SelectedMinTime, setSelectedMinTime] = useState(-3000);
-  const [SelectedMaxTime, setSelectedMaxTime] = useState(1000);
+  const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
+  const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
   const [isLoading, setLoading] = useState(true);
+  const [isLoadingActivities, setLoadingActivities] = useState(true);
   const [Places, setPlaces] = useState([
     {
       id: 0,
@@ -49,6 +53,7 @@ function Timemap2() {
       notes: "",
     },
   ]);
+  const [FilteredActivities, setFilteredActivities] = useState(Activities);
   const [Articles, setArticles] = useState([
     {
       id: 0,
@@ -86,13 +91,26 @@ function Timemap2() {
       try {
         const response = await axios.get("/api/activities/");
         setActivities(response.data);
-        setLoading(false);
+        setLoadingActivities(false);
       } catch (err) {
         console.error(err);
       }
     }
     getActivities();
   }, []);
+
+  // filter activities
+  const filteredActivityArray = [];
+
+  useEffect(() => {
+    const filtered = filterActivitiesByTime(
+      Activities,
+      SelectedMinTime,
+      SelectedMaxTime,
+      filteredActivityArray
+    );
+    setFilteredActivities(filtered);
+  });
 
   // filter articles when query is entered
   // useEffect(() => {
@@ -102,33 +120,43 @@ function Timemap2() {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <main className="timemap">
-        <div className="timemap__intro">
+        {/* <div className="timemap__intro">
           <h1>Time map</h1>
           <p>
             Short map blurb here so people know how to toggle and use, and also
             what the time map tells us. Can choose a particular phase, dynasty,
             or rulership, or toggle the slider in the map.{" "}
           </p>
-        </div>
+        </div> */}
         <div className="timemap__container">
           <aside className="timemap__sidebar">
             {/* <PeriodFacet
               setSelectedPeriod={setSelectedPeriod}
               SelectedPeriod={SelectedPeriod}
               rootName={"Periods"}
-            />
+            /> */}
+
             <TimesliderFacet
               setSelectedMinTime={setSelectedMinTime}
               setSelectedMaxTime={setSelectedMaxTime}
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
             />
-            <SearchBarMap
+            {/* <SearchBarMap
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
             /> */}
+            <hr></hr>
+            <ActivityList
+              Activities={Activities}
+              FilteredActivities={FilteredActivities}
+              setActivities={setActivities}
+              isLoadingActivities={isLoadingActivities}
+              SelectedMinTime={SelectedMinTime}
+              SelectedMaxTime={SelectedMaxTime}
+            />
           </aside>
           <div>
             <MapContainer
@@ -136,6 +164,7 @@ function Timemap2() {
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
               isLoading={isLoading}
+              isLoadingActivities={isLoadingActivities}
               activities={Activities}
               FilteredArticles={FilteredArticles}
               Places={Places}
@@ -143,7 +172,7 @@ function Timemap2() {
           </div>
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

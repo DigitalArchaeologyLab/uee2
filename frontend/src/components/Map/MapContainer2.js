@@ -15,6 +15,7 @@ function MapContainer(props) {
           SelectedMaxTime={props.SelectedMaxTime}
           FilteredArticles={props.FilteredArticles}
           Places={props.Places}
+          isLoadingActivities={props.isLoadingActivities}
         />
       )}
     </div>

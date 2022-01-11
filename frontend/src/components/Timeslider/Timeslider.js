@@ -5,24 +5,20 @@ import "./Timeslider.css";
 
 const marks = [
   {
-    value: -3000,
-    label: "3000 BCE",
+    value: -5000,
+    label: "5000 BCE",
   },
   {
-    value: -2000,
-    label: "2000 BCE",
-  },
-  {
-    value: -1000,
-    label: "1000 BCE",
+    value: -2500,
+    label: "2500 BCE",
   },
   {
     value: 0,
     label: "0",
   },
   {
-    value: 1000,
-    label: "1000 CE",
+    value: 2000,
+    label: "2000 CE",
   },
 ];
 
@@ -98,8 +94,8 @@ function Timeslider(props) {
           value={value}
           onChange={handleSliderChange}
           marks={marks}
-          min={-3000}
-          max={1000}
+          min={-5000}
+          max={2000}
         />
       </div>
     </div>
