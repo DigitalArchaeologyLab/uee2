@@ -11,18 +11,24 @@ import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 import SearchBarMap from "../../components/Search/SearchBarMap";
 import filterArticlesByText from "../../utils/filterArticlesByText";
 import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
+import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
 
 import ActivityList from "../../components/ActivityList/ActivityList";
+import ArticleList from "../../components/ArticleList/ArticleList";
+import ArticlesByActivityType from "../../components/ActivityList/ArticlesByActivityType";
 
 function Timemap2() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
   const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
   const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
+  const [SelectedPlace, setSelectedPlace] = useState("all");
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
   const [isLoading, setLoading] = useState(true);
   const [isLoadingActivities, setLoadingActivities] = useState(true);
+  const [isLoadingArticles, setIsLoadingArticles] = useState(true);
+
   const [Places, setPlaces] = useState([
     {
       id: 0,
@@ -67,6 +73,9 @@ function Timemap2() {
       abstract_ar: "",
       status: "",
       body: "",
+      place: [],
+      activity: [],
+      period: [],
     },
   ]);
   const [FilteredArticles, setFilteredArticles] = useState(Articles);
@@ -110,26 +119,26 @@ function Timemap2() {
       filteredActivityArray
     );
     setFilteredActivities(filtered);
-  });
+  }, [SelectedMinTime, SelectedMaxTime, Activities]);
 
-  // filter articles when query is entered
-  // useEffect(() => {
-  //   let filtered = filterArticlesByText(Articles, searchQuery);
-  //   setFilteredArticles(filtered);
-  // }, [searchQuery]);
+  // get articles
+  useEffect(() => {
+    async function getArticles() {
+      try {
+        const response = await axios.get("/api/articles/");
+        setArticles(response.data);
+        setIsLoadingArticles(false);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getArticles();
+  }, []);
 
   return (
     <div>
       {/* <Header /> */}
       <main className="timemap">
-        {/* <div className="timemap__intro">
-          <h1>Time map</h1>
-          <p>
-            Short map blurb here so people know how to toggle and use, and also
-            what the time map tells us. Can choose a particular phase, dynasty,
-            or rulership, or toggle the slider in the map.{" "}
-          </p>
-        </div> */}
         <div className="timemap__container">
           <aside className="timemap__sidebar">
             {/* <PeriodFacet
@@ -156,6 +165,19 @@ function Timemap2() {
               isLoadingActivities={isLoadingActivities}
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
+              FilteredArticles={FilteredArticles}
+            />
+            <ul>
+              {FilteredArticles.map((article) => (
+                <li key={article.id}>
+                  {article.title_eng}, {article.activity}
+                </li>
+              ))}
+            </ul>
+            <ArticlesByActivityType
+              SelectedPlace={SelectedPlace}
+              Articles={Articles}
+              setFilteredArticles={setFilteredArticles}
             />
           </aside>
           <div>
@@ -168,6 +190,8 @@ function Timemap2() {
               activities={Activities}
               FilteredArticles={FilteredArticles}
               Places={Places}
+              SelectedPlace={SelectedPlace}
+              setSelectedPlace={setSelectedPlace}
             />
           </div>
         </div>

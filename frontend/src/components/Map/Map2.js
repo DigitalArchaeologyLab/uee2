@@ -60,7 +60,7 @@ function Map(props) {
       const latlng = { lat: latitude, lng: longitude };
       const title = place.name_eng;
 
-      const marker = L.marker(latlng, { title: title });
+      const marker = L.marker(latlng, { title: title, id: place.id });
       marker.addTo(layerRef.current);
       // FIX - only allows you to open popup once...
       // TODO - onclick open sidebar and filter activities/articles/etc appropriately
@@ -68,6 +68,7 @@ function Map(props) {
         this.bindPopup(
           ReactDOMServer.renderToString(<Popup placeName={title} />)
         );
+        props.setSelectedPlace(marker.options.id);
       });
     });
   });

@@ -16,6 +16,8 @@ function MapContainer(props) {
           FilteredArticles={props.FilteredArticles}
           Places={props.Places}
           isLoadingActivities={props.isLoadingActivities}
+          SelectedPlace={props.SelectedPlace}
+          setSelectedPlace={props.setSelectedPlace}
         />
       )}
     </div>
