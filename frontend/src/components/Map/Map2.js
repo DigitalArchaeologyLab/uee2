@@ -62,9 +62,10 @@ function Map(props) {
 
       const marker = L.marker(latlng, { title: title, id: place.id });
       marker.addTo(layerRef.current);
-      // FIX - only allows you to open popup once...
       // TODO - onclick open sidebar and filter activities/articles/etc appropriately
       marker.on("click", function (e) {
+        console.log('hi')
+        // test portal instead to see if that fixes the delay/sync issue with the popup responsiveness
         this.bindPopup(
           ReactDOMServer.renderToString(<Popup placeName={title} />)
         );

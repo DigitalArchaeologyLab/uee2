@@ -158,26 +158,13 @@ function Timemap2() {
               setSearchQuery={setSearchQuery}
             /> */}
             <hr></hr>
-            <ActivityList
-              Activities={Activities}
-              FilteredActivities={FilteredActivities}
-              setActivities={setActivities}
-              isLoadingActivities={isLoadingActivities}
-              SelectedMinTime={SelectedMinTime}
-              SelectedMaxTime={SelectedMaxTime}
-              FilteredArticles={FilteredArticles}
-            />
-            <ul>
-              {FilteredArticles.map((article) => (
-                <li key={article.id}>
-                  {article.title_eng}, {article.activity}
-                </li>
-              ))}
-            </ul>
+
             <ArticlesByActivityType
               SelectedPlace={SelectedPlace}
               Articles={Articles}
               setFilteredArticles={setFilteredArticles}
+              Activities={Activities}
+              Places={Places}
             />
           </aside>
           <div>

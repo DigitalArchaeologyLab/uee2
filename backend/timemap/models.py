@@ -59,8 +59,10 @@ class Activity(models.Model):
     startDate = models.IntegerField(null=True, blank=True)
     endDate = models.IntegerField(null=True, blank=True)
     associatedPlace = models.ManyToManyField("Place")
-    startPeriod = models.ManyToManyField("Period", related_name="startPeriod")
-    endPeriod = models.ManyToManyField("Period", related_name="endPeriod")
+    startPeriod = models.ManyToManyField(
+        "Period", related_name="startPeriod", blank=True
+    )
+    endPeriod = models.ManyToManyField("Period", related_name="endPeriod", blank=True)
     notes = models.TextField(null=True, blank=True)
 
     def __str__(self):
