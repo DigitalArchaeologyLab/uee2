@@ -26,17 +26,6 @@
 .timemap__container {
 }
 
-.timemap__sidebar {
-  background-color: #ffffff;
-  position: absolute;
-  z-index: 500;
-  padding: 20px;
-  overflow: auto;
-  height: 800px;
-  width: 350px;
-  box-shadow: 2px 0 10px -2px rgb(204, 204, 204);
-  border: 0.25px solid lightgrey;
-}
 
 .period__period {
   overflow: auto;

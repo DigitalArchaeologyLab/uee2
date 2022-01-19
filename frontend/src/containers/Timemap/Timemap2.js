@@ -5,17 +5,12 @@ import "./Timemap2.css";
 import MapContainer from "../../components/Map/MapContainer2";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
-import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 
-import SearchBarMap from "../../components/Search/SearchBarMap";
 import filterArticlesByText from "../../utils/filterArticlesByText";
 import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
 import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
 
-import ActivityList from "../../components/ActivityList/ActivityList";
-import ArticleList from "../../components/ArticleList/ArticleList";
-import ArticlesByActivityType from "../../components/ActivityList/ArticlesByActivityType";
+import MapSidebar from "../../components/MapSidebar/MapSidebar";
 
 function Timemap2() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
@@ -140,33 +135,18 @@ function Timemap2() {
       {/* <Header /> */}
       <main className="timemap">
         <div className="timemap__container">
-          <aside className="timemap__sidebar">
-            {/* <PeriodFacet
-              setSelectedPeriod={setSelectedPeriod}
-              SelectedPeriod={SelectedPeriod}
-              rootName={"Periods"}
-            /> */}
+          <MapSidebar
+            setSelectedMinTime={setSelectedMinTime}
+            setSelectedMaxTime={setSelectedMaxTime}
+            SelectedMinTime={SelectedMinTime}
+            SelectedMaxTime={SelectedMaxTime}
+            SelectedPlace={SelectedPlace}
+            Articles={Articles}
+            setFilteredArticles={setFilteredArticles}
+            Activities={Activities}
+            Places={Places}
+          />
 
-            <TimesliderFacet
-              setSelectedMinTime={setSelectedMinTime}
-              setSelectedMaxTime={setSelectedMaxTime}
-              SelectedMinTime={SelectedMinTime}
-              SelectedMaxTime={SelectedMaxTime}
-            />
-            {/* <SearchBarMap
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            /> */}
-            <hr></hr>
-
-            <ArticlesByActivityType
-              SelectedPlace={SelectedPlace}
-              Articles={Articles}
-              setFilteredArticles={setFilteredArticles}
-              Activities={Activities}
-              Places={Places}
-            />
-          </aside>
           <div>
             <MapContainer
               SelectedPeriod={SelectedPeriod}

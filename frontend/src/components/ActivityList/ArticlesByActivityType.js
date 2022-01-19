@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
 import "./ArticlesByActivityType.css";
 
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 function ArticlesByActivityType(props) {
   const [ConstructionArticles, setConstructionArticles] = useState([]);
   const [UseArticles, setUseArticles] = useState([]);
@@ -55,7 +60,7 @@ function ArticlesByActivityType(props) {
             ]);
           }
 
-          if (activity.type === "Inactive / Defunct") {
+          if (activity.type === "Inactive / defunct time") {
             setInactiveArticles((InactiveArticles) => [
               ...InactiveArticles,
               article,
@@ -77,50 +82,40 @@ function ArticlesByActivityType(props) {
     });
   }, [props.SelectedPlace, props.Articles]);
 
+  const setAccordion = (typeArray, typeTitle) => {
+    if (typeArray.length > 0) {
+      return (
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="construction-content"
+            id="construction-header"
+          >
+            <h3>{typeTitle}</h3>
+          </AccordionSummary>
+          <AccordionDetails>
+            <ul>
+              {typeArray.map((article) => (
+                <li>
+                  <Link to={`/article/${article.id}`}>{article.title_eng}</Link>
+                </li>
+              ))}
+            </ul>
+          </AccordionDetails>
+        </Accordion>
+      );
+    }
+  };
+
   return (
     <div>
       <div className="ArticlesByActivityType">
         <h2>{getPlaceName(props.SelectedPlace, props.Places)}</h2>
-        <h3>Construction</h3>
-        <ul>
-          {ConstructionArticles.map((article) => (
-            <li>
-              <Link to={`/article/${article.id}`}>{article.title_eng}</Link>
-            </li>
-          ))}
-        </ul>
-        <h3>Use</h3>
-        <ul>
-          {UseArticles.map((article) => (
-            <li>
-              <Link to={`/article/${article.id}`}>{article.title_eng}</Link>
-            </li>
-          ))}
-        </ul>
-        <h3>Modification</h3>
-        <ul>
-          {ModificationArticles.map((article) => (
-            <li>
-              <Link to={`/article/${article.id}`}>{article.title_eng}</Link>
-            </li>
-          ))}
-        </ul>
-        <h3>Inactive</h3>
-        <ul>
-          {InactiveArticles.map((article) => (
-            <li>
-              <Link to={`/article/${article.id}`}>{article.title_eng}</Link>
-            </li>
-          ))}
-        </ul>
-        <h3>Destruction</h3>
-        <ul>
-          {DestructionArticles.map((article) => (
-            <li>
-              <Link to={`/article/${article.id}`}>{article.title_eng}</Link>
-            </li>
-          ))}
-        </ul>
+        {setAccordion(ConstructionArticles, "Construction")}
+        {setAccordion(UseArticles, "Use")}
+        {setAccordion(ModificationArticles, "Modification")}
+        {setAccordion(InactiveArticles, "Inactive / Defunct")}
+        {setAccordion(DestructionArticles, "Destruction")}
       </div>
     </div>
   );

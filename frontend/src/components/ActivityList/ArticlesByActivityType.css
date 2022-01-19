@@ -9,9 +9,14 @@
   font-family: "Open Sans";
   font-weight: 400;
   text-transform: uppercase;
+  margin: 0px;
 }
 
 .ArticlesByActivityType li {
   list-style-type: none;
   margin-left: -30px;
+}
+
+.ArticlesByActivityType .Mui-expanded {
+  margin: 0;
 }
