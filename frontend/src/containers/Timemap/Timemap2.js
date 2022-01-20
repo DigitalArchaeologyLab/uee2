@@ -9,6 +9,7 @@ import Footer from "../../components/Footer/Footer";
 import filterArticlesByText from "../../utils/filterArticlesByText";
 import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
 import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
+import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
 
 import MapSidebar from "../../components/MapSidebar/MapSidebar";
 
@@ -17,6 +18,7 @@ function Timemap2() {
   const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
   const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
   const [SelectedPlace, setSelectedPlace] = useState("all");
+  const [SelectedActivityTypes, setSelectedActivityTypes] = useState([]);
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
@@ -42,6 +44,10 @@ function Timemap2() {
       numchild: 0,
     },
   ]);
+  const [ActivityTypesWithStatus, setActivityTypesWithStatus] = useState([
+    { label: "", status: false },
+  ]);
+  const [isLoadingActivityTypes, setIsLoadingActivityTypes] = useState(true);
   const [Activities, setActivities] = useState([
     {
       id: 0,
@@ -122,6 +128,7 @@ function Timemap2() {
       try {
         const response = await axios.get("/api/articles/");
         setArticles(response.data);
+        setFilteredArticles(response.data);
         setIsLoadingArticles(false);
       } catch (err) {
         console.error(err);
@@ -129,6 +136,15 @@ function Timemap2() {
     }
     getArticles();
   }, []);
+
+  // filter articles based on activity type selections
+  useEffect(() => {
+    const filtered = filterArticlesByActivityType(
+      Articles,
+      ActivityTypesWithStatus
+    );
+    setFilteredArticles(filtered);
+  }, [ActivityTypesWithStatus]);
 
   return (
     <div>
@@ -143,8 +159,14 @@ function Timemap2() {
             SelectedPlace={SelectedPlace}
             Articles={Articles}
             setFilteredArticles={setFilteredArticles}
+            FilteredArticles={FilteredArticles}
+            setSelectedActivityTypes={setSelectedActivityTypes}
             Activities={Activities}
             Places={Places}
+            ActivityTypesWithStatus={ActivityTypesWithStatus}
+            setActivityTypesWithStatus={setActivityTypesWithStatus}
+            isLoadingActivityTypes={isLoadingActivityTypes}
+            setIsLoadingActivityTypes={setIsLoadingActivityTypes}
           />
 
           <div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import SimpleAccordion from "./Accordion";
 import "./MapSidebar.css";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
 import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 import SearchBarMap from "../../components/Search/SearchBarMap";
+import ActivityTypeFacet from "../../components/ActivityList/ActivityTypeFacet";
 
 import ArticlesByActivityType from "../../components/ActivityList/ArticlesByActivityType";
 
@@ -27,11 +27,19 @@ function MapSidebar(props) {
               searchQuery={props.searchQuery}
               setSearchQuery={props.setSearchQuery}
             /> */}
+        <ActivityTypeFacet
+          ActivityTypesWithStatus={props.ActivityTypesWithStatus}
+          setActivityTypesWithStatus={props.setActivityTypesWithStatus}
+          isLoadingActivityTypes={props.isLoadingActivityTypes}
+          setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
+          setSelectedActivityTypes={props.setSelectedActivityTypes}
+        />
         <hr></hr>
 
         <ArticlesByActivityType
           SelectedPlace={props.SelectedPlace}
           Articles={props.Articles}
+          FilteredArticles={props.FilteredArticles}
           setFilteredArticles={props.setFilteredArticles}
           Activities={props.Activities}
           Places={props.Places}

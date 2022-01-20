@@ -8,9 +8,6 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
-import { filterActivitiesByPeriod } from "../../utils/filterActivitiesByPeriod";
-import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
-import ActivityList from "../ActivityList/ActivityList";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
