@@ -1,0 +1,13 @@
+.filterButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.mapFacet {
+  background-color: #FFF;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}

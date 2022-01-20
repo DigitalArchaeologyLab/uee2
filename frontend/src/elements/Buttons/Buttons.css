@@ -1,0 +1,16 @@
+button.ueeButton {
+  border: none;
+  background-color: var(--ueeGreen01);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 1rem;
+  margin-right: 10px;
+  text-transform: uppercase;
+  width: 100px;
+}
+
+button.ueeButton:hover {
+  background-color: var(--ueeGreen02);
+  color: #fff;
+}
+

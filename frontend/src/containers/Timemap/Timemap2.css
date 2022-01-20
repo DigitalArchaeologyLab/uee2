@@ -1,6 +1,7 @@
 .timemap {
   padding-top: 125px;
   position: relative;
+  padding: 0;
 }
 
 .timemap__intro {
@@ -26,16 +27,39 @@
 .timemap__container {
 }
 
-
 .period__period {
   overflow: auto;
   height: 300px;
 }
 
 .period__title h2,
-.slider__title h2 {
-  font-family: "Open Sans";
-  font-weight: 300;
+.slider__title h2,
+.activitytype__title h2 {
+  font-family: "Open Sans Condensed";
+  font-weight: 600;
   color: var(--ueeGreen01);
   text-transform: uppercase;
+  margin-top: 0px;
+}
+
+.filterSidebar,
+.chipsSidebar,
+.placeSidebar {
+  position: absolute;
+  z-index: 500;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow: auto;
+  max-height: 800px;
+  width: 375px;
+}
+
+.filterSidebar {
+  background-color: #f0f0f0;
+}
+
+.chipsSidebar,
+.placeSidebar {
+  display: none;
+  background-color: #ffffff;
 }

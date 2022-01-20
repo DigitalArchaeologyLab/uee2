@@ -11,7 +11,9 @@ import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
 import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
 import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
 
-import MapSidebar from "../../components/MapSidebar/MapSidebar";
+import FilterSidebar from "../../components/MapSidebar/FilterSidebar";
+import ChipsSidebar from "../../components/MapSidebar/ChipsSidebar";
+import PlaceSidebar from "../../components/MapSidebar/PlaceSidebar";
 
 function Timemap2() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
@@ -151,23 +153,68 @@ function Timemap2() {
       {/* <Header /> */}
       <main className="timemap">
         <div className="timemap__container">
-          <MapSidebar
-            setSelectedMinTime={setSelectedMinTime}
-            setSelectedMaxTime={setSelectedMaxTime}
-            SelectedMinTime={SelectedMinTime}
-            SelectedMaxTime={SelectedMaxTime}
-            SelectedPlace={SelectedPlace}
-            Articles={Articles}
-            setFilteredArticles={setFilteredArticles}
-            FilteredArticles={FilteredArticles}
-            setSelectedActivityTypes={setSelectedActivityTypes}
-            Activities={Activities}
-            Places={Places}
-            ActivityTypesWithStatus={ActivityTypesWithStatus}
-            setActivityTypesWithStatus={setActivityTypesWithStatus}
-            isLoadingActivityTypes={isLoadingActivityTypes}
-            setIsLoadingActivityTypes={setIsLoadingActivityTypes}
-          />
+          <aside className="filterSidebar">
+            <FilterSidebar
+              setSelectedMinTime={setSelectedMinTime}
+              setSelectedMaxTime={setSelectedMaxTime}
+              SelectedMinTime={SelectedMinTime}
+              SelectedMaxTime={SelectedMaxTime}
+              SelectedPlace={SelectedPlace}
+              Articles={Articles}
+              setFilteredArticles={setFilteredArticles}
+              FilteredArticles={FilteredArticles}
+              setSelectedActivityTypes={setSelectedActivityTypes}
+              Activities={Activities}
+              Places={Places}
+              ActivityTypesWithStatus={ActivityTypesWithStatus}
+              setActivityTypesWithStatus={setActivityTypesWithStatus}
+              isLoadingActivityTypes={isLoadingActivityTypes}
+              setIsLoadingActivityTypes={setIsLoadingActivityTypes}
+            />
+          </aside>
+
+
+          <aside className="chipsSidebar">
+            <ChipsSidebar
+              setSelectedMinTime={setSelectedMinTime}
+              setSelectedMaxTime={setSelectedMaxTime}
+              SelectedMinTime={SelectedMinTime}
+              SelectedMaxTime={SelectedMaxTime}
+              SelectedPlace={SelectedPlace}
+              Articles={Articles}
+              setFilteredArticles={setFilteredArticles}
+              FilteredArticles={FilteredArticles}
+              setSelectedActivityTypes={setSelectedActivityTypes}
+              Activities={Activities}
+              Places={Places}
+              ActivityTypesWithStatus={ActivityTypesWithStatus}
+              setActivityTypesWithStatus={setActivityTypesWithStatus}
+              isLoadingActivityTypes={isLoadingActivityTypes}
+              setIsLoadingActivityTypes={setIsLoadingActivityTypes}
+            />
+          </aside>
+
+
+
+          <aside className="placeSidebar">
+            <PlaceSidebar
+              setSelectedMinTime={setSelectedMinTime}
+              setSelectedMaxTime={setSelectedMaxTime}
+              SelectedMinTime={SelectedMinTime}
+              SelectedMaxTime={SelectedMaxTime}
+              SelectedPlace={SelectedPlace}
+              Articles={Articles}
+              setFilteredArticles={setFilteredArticles}
+              FilteredArticles={FilteredArticles}
+              setSelectedActivityTypes={setSelectedActivityTypes}
+              Activities={Activities}
+              Places={Places}
+              ActivityTypesWithStatus={ActivityTypesWithStatus}
+              setActivityTypesWithStatus={setActivityTypesWithStatus}
+              isLoadingActivityTypes={isLoadingActivityTypes}
+              setIsLoadingActivityTypes={setIsLoadingActivityTypes}
+            />
+          </aside>
 
           <div>
             <MapContainer
