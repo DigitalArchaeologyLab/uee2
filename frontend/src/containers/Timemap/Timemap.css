@@ -25,6 +25,7 @@
 }
 
 .timemap__container {
+
 }
 
 .period__period {
@@ -33,11 +34,18 @@
 }
 
 .period__title h2,
-.slider__title h2 {
+.slider__title h2,
+.activitytype__title h2 {
   font-family: "Open Sans Condensed";
-  font-weight: 300;
+  font-weight: 600;
   color: var(--ueeGreen01);
   text-transform: uppercase;
+  margin-top: 0px;
+}
+
+.timemap__sidebars {
+  display: flex;
+  flex-direction: column;
 }
 
 .filterSidebar,
@@ -53,11 +61,15 @@
 }
 
 .filterSidebar {
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
 }
 
 .chipsSidebar,
 .placeSidebar {
   display: none;
   background-color: #ffffff;
+}
+
+.placeSidebar {
+  top: 100px;
 }

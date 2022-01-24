@@ -8,7 +8,6 @@ import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
-import Timemap2 from "./containers/Timemap/Timemap2";
 import Glossary from "./containers/Glossary/Glossary";
 import BasicPage from "./containers/Basic/BasicPage";
 import IIIFImageIFrame from "./components/Image/IIIFImageIFrame";
@@ -32,9 +31,6 @@ function App() {
             </Route>
             <Route exact path="/timemap">
               <Timemap />
-            </Route>
-            <Route exact path="/timemap2">
-              <Timemap2 />
             </Route>
             <Route path="/articles">
               <TitleIndex />

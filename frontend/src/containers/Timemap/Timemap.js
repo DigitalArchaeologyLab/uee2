@@ -5,20 +5,51 @@ import "./Timemap.css";
 import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
-import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
 
-import SearchBarMap from "../../components/Search/SearchBarMap";
 import filterArticlesByText from "../../utils/filterArticlesByText";
+import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
+import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
+import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
+
+import FilterSidebar from "../../components/MapSidebar/FilterSidebar";
+import ChipsSidebar from "../../components/MapSidebar/ChipsSidebar";
+import PlaceSidebar from "../../components/MapSidebar/PlaceSidebar";
 
 function Timemap() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
-  const [SelectedMinTime, setSelectedMinTime] = useState(-3000);
-  const [SelectedMaxTime, setSelectedMaxTime] = useState(1000);
+  const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
+  const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
+  const [SelectedPlace, setSelectedPlace] = useState("all");
+  const [SelectedActivityTypes, setSelectedActivityTypes] = useState([]);
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");
   const [searchQuery, setSearchQuery] = useState(query || "");
   const [isLoading, setLoading] = useState(true);
+  const [isLoadingActivities, setLoadingActivities] = useState(true);
+  const [isLoadingArticles, setIsLoadingArticles] = useState(true);
+
+  const [Places, setPlaces] = useState([
+    {
+      id: 0,
+      name_eng: "",
+      isRegion: false,
+      isGovernate: false,
+      isNome: false,
+      isSite: false,
+      isFeature: false,
+      notes: "",
+      geojson: "",
+      lat: "",
+      lon: "",
+      depth: 0,
+      path: "",
+      numchild: 0,
+    },
+  ]);
+  const [ActivityTypesWithStatus, setActivityTypesWithStatus] = useState([
+    { label: "", status: false },
+  ]);
+  const [isLoadingActivityTypes, setIsLoadingActivityTypes] = useState(true);
   const [Activities, setActivities] = useState([
     {
       id: 0,
@@ -31,6 +62,7 @@ function Timemap() {
       notes: "",
     },
   ]);
+  const [FilteredActivities, setFilteredActivities] = useState(Activities);
   const [Articles, setArticles] = useState([
     {
       id: 0,
@@ -44,58 +76,143 @@ function Timemap() {
       abstract_ar: "",
       status: "",
       body: "",
+      place: [],
+      activity: [],
+      period: [],
     },
   ]);
   const [FilteredArticles, setFilteredArticles] = useState(Articles);
 
+  // get places
+  useEffect(() => {
+    async function getPlaces() {
+      try {
+        const response = await axios.get("/api/places/");
+        setPlaces(response.data);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getPlaces();
+  }, []);
+
+  // get activities
   useEffect(() => {
     async function getActivities() {
       try {
         const response = await axios.get("/api/activities/");
         setActivities(response.data);
-        setLoading(false);
+        setLoadingActivities(false);
       } catch (err) {
         console.error(err);
       }
     }
     getActivities();
   }, []);
-  
-  // filter articles when query is entered
+
+  // filter activities
+  const filteredActivityArray = [];
+
   useEffect(() => {
-    let filtered = filterArticlesByText(Articles, searchQuery);
-    setFilteredArticles(filtered);    
-  }, [searchQuery]);
+    const filtered = filterActivitiesByTime(
+      Activities,
+      SelectedMinTime,
+      SelectedMaxTime,
+      filteredActivityArray
+    );
+    setFilteredActivities(filtered);
+  }, [SelectedMinTime, SelectedMaxTime, Activities]);
+
+  // get articles
+  useEffect(() => {
+    async function getArticles() {
+      try {
+        const response = await axios.get("/api/articles/");
+        setArticles(response.data);
+        setFilteredArticles(response.data);
+        setIsLoadingArticles(false);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getArticles();
+  }, []);
+
+  // filter articles based on activity type selections
+  useEffect(() => {
+    const filtered = filterArticlesByActivityType(
+      Articles,
+      ActivityTypesWithStatus
+    );
+    setFilteredArticles(filtered);
+  }, [ActivityTypesWithStatus]);
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <main className="timemap">
-        <div className="timemap__intro">
-          <h1>Time map</h1>
-          <p>
-            Short map blurb here so people know how to toggle and use, and also
-            what the time map tells us. Can choose a particular phase, dynasty,
-            or rulership, or toggle the slider in the map.{" "}
-          </p>
-        </div>
         <div className="timemap__container">
-          <aside className="timemap__sidebar">
-            <PeriodFacet
-              setSelectedPeriod={setSelectedPeriod}
-              SelectedPeriod={SelectedPeriod}
-              rootName={"Periods"}
-            />
-            <TimesliderFacet
-              setSelectedMinTime={setSelectedMinTime}
-              setSelectedMaxTime={setSelectedMaxTime}
-              SelectedMinTime={SelectedMinTime}
-              SelectedMaxTime={SelectedMaxTime}
-            />
-            <SearchBarMap
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            />
+          <aside className="timemap__sidebars">
+            <div className="filterSidebar" id="filterSidebar">
+              <FilterSidebar
+                setSelectedMinTime={setSelectedMinTime}
+                setSelectedMaxTime={setSelectedMaxTime}
+                SelectedMinTime={SelectedMinTime}
+                SelectedMaxTime={SelectedMaxTime}
+                SelectedPlace={SelectedPlace}
+                Articles={Articles}
+                setFilteredArticles={setFilteredArticles}
+                FilteredArticles={FilteredArticles}
+                setSelectedActivityTypes={setSelectedActivityTypes}
+                Activities={Activities}
+                Places={Places}
+                ActivityTypesWithStatus={ActivityTypesWithStatus}
+                setActivityTypesWithStatus={setActivityTypesWithStatus}
+                isLoadingActivityTypes={isLoadingActivityTypes}
+                setIsLoadingActivityTypes={setIsLoadingActivityTypes}
+              />
+            </div>
+
+            <div className="chipsSidebar" id="chipsSidebar">
+              <ChipsSidebar
+                setSelectedMinTime={setSelectedMinTime}
+                setSelectedMaxTime={setSelectedMaxTime}
+                SelectedMinTime={SelectedMinTime}
+                SelectedMaxTime={SelectedMaxTime}
+                SelectedPlace={SelectedPlace}
+                Articles={Articles}
+                setFilteredArticles={setFilteredArticles}
+                FilteredArticles={FilteredArticles}
+                setSelectedActivityTypes={setSelectedActivityTypes}
+                Activities={Activities}
+                Places={Places}
+                ActivityTypesWithStatus={ActivityTypesWithStatus}
+                setActivityTypesWithStatus={setActivityTypesWithStatus}
+                isLoadingActivityTypes={isLoadingActivityTypes}
+                setIsLoadingActivityTypes={setIsLoadingActivityTypes}
+              />
+            </div>
+
+            <div className="placeSidebar" id="placeSidebar">
+              <PlaceSidebar
+                setSelectedMinTime={setSelectedMinTime}
+                setSelectedMaxTime={setSelectedMaxTime}
+                SelectedMinTime={SelectedMinTime}
+                SelectedMaxTime={SelectedMaxTime}
+                SelectedPlace={SelectedPlace}
+                Articles={Articles}
+                setFilteredArticles={setFilteredArticles}
+                FilteredArticles={FilteredArticles}
+                setSelectedActivityTypes={setSelectedActivityTypes}
+                Activities={Activities}
+                Places={Places}
+                ActivityTypesWithStatus={ActivityTypesWithStatus}
+                setActivityTypesWithStatus={setActivityTypesWithStatus}
+                isLoadingActivityTypes={isLoadingActivityTypes}
+                setIsLoadingActivityTypes={setIsLoadingActivityTypes}
+              />
+            </div>
           </aside>
           <div>
             <MapContainer
@@ -103,13 +220,17 @@ function Timemap() {
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
               isLoading={isLoading}
+              isLoadingActivities={isLoadingActivities}
               activities={Activities}
               FilteredArticles={FilteredArticles}
+              Places={Places}
+              SelectedPlace={SelectedPlace}
+              setSelectedPlace={setSelectedPlace}
             />
           </div>
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

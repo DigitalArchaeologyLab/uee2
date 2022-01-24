@@ -14,6 +14,10 @@ function MapContainer(props) {
           SelectedMinTime={props.SelectedMinTime}
           SelectedMaxTime={props.SelectedMaxTime}
           FilteredArticles={props.FilteredArticles}
+          Places={props.Places}
+          isLoadingActivities={props.isLoadingActivities}
+          SelectedPlace={props.SelectedPlace}
+          setSelectedPlace={props.setSelectedPlace}
         />
       )}
     </div>
