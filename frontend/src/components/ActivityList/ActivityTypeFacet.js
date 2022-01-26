@@ -16,6 +16,13 @@ function ActivityTypeFacet(props) {
     );
 
     props.setActivityTypesWithStatus(updatedCheckedState);
+    let checkedActivityTypes = [];
+    updatedCheckedState.map(function (type) {
+        if (type.status) {
+          checkedActivityTypes.push(type.label);
+        }
+      });
+    props.setSelectedActivityTypes(checkedActivityTypes);
   };
 
   // set Activity types

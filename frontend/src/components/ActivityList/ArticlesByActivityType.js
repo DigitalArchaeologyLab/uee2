@@ -26,10 +26,7 @@ function ArticlesByActivityType(props) {
 
   // filter based on site
   useEffect(() => {
-    const filtered = getArticlesByPlace(
-      props.Articles,
-      props.SelectedPlace
-    );
+    const filtered = getArticlesByPlace(props.Articles, props.SelectedPlace);
     props.setFilteredArticles(filtered);
 
     setConstructionArticles([]);
@@ -100,7 +97,9 @@ function ArticlesByActivityType(props) {
             <ul>
               {typeArray.map((article) => (
                 <li>
-                  <Link to={`/article/${article.id}`}>{article.title_eng}</Link>
+                  <Link key={article.id} to={`/article/${article.id}`}>
+                    {article.title_eng}
+                  </Link>
                 </li>
               ))}
             </ul>

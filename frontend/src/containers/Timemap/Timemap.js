@@ -156,6 +156,8 @@ function Timemap() {
           <aside className="timemap__sidebars">
             <div className="filterSidebar" id="filterSidebar">
               <FilterSidebar
+                SelectedPeriod={SelectedPeriod}
+                setSelectedPeriod={setSelectedPeriod}
                 setSelectedMinTime={setSelectedMinTime}
                 setSelectedMaxTime={setSelectedMaxTime}
                 SelectedMinTime={SelectedMinTime}
@@ -176,6 +178,8 @@ function Timemap() {
 
             <div className="chipsSidebar" id="chipsSidebar">
               <ChipsSidebar
+                SelectedPeriod={SelectedPeriod}
+                setSelectedPeriod={setSelectedPeriod}
                 setSelectedMinTime={setSelectedMinTime}
                 setSelectedMaxTime={setSelectedMaxTime}
                 SelectedMinTime={SelectedMinTime}
@@ -185,6 +189,7 @@ function Timemap() {
                 setFilteredArticles={setFilteredArticles}
                 FilteredArticles={FilteredArticles}
                 setSelectedActivityTypes={setSelectedActivityTypes}
+                SelectedActivityTypes={SelectedActivityTypes}
                 Activities={Activities}
                 Places={Places}
                 ActivityTypesWithStatus={ActivityTypesWithStatus}
