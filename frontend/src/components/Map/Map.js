@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOMServer from "react-dom/server";
 import Popup from "./Popup";
 import "leaflet/dist/leaflet.css";
@@ -8,6 +8,8 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+// import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -66,6 +68,10 @@ function Map(props) {
           ReactDOMServer.renderToString(<Popup placeName={title} />)
         );
         props.setSelectedPlace(marker.options.id);
+        var filterSidebar = document.getElementById("filterSidebar");
+        filterSidebar.style.display = "none";
+        var chipsSidebar = document.getElementById("chipsSidebar");
+        chipsSidebar.style.display = "block";
         var placeSidebar = document.getElementById("placeSidebar");
         placeSidebar.style.display = "block";
       });

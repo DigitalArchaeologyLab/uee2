@@ -9,9 +9,9 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 import SwipeableTemporaryDrawer from "../Drawer/Drawer";
-import MediaCard from "../../components/Image/ImageCard";
+// import MediaCard from "../../components/Image/ImageCard";
 import TableOfContents from "../../components/TableOfContents/TableOfContents";
-import Lightbox from "../../components/Figure/Lightbox";
+// import Lightbox from "../../components/Figure/Lightbox";
 
 function Article(props) {
   const [article, setArticle] = useState({

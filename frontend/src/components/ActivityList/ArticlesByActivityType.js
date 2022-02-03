@@ -9,7 +9,13 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-function ArticlesByActivityType(props) {
+function ArticlesByActivityType({
+  Articles,
+  SelectedPlace,
+  setFilteredArticles,
+  Activities,
+  Places,
+}) {
   const [ConstructionArticles, setConstructionArticles] = useState([]);
   const [UseArticles, setUseArticles] = useState([]);
   const [ModificationArticles, setModificationArticles] = useState([]);
@@ -26,8 +32,8 @@ function ArticlesByActivityType(props) {
 
   // filter based on site
   useEffect(() => {
-    const filtered = getArticlesByPlace(props.Articles, props.SelectedPlace);
-    props.setFilteredArticles(filtered);
+    const filtered = getArticlesByPlace(Articles, SelectedPlace);
+    setFilteredArticles(filtered);
 
     setConstructionArticles([]);
     setUseArticles([]);
@@ -42,7 +48,7 @@ function ArticlesByActivityType(props) {
       } else {
         const articleActivities = article.activity;
         for (let i = 0; i < articleActivities.length; i++) {
-          const activity = props.Activities.find(
+          const activity = Activities.find(
             (element) => element.id === articleActivities[i]
           );
 
@@ -80,7 +86,7 @@ function ArticlesByActivityType(props) {
         }
       }
     });
-  }, [props.SelectedPlace, props.Articles]);
+  }, [SelectedPlace, Articles, Activities, setFilteredArticles]);
 
   const setAccordion = (typeArray, typeTitle) => {
     if (typeArray.length > 0) {
@@ -112,7 +118,7 @@ function ArticlesByActivityType(props) {
   return (
     <div>
       <div className="ArticlesByActivityType">
-        <h2>{getPlaceName(props.SelectedPlace, props.Places)}</h2>
+        <h2>{getPlaceName(SelectedPlace, Places)}</h2>
         {setAccordion(ConstructionArticles, "Construction")}
         {setAccordion(UseArticles, "Use")}
         {setAccordion(ModificationArticles, "Modification")}

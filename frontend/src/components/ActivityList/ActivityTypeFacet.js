@@ -4,38 +4,42 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import "./ActivityTypeFacet.css";
 
-function ActivityTypeFacet(props) {
+function ActivityTypeFacet({
+  ActivityTypesWithStatus,
+  setSelectedActivityTypes,
+  setActivityTypesWithStatus,
+  setIsLoadingActivityTypes,
+  isLoadingActivityTypes,
+}) {
   const handleOnChange = (position) => {
-    const updatedCheckedState = props.ActivityTypesWithStatus.map(
-      (type, index) => {
-        if (index === position) {
-          type = { ...type, status: !type.status };
-        }
-        return type;
+    const updatedCheckedState = ActivityTypesWithStatus.map((type, index) => {
+      if (index === position) {
+        type = { ...type, status: !type.status };
       }
-    );
+      return type;
+    });
 
-    props.setActivityTypesWithStatus(updatedCheckedState);
+    setActivityTypesWithStatus(updatedCheckedState);
     let checkedActivityTypes = [];
-    updatedCheckedState.map(function (type) {
-        if (type.status) {
-          checkedActivityTypes.push(type.label);
-        }
-      });
-    props.setSelectedActivityTypes(checkedActivityTypes);
+    updatedCheckedState.forEach(function (type) {
+      if (type.status) {
+        checkedActivityTypes.push(type.label);
+      }
+    });
+    setSelectedActivityTypes(checkedActivityTypes);
   };
 
   // set Activity types
   useEffect(() => {
-    props.setActivityTypesWithStatus([
+    setActivityTypesWithStatus([
       { label: "Construction", status: false },
       { label: "Use", status: false },
       { label: "Modification", status: false },
       { label: "Inactive / Defunct", status: false },
       { label: "Destruction", status: false },
     ]);
-    props.setIsLoadingActivityTypes(false);
-  }, []);
+    setIsLoadingActivityTypes(false);
+  }, [setActivityTypesWithStatus, setIsLoadingActivityTypes]);
 
   return (
     <div className="activitytype__facet">
@@ -43,16 +47,16 @@ function ActivityTypeFacet(props) {
         <h2>Activity Types</h2>
       </div>
       <div className="activitytype__selectlist">
-        {props.isLoadingActivityTypes ? (
+        {isLoadingActivityTypes ? (
           <p>Loading activity types...</p>
         ) : (
           <FormGroup>
-            {props.ActivityTypesWithStatus.map((type, index) => (
+            {ActivityTypesWithStatus.map((type, index) => (
               <FormControlLabel
                 key={index}
                 control={
                   <Checkbox
-                    checked={props.ActivityTypesWithStatus[index].status}
+                    checked={ActivityTypesWithStatus[index].status}
                     onChange={() => handleOnChange(index)}
                     inputProps={{ "aria-label": "controlled" }}
                   />

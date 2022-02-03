@@ -4,7 +4,7 @@ import Chip from "@mui/material/Chip";
 export default function MapChip(props) {
   const handleActivityDelete = (name) => {
     let updatedActivityTypes = [];
-    props.SelectedActivityTypes.map((type) => {
+    props.SelectedActivityTypes.forEach((type) => {
       if (type !== name) updatedActivityTypes.push(type);
     });
     props.setSelectedActivityTypes(updatedActivityTypes);

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Markdown from "markdown-to-jsx";
+import React, { useEffect } from "react";
+// import Markdown from "markdown-to-jsx";
 import marked from "marked";
 import axios from "axios";
 
 import "./ArticleBody.css";
 
-function ArticleBody(props) {
+function ArticleBody({ toggleDrawer, setSelectedTerm, body }) {
   // TODO: add logic to loop through all tags
   useEffect(() => {
     // parse tagged Terms
@@ -18,14 +18,14 @@ function ArticleBody(props) {
     async function getTerm() {
       try {
         const response = await axios.get(`/api/terms/${termId}`);
-        props.setSelectedTerm(response.data);
+        setSelectedTerm(response.data);
       } catch (err) {
         console.error(err);
       }
     }
 
     getTerm();
-    tag.addEventListener("click", props.toggleDrawer("right", true));
+    tag.addEventListener("click", toggleDrawer("right", true));
 
     // parse embedded Images
     if (document.querySelector("img.embeddedImage") == null) {
@@ -37,10 +37,10 @@ function ArticleBody(props) {
     image.addEventListener("click", function () {
       alert(imageArkID);
     });
-  }, [props.body]);
+  }, [body, setSelectedTerm, toggleDrawer]);
 
   const getMarkdownText = () => {
-    var rawMarkup = marked(props.body);
+    var rawMarkup = marked(body);
     // run through a sanitizer (rec: DOMPurify)
     return { __html: rawMarkup };
   };
