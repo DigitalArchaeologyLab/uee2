@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import "./FilterSidebar.css";
 import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
 import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
@@ -13,8 +13,14 @@ function FilterSidebar(props) {
       <div className="mapFacet">
         <PeriodFacet
           setSelectedPeriod={props.setSelectedPeriod}
+          setSelectedPeriodNode={props.setSelectedPeriodNode}
           SelectedPeriod={props.SelectedPeriod}
+          SelectedPeriodNode={props.SelectedPeriodNode}
           rootName={"Periods"}
+          updateTimeBySelectedPeriod={props.updateTimeBySelectedPeriod}
+          Periods={props.Periods}
+          setSelectedMinTime={props.setSelectedMinTime}
+          setSelectedMaxTime={props.setSelectedMaxTime}
         />
       </div>
       <div className="mapFacet">
@@ -42,7 +48,12 @@ function FilterSidebar(props) {
       </div>
       <div className="mapFacet">
         <span className="filterButtons">
-          <ResetButton />
+          <ResetButton
+            setSelectedPeriod={props.setSelectedPeriod}
+            setSelectedMinTime={props.setSelectedMinTime}
+            setSelectedMaxTime={props.setSelectedMaxTime}
+            setSelectedActivityTypes={props.setSelectedActivityTypes}
+          />
           <ApplyButton />
         </span>
       </div>

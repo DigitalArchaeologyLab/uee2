@@ -9,6 +9,7 @@ function TimesliderFacet(props) {
       </div>
       <div className="slider__slider">
         <Timeslider
+          key={(props.SelectedMinTime, props.SelectedMaxTime)}
           setSelectedMinTime={props.setSelectedMinTime}
           setSelectedMaxTime={props.setSelectedMaxTime}
           SelectedMinTime={props.SelectedMinTime}

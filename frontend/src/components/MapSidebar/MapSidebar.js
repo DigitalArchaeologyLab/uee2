@@ -1,50 +1,61 @@
 import React, { useState, useEffect } from "react";
 import "./MapSidebar.css";
-import PeriodFacet from "../../components/PeriodTree/PeriodFacet";
-import TimesliderFacet from "../../components/Timeslider/TimesliderFacet";
-import SearchBarMap from "../../components/Search/SearchBarMap";
-import ActivityTypeFacet from "../../components/ActivityList/ActivityTypeFacet";
 
-import ArticlesByActivityType from "../../components/ActivityList/ArticlesByActivityType";
+import FilterSidebar from "./FilterSidebar";
+import ChipsSidebar from "./ChipsSidebar";
+import PlaceSidebar from "./PlaceSidebar";
 
 function MapSidebar(props) {
+
   return (
     <div>
-      <aside className="timemap__sidebar">
-        {/* <PeriodFacet
-              setSelectedPeriod={props.setSelectedPeriod}
-              SelectedPeriod={props.SelectedPeriod}
-              rootName={"Periods"}
-            /> */}
-
-        <TimesliderFacet
+      <div className="filterSidebar" id="filterSidebar">
+        <FilterSidebar
+          SelectedPeriod={props.SelectedPeriod}
+          SelectedPeriodNode={props.SelectedPeriodNode}
+          setSelectedPeriod={props.setSelectedPeriod}
+          setSelectedPeriodNode={props.setSelectedPeriodNode}
           setSelectedMinTime={props.setSelectedMinTime}
           setSelectedMaxTime={props.setSelectedMaxTime}
           SelectedMinTime={props.SelectedMinTime}
           SelectedMaxTime={props.SelectedMaxTime}
-        />
-        {/* <SearchBarMap
-              searchQuery={props.searchQuery}
-              setSearchQuery={props.setSearchQuery}
-            /> */}
-        <ActivityTypeFacet
           ActivityTypesWithStatus={props.ActivityTypesWithStatus}
           setActivityTypesWithStatus={props.setActivityTypesWithStatus}
           isLoadingActivityTypes={props.isLoadingActivityTypes}
           setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
           setSelectedActivityTypes={props.setSelectedActivityTypes}
         />
-        <hr></hr>
+      </div>
 
-        <ArticlesByActivityType
+      <div className="chipsSidebar" id="chipsSidebar">
+        <ChipsSidebar
+          SelectedPeriod={props.SelectedPeriod}
+          setSelectedPeriod={props.setSelectedPeriod}
+          setSelectedPeriodNode={props.setSelectedPeriodNode}
+          setSelectedMinTime={props.setSelectedMinTime}
+          setSelectedMaxTime={props.setSelectedMaxTime}
+          SelectedMinTime={props.SelectedMinTime}
+          SelectedMaxTime={props.SelectedMaxTime}
+          setSelectedActivityTypes={props.setSelectedActivityTypes}
+          SelectedActivityTypes={props.SelectedActivityTypes}
+          setActivityTypesWithStatus={props.setActivityTypesWithStatus}
+          ActivityTypesWithStatus={props.ActivityTypesWithStatus}
+          isLoadingActivityTypes={props.isLoadingActivityTypes}
+          setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
+        />
+      </div>
+
+      <div className="placeSidebar" id="placeSidebar">
+        <PlaceSidebar
           SelectedPlace={props.SelectedPlace}
           Articles={props.Articles}
-          FilteredArticles={props.FilteredArticles}
           setFilteredArticles={props.setFilteredArticles}
+          FilteredArticles={props.FilteredArticles}
+          setSelectedActivityTypes={props.setSelectedActivityTypes}
           Activities={props.Activities}
           Places={props.Places}
         />
-      </aside>
+      </div>
     </div>
   );
 }

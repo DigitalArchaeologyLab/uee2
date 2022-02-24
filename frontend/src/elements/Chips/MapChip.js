@@ -2,20 +2,36 @@ import * as React from "react";
 import Chip from "@mui/material/Chip";
 
 export default function MapChip(props) {
+  let updatedActivityTypesWithStatus = props.ActivityTypesWithStatus;
+
   const handleActivityDelete = (name) => {
     let updatedActivityTypes = [];
+    let typeIndex = updatedActivityTypesWithStatus.findIndex(
+      (activityType) => activityType.label === name
+    );
+
     props.SelectedActivityTypes.forEach((type) => {
-      if (type !== name) updatedActivityTypes.push(type);
+      if (type === name) {
+        updatedActivityTypesWithStatus[typeIndex].status = false;
+      } else {
+        updatedActivityTypes.push(type);
+        updatedActivityTypesWithStatus[typeIndex].status = true;
+      }
     });
+
+    // how to trigger refresh of the selected activity types in the activity type facet...
     props.setSelectedActivityTypes(updatedActivityTypes);
+    props.setActivityTypesWithStatus(updatedActivityTypesWithStatus);
   };
 
   const handlePeriodDelete = () => {
     props.setSelectedPeriod(["All"]);
+    props.setSelectedPeriodNode(0);
   };
 
   const handleMinTimeDelete = () => {
     props.setSelectedMinTime(-5000);
+    props.setReload(true);
   };
 
   const handleMaxTimeDelete = () => {
@@ -27,6 +43,7 @@ export default function MapChip(props) {
       <br></br>
       {props.SelectedActivityTypes.map((type) => (
         <Chip
+          key={type}
           label={type}
           name={type}
           onDelete={handleActivityDelete.bind(this, type)}

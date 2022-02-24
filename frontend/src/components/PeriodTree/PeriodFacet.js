@@ -51,7 +51,7 @@ function PeriodFacet(props) {
   };
 
   const handleSelect = (event, nodeId) => {
-    setSelected(nodeId);
+    props.setSelectedPeriodNode(nodeId);
     props.setSelectedPeriod(event.target.innerHTML);
   };
 
@@ -79,7 +79,7 @@ function PeriodFacet(props) {
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           expanded={expanded}
-          selected={selected}
+          selected={props.SelectedPeriodNode}
           onNodeToggle={handleToggle}
           onNodeSelect={handleSelect}
           multiSelect

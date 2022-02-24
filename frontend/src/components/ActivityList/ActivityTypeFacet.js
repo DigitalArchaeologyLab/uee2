@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -18,8 +18,8 @@ function ActivityTypeFacet({
       }
       return type;
     });
-
     setActivityTypesWithStatus(updatedCheckedState);
+
     let checkedActivityTypes = [];
     updatedCheckedState.forEach(function (type) {
       if (type.status) {
@@ -31,15 +31,12 @@ function ActivityTypeFacet({
 
   // set Activity types
   useEffect(() => {
-    setActivityTypesWithStatus([
-      { label: "Construction", status: false },
-      { label: "Use", status: false },
-      { label: "Modification", status: false },
-      { label: "Inactive / Defunct", status: false },
-      { label: "Destruction", status: false },
-    ]);
     setIsLoadingActivityTypes(false);
-  }, [setActivityTypesWithStatus, setIsLoadingActivityTypes]);
+  }, [
+    setActivityTypesWithStatus,
+    setIsLoadingActivityTypes,
+    ActivityTypesWithStatus,
+  ]);
 
   return (
     <div className="activitytype__facet">
@@ -53,9 +50,10 @@ function ActivityTypeFacet({
           <FormGroup>
             {ActivityTypesWithStatus.map((type, index) => (
               <FormControlLabel
-                key={index}
+                key={type.label}
                 control={
                   <Checkbox
+                    key={type.label}
                     checked={ActivityTypesWithStatus[index].status}
                     onChange={() => handleOnChange(index)}
                     inputProps={{ "aria-label": "controlled" }}
