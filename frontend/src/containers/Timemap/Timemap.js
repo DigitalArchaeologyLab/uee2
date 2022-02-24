@@ -13,9 +13,27 @@ import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivi
 
 import MapSidebar from "../../components/MapSidebar/MapSidebar";
 
+import { updateTimeBySelectedPeriod } from "../../utils/updateTimeBySelectedPeriod";
+
 function Timemap() {
   const [SelectedPeriod, setSelectedPeriod] = useState(["All"]);
   const [SelectedPeriodNode, setSelectedPeriodNode] = useState(0);
+  const [Periods, setPeriods] = useState([
+    {
+      id: 0,
+      name_eng: "",
+      altnames_eng: null,
+      name_ar: "",
+      altnames_ar: null,
+      start: 0,
+      end: 0,
+      depth: 0,
+      path: "",
+      numchild: 0,
+    },
+  ]);
+  const [isLoadingPeriods, setIsLoadingPeriods] = useState(true);
+  // change to variables throughout code
   const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
   const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
   const [SelectedPlace, setSelectedPlace] = useState("all");
@@ -101,6 +119,20 @@ function Timemap() {
     getPlaces();
   }, []);
 
+  // get periods
+  useEffect(() => {
+    async function getPeriods() {
+      try {
+        const response = await axios.get("/api/periods/");
+        setPeriods(response.data);
+        setIsLoadingPeriods(false);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getPeriods();
+  }, []);
+
   // get activities
   useEffect(() => {
     async function getActivities() {
@@ -184,6 +216,9 @@ function Timemap() {
               setSelectedActivityTypes={setSelectedActivityTypes}
               Activities={Activities}
               Places={Places}
+              updateTimeBySelectedPeriod={updateTimeBySelectedPeriod}
+              Periods={Periods}
+            />
           </aside>
           <div>
             <MapContainer

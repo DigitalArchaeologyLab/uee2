@@ -53,6 +53,12 @@ function PeriodFacet(props) {
   const handleSelect = (event, nodeId) => {
     props.setSelectedPeriodNode(nodeId);
     props.setSelectedPeriod(event.target.innerHTML);
+    props.updateTimeBySelectedPeriod(
+      event.target.innerHTML,
+      props.Periods,
+      props.setSelectedMinTime,
+      props.setSelectedMaxTime
+    );
   };
 
   const processTree = (nodes) => (
