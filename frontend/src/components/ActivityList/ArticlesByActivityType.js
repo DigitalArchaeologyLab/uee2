@@ -102,7 +102,7 @@ function ArticlesByActivityType({
           <AccordionDetails>
             <ul>
               {typeArray.map((article) => (
-                <li>
+                <li key={article.id}>
                   <Link key={article.id} to={`/article/${article.id}`}>
                     {article.title_eng}
                   </Link>

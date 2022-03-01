@@ -10,6 +10,7 @@ import Footer from "../../components/Footer/Footer";
 import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
 // import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
 import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
+import { filterActivitiesByType } from "../../utils/filterActivitiesByType";
 
 import MapSidebar from "../../components/MapSidebar/MapSidebar";
 
@@ -179,7 +180,18 @@ function Timemap() {
       );
       setFilteredActivities(filtered);
     }
+    // filter by selected activity types
+    if (SelectedActivityTypes.length > 0) {
+      const filteredActivityArray = [];
+      const filtered = filterActivitiesByType(
+        FilteredActivities,
+        SelectedActivityTypes,
+        filteredActivityArray
+      );
+      setFilteredActivities(filtered);
+    }
   }, [SelectedMinTime, SelectedMaxTime, SelectedActivityTypes]);
+
   // filter articles based on activity type selections
   useEffect(() => {
     const filtered = filterArticlesByActivityType(
