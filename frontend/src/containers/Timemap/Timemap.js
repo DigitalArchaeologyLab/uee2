@@ -147,19 +147,6 @@ function Timemap() {
     getActivities();
   }, []);
 
-  // filter activities
-
-  useEffect(() => {
-    const filteredActivityArray = [];
-    const filtered = filterActivitiesByTime(
-      Activities,
-      SelectedMinTime,
-      SelectedMaxTime,
-      filteredActivityArray
-    );
-    setFilteredActivities(filtered);
-  }, [SelectedMinTime, SelectedMaxTime, Activities]);
-
   // get articles
   useEffect(() => {
     async function getArticles() {
@@ -175,6 +162,24 @@ function Timemap() {
     getArticles();
   }, []);
 
+  // filter activities
+  // TODO - change to only update when Apply is clicked
+  useEffect(() => {
+    // reset to all activities
+    setFilteredActivities(Activities);
+
+    // filter by selected times
+    if (SelectedMinTime !== -5000 && SelectedMaxTime !== 2000) {
+      const filteredActivityArray = [];
+      const filtered = filterActivitiesByTime(
+        FilteredActivities,
+        SelectedMinTime,
+        SelectedMaxTime,
+        filteredActivityArray
+      );
+      setFilteredActivities(filtered);
+    }
+  }, [SelectedMinTime, SelectedMaxTime, SelectedActivityTypes]);
   // filter articles based on activity type selections
   useEffect(() => {
     const filtered = filterArticlesByActivityType(
@@ -227,7 +232,8 @@ function Timemap() {
               SelectedMaxTime={SelectedMaxTime}
               isLoading={isLoading}
               isLoadingActivities={isLoadingActivities}
-              activities={Activities}
+              Activities={Activities}
+              FilteredActivities={FilteredActivities}
               FilteredArticles={FilteredArticles}
               Places={Places}
               SelectedPlace={SelectedPlace}

@@ -9,7 +9,8 @@ function MapContainer(props) {
         <p className="loadingMap">Loading</p>
       ) : (
         <Map
-          activities={props.activities}
+          Activities={props.Activities}
+          FilteredActivities={props.FilteredActivities}
           SelectedPeriod={props.SelectedPeriod}
           SelectedMinTime={props.SelectedMinTime}
           SelectedMaxTime={props.SelectedMaxTime}

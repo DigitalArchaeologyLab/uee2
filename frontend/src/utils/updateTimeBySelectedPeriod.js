@@ -13,7 +13,7 @@ export function updateTimeBySelectedPeriod(
     setSelectedMaxTime(-5000);
   } else {
     const firstSelectedPeriod = Periods.find(
-      (period) => period.name_eng == SelectedPeriod
+      (period) => period.name_eng === SelectedPeriod
     );
     setSelectedMinTime(firstSelectedPeriod.start);
     setSelectedMaxTime(firstSelectedPeriod.end);

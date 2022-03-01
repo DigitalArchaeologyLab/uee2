@@ -30,7 +30,7 @@ function Map(props) {
   useEffect(() => {
     mapRef.current = L.map("map", {
       center: [24.084918, 32.88612],
-      zoom: 13,
+      zoom: 6,
       scrollWheelZoom: false,
       zoomControl: false,
       layers: [
