@@ -38,6 +38,7 @@ function FilterSidebar(props) {
           isLoadingActivityTypes={props.isLoadingActivityTypes}
           setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
           setSelectedActivityTypes={props.setSelectedActivityTypes}
+          handleActivityTypeOnChange={props.handleActivityTypeOnChange}
         />
       </div>
       <div className="mapFacet">

@@ -31,6 +31,7 @@ function ChipsSidebar(props) {
         setActivityTypesWithStatus={props.setActivityTypesWithStatus}
         ActivityTypesWithStatus={props.ActivityTypesWithStatus}
         setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
+        handleActivityTypeOnChange={props.handleActivityTypeOnChange}
       />
     </div>
   );
