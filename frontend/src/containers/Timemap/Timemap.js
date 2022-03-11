@@ -201,6 +201,25 @@ function Timemap() {
     setFilteredArticles(filtered);
   }, [ActivityTypesWithStatus, Articles]);
 
+  // set activity type checkboxes
+  const handleActivityTypeOnChange = (position) => {
+    const updatedCheckedState = ActivityTypesWithStatus.map((type, index) => {
+      if (index === position) {
+        type = { ...type, status: !type.status };
+      }
+      return type;
+    });
+    setActivityTypesWithStatus(updatedCheckedState);
+
+    let checkedActivityTypes = [];
+    updatedCheckedState.forEach(function (type) {
+      if (type.status) {
+        checkedActivityTypes.push(type.label);
+      }
+    });
+    setSelectedActivityTypes(checkedActivityTypes);
+  };
+
   return (
     <div>
       <Header />
@@ -235,6 +254,7 @@ function Timemap() {
               Places={Places}
               updateTimeBySelectedPeriod={updateTimeBySelectedPeriod}
               Periods={Periods}
+              handleActivityTypeOnChange={handleActivityTypeOnChange}
             />
           </aside>
           <div>

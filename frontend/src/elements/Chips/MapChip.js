@@ -5,23 +5,15 @@ export default function MapChip(props) {
   let updatedActivityTypesWithStatus = props.ActivityTypesWithStatus;
 
   const handleActivityDelete = (name) => {
-    let updatedActivityTypes = [];
     let typeIndex = updatedActivityTypesWithStatus.findIndex(
       (activityType) => activityType.label === name
     );
 
     props.SelectedActivityTypes.forEach((type) => {
       if (type === name) {
-        updatedActivityTypesWithStatus[typeIndex].status = false;
-      } else {
-        updatedActivityTypes.push(type);
-        updatedActivityTypesWithStatus[typeIndex].status = true;
+        props.handleActivityTypeOnChange(typeIndex);
       }
     });
-
-    // how to trigger refresh of the selected activity types in the activity type facet...
-    props.setSelectedActivityTypes(updatedActivityTypes);
-    props.setActivityTypesWithStatus(updatedActivityTypesWithStatus);
   };
 
   const handlePeriodDelete = () => {

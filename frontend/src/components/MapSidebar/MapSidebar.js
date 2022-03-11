@@ -26,6 +26,7 @@ function MapSidebar(props) {
           setSelectedActivityTypes={props.setSelectedActivityTypes}
           updateTimeBySelectedPeriod={props.updateTimeBySelectedPeriod}
           Periods={props.Periods}
+          handleActivityTypeOnChange={props.handleActivityTypeOnChange}
         />
       </div>
 
@@ -44,6 +45,7 @@ function MapSidebar(props) {
           ActivityTypesWithStatus={props.ActivityTypesWithStatus}
           isLoadingActivityTypes={props.isLoadingActivityTypes}
           setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
+          handleActivityTypeOnChange={props.handleActivityTypeOnChange}
         />
       </div>
 
