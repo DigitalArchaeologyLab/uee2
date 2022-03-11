@@ -12,6 +12,23 @@ function ActivityTypeFacet({
   isLoadingActivityTypes,
   handleActivityTypeOnChange,
 }) {
+  // const handleOnChange = (position) => {
+  //   const updatedCheckedState = ActivityTypesWithStatus.map((type, index) => {
+  //     if (index === position) {
+  //       type = { ...type, status: !type.status };
+  //     }
+  //     return type;
+  //   });
+  //   setActivityTypesWithStatus(updatedCheckedState);
+
+  //   let checkedActivityTypes = [];
+  //   updatedCheckedState.forEach(function (type) {
+  //     if (type.status) {
+  //       checkedActivityTypes.push(type.label);
+  //     }
+  //   });
+  //   setSelectedActivityTypes(checkedActivityTypes);
+  // };
 
   // set Activity types
   useEffect(() => {
