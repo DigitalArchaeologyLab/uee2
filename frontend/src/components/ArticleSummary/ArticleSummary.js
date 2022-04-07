@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import List from "../../elements/List/List";
 import "./ArticleSummary.css";
@@ -9,7 +9,7 @@ function ArticleSummary(props) {
   const [articleSummaryJSX, setArticleSummaryJSX] = useState("JSX");
 
   // show title in selected language
-  const setArticleSummaryByStatus = () => {
+  const setArticleSummaryByStatus = useCallback(() => {
     let title;
     switch (props.selectedLanguage) {
       case "ar":
@@ -57,12 +57,23 @@ function ArticleSummary(props) {
         </span>
       );
     }
-  };
+  }, [
+    props.abstract_ar,
+    props.abstract_eng,
+    props.article_id,
+    props.authors,
+    props.selectedLanguage,
+    props.status,
+    props.title_ar,
+    props.title_de,
+    props.title_eng,
+    props.title_fr,
+  ]);
 
   useEffect(() => {
     setArticleSummaryByStatus();
     setIsLoading(false);
-  }, [isLoading, props.selectedLanguage]);
+  }, [setArticleSummaryByStatus, isLoading, props.selectedLanguage]);
 
   return (
     <div className="articleSummary">

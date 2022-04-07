@@ -48,7 +48,7 @@ function ReferenceList(props) {
     }
 
     getRefList();
-  }, []);
+  }, [props.article_id]);
 
   return (
     <div>

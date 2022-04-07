@@ -42,6 +42,7 @@
 
 #timeslider__root .MuiSlider-markLabel {
   top: 30px;
+  font-size: 0.7rem;
 }
 
 .MuiSlider-markActive {

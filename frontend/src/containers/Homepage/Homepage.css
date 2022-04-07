@@ -1,0 +1,61 @@
+.home {
+  padding: 27vh 15vw;
+  text-align: center;
+}
+
+.subjects h4 {
+  color: var(--ueeRed01);
+}
+
+.subjects__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px 75px;
+}
+
+.subject {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+
+.subject h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.subject__thumbnail {
+  height: 100px;
+}
+
+.tiles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 50px;
+}
+
+.tiles figure {
+  margin: 0;
+}
+
+.tiles figcaption {
+  background-color: var(--ueeYellow01);
+  color: #fff;
+  padding: 5px 0px;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 1.3rem;
+  width: calc(100vw / 5);
+  text-align: center;
+}
+
+.tiles img {
+  width: 20vw;
+}

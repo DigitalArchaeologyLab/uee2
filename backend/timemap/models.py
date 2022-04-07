@@ -40,7 +40,7 @@ class Period(MP_Node):
     end = models.IntegerField(null=True)
 
     def __str__(self):
-        return "%s" % (self.name_eng)
+        return "%s (%s — %s)" % (self.name_eng, self.start, self.end)
 
 
 class Activity(models.Model):
@@ -59,9 +59,14 @@ class Activity(models.Model):
     startDate = models.IntegerField(null=True, blank=True)
     endDate = models.IntegerField(null=True, blank=True)
     associatedPlace = models.ManyToManyField("Place")
-    startPeriod = models.ManyToManyField("Period", related_name="startPeriod")
-    endPeriod = models.ManyToManyField("Period", related_name="endPeriod")
+    startPeriod = models.ManyToManyField(
+        "Period", related_name="startPeriod", blank=True
+    )
+    endPeriod = models.ManyToManyField("Period", related_name="endPeriod", blank=True)
     notes = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return "%s" % (self.type,)
+        place = ", ".join(str(p) for p in self.associatedPlace.all())
+        start = ", ".join(str(s) for s in self.startPeriod.all())
+        end = ", ".join(str(e) for e in self.endPeriod.all())
+        return f"{place} ({start} - {end}), {self.type}"

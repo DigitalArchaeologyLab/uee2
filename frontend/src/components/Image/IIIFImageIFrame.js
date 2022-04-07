@@ -5,7 +5,12 @@ function IIIFImageIFrame(props) {
   return (
     <div>
       <div className="iiif-iframe">
-        <iframe src="http://localhost/iiif-image" width="100%" height="100%" />
+        <iframe
+          title="iiif-iframe"
+          src="http://localhost/iiif-image"
+          width="100%"
+          height="100%"
+        />
       </div>
     </div>
   );

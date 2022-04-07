@@ -1,14 +1,15 @@
 footer {
-  position: relative;
-  bottom: 0px;
+  /* position: relative;
+  bottom: 0px; */
   width: calc(100vw - 20px);
+  margin-top: auto;
 }
 
 .footer_all {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-color: #336666;
+  background-color: var(--ueeGreen01);
   color: #fff;
   padding: 20px 0px 0px 30px;
   font-family: "Open Sans Condensed", sans-serif;

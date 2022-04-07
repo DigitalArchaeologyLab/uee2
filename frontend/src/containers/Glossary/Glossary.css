@@ -1,8 +1,9 @@
 .glossary {
-  width: 70vw;
   padding-top: 125px;
   margin: 0 auto;
   margin-bottom: 325px;
+  padding-left: 15vw;
+  padding-right: 15vw;
 }
 
 .glossary__title h1 {

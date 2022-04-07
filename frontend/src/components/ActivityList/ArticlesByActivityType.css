@@ -1,0 +1,22 @@
+.ArticlesByActivityType h2 {
+  font-family: "Open Sans";
+  font-weight: 400;
+  color: var(--ueeRed01);
+  text-transform: uppercase;
+}
+
+.ArticlesByActivityType h3 {
+  font-family: "Open Sans";
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0px;
+}
+
+.ArticlesByActivityType li {
+  list-style-type: none;
+  margin-left: -30px;
+}
+
+.ArticlesByActivityType .Mui-expanded {
+  margin: 0;
+}

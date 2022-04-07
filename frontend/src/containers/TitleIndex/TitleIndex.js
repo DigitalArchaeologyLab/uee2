@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./TitleIndex.css";
 import Header from "../../components/Header/Header";
@@ -33,33 +33,36 @@ function TitleIndex(props) {
   ]);
   const [FilteredArticles, setFilteredArticles] = useState(Articles);
 
-  const compare = (a, b) => {
-    let sortTitle;
-    switch (selectedLanguage) {
-      case "ar":
-        sortTitle = "title_ar";
-        break;
-      case "de":
-        sortTitle = "title_de";
-        break;
-      case "fr":
-        sortTitle = "title_fr";
-        break;
-      default:
-        sortTitle = "title_eng";
-        break;
-    }
+  const compare = useCallback(
+    (a, b) => {
+      let sortTitle;
+      switch (selectedLanguage) {
+        case "ar":
+          sortTitle = "title_ar";
+          break;
+        case "de":
+          sortTitle = "title_de";
+          break;
+        case "fr":
+          sortTitle = "title_fr";
+          break;
+        default:
+          sortTitle = "title_eng";
+          break;
+      }
 
-    const titleA = a[sortTitle].toUpperCase();
-    const titleB = b[sortTitle].toUpperCase();
+      const titleA = a[sortTitle].toUpperCase();
+      const titleB = b[sortTitle].toUpperCase();
 
-    // handle diacritics in titles
-    if (new Intl.Collator().compare(titleA, titleB) > 0) {
-      return 1;
-    } else if (new Intl.Collator().compare(titleA, titleB) < 0) {
-      return -1;
-    }
-  };
+      // handle diacritics in titles
+      if (new Intl.Collator().compare(titleA, titleB) > 0) {
+        return 1;
+      } else if (new Intl.Collator().compare(titleA, titleB) < 0) {
+        return -1;
+      }
+    },
+    [selectedLanguage]
+  );
 
   // get articles from API
   useEffect(() => {
@@ -75,7 +78,7 @@ function TitleIndex(props) {
       }
     }
     getArticles();
-  }, [selectedLanguage]);
+  }, [selectedLanguage, compare]);
 
   // filter articles when query is entered
   useEffect(() => {
@@ -86,7 +89,7 @@ function TitleIndex(props) {
     if (selectedLetterButton !== null) {
       selectedLetterButton.classList.remove("selectedLetterButton");
     }
-  }, [searchQuery]);
+  }, [Articles, searchQuery]);
 
   // sort articles when language is selected and set alphabet
   useEffect(() => {
@@ -103,7 +106,7 @@ function TitleIndex(props) {
     if (selectedLetterButton !== null) {
       selectedLetterButton.classList.remove("selectedLetterButton");
     }
-  }, [selectedLanguage]);
+  }, [Articles, compare, selectedLanguage]);
 
   // filter articles when a letter is selected
   useEffect(() => {
@@ -113,7 +116,7 @@ function TitleIndex(props) {
       selectedLanguage
     );
     setFilteredArticles(articlesByLetter);
-  }, [selectedLetter, selectedLanguage]);
+  }, [Articles, selectedLetter, selectedLanguage]);
 
   return (
     <div>

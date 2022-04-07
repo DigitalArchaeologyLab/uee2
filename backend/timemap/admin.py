@@ -28,7 +28,7 @@ from .models import Period
 
 class PeriodAdmin(TreeAdmin):
     form = movenodeform_factory(Period)
-
+    list_display = ("name_eng", "start", "end")
 
 admin.site.register(Period, PeriodAdmin)
 

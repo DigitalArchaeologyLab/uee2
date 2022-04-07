@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 import "./Lightbox.css";
-import axios from 'axios';
-
+// import axios from "axios";
 
 function Lightbox(props) {
-
   // useEffect(() => {
   //   // check if IIIF manifest is returned
   //   async function getIIIFValidation() {
   //     try {
   //       const response = await axios.get(`https://iiif.io/api/presentation/validator/service/validate?format=json&version=2.0&url=${https://iiif.library.ucla.edu/ark%3A%2F21198%2Fzz001dzmd4/manifest}`);
-        
+
   //       // check if 404
   //     } catch (err) {
   //       console.error(err);
@@ -18,8 +16,6 @@ function Lightbox(props) {
   //   }
   //   getIIIFValidation();
   // }, []);
- 
-    
 
   useEffect(() => {
     // Get the modal
@@ -54,7 +50,7 @@ function Lightbox(props) {
 
       <div id="figureModal" class="modal">
         <span class="close">&times;</span>
-        <img class="modal-content" id="modalFigureImg" />
+        <img class="modal-content" id="modalFigureImg" alt="placeholder" />
         <div id="figureCaption"></div>
       </div>
     </div>

@@ -21,6 +21,7 @@ class SubjectAreaSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     authors = serializers.StringRelatedField(many=True)
     subject_area = serializers.StringRelatedField(many=True)
+    # activity = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Article
@@ -34,6 +35,9 @@ class ArticleSerializer(serializers.ModelSerializer):
             "authors",
             "abstract_eng",
             "abstract_ar",
+            "place",
+            "period",
+            "activity",
             "status",
             "body",
             "transient_subject_ancestors",

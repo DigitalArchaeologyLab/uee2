@@ -3,6 +3,8 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from treebeard.mp_tree import MP_Node
 from timemap.models import Place
+from timemap.models import Activity
+from timemap.models import Period
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -33,7 +35,9 @@ class Article(models.Model):
     status = models.CharField(
         max_length=255, choices=STATUS_CHOICES, default=UNPUBLISHED
     )
-    place = models.ManyToManyField(Place)
+    place = models.ManyToManyField(Place, blank=True)
+    period = models.ManyToManyField(Period, blank=True)
+    activity = models.ManyToManyField(Activity, verbose_name="Timemap Reference", help_text="An activity linking a place to a specific time range.")
     body = MarkdownxField()
     transient_subject_ancestors = []
 
