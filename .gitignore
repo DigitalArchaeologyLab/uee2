@@ -2,4 +2,4 @@ __pycache__
 backend/data_volume
 backend/media
 mysql_dump
-.env
+.env*
