@@ -32,13 +32,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.forms",
-    # custom apps
+
+    ### local apps ###
     "article.apps.ArticleConfig",
     "timemap.apps.TimemapConfig",
     "glossary.apps.GlossaryConfig",
     "data.apps.DataConfig",
     "page.apps.PageConfig",
+
     ### installed apps ###
+
     # Markdown entry and rendering
     "markdownx",
     # Django Rest Framework for API
