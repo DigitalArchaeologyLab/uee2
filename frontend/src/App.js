@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="app">
       <div>
-        <Router>
+        <Router basename="/">
           <ScrollToTop />
           <Switch>
             <Route exact path="/">
