@@ -7,15 +7,17 @@ function TermList(props) {
   const [TermList, setTermList] = useState([
     {
       id: 0,
-      name_eng: "",
-      definition: "",
+      term_eng: "",
+      term_ar: "",
+      definition_eng: "",
+      definition_ar: "",
     },
   ]);
 
   useEffect(() => {
     const sortByTerm = (a, b) => {
-      const termA = a.name_eng.toUpperCase();
-      const termB = b.name_eng.toUpperCase();
+      const termA = a.term_eng.toUpperCase();
+      const termB = b.term_eng.toUpperCase();
 
       // handle diacritics in terms
       if (new Intl.Collator().compare(termA, termB) > 0) {
@@ -46,8 +48,10 @@ function TermList(props) {
           <div className="termList_term" key={term.id}>
             <Term
               id={term.id}
-              termName={term.name_eng}
-              termDefinition={term.definition}
+              termName={term.term_eng}
+              termDefinition={term.definition_eng}
+              termNameAr={term.term_ar}
+              termDefinitionAr={term.definition_ar}
             />
           </div>
         ))}

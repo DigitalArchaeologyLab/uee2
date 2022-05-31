@@ -5,4 +5,4 @@ from .models import GlossaryTerm
 class GlossarySerializer(serializers.ModelSerializer):
     class Meta:
         model = GlossaryTerm
-        fields = ["id", "name_eng", "definition"]
+        fields = ["id", "term_eng", "term_ar", "definition_eng", "definition_ar"]
