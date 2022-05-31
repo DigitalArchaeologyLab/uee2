@@ -13,9 +13,17 @@ class Image(models.Model):
     title_ar = models.CharField("Title (Arabic)", max_length=255, null=True, blank=True)
     title_de = models.CharField("Title (German)", max_length=255, null=True, blank=True)
     title_fr = models.CharField("Title (French)", max_length=255, null=True, blank=True)
+    description = models.TextField(
+        "Full Description", max_length=1000, null=True, blank=True
+    )
+    caption = models.TextField(
+        "Caption and credit line", max_length=1000, null=True, blank=True
+    )
+    creator = models.TextField("Creator (photographer, illustrator, etc)", max_length=255, null=True, blank=True)
     # articles = models.ManyToManyField(Article)
     places = models.ManyToManyField(Place, blank=True)
     periods = models.ManyToManyField(Period, blank=True)
+    persons = models.TextField("Person(s) within content", max_length=1000, null=True, blank=True)
     source = models.CharField("Source", max_length=255, null=True, blank=True)
     rights_holder = models.CharField(
         "Rights Holder", max_length=255, null=True, blank=True
