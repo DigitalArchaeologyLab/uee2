@@ -9,7 +9,7 @@ from timemap.models import Period
 class Image(models.Model):
     id = models.AutoField(primary_key=True)
     image_file = models.ImageField(upload_to="images/")
-    title_eng = models.CharField("Title (English)", max_length=255)
+    title_eng = models.CharField("Title (English)", max_length=255, unique=True)
     title_ar = models.CharField("Title (Arabic)", max_length=255, null=True, blank=True)
     title_de = models.CharField("Title (German)", max_length=255, null=True, blank=True)
     title_fr = models.CharField("Title (French)", max_length=255, null=True, blank=True)

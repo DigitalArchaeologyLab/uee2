@@ -3,6 +3,7 @@ from django.urls import path, include
 from rest_framework import routers
 from article import views
 from page import pageViews
+from data import dataViews
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +25,8 @@ router.register(
     r"articlesBySubjects", views.ArticlesBySubjectView, "articlesBySubjects"
 )
 router.register(r"basicPageQuery", pageViews.BasicPageQueryView, "basicPages")
+router.register(r"imageQuery", dataViews.ImageByTitle, "imageTitle")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),

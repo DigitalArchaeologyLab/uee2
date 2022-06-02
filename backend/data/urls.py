@@ -1,10 +1,10 @@
 from django.urls import path
 from rest_framework import routers
-from . import views
+from . import dataViews
 
 router = routers.DefaultRouter()
-router.register(r"images", views.ImageView, "images")
+router.register(r"images", dataViews.ImageView, "images")
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", dataViews.index, name="index"),
 ]
