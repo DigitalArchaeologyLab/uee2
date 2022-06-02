@@ -1,0 +1,16 @@
+.visuals {
+  width: 70vw;
+  padding-top: 125px;
+  margin: 0 auto;
+}
+
+.tab__contents {
+  padding: 100px;
+}
+
+.visuals h1 {
+  font-family: "Open Sans";
+  font-weight: 300;
+  color: var(--ueeGreen01);
+  text-transform: uppercase;
+}

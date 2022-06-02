@@ -27,6 +27,9 @@ function Header() {
           <Link className="nav__item" to="/timemap">
             Time Map
           </Link>
+          <Link className="nav__item" to="/visuals">
+            Visuals
+          </Link>
           <Link className="nav__item" to="/glossary">
             Glossary
           </Link>

@@ -8,6 +8,7 @@ import SubjectBrowse from "./containers/Subjects/SubjectBrowse";
 import Article from "./containers/Article/Article";
 import Homepage from "./containers/Homepage/Homepage";
 import Timemap from "./containers/Timemap/Timemap";
+import Visuals from "./containers/Visuals/Visuals";
 import Glossary from "./containers/Glossary/Glossary";
 import BasicPage from "./containers/Basic/BasicPage";
 import IIIFImageIFrame from "./components/Image/IIIFImageIFrame";
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route path="/articles">
               <TitleIndex />
+            </Route>
+            <Route path="/visuals">
+              <Visuals />
             </Route>
             <Route path="/glossary">
               <Glossary />
