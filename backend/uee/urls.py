@@ -4,6 +4,7 @@ from rest_framework import routers
 from article import views
 from page import pageViews
 from data import dataViews
+from glossary import glossaryViews
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,6 +27,7 @@ router.register(
 )
 router.register(r"basicPageQuery", pageViews.BasicPageQueryView, "basicPages")
 router.register(r"imageQuery", dataViews.ImageByTitle, "imageTitle")
+router.register(r"termQuery", glossaryViews.TermByName, "term_eng")
 
 
 urlpatterns = [

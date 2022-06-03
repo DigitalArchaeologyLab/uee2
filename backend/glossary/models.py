@@ -6,7 +6,7 @@ class GlossaryTerm(models.Model):
         verbose_name_plural = "Glossary terms"
 
     id = models.AutoField(primary_key=True)
-    term_eng = models.CharField("Term (English)", max_length=255)
+    term_eng = models.CharField("Term (English)", max_length=255, unique=True)
     term_ar = models.CharField("Term (Arabic)", max_length=255, null=True, blank=True)
     definition_eng = models.TextField("Definition (English)", null=True, blank=True)
     definition_ar = models.TextField("Definition (Arabic)", null=True, blank=True)
