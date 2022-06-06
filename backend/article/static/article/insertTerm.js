@@ -21,31 +21,22 @@ function tagTerm() {
   };
 }
 
+let allTerms = [];
+
 async function getTermNames() {
   const response = await axios.get("/api/terms/");
   const termsObj = await response.data;
-  let terms = [];
-  await termsObj.map((term) => {
-    terms.push(`${term.term_eng}`);
-  });
-  return terms;
-}
-
-async function getTermData(selectedTermName) {
-  const response = await axios.get(
-    `/api/termQuery/?term_eng=${selectedTermName}`
-  );
-  const termData = await response.data;
-  return termData;
+  return termsObj;
 }
 
 function prepTermSelectOptions() {
-  getTermNames().then((elements) => {
+  getTermNames().then((terms) => {
+    allTerms = terms;
     let select = document.getElementById("id_terms_modal");
-    for (let el of elements) {
+    for (let term of terms) {
       let option = document.createElement("option");
-      option.text = el;
-      option.value = el;
+      option.text = term.term_eng;
+      option.value = term.term_eng;
       select.appendChild(option);
     }
   });
@@ -62,12 +53,12 @@ function insertTermSelections() {
   event.preventDefault();
   // get which term was selected
   const selectedTerm = termOptions.selectedOptions[0].innerHTML;
-  getTermData(selectedTerm).then((term) => {
-    // embed tag with appropriate term id
-    id_body.setRangeText(
-      `<span class="taggedTerm" id="${term[0].id}">${selectedText}</span>`
-    );
-  });
+  selectedTermObj = allTerms.find((term) => term.term_eng === selectedTerm);
+  // embed tag with appropriate term id
+  id_body.setRangeText(
+    `<span class="taggedTerm" id="${selectedTermObj.id}">${selectedText}</span>`
+  );
+
   var modal = document.getElementById("tagTermModal");
   modal.style.display = "none";
 }
