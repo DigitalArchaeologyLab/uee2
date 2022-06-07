@@ -5,6 +5,8 @@ from article import views
 from page import pageViews
 from data import dataViews
 from glossary import glossaryViews
+from timemap import timemapViews
+
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,9 +28,6 @@ router.register(
     r"articlesBySubjects", views.ArticlesBySubjectView, "articlesBySubjects"
 )
 router.register(r"basicPageQuery", pageViews.BasicPageQueryView, "basicPages")
-router.register(r"imageQuery", dataViews.ImageByTitle, "imageTitle")
-router.register(r"termQuery", glossaryViews.TermByName, "term_eng")
-
 
 urlpatterns = [
     path("admin/", admin.site.urls),
