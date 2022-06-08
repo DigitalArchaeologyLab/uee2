@@ -13,6 +13,7 @@ markdown = "*"
 django-treebeard = "*"
 django-import-export = "*"
 django-ckeditor = "*"
+black = "*"
 
 [dev-packages]
 

@@ -3,6 +3,7 @@ from django.utils.safestring import mark_safe
 from article.models import Article
 from timemap.models import Place
 from timemap.models import Period
+from collection.models import Collection
 
 
 # Create your models here.
@@ -19,11 +20,18 @@ class Image(models.Model):
     caption = models.TextField(
         "Caption and credit line", max_length=1000, null=True, blank=True
     )
-    creator = models.TextField("Creator (photographer, illustrator, etc)", max_length=255, null=True, blank=True)
+    creator = models.TextField(
+        "Creator (photographer, illustrator, etc)",
+        max_length=255,
+        null=True,
+        blank=True,
+    )
     # articles = models.ManyToManyField(Article)
     places = models.ManyToManyField(Place, blank=True)
     periods = models.ManyToManyField(Period, blank=True)
-    persons = models.TextField("Person(s) within content", max_length=1000, null=True, blank=True)
+    persons = models.TextField(
+        "Person(s) within content", max_length=1000, null=True, blank=True
+    )
     source = models.CharField("Source", max_length=255, null=True, blank=True)
     rights_holder = models.CharField(
         "Rights Holder", max_length=255, null=True, blank=True
@@ -34,6 +42,7 @@ class Image(models.Model):
     permission_notes = models.TextField(
         "Permissions notes", max_length=1000, null=True, blank=True
     )
+    collection = models.ManyToManyField(Collection, blank=True)
     arkID = models.CharField("ArkID", max_length=255, null=True, blank=True)
 
     def image_tag(self):

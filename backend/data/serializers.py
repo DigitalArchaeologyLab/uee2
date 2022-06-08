@@ -23,5 +23,6 @@ class ImageSerializer(serializers.ModelSerializer):
             "copyright_status",
             "permission_notes",
             "image_file",
+            "collection",
             "arkID",
         ]

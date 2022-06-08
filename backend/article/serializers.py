@@ -40,6 +40,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "activity",
             "status",
             "body",
+            "collection",
             "transient_subject_ancestors",
         ]
 

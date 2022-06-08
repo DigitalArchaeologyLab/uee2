@@ -14,3 +14,10 @@
   color: var(--ueeGreen01);
   text-transform: uppercase;
 }
+
+.visuals h2 {
+  font-family: "Open Sans";
+  font-weight: 200;
+  color: grey;
+  text-transform: uppercase;
+}
