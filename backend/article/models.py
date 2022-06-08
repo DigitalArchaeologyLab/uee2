@@ -37,7 +37,11 @@ class Article(models.Model):
     )
     place = models.ManyToManyField(Place, blank=True)
     period = models.ManyToManyField(Period, blank=True)
-    activity = models.ManyToManyField(Activity, verbose_name="Timemap Reference", help_text="An activity linking a place to a specific time range.")
+    activity = models.ManyToManyField(
+        Activity,
+        verbose_name="Timemap Reference",
+        help_text="An activity linking a place to a specific time range.",
+    )
     body = MarkdownxField()
     transient_subject_ancestors = []
 

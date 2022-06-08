@@ -21,31 +21,35 @@ function addImage() {
   };
 }
 
+let allImages = [];
+
 async function getImageTitles() {
   const response = await axios.get("/api/images/");
   const imagesObj = await response.data;
-  let imageTitles = [];
-  await imagesObj.map((image) => {
-    imageTitles.push(`${image.title_eng}`);
-  });
-  return imageTitles;
+  return imagesObj;
+  // let imageTitles = [];
+  // await imagesObj.map((image) => {
+  //   imageTitles.push(`${image.title_eng}`);
+  // });
+  // return imageTitles;
 }
 
-async function getImageData(selectedImageTitle) {
-  const response = await axios.get(
-    `/api/imageQuery/?title_eng=${selectedImageTitle}`
-  );
-  const imageData = await response.data;
-  return imageData;
-}
+// async function getImageData(selectedImageTitle) {
+//   const response = await axios.get(
+//     `/api/imageQuery/?title_eng=${selectedImageTitle}`
+//   );
+//   const imageData = await response.data;
+//   return imageData;
+// }
 
 function prepImageSelectOptions() {
-  getImageTitles().then((elements) => {
+  getImageTitles().then((images) => {
+    allImages = images;
     let select = document.getElementById("id_images_modal");
-    for (let el of elements) {
+    for (let image of images) {
       let option = document.createElement("option");
-      option.text = el;
-      option.value = el;
+      option.text = image.title_eng;
+      option.value = image.title_eng;
       select.appendChild(option);
     }
   });
@@ -55,17 +59,19 @@ function insertImageSelections() {
   // get full list of images from selection window
   const imageOptions = document.getElementById("id_images_modal");
   event.preventDefault();
-  // get data for selected image
+  // get which option was selected
   const selectedImageTitle = imageOptions.selectedOptions[0].innerHTML;
-  getImageData(selectedImageTitle).then((image) => {
-    // embed tag with appropriate image metadata
-    id_body.setRangeText(
-      `<figure class="embeddedImage__right" >
-      <img src="${image[0].image_file}" id="${image[0].arkID}" width="300px"/>
-      <figcaption>${image[0].caption}</figcaption>
+  selectedImageObj = allImages.find(
+    (image) => image.title_eng === selectedImageTitle
+  );
+
+  // embed tag with appropriate metadata
+  id_body.setRangeText(
+    `<figure class="embeddedImage__right" >
+      <img src="${selectedImageObj.image_file}" id="${selectedImageObj.arkID}" width="300px"/>
+      <figcaption>${selectedImageObj.caption}</figcaption>
     </figure>`
-    );
-  });
+  );
 
   var modal = document.getElementById("addImageModal");
   modal.style.display = "none";

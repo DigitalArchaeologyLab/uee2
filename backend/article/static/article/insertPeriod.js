@@ -21,23 +21,28 @@ function tagPeriod() {
   };
 }
 
+let allPeriods = [];
+
 async function getPeriods() {
   const response = await axios.get("/api/periods/");
   const periodsObj = await response.data;
-  let periods = [];
-  await periodsObj.map((period) => {
-    periods.push(`${period.name_eng}`);
-  });
-  return periods;
+  return periodsObj;
+  // let periods = [];
+  // await periodsObj.map((period) => {
+  //   periods.push(`${period.name_eng}`);
+  // });
+  // return periods;
 }
 
 function prepPeriodSelectOptions() {
-  getPeriods().then((elements) => {
+  getPeriods().then((periods) => {
+    allPeriods = periods;
     let select = document.getElementById("id_periods_modal");
-    for (let el of elements) {
+    for (let period of periods) {
       let option = document.createElement("option");
-      option.text = el;
-      option.value = el;
+      option.text =
+        period.name_eng + " (" + period.start + " - " + period.end + ")";
+      option.value = period.name_eng;
       select.appendChild(option);
     }
   });
@@ -53,19 +58,21 @@ function insertPeriodSelections() {
   // get full list of periods from selection window
   const periodOptions = document.getElementById("id_periods_modal");
   event.preventDefault();
-  // get which period was selected
-  const selectedPeriod = periodOptions.selectedIndex + 1;
+  // get which option was selected
+  const selectedPeriod = periodOptions.selectedOptions[0].value;
+  selectedPeriodObj = allPeriods.find(
+    (period) => period.name_eng === selectedPeriod
+  );
   // embed tag with appropriate period id
   id_body.setRangeText(
-    `<span class="taggedPeriod" id="${selectedPeriod}">${selectedText}</span>`
+    `<span class="taggedPeriod" id="${selectedPeriodObj.id}">${selectedText}</span>`
   );
 
   // add the tagged period to the periods field so that we can connect the article to these periods on the timemap
   const periodField = document.getElementById("id_period");
   const periodFieldOptions = periodField.options;
-  const selectedPeriodName = periodOptions.selectedOptions[0].value;
   for (i = 0; i < periodFieldOptions.length; i++) {
-    if (selectedPeriodName == periodFieldOptions[i].text) {
+    if (selectedPeriodObj.id == periodFieldOptions[i].value) {
       periodFieldOptions[i].selected = true;
     }
   }

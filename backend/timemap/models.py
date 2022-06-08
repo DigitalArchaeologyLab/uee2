@@ -4,7 +4,7 @@ from treebeard.mp_tree import MP_Node
 # Create your models here.
 class Place(MP_Node):
     id = models.AutoField(primary_key=True)
-    name_eng = models.CharField("Name (English)", max_length=200)
+    name_eng = models.CharField("Name (English)", max_length=200, unique=True)
     altnames_eng = models.CharField(
         "Alternative names (English)", max_length=500, null=True, blank=True
     )
@@ -28,7 +28,7 @@ class Place(MP_Node):
 
 class Period(MP_Node):
     id = models.AutoField(primary_key=True)
-    name_eng = models.CharField("Name (English)", max_length=200)
+    name_eng = models.CharField("Name (English)", max_length=200, unique=True)
     altnames_eng = models.CharField(
         "Alternative names (English)", max_length=500, null=True, blank=True
     )

@@ -21,23 +21,22 @@ function tagTerm() {
   };
 }
 
-async function getTerms() {
+let allTerms = [];
+
+async function getTermNames() {
   const response = await axios.get("/api/terms/");
   const termsObj = await response.data;
-  let terms = [];
-  await termsObj.map((term) => {
-    terms.push(`${term.name_eng}`);
-  });
-  return terms;
+  return termsObj;
 }
 
 function prepTermSelectOptions() {
-  getTerms().then((elements) => {
+  getTermNames().then((terms) => {
+    allTerms = terms;
     let select = document.getElementById("id_terms_modal");
-    for (let el of elements) {
+    for (let term of terms) {
       let option = document.createElement("option");
-      option.text = el;
-      option.value = el;
+      option.text = term.term_eng;
+      option.value = term.term_eng;
       select.appendChild(option);
     }
   });
@@ -53,10 +52,11 @@ function insertTermSelections() {
   const termOptions = document.getElementById("id_terms_modal");
   event.preventDefault();
   // get which term was selected
-  const selectedTerm = termOptions.selectedIndex + 1;
+  const selectedTerm = termOptions.selectedOptions[0].innerHTML;
+  selectedTermObj = allTerms.find((term) => term.term_eng === selectedTerm);
   // embed tag with appropriate term id
   id_body.setRangeText(
-    `<span class="taggedTerm" id="${selectedTerm}">${selectedText}</span>`
+    `<span class="taggedTerm" id="${selectedTermObj.id}">${selectedText}</span>`
   );
 
   var modal = document.getElementById("tagTermModal");

@@ -43,6 +43,8 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
+      - SITE_NAME=${SITE_NAME}
+      - SITE_TITLE=${SITE_TITLE}
   nginx:
     build:
       context: .
