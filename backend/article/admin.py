@@ -40,6 +40,7 @@ class ArticleAdmin(MarkdownxModelAdmin):
                 "description": "These fields are automatically entered based on the places, periods, and timemap references (activities) that have been tagged in the body of the article. Please review and confirm their accuracy before saving.",
             },
         ),
+        ("Collections", {"fields": ["collection"]}),
         ("Status", {"fields": ["status"]}),
     ]
 

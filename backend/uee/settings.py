@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv("DEBUG_STATUS") == "True"
-DEBUG = True if str(os.getenv('DEBUG_STATUS', True)) == "True" else False
+DEBUG = True if str(os.getenv("DEBUG_STATUS", True)) == "True" else False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "glossary.apps.GlossaryConfig",
     "data.apps.DataConfig",
     "page.apps.PageConfig",
+    "collection.apps.CollectionConfig",
     ### installed apps ###
     # Markdown entry and rendering
     "markdownx",
