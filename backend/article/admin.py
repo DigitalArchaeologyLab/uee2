@@ -40,8 +40,20 @@ class ArticleAdmin(MarkdownxModelAdmin):
                 "description": "These fields are automatically entered based on the places, periods, and timemap references (activities) that have been tagged in the body of the article. Please review and confirm their accuracy before saving.",
             },
         ),
-        ("Collections", {"fields": ["collection"]}),
-        ("Status", {"fields": ["status"]}),
+        (
+            "Collections",
+            {
+                "fields": ["collection"],
+                "description": "Select one or more collections that this article should belong to, if applicable.",
+            },
+        ),
+        (
+            "Status",
+            {
+                "fields": ["status"],
+                "description": "This article will not appear on the public site until it has been published.",
+            },
+        ),
     ]
 
 
@@ -52,6 +64,20 @@ from .models import SubjectArea
 
 class SubjectAreaAdmin(TreeAdmin):
     form = movenodeform_factory(SubjectArea)
+
+    fieldsets = [
+        (
+            "General information",
+            {"fields": ["name_eng", "name_ar", "name_de", "name_fr", "description"]},
+        ),
+        (
+            "Hierarchical position",
+            {
+                "fields": ["_position", "_ref_node_id"],
+                "description": "If this is the top-level subject area, select 'Child of' and then root. If this is a sub-level subject area, select 'Child of' and then the subject area this falls under.",
+            },
+        ),
+    ]
 
 
 admin.site.register(SubjectArea, SubjectAreaAdmin)
