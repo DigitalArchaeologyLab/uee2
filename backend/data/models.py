@@ -43,7 +43,7 @@ class Image(models.Model):
         "Permissions notes", max_length=1000, null=True, blank=True
     )
     collection = models.ManyToManyField(Collection, blank=True)
-    arkID = models.CharField("ArkID", max_length=255, null=True, blank=True)
+    arkID = models.CharField("ArkID", max_length=255, null=True, blank=True, help_text="Add the Ark ID for this resource from the UCLA Library digital asset mananagement system (i.e. ark:/21198/zz000rwn8d)")
 
     def image_tag(self):
         if self.image_file:
