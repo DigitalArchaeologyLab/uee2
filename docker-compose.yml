@@ -53,6 +53,9 @@ services:
       - 80:80
     volumes:
       - ./docker/nginx/development:/etc/nginx/conf.d
+    environment:
+      - REACT_APP_LOGO_PRIMARY=${REACT_APP_LOGO_PRIMARY}
+      - REACT_APP_LOGO_SMALL=${REACT_APP_LOGO_SMALL}
     depends_on:
       - frontend
       - backend
