@@ -57,18 +57,33 @@ function Visuals() {
       <main className="visuals">
         <div className="visuals__title">
           <h1>Visuals</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor varius turpis neque, fermentum lectus adipiscing. In nec commodo lectus enim morbi. Sit posuere dolor sed facilisis eget. Egestas non ipsum condimentum lectus tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor varius turpis neque, fermentum lectus adipiscing. In nec commodo lectus enim morbi. Sit posuere dolor sed facilisis eget. Egestas non ipsum condimentum lectus tortor.</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempor
+            varius turpis neque, fermentum lectus adipiscing. In nec commodo
+            lectus enim morbi. Sit posuere dolor sed facilisis eget. Egestas non
+            ipsum condimentum lectus tortor. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Tempor varius turpis neque, fermentum
+            lectus adipiscing. In nec commodo lectus enim morbi. Sit posuere
+            dolor sed facilisis eget. Egestas non ipsum condimentum lectus
+            tortor.
+          </p>
         </div>
 
         <section>
           <h2>View by Collection</h2>
-          <p>These collections of resources have been curated by experts for a reason. Describe in more detail!</p>
+          <p>
+            These collections of resources have been curated by experts for a
+            reason. Describe in more detail!
+          </p>
           <CollectionList images={Images} />
         </section>
 
         <section>
           <h2>View by Resource Type</h2>
-          <p>You can also view all of the resources by their type and filter them based on places, time periods, and stuff.</p>
+          <p>
+            You can also view all of the resources by their type and filter them
+            based on places, time periods, and stuff.
+          </p>
           <Tabs
             value={value}
             onChange={handleChange}

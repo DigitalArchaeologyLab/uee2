@@ -10,10 +10,10 @@ function Footer() {
           <div className="footer__1">
             <h4>Editorial Information</h4>
             <ul>
-              <li><a href="/about">About the UEE</a></li>
+              <li><a href="/about">About the {process.env.REACT_APP_SITE_NAME_SHORT}</a></li>
               <li><a href="/about/editors">Editors and Staff</a></li>
               <li><a href="/about/authors">The Authors</a></li>
-              <li><a href="/about/citing">Citing the UEE</a></li>
+              <li><a href="/about/citing">Citing the {process.env.REACT_APP_SITE_NAME_SHORT}</a></li>
               <li><a href="/about/guide">Guide to Publishing</a></li>
             </ul>
           </div>
@@ -26,7 +26,7 @@ function Footer() {
             </ul>
           </div>
           <div className="footer__3">
-            <h4>Search the UEE</h4>
+            <h4>Search the {process.env.REACT_APP_SITE_NAME_SHORT}</h4>
             <ul>
               <li><a href="/subjects">Subject Browse</a></li>
               <li><a href="/articles">Title Index</a></li>
@@ -37,7 +37,7 @@ function Footer() {
             <h4>Related Links</h4>
             <ul>
               <li><a href="https://ucla.edu">UCLA</a></li>
-              <li><a href="http://escholarship.org/uc/nelc_uee">UEE eScholarship Repository</a></li>
+              <li><a href={process.env.REACT_APP_ESCHOLARSHIP_URL}>{process.env. REACT_APP_SITE_NAME} eScholarship Repository</a></li>
               <li><a href="http://drupaldev.aegaron.ucla.edu/">AEGARON</a></li>
               <li><a href="http://dlib.etc.ucla.edu/projects/Karnak/">Digital Karnak</a></li>
             </ul>

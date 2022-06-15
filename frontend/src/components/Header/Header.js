@@ -10,7 +10,7 @@ function Header() {
           <img
             src={process.env.PUBLIC_URL + "/logos/" + process.env.REACT_APP_LOGO_PRIMARY}
             // src={process.env.PUBLIC_URL + "/logos/uee_logo.png"}
-            alt="UEE logo"
+            alt="Logo"
           />
         </Link>
       </div>

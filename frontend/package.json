@@ -21,7 +21,7 @@
     "markdown-to-jsx": "^7.1.1",
     "marked": "^3.0.7",
     "mirador": "^3.2.0",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-compound-slider": "^3.3.1",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",

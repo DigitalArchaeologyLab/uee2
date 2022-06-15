@@ -8,7 +8,7 @@ import os
 
 ### Basic customization of the admin interface ###
 admin.site.site_header = os.getenv("SITE_NAME") + " - Admin"
-admin.site.site_title = os.getenv("SITE_TITLE") + " Admin"
+admin.site.site_title = os.getenv("SITE_NAME_SHORT") + " Admin"
 
 ### Register and setup models ###
 from .models import Author

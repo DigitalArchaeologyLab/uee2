@@ -43,8 +43,9 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
+      - DEBUG_STATUS=${DEBUG_STATUS}
       - SITE_NAME=${SITE_NAME}
-      - SITE_TITLE=${SITE_TITLE}
+      - SITE_NAME_SHORT=${SITE_NAME_SHORT}
   nginx:
     build:
       context: .
@@ -53,9 +54,6 @@ services:
       - 80:80
     volumes:
       - ./docker/nginx/development:/etc/nginx/conf.d
-    environment:
-      - REACT_APP_LOGO_PRIMARY=${REACT_APP_LOGO_PRIMARY}
-      - REACT_APP_LOGO_SMALL=${REACT_APP_LOGO_SMALL}
     depends_on:
       - frontend
       - backend
