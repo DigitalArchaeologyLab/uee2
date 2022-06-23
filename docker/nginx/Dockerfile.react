@@ -11,7 +11,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY ./frontend/package.json ./
 COPY ./frontend/package-lock.json ./
 RUN npm install --legacy-peer-deps
-# RUN npm install react-scripts@3.4.1 -g
 
 # add app
 COPY ./frontend/ ./
