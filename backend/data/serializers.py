@@ -15,7 +15,7 @@ class ImageSerializer(serializers.ModelSerializer):
             "caption",
             "credit",
             "creator",
-            "date_created",
+            "dateCreated",
             "places",
             "periods",
             "startDate",
