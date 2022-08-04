@@ -7,10 +7,8 @@ from import_export.admin import ImportExportModelAdmin
 import os
 
 ### Basic customization of the admin interface ###
-#admin.site.site_header = os.getenv("SITE_NAME") + " - Admin"
-#admin.site.site_title = os.getenv("SITE_NAME_SHORT") + " Admin"
-admin.site.site_header = "Digital Nubia - Admin"
-admin.site.site_title = "Digital Nubia Admin"
+admin.site.site_header = "UCLA Encyclopedia of Egyptology - Admin"
+admin.site.site_title = "UEE Admin"
 
 ### Register and setup models ###
 from .models import Author
