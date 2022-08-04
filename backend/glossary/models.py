@@ -10,6 +10,12 @@ class GlossaryTerm(models.Model):
     term_ar = models.CharField("Term (Arabic)", max_length=255, null=True, blank=True)
     definition_eng = models.TextField("Definition (English)", null=True, blank=True)
     definition_ar = models.TextField("Definition (Arabic)", null=True, blank=True)
+    alternative_eng = models.CharField(
+        "Alternative term name(s) (English)", max_length=255, null=True, blank=True
+    )
+    alternative_ar = models.CharField(
+        "Alternative term name(s) (Arabic)", max_length=255, null=True, blank=True
+    )
 
     def __str__(self):
         return "%s" % (self.term_eng)
