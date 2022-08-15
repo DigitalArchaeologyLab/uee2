@@ -8,8 +8,9 @@ function Header() {
       <div className="header__logo">
         <Link className="header__logo" to="/">
           <img
-            src={process.env.PUBLIC_URL + "/logos/uee_logo.png"}
-            alt="UEE logo"
+            src={process.env.PUBLIC_URL + "/logos/" + process.env.REACT_APP_LOGO_PRIMARY}
+            // src={process.env.PUBLIC_URL + "/logos/uee_logo.png"}
+            alt="Logo"
           />
         </Link>
       </div>
@@ -26,6 +27,9 @@ function Header() {
           </Link>
           <Link className="nav__item" to="/timemap">
             Time Map
+          </Link>
+          <Link className="nav__item" to="/visuals">
+            Visuals
           </Link>
           <Link className="nav__item" to="/glossary">
             Glossary

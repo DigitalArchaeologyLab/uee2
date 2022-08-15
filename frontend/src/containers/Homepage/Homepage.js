@@ -12,10 +12,10 @@ class Homepage extends React.Component {
 
         <main className="home">
           <div className="welcome">
-            <h1>Welcome to the UCLA Encyclopedia of Egyptology</h1>
+            <h1>Welcome to {process.env.REACT_APP_SITE_NAME}</h1>
             <div className="welcome__tagline">
               <p>
-                The UCLA Encyclopedia of Egyptology is an international
+              {process.env.REACT_APP_SITE_NAME} is an international
                 cooperative project to provide high quality peer reviewed
                 information on ancient Egypt. It is a resource in development
                 and will grow steadily.

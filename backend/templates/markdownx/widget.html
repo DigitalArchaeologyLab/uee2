@@ -33,6 +33,12 @@
       <button class="editorButton" id="tagTermButton" type="button" onClick="tagTerm()">
         Tag Glossary Term
       </button>
+
+      <script type="text/javascript" src="{% static 'article/insertImage.js' %}"></script>
+
+      <button class="editorButton" id="addImageButton" type="button" onClick="addImage()">
+        Insert Image
+      </button>
     </div>
 
     <!-- Place popup modal to select what is inserted-->
@@ -127,6 +133,31 @@
         </div>
       </div>
     </div>
+
+    <!-- Image popup modal to select what is inserted-->
+    <div id="addImageModal" class="modal">
+      <div class="modal-content">
+        <span class="closeImageModal">&times;</span>
+        <div>
+          <select name="images" id="id_images_modal" multiple=""></select>
+          <script>
+            prepImageSelectOptions();
+          </script>
+
+          <div class="help" id="modalHelp">
+            Hold down “Control”, or “Command” on a Mac, to select more than one.
+          </div>
+
+          <div>
+            <button id="insert" type="button" onClick="insertImageSelections()">
+              Insert
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
 
 

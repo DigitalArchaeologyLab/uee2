@@ -18,9 +18,15 @@ DATABASE_PORT = os.getenv("DATABASE_PORT")
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG_STATUS")
+DEBUG = True if os.getenv('DEBUG_STATUS', "True") == "True" else False
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "0.0.0.0", ".dal.ucla.edu", "23.235.222.85",]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "0.0.0.0",
+    ".dal.ucla.edu",
+    "23.235.222.85",
+]
 
 
 # Application definition
@@ -32,16 +38,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.forms",
-
     ### local apps ###
     "article.apps.ArticleConfig",
     "timemap.apps.TimemapConfig",
     "glossary.apps.GlossaryConfig",
     "data.apps.DataConfig",
     "page.apps.PageConfig",
-
+    "collection.apps.CollectionConfig",
     ### installed apps ###
-
     # Markdown entry and rendering
     "markdownx",
     # Django Rest Framework for API

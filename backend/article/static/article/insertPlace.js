@@ -21,23 +21,23 @@ function tagPlace() {
   };
 }
 
-async function getPlaces() {
+let allPlaces = [];
+
+async function getPlaceNames() {
   const response = await axios.get("/api/places/");
   const placesObj = await response.data;
-  let places = [];
-  await placesObj.map((place) => {
-    places.push(`${place.name_eng}`);
-  });
-  return places;
+  return placesObj;
 }
 
 function prepPlaceSelectOptions() {
-  getPlaces().then((elements) => {
+  // get all of the places from the api and create a list of options for the select list
+  getPlaceNames().then((places) => {
+    allPlaces = places;
     let select = document.getElementById("id_places_modal");
-    for (let el of elements) {
+    for (let place of places) {
       let option = document.createElement("option");
-      option.text = el;
-      option.value = el;
+      option.text = place.name_eng;
+      option.value = place.name_eng;
       select.appendChild(option);
     }
   });
@@ -54,18 +54,20 @@ function insertPlaceSelections() {
   const placeOptions = document.getElementById("id_places_modal");
   event.preventDefault();
   // get which place was selected
-  const selectedPlace = placeOptions.selectedIndex + 1;
-  // embed tag with appropriate place id
+  const selectedPlace = placeOptions.selectedOptions[0].innerHTML;
+  selectedPlaceObj = allPlaces.find(
+    (place) => place.name_eng === selectedPlace
+  );
+  // embed tag with appropriate metadata  
   id_body.setRangeText(
-    `<span class="taggedPlace" id="${selectedPlace}">${selectedText}</span>`
+    `<span class="taggedPlace" id="${selectedPlaceObj.id}">${selectedText}</span>`
   );
 
   // add the tagged place to the places field so that we can connect the article to these places on the timemap
   const placeField = document.getElementById("id_place");
   const placeFieldOptions = placeField.options;
-  const selectedPlaceName = placeOptions.selectedOptions[0].value;
   for (i = 0; i < placeFieldOptions.length; i++) {
-    if (selectedPlaceName == placeFieldOptions[i].text) {
+    if (selectedPlaceObj.name_eng == placeFieldOptions[i].text) {
       placeFieldOptions[i].selected = true;
     }
   }

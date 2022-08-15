@@ -21,25 +21,29 @@ function tagActivity() {
   };
 }
 
-async function getActivities() {
+let allActivities = [];
+
+async function getActivityTitles() {
   const response = await axios.get("/api/activities/");
   const activitiesObj = await response.data;
-  let activities = [];
-  await activitiesObj.map((activity) => {
-    activities.push(
-      `${activity.associatedPlace[0].name_eng} (${activity.startPeriod} - ${activity.endPeriod}), ${activity.type}`
-    );
-  });
-  return activities;
+  return activitiesObj;
 }
 
 function prepActivitySelectOptions() {
-  getActivities().then((elements) => {
+  getActivityTitles().then((activities) => {
+    allActivities = activities;
     let select = document.getElementById("id_activities_modal");
-    for (let el of elements) {
+    for (let activity of activities) {
       let option = document.createElement("option");
-      option.text = el;
-      option.value = el;
+      option.text =
+        activity.associatedPlace[0].name_eng +
+        " [" +
+        activity.startPeriod +
+        " - " +
+        activity.endPeriod +
+        "] - " +
+        activity.type;
+      option.value = activity.id;
       select.appendChild(option);
     }
   });
@@ -56,7 +60,10 @@ function insertActivitySelections() {
   const activityOptions = document.getElementById("id_activities_modal");
   event.preventDefault();
   // get which activity was selected
-  const selectedActivity = activityOptions.selectedIndex + 1;
+  const selectedActivity = activityOptions.selectedOptions[0].value;
+  selectedActivityObj = allActivities.find(
+    (activity) => activity.id === selectedActivity
+  );
   // embed tag with appropriate activity id
   id_body.setRangeText(
     `<span class="taggedActivity" id="${selectedActivity}">${selectedText}</span>`
@@ -65,9 +72,8 @@ function insertActivitySelections() {
   // add the tagged activity to the activities field so that we can connect the article to these activities on the timemap
   const activityField = document.getElementById("id_activity");
   const activityFieldOptions = activityField.options;
-  const selectedActivityName = activityOptions.selectedOptions[0].value;
   for (i = 0; i < activityFieldOptions.length; i++) {
-    if (selectedActivityName == activityFieldOptions[i].text) {
+    if (selectedActivity == activityFieldOptions[i].value) {
       activityFieldOptions[i].selected = true;
     }
   }

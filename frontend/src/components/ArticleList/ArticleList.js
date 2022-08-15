@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./ArticleList.css";
 import ArticleSummary from "../ArticleSummary/ArticleSummary";
 

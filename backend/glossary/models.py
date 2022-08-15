@@ -6,8 +6,16 @@ class GlossaryTerm(models.Model):
         verbose_name_plural = "Glossary terms"
 
     id = models.AutoField(primary_key=True)
-    name_eng = models.CharField(max_length=200)
-    definition = models.TextField(null=True, blank=True)
+    term_eng = models.CharField("Term (English)", max_length=255, unique=True)
+    term_ar = models.CharField("Term (Arabic)", max_length=255, null=True, blank=True)
+    definition_eng = models.TextField("Definition (English)", null=True, blank=True)
+    definition_ar = models.TextField("Definition (Arabic)", null=True, blank=True)
+    alternative_eng = models.CharField(
+        "Alternative term name(s) (English)", max_length=255, null=True, blank=True
+    )
+    alternative_ar = models.CharField(
+        "Alternative term name(s) (Arabic)", max_length=255, null=True, blank=True
+    )
 
     def __str__(self):
-        return "%s" % (self.name_eng)
+        return "%s" % (self.term_eng)

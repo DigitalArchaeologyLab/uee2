@@ -8,10 +8,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+import os
 
 #### Basic Django view setup ####
 def index(request):
-    return HttpResponse("Welcome to the UEE timemap")
+    return HttpResponse("Welcome to the" + os.getenv("SITE_NAME_SHORT"))
 
 
 ### API setup ###

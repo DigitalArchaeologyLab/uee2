@@ -3,6 +3,11 @@ from django.urls import path, include
 from rest_framework import routers
 from article import views
 from page import pageViews
+from data import dataViews
+from glossary import glossaryViews
+from timemap import timemapViews
+from collection import collectionViews
+
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -11,12 +16,14 @@ from timemap.urls import router as timemapRouter
 from glossary.urls import router as glossaryRouter
 from data.urls import router as dataRouter
 from page.urls import router as pageRouter
+from collection.urls import router as collectionRouter
 
 router = routers.DefaultRouter()
 router.registry.extend(timemapRouter.registry)
 router.registry.extend(glossaryRouter.registry)
 router.registry.extend(dataRouter.registry)
 router.registry.extend(pageRouter.registry)
+router.registry.extend(collectionRouter.registry)
 router.register(r"articles", views.ArticleView, "article")
 router.register(r"references", views.ReferenceView, "references")
 router.register(r"subjects", views.SubjectAreaView, "subjects")

@@ -4,7 +4,7 @@ from treebeard.mp_tree import MP_Node
 # Create your models here.
 class Place(MP_Node):
     id = models.AutoField(primary_key=True)
-    name_eng = models.CharField("Name (English)", max_length=200)
+    name_eng = models.CharField("Name (English)", max_length=200, unique=True)
     altnames_eng = models.CharField(
         "Alternative names (English)", max_length=500, null=True, blank=True
     )
@@ -28,7 +28,7 @@ class Place(MP_Node):
 
 class Period(MP_Node):
     id = models.AutoField(primary_key=True)
-    name_eng = models.CharField("Name (English)", max_length=200)
+    name_eng = models.CharField("Name (English)", max_length=200, unique=True)
     altnames_eng = models.CharField(
         "Alternative names (English)", max_length=500, null=True, blank=True
     )
@@ -56,13 +56,21 @@ class Activity(models.Model):
         ("Use", "Use"),
     ]
     type = models.CharField(max_length=200, choices=TYPE_CHOICES, default="In use")
-    startDate = models.IntegerField(null=True, blank=True)
-    endDate = models.IntegerField(null=True, blank=True)
     associatedPlace = models.ManyToManyField("Place")
     startPeriod = models.ManyToManyField(
         "Period", related_name="startPeriod", blank=True
     )
     endPeriod = models.ManyToManyField("Period", related_name="endPeriod", blank=True)
+    startDate = models.IntegerField(
+        null=True,
+        blank=True,
+        help_text="Include a start date if a specific year is known; otherwise, just set the start period.",
+    )
+    endDate = models.IntegerField(
+        null=True,
+        blank=True,
+        help_text="Include an end date if a specific year is known; otherwise, just set the end period.",
+    )
     notes = models.TextField(null=True, blank=True)
 
     def __str__(self):

@@ -8,5 +8,13 @@
 }
 
 .term__spacer {
-  margin-bottom: 8px;
+  margin-bottom: 2rem;
+}
+
+.lang__spacer {
+  margin-bottom: 1rem;
+}
+
+#arabic {
+  direction: rtl;
 }
