@@ -15,7 +15,7 @@ services:
       - MYSQL_PASSWORD=${DATABASE_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}
   frontend:
-    container_name: frontend
+    container_name: uee2_frontend
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile.react

@@ -1,7 +1,7 @@
 # FROM nginx as webserver
 
 # Build React static files
-FROM nubia_frontend:latest as build
+FROM uee2_frontend:latest as build
 
 RUN npm run build
 
@@ -10,7 +10,7 @@ FROM nginx as webserver
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Collect and copy Django static files
-FROM nubia_backend:latest as django
+FROM uee2_backend:latest as django
 ARG SECRET_KEY="static"
 RUN pipenv run python manage.py collectstatic --noinput 
 
