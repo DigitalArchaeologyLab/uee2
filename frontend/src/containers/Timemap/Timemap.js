@@ -33,7 +33,7 @@ function Timemap() {
       numchild: 0,
     },
   ]);
-  const [isLoadingPeriods, setIsLoadingPeriods] = useState(true);
+  const [sLoadingPeriods, setIsLoadingPeriods] = useState(true);
   // change to variables throughout code
   const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
   const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
@@ -43,6 +43,7 @@ function Timemap() {
   // const query = new URLSearchParams(search).get("s");
   // const [searchQuery, setSearchQuery] = useState(query || "");
   const [isLoading, setLoading] = useState(true);
+  const [isLoadingSidebar, setLoadingSidebar] = useState(true);
   const [isLoadingActivities, setLoadingActivities] = useState(true);
   const [isLoadingArticles, setIsLoadingArticles] = useState(true);
 
@@ -104,7 +105,8 @@ function Timemap() {
     },
   ]);
   const [FilteredArticles, setFilteredArticles] = useState(Articles);
-  const [ReloadFilterSidebar, setReloadFilterSidebar] = useState(false);
+
+  //////// GETTING DATA /////////
 
   // get places
   useEffect(() => {
@@ -163,8 +165,11 @@ function Timemap() {
     getArticles();
   }, []);
 
-  // filter activities
+  //////// FILTERING /////////
+
   // TODO - change to only update when Apply is clicked
+
+  // filter activities
   useEffect(() => {
     // reset to all activities
     setFilteredActivities(Activities);
@@ -190,7 +195,14 @@ function Timemap() {
       );
       setFilteredActivities(filtered);
     }
-  }, [SelectedMinTime, SelectedMaxTime, SelectedActivityTypes]);
+
+    setLoadingSidebar(false);
+  }, [
+    SelectedMinTime,
+    SelectedMaxTime,
+    SelectedActivityTypes,
+    isLoadingSidebar,
+  ]);
 
   // filter articles based on activity type selections
   useEffect(() => {
@@ -236,7 +248,6 @@ function Timemap() {
               setActivityTypesWithStatus={setActivityTypesWithStatus}
               isLoadingActivityTypes={isLoadingActivityTypes}
               setIsLoadingActivityTypes={setIsLoadingActivityTypes}
-              ReloadFilterSidebar={ReloadFilterSidebar}
               setSelectedPeriod={setSelectedPeriod}
               setSelectedPeriodNode={setSelectedPeriodNode}
               setSelectedMinTime={setSelectedMinTime}
@@ -244,7 +255,6 @@ function Timemap() {
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
               SelectedActivityTypes={SelectedActivityTypes}
-              setReloadFilterSidebar={setReloadFilterSidebar}
               SelectedPlace={SelectedPlace}
               Articles={Articles}
               setFilteredArticles={setFilteredArticles}
@@ -255,6 +265,9 @@ function Timemap() {
               updateTimeBySelectedPeriod={updateTimeBySelectedPeriod}
               Periods={Periods}
               handleActivityTypeOnChange={handleActivityTypeOnChange}
+              isLoading={isLoading}
+              setLoadingSidebar={setLoadingSidebar}
+              isLoadingSidebar={isLoadingSidebar}
             />
           </aside>
           <div>
@@ -263,7 +276,6 @@ function Timemap() {
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
               isLoading={isLoading}
-              isLoadingActivities={isLoadingActivities}
               Activities={Activities}
               FilteredActivities={FilteredActivities}
               FilteredArticles={FilteredArticles}

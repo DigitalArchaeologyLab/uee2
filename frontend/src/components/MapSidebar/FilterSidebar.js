@@ -51,9 +51,12 @@ function FilterSidebar(props) {
         <span className="filterButtons">
           <ResetButton
             setSelectedPeriod={props.setSelectedPeriod}
+            setSelectedPeriodNode={props.setSelectedPeriodNode}
             setSelectedMinTime={props.setSelectedMinTime}
             setSelectedMaxTime={props.setSelectedMaxTime}
             setSelectedActivityTypes={props.setSelectedActivityTypes}
+            setLoadingSidebar={props.setLoadingSidebar}
+            setActivityTypesWithStatus={props.setActivityTypesWithStatus}
           />
           <ApplyButton />
         </span>

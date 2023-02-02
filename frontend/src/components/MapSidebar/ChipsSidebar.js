@@ -15,6 +15,9 @@ function ChipsSidebar(props) {
           setSelectedMinTime={props.setSelectedMinTime}
           setSelectedMaxTime={props.setSelectedMaxTime}
           setSelectedActivityTypes={props.setSelectedActivityTypes}
+          setSelectedPeriodNode={props.setSelectedPeriodNode}
+          setActivityTypesWithStatus={props.setActivityTypesWithStatus}
+          setLoadingSidebar={props.setLoadingSidebar}
         />
       </span>
       <MapChip
@@ -27,7 +30,6 @@ function ChipsSidebar(props) {
         setSelectedMaxTime={props.setSelectedMaxTime}
         SelectedMinTime={props.SelectedMinTime}
         SelectedMaxTime={props.SelectedMaxTime}
-        setReload={props.setReload}
         setActivityTypesWithStatus={props.setActivityTypesWithStatus}
         ActivityTypesWithStatus={props.ActivityTypesWithStatus}
         setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}

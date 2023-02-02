@@ -5,9 +5,18 @@ function ResetButton(props) {
   const handleReset = () => {
     props.setSelectedActivityTypes([]);
     props.setSelectedPeriod(["All"]);
+    props.setSelectedPeriodNode(0);
     props.setSelectedMinTime(-5000);
     props.setSelectedMaxTime(2000);
-    props.setReload(true);
+    props.setLoadingSidebar(true);
+
+    props.setActivityTypesWithStatus([
+      { label: "Construction", status: false },
+      { label: "Use", status: false },
+      { label: "Modification", status: false },
+      { label: "Inactive / Defunct", status: false },
+      { label: "Destruction", status: false },
+    ])
 
     var filterSidebar = document.getElementById("filterSidebar");
     filterSidebar.style.display = "none";

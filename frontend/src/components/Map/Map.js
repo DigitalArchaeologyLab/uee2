@@ -42,7 +42,7 @@ function Map(props) {
     });
   }, []);
 
-  // add layer with marker clustering
+  // add layer with marker clustering & zoom controls
   const layerRef = useRef(null);
 
   useEffect(() => {
