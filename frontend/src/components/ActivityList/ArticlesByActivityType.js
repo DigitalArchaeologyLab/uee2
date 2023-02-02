@@ -21,6 +21,17 @@ function ArticlesByActivityType({
   const [ModificationArticles, setModificationArticles] = useState([]);
   const [InactiveArticles, setInactiveArticles] = useState([]);
   const [DestructionArticles, setDestructionArticles] = useState([]);
+  const [expandAll, setExpandAll] = useState(false);
+  const [expandText, setExpandText] = useState("Expand all");
+
+  const onClick = () => {
+    setExpandAll(prevState => !prevState);
+    if (expandText === "Expand all") {
+      setExpandText("Collapse all")
+    } else {
+      setExpandText("Expand all")
+    }
+  };
 
   const getPlaceName = (SelectedPlace, Places) => {
     const place = Places.find((element) => element.id === SelectedPlace);
@@ -91,7 +102,7 @@ function ArticlesByActivityType({
   const setAccordion = (typeArray, typeTitle) => {
     if (typeArray.length > 0) {
       return (
-        <Accordion>
+        <Accordion expanded={expandAll}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="construction-content"
@@ -117,6 +128,7 @@ function ArticlesByActivityType({
 
   return (
     <div>
+      <button onClick={onClick}>{expandText}</button>
       <div className="ArticlesByActivityType">
         <h2>{getPlaceName(SelectedPlace, Places)}</h2>
         {setAccordion(ConstructionArticles, "Construction")}
