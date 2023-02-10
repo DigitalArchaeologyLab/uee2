@@ -58,7 +58,14 @@ function FilterSidebar(props) {
             setLoadingSidebar={props.setLoadingSidebar}
             setActivityTypesWithStatus={props.setActivityTypesWithStatus}
           />
-          <ApplyButton />
+          <ApplyButton
+            Articles={props.Articles}
+            Activities={props.Activities}
+            SelectedActivityTypes={props.SelectedActivityTypes}
+            SelectedMaxTime={props.SelectedMaxTime}
+            SelectedMinTime={props.SelectedMinTime}
+            Places={props.Places}
+          />
         </span>
       </div>
     </div>

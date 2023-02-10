@@ -6,7 +6,6 @@ import ChipsSidebar from "./ChipsSidebar";
 import PlaceSidebar from "./PlaceSidebar";
 
 function MapSidebar(props) {
-
   return (
     <div>
       {props.isLoadingSidebar ? (
@@ -28,10 +27,14 @@ function MapSidebar(props) {
               isLoadingActivityTypes={props.isLoadingActivityTypes}
               setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
               setSelectedActivityTypes={props.setSelectedActivityTypes}
+              SelectedActivityTypes={props.SelectedActivityTypes}
               updateTimeBySelectedPeriod={props.updateTimeBySelectedPeriod}
               Periods={props.Periods}
               handleActivityTypeOnChange={props.handleActivityTypeOnChange}
               setLoadingSidebar={props.setLoadingSidebar}
+              Articles={props.Articles}
+              Activities={props.Activities}
+              Places={props.Places}
             />
           </div>
 
