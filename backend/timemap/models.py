@@ -21,6 +21,7 @@ class Place(MP_Node):
     geojson = models.TextField(null=True, blank=True)  # change appropriately
     lat = models.CharField(max_length=50, null=True, blank=True)  # change appropriately
     lon = models.CharField(max_length=50, null=True, blank=True)  # change appropriately
+    color = models.CharField(max_length=50, null=True, blank=True, default="blue")
 
     def __str__(self):
         return "%s" % (self.name_eng)
