@@ -65,6 +65,7 @@ function FilterSidebar(props) {
             SelectedMaxTime={props.SelectedMaxTime}
             SelectedMinTime={props.SelectedMinTime}
             Places={props.Places}
+            Periods={props.Periods}
           />
         </span>
       </div>
