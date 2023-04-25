@@ -35,6 +35,8 @@ function MapSidebar(props) {
               Articles={props.Articles}
               Activities={props.Activities}
               Places={props.Places}
+              MinTime={props.MinTime}
+              MaxTime={props.MaxTime}
             />
           </div>
 

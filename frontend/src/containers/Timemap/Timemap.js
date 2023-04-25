@@ -35,6 +35,8 @@ function Timemap() {
   ]);
   const [sLoadingPeriods, setIsLoadingPeriods] = useState(true);
   // change to variables throughout code
+  const [MinTime, setMinTime] = useState(-5000);
+  const [MaxTime, setMaxTime] = useState(2000);
   const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
   const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
   const [SelectedPlace, setSelectedPlace] = useState("all");
@@ -268,6 +270,8 @@ function Timemap() {
               isLoading={isLoading}
               setLoadingSidebar={setLoadingSidebar}
               isLoadingSidebar={isLoadingSidebar}
+              MinTime={MinTime}
+              MaxTime={MaxTime}
             />
           </aside>
           <div>

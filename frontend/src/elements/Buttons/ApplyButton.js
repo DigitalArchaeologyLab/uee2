@@ -6,7 +6,7 @@ import { editPlaceMarkersByFilteredArticles } from "../../utils/editPlaceMarkers
 function ApplyButton(props) {
   const handleApply = () => {
 
-    let filteredArticles = filterArticlesBySelections(props.Articles, props.Activities, props.SelectedActivityTypes, props.SelectedMaxTime, props.SelectedMinTime, props.Periods);
+    let filteredArticles = filterArticlesBySelections(props.Articles, props.Activities, props.SelectedActivityTypes, props.SelectedMaxTime, props.SelectedMinTime, props.Periods, props.MinTime, props.MaxTime);
 
     editPlaceMarkersByFilteredArticles(props.Places,filteredArticles);
 
