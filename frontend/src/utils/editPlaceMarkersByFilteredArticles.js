@@ -1,24 +1,24 @@
 export function editPlaceMarkersByFilteredArticles(Places, filteredArticles) {
   let updatedMarkers = Places;
+  let allFilteredPlaces = [];
 
-  // gather all of the places associated with the filtered articles
-  let placesInFilteredArticles = [];
-
-  for (let i = 0; i < filteredArticles.length; i++) {
-    filteredArticles[i].place.forEach((filteredPlace) => {
-      if (!placesInFilteredArticles.includes(filteredPlace)) {
-        placesInFilteredArticles.push(filteredPlace);
+  // gather a full list of all the places associated with the filtered articles
+  filteredArticles.forEach((article) => {
+    let taggedPlaces = article.places;
+    taggedPlaces.forEach((place) => {
+      if (!allFilteredPlaces.includes(place)) {
+        allFilteredPlaces.push(place)
       }
-    });
-  }
-
+    })
+  });
+ 
   // set marker color based on whether the place is associated with an article
-  Places.forEach((place) => {
-    if (!placesInFilteredArticles.includes(place.id)) {
-      updatedMarkers[place.id - 1].color = "grey";
+  updatedMarkers.forEach((place) => {
+    if (!allFilteredPlaces.includes(place.id)) {
+      // set marker color to grey if not in filtered places
+      place.color = "grey"
     }
   });
-
 
   return updatedMarkers;
 }

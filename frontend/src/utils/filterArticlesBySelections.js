@@ -30,5 +30,5 @@ export function filterArticlesBySelections(Articles, Activities, SelectedActivit
         })
     }    
 
-    return Articles;
+    return articlesWithinTimeRange;
 }

@@ -11,12 +11,17 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
 // import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-let DefaultIcon = L.icon({
+const DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
 });
 
-L.Marker.prototype.options.icon = DefaultIcon;
+// L.Marker.prototype.options.icon = DefaultIcon;
+
+const greyIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+  shadowUrl: iconShadow,
+});
 
 const style = {
   width: "100%",
@@ -25,7 +30,7 @@ const style = {
 
 function Map(props) {
   // create the basic map structure
-  const mapRef = useRef(null);
+  const mapRef = useRef();
 
   useEffect(() => {
     mapRef.current = L.map("map", {
@@ -42,16 +47,19 @@ function Map(props) {
     });
   }, []);
 
-  // add layer with marker clustering & zoom controls
-  const layerRef = useRef(null);
+  // add marker clustering & zoom controls
+  const layerRef = useRef();
 
   useEffect(() => {
     layerRef.current = L.markerClusterGroup().addTo(mapRef.current);
     new L.Control.Zoom({ position: "topright" }).addTo(mapRef.current);
   }, []);
 
+  // add markers
   useEffect(() => {
     layerRef.current.clearLayers();
+    console.log(props.Places);
+    
     // add places to cluster layer
     props.Places.forEach((place) => {
       const latitude = parseFloat(place.lat);
@@ -59,9 +67,15 @@ function Map(props) {
       const latlng = { lat: latitude, lng: longitude };
       const title = place.name_eng;
 
-      const marker = L.marker(latlng, { title: title, id: place.id });
+      let iconColor = DefaultIcon;
+
+      if (place.color === "grey") {
+        iconColor = greyIcon;
+      } 
+
+      const marker = L.marker(latlng, { title: title, id: place.id, icon: iconColor });
       marker.addTo(layerRef.current);
-      // TODO - onclick open sidebar and filter activities/articles/etc appropriately
+
       marker.on("click", function (e) {
         // test portal instead to see if that fixes the delay/sync issue with the popup responsiveness
         this.bindPopup(

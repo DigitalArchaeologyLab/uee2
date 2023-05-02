@@ -42,7 +42,7 @@ export function processData(Articles, Periods, Activities) {
         })
 
         // prep an array of article ids with period and type data
-        articleData.push({"id": article.id, "periods":articlePeriodRecords, "types":activityTypes, "earliestStart":earliestStart, "latestEnd":latestEnd})
+        articleData.push({"id": article.id, "places": article.place, "periods":articlePeriodRecords, "types":activityTypes, "earliestStart":earliestStart, "latestEnd":latestEnd})
     })
 
     return articleData;

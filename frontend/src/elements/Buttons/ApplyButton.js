@@ -8,7 +8,8 @@ function ApplyButton(props) {
 
     let filteredArticles = filterArticlesBySelections(props.Articles, props.Activities, props.SelectedActivityTypes, props.SelectedMaxTime, props.SelectedMinTime, props.Periods, props.MinTime, props.MaxTime);
 
-    editPlaceMarkersByFilteredArticles(props.Places,filteredArticles);
+    let filteredMarkers = editPlaceMarkersByFilteredArticles(props.Places,filteredArticles);
+    props.setPlaces(filteredMarkers);
 
     var filterSidebar = document.getElementById("filterSidebar");
     filterSidebar.style.display = "none";

@@ -5,15 +5,11 @@ import "./Timemap.css";
 import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-
-// import filterArticlesByText from "../../utils/filterArticlesByText";
-import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
-// import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
-import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
-import { filterActivitiesByType } from "../../utils/filterActivitiesByType";
-
 import MapSidebar from "../../components/MapSidebar/MapSidebar";
 
+import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
+import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
+import { filterActivitiesByType } from "../../utils/filterActivitiesByType";
 import { updateTimeBySelectedPeriod } from "../../utils/updateTimeBySelectedPeriod";
 
 function Timemap() {
@@ -33,8 +29,8 @@ function Timemap() {
       numchild: 0,
     },
   ]);
-  const [sLoadingPeriods, setIsLoadingPeriods] = useState(true);
-  // change to variables throughout code
+  const [LoadingPeriods, setIsLoadingPeriods] = useState(true);
+  // change min/max to variables throughout code
   const [MinTime, setMinTime] = useState(-5000);
   const [MaxTime, setMaxTime] = useState(2000);
   const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
@@ -65,6 +61,7 @@ function Timemap() {
       depth: 0,
       path: "",
       numchild: 0,
+      color: "blue",
     },
   ]);
   const [ActivityTypesWithStatus, setActivityTypesWithStatus] = useState([
@@ -169,8 +166,6 @@ function Timemap() {
 
   //////// FILTERING /////////
 
-  // TODO - change to only update when Apply is clicked
-
   // filter activities
   useEffect(() => {
     // reset to all activities
@@ -264,6 +259,7 @@ function Timemap() {
               setSelectedActivityTypes={setSelectedActivityTypes}
               Activities={Activities}
               Places={Places}
+              setPlaces={setPlaces}
               updateTimeBySelectedPeriod={updateTimeBySelectedPeriod}
               Periods={Periods}
               handleActivityTypeOnChange={handleActivityTypeOnChange}
