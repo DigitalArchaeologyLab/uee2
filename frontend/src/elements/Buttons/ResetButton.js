@@ -18,6 +18,9 @@ function ResetButton(props) {
       { label: "Destruction", status: false },
     ])
 
+    // reset to all places
+    // reload map
+
     var filterSidebar = document.getElementById("filterSidebar");
     filterSidebar.style.display = "none";
     var chipsSidebar = document.getElementById("chipsSidebar");
@@ -26,7 +29,9 @@ function ResetButton(props) {
     placeSidebar.style.display = "none";
     var newFilterSidebar = document.getElementById("filterSidebar");
     newFilterSidebar.style.display = "block";
+
   };
+
   return (
     <button className="ueeButton" onClick={handleReset}>
       Reset

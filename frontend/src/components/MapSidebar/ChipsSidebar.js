@@ -18,6 +18,9 @@ function ChipsSidebar(props) {
           setSelectedPeriodNode={props.setSelectedPeriodNode}
           setActivityTypesWithStatus={props.setActivityTypesWithStatus}
           setLoadingSidebar={props.setLoadingSidebar}
+          Places={props.Places}
+          setPlaces={props.setPlaces}
+          setReload={props.setReload}
         />
       </span>
       <MapChip

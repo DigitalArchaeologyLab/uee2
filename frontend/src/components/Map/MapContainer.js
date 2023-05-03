@@ -18,6 +18,7 @@ function MapContainer(props) {
           Places={props.Places}
           SelectedPlace={props.SelectedPlace}
           setSelectedPlace={props.setSelectedPlace}
+          Reload={props.Reload}
         />
       )}
     </div>

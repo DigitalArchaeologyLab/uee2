@@ -38,6 +38,8 @@ function MapSidebar(props) {
               setPlaces={props.setPlaces}
               MinTime={props.MinTime}
               MaxTime={props.MaxTime}
+              setReload={props.setReload}
+              Reload={props.Reload}
             />
           </div>
 
@@ -58,6 +60,8 @@ function MapSidebar(props) {
               setIsLoadingActivityTypes={props.setIsLoadingActivityTypes}
               handleActivityTypeOnChange={props.handleActivityTypeOnChange}
               setLoadingSidebar={props.setLoadingSidebar}
+              setPlaces={props.setPlaces}
+              setReload={props.setReload}
             />
           </div>
 

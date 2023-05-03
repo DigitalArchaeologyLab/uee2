@@ -17,6 +17,8 @@ export function editPlaceMarkersByFilteredArticles(Places, filteredArticles) {
     if (!allFilteredPlaces.includes(place.id)) {
       // set marker color to grey if not in filtered places
       place.color = "grey"
+    } else {
+      place.color = "blue"
     }
   });
 

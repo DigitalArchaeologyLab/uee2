@@ -64,6 +64,7 @@ function Timemap() {
       color: "blue",
     },
   ]);
+  const [Reload, setReload] = useState(false);
   const [ActivityTypesWithStatus, setActivityTypesWithStatus] = useState([
     { label: "Construction", status: false },
     { label: "Use", status: false },
@@ -268,6 +269,8 @@ function Timemap() {
               isLoadingSidebar={isLoadingSidebar}
               MinTime={MinTime}
               MaxTime={MaxTime}
+              setReload={setReload}
+              Reload={Reload}
             />
           </aside>
           <div>
@@ -282,6 +285,7 @@ function Timemap() {
               Places={Places}
               SelectedPlace={SelectedPlace}
               setSelectedPlace={setSelectedPlace}
+              Reload={Reload}
             />
           </div>
         </div>

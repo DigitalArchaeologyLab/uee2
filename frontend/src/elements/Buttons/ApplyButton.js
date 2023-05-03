@@ -10,6 +10,7 @@ function ApplyButton(props) {
 
     let filteredMarkers = editPlaceMarkersByFilteredArticles(props.Places,filteredArticles);
     props.setPlaces(filteredMarkers);
+    props.setReload(!props.Reload);
 
     var filterSidebar = document.getElementById("filterSidebar");
     filterSidebar.style.display = "none";

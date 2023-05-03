@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import Popup from "./Popup";
 import "leaflet/dist/leaflet.css";
@@ -29,6 +29,7 @@ const style = {
 };
 
 function Map(props) {
+  // const [Places, setPlaces] = useState(props.Places);
   // create the basic map structure
   const mapRef = useRef();
 
@@ -58,7 +59,8 @@ function Map(props) {
   // add markers
   useEffect(() => {
     layerRef.current.clearLayers();
-    console.log(props.Places);
+    // setPlaces(props.Places);
+    // console.log(Places);
     
     // add places to cluster layer
     props.Places.forEach((place) => {
@@ -66,7 +68,7 @@ function Map(props) {
       const longitude = parseFloat(place.lon);
       const latlng = { lat: latitude, lng: longitude };
       const title = place.name_eng;
-
+      
       let iconColor = DefaultIcon;
 
       if (place.color === "grey") {
@@ -90,7 +92,7 @@ function Map(props) {
         placeSidebar.style.display = "block";
       });
     });
-  });
+  }, [props.Reload]);
 
   return (
     <div className="timemap__map">
