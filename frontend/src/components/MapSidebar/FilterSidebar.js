@@ -51,11 +51,30 @@ function FilterSidebar(props) {
         <span className="filterButtons">
           <ResetButton
             setSelectedPeriod={props.setSelectedPeriod}
+            setSelectedPeriodNode={props.setSelectedPeriodNode}
             setSelectedMinTime={props.setSelectedMinTime}
             setSelectedMaxTime={props.setSelectedMaxTime}
             setSelectedActivityTypes={props.setSelectedActivityTypes}
+            setLoadingSidebar={props.setLoadingSidebar}
+            setActivityTypesWithStatus={props.setActivityTypesWithStatus}
+            Places={props.Places}
+            setPlaces={props.setPlaces}
+            setReload={props.setReload}
           />
-          <ApplyButton />
+          <ApplyButton
+            Articles={props.Articles}
+            Activities={props.Activities}
+            SelectedActivityTypes={props.SelectedActivityTypes}
+            SelectedMaxTime={props.SelectedMaxTime}
+            SelectedMinTime={props.SelectedMinTime}
+            Places={props.Places}
+            setPlaces={props.setPlaces}
+            Periods={props.Periods}
+            MinTime={props.MinTime}
+            MaxTime={props.MaxTime}
+            setReload={props.setReload}
+            Reload={props.Reload}
+          />
         </span>
       </div>
     </div>

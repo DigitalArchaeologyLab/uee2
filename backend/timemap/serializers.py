@@ -20,6 +20,7 @@ class PlaceSerializer(serializers.ModelSerializer):
             "depth",
             "path",
             "numchild",
+            "color",
         ]
 
 

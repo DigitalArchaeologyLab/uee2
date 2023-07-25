@@ -6,7 +6,6 @@ export function updateTimeBySelectedPeriod(
 ) {
   // cases: period is selected, period is deselected; only handling single period currently
 
-  console.log(SelectedPeriod);
   // reset time range if period is deselected
   if (SelectedPeriod === ["All"]) {
     setSelectedMinTime(2000);

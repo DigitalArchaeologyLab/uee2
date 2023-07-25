@@ -5,15 +5,11 @@ import "./Timemap.css";
 import MapContainer from "../../components/Map/MapContainer";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-
-// import filterArticlesByText from "../../utils/filterArticlesByText";
-import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
-// import { getArticlesByPlace } from "../../utils/getArticlesByPlace";
-import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
-import { filterActivitiesByType } from "../../utils/filterActivitiesByType";
-
 import MapSidebar from "../../components/MapSidebar/MapSidebar";
 
+import { filterActivitiesByTime } from "../../utils/filterActivitiesByTime";
+import { filterArticlesByActivityType } from "../../utils/filterArticlesByActivityType";
+import { filterActivitiesByType } from "../../utils/filterActivitiesByType";
 import { updateTimeBySelectedPeriod } from "../../utils/updateTimeBySelectedPeriod";
 
 function Timemap() {
@@ -33,8 +29,10 @@ function Timemap() {
       numchild: 0,
     },
   ]);
-  const [isLoadingPeriods, setIsLoadingPeriods] = useState(true);
-  // change to variables throughout code
+  const [LoadingPeriods, setIsLoadingPeriods] = useState(true);
+  // change min/max to variables throughout code
+  const [MinTime, setMinTime] = useState(-5000);
+  const [MaxTime, setMaxTime] = useState(2000);
   const [SelectedMinTime, setSelectedMinTime] = useState(-5000);
   const [SelectedMaxTime, setSelectedMaxTime] = useState(2000);
   const [SelectedPlace, setSelectedPlace] = useState("all");
@@ -43,6 +41,7 @@ function Timemap() {
   // const query = new URLSearchParams(search).get("s");
   // const [searchQuery, setSearchQuery] = useState(query || "");
   const [isLoading, setLoading] = useState(true);
+  const [isLoadingSidebar, setLoadingSidebar] = useState(true);
   const [isLoadingActivities, setLoadingActivities] = useState(true);
   const [isLoadingArticles, setIsLoadingArticles] = useState(true);
 
@@ -62,8 +61,29 @@ function Timemap() {
       depth: 0,
       path: "",
       numchild: 0,
+      color: "blue",
     },
   ]);
+  const [PlaceMarkers, setPlaceMarkers] = useState([
+    {
+      id: 0,
+      name_eng: "",
+      isRegion: false,
+      isGovernate: false,
+      isNome: false,
+      isSite: false,
+      isFeature: false,
+      notes: "",
+      geojson: "",
+      lat: "",
+      lon: "",
+      depth: 0,
+      path: "",
+      numchild: 0,
+      color: "blue",
+    },
+  ]);
+  const [Reload, setReload] = useState(false);
   const [ActivityTypesWithStatus, setActivityTypesWithStatus] = useState([
     { label: "Construction", status: false },
     { label: "Use", status: false },
@@ -104,7 +124,8 @@ function Timemap() {
     },
   ]);
   const [FilteredArticles, setFilteredArticles] = useState(Articles);
-  const [ReloadFilterSidebar, setReloadFilterSidebar] = useState(false);
+
+  //////// GETTING DATA /////////
 
   // get places
   useEffect(() => {
@@ -112,6 +133,7 @@ function Timemap() {
       try {
         const response = await axios.get("/api/places/");
         setPlaces(response.data);
+        setPlaceMarkers(response.data);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -163,8 +185,9 @@ function Timemap() {
     getArticles();
   }, []);
 
+  //////// FILTERING /////////
+
   // filter activities
-  // TODO - change to only update when Apply is clicked
   useEffect(() => {
     // reset to all activities
     setFilteredActivities(Activities);
@@ -190,7 +213,14 @@ function Timemap() {
       );
       setFilteredActivities(filtered);
     }
-  }, [SelectedMinTime, SelectedMaxTime, SelectedActivityTypes]);
+
+    setLoadingSidebar(false);
+  }, [
+    SelectedMinTime,
+    SelectedMaxTime,
+    SelectedActivityTypes,
+    isLoadingSidebar,
+  ]);
 
   // filter articles based on activity type selections
   useEffect(() => {
@@ -236,7 +266,6 @@ function Timemap() {
               setActivityTypesWithStatus={setActivityTypesWithStatus}
               isLoadingActivityTypes={isLoadingActivityTypes}
               setIsLoadingActivityTypes={setIsLoadingActivityTypes}
-              ReloadFilterSidebar={ReloadFilterSidebar}
               setSelectedPeriod={setSelectedPeriod}
               setSelectedPeriodNode={setSelectedPeriodNode}
               setSelectedMinTime={setSelectedMinTime}
@@ -244,7 +273,6 @@ function Timemap() {
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
               SelectedActivityTypes={SelectedActivityTypes}
-              setReloadFilterSidebar={setReloadFilterSidebar}
               SelectedPlace={SelectedPlace}
               Articles={Articles}
               setFilteredArticles={setFilteredArticles}
@@ -252,9 +280,18 @@ function Timemap() {
               setSelectedActivityTypes={setSelectedActivityTypes}
               Activities={Activities}
               Places={Places}
+              setPlaces={setPlaces}
               updateTimeBySelectedPeriod={updateTimeBySelectedPeriod}
               Periods={Periods}
               handleActivityTypeOnChange={handleActivityTypeOnChange}
+              isLoading={isLoading}
+              setLoadingSidebar={setLoadingSidebar}
+              isLoadingSidebar={isLoadingSidebar}
+              MinTime={MinTime}
+              MaxTime={MaxTime}
+              setReload={setReload}
+              Reload={Reload}
+              
             />
           </aside>
           <div>
@@ -263,13 +300,14 @@ function Timemap() {
               SelectedMinTime={SelectedMinTime}
               SelectedMaxTime={SelectedMaxTime}
               isLoading={isLoading}
-              isLoadingActivities={isLoadingActivities}
               Activities={Activities}
               FilteredActivities={FilteredActivities}
               FilteredArticles={FilteredArticles}
               Places={Places}
               SelectedPlace={SelectedPlace}
               setSelectedPlace={setSelectedPlace}
+              Reload={Reload}
+              PlaceMarkers={PlaceMarkers}
             />
           </div>
         </div>

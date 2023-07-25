@@ -14,6 +14,5 @@ export function filterActivitiesByTime(
       }
     }
   });
-  console.log(filteredActivityArray);
   return filteredActivityArray;
 }

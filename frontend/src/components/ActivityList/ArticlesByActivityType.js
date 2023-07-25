@@ -21,14 +21,50 @@ function ArticlesByActivityType({
   const [ModificationArticles, setModificationArticles] = useState([]);
   const [InactiveArticles, setInactiveArticles] = useState([]);
   const [DestructionArticles, setDestructionArticles] = useState([]);
+  const [expandAll, setExpandAll] = useState(false);
+  const [expandedActivityType, setExpandedActivityType] = useState("");
+  const [expandText, setExpandText] = useState("Expand all");
+  const [expandOne, setExpandOne] = useState(false);
 
-  const getPlaceName = (SelectedPlace, Places) => {
+  const onClickExpandAll = () => {
+    setExpandAll((prevState) => !prevState);
+    if (expandText === "Expand all") {
+      setExpandText("Collapse all");
+    } else {
+      setExpandText("Expand all");
+      setExpandOne(false);
+    }
+  };
+
+  const onClickExpand = (clickedActivityType) => {
+    // console.log(clickedActivityType);
+
+    // clicked on type title
+    setExpandedActivityType(clickedActivityType.target.firstChild.data);
+
+    // // clicked on accordion space
+    // setExpandedActivityType(clickedActivityType.target.firstChild.innerHTML);
+    // // clicked on arrow
+    // setExpandedActivityType(clickedActivityType.target.parentNode.parentNode.parentNode.innerHTML);
+
+    setExpandOne((prevState) => !prevState);
+  };
+
+  const parseExpand = (typeTitle) => {
+    if (expandAll || (typeTitle === expandedActivityType && expandOne)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  function getPlaceName(SelectedPlace, Places) {
     const place = Places.find((element) => element.id === SelectedPlace);
     if (place !== undefined) {
       return place.name_eng;
     }
     return;
-  };
+  }
 
   // filter based on site
   useEffect(() => {
@@ -91,7 +127,11 @@ function ArticlesByActivityType({
   const setAccordion = (typeArray, typeTitle) => {
     if (typeArray.length > 0) {
       return (
-        <Accordion>
+        <Accordion
+          expanded={parseExpand(typeTitle)}
+          onClick={onClickExpand}
+          className={typeTitle}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="construction-content"
@@ -117,6 +157,9 @@ function ArticlesByActivityType({
 
   return (
     <div>
+      <button className="ExpandAll" onClick={onClickExpandAll}>
+        {expandText}
+      </button>
       <div className="ArticlesByActivityType">
         <h2>{getPlaceName(SelectedPlace, Places)}</h2>
         {setAccordion(ConstructionArticles, "Construction")}

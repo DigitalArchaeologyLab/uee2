@@ -23,7 +23,7 @@ export default function MapChip(props) {
 
   const handleMinTimeDelete = () => {
     props.setSelectedMinTime(-5000);
-    props.setReload(true);
+    // props.setReload(true);
   };
 
   const handleMaxTimeDelete = () => {
