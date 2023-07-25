@@ -20,6 +20,7 @@ function ResetButton(props) {
 
     // reset to all places
     // reload map
+    
 
     var filterSidebar = document.getElementById("filterSidebar");
     filterSidebar.style.display = "none";

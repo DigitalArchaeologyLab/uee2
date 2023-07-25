@@ -64,6 +64,25 @@ function Timemap() {
       color: "blue",
     },
   ]);
+  const [PlaceMarkers, setPlaceMarkers] = useState([
+    {
+      id: 0,
+      name_eng: "",
+      isRegion: false,
+      isGovernate: false,
+      isNome: false,
+      isSite: false,
+      isFeature: false,
+      notes: "",
+      geojson: "",
+      lat: "",
+      lon: "",
+      depth: 0,
+      path: "",
+      numchild: 0,
+      color: "blue",
+    },
+  ]);
   const [Reload, setReload] = useState(false);
   const [ActivityTypesWithStatus, setActivityTypesWithStatus] = useState([
     { label: "Construction", status: false },
@@ -114,6 +133,7 @@ function Timemap() {
       try {
         const response = await axios.get("/api/places/");
         setPlaces(response.data);
+        setPlaceMarkers(response.data);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -271,6 +291,7 @@ function Timemap() {
               MaxTime={MaxTime}
               setReload={setReload}
               Reload={Reload}
+              
             />
           </aside>
           <div>
@@ -286,6 +307,7 @@ function Timemap() {
               SelectedPlace={SelectedPlace}
               setSelectedPlace={setSelectedPlace}
               Reload={Reload}
+              PlaceMarkers={PlaceMarkers}
             />
           </div>
         </div>

@@ -63,7 +63,7 @@ function Map(props) {
     // console.log(Places);
     
     // add places to cluster layer
-    props.Places.forEach((place) => {
+    props.PlaceMarkers.forEach((place) => {
       const latitude = parseFloat(place.lat);
       const longitude = parseFloat(place.lon);
       const latlng = { lat: latitude, lng: longitude };
